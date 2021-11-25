@@ -16,29 +16,30 @@ import lombok.Setter;
  * @author 박은솔
  * @Date 2021-11-25
  */
-@Entity
-@NoArgsConstructor
-@Getter
-@Setter
-@Table(name = "Likelist")
-public class Like { 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "LIKE_NO")
-	private Long no; //찜 번호
-		
-	@ManyToOne
-	private Customer customer; 
-	
-	@ManyToOne
-	private PlaceBoard PlaceBoard;
-	
-//	장소게시판에는 이렇게??
-//	@OneToMany(mappedBy = "placeBoard", cascade = CascadeType.ALL)
-//  Set<Like> likes = new HashSet<>();
+//@Entity
+//@NoArgsConstructor
+//@Getter
+//@Setter
+//@Table(name = "Likelist")
+	public class Like { 
+//	@Id
+//  @GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name = "LIKE_NO")
+//	private Long no; //찜 번호
+//		
+//	@ManyToOne
+//	private Customer customer; 
+//	
+//	@ManyToOne
+//	private PlaceBoard PlaceBoard;
+//	
+////	장소게시판에는 이렇게??
+////	@OneToMany(mappedBy = "placeBoard", cascade = CascadeType.ALL)
+////  Set<Like> likes = new HashSet<>();
+//
+//	public Like(Customer customer, PlaceBoard placeBoard) {
+//		this.customer = customer;
+//		this.placeBoard = placeBoard;
+//	}
 
-	public Like(Customer customer, PlaceBoard placeBoard) {
-		this.customer = customer;
-		this.placeBoard = placeBoard;
-	}
 }
