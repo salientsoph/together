@@ -24,7 +24,7 @@ public class MatchReply {
 	@Id
 	@SequenceGenerator(name="replyNo_seq", sequenceName = "replyNo_seq", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="replyNo_seq")
-	private String replyNo;
+	private Long replyNo;
 	
 	private String replyContent;
 	

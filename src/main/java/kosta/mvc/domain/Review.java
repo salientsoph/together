@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -21,8 +22,9 @@ import lombok.Setter;
 @Setter
 public class Review {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String reviewNo;
+	@SequenceGenerator(name="reviewNo_seq", sequenceName = "reviewNo_seq", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reviewNo_seq")
+	private Long reviewNo;
 	
 	private String reviewContent;
 	private int star;
