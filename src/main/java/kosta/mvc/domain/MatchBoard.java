@@ -1,18 +1,24 @@
 package kosta.mvc.domain;
 
 import java.time.LocalDateTime;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -26,6 +32,9 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Table(name="matchBoard")
+
 public class MatchBoard {
 	
 	//게시물 번호 : pk
@@ -33,7 +42,10 @@ public class MatchBoard {
 	@SequenceGenerator(name="matchNo_seq", sequenceName = "matchNo_seq", allocationSize = 1) //시퀀스 generator 이름, 시퀀스 이름, 메모리를 통해 할당할 범위 사이즈
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="matchNo_seq") //전략은 시퀀스, 시퀀스 generator 이름
 	private Long matchNo; 
-	
+
+	//게시물 작성자 (아이디) (fk)
+	private String userId;
+
 	//게시물 제목 
 	private String matchTitle;
 	
@@ -54,9 +66,16 @@ public class MatchBoard {
 	private LocalDateTime tripDate;
 	
 	//여행 완료 여부 (0: 여행전 / 1: 여행완료)
+
 	@Column(columnDefinition = "number(1) default 0")
 	private int tripState;
 	
+
+	private int tripState;
+	
+	//여행 지역명
+	private String region; 
+
 	//희망하는 여행 인원수
 	private int matchPeopleNum;
 	
@@ -66,6 +85,7 @@ public class MatchBoard {
 	//희망하는 여행모임 성별 (0: 혼성 / 1: 여성만 / 2: 남성만)
 	private int matchGender;
 	
+
 	
 	//게시물 작성자 (아이디) (fk)
 	@ManyToOne
@@ -85,4 +105,5 @@ public class MatchBoard {
 	//댓글 테이블 연관
 	@OneToMany(mappedBy = "matchBoard", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<MatchReply> replyList; 
+
 }

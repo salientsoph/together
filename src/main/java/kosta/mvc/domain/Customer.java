@@ -1,13 +1,17 @@
 package kosta.mvc.domain;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.OneToMany;
+
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -29,6 +33,7 @@ public class Customer {
 	private int userPhone;
 	private String userGender;
 	private int userAge;
+
 	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<MatchBoard> matchBoardList;
@@ -36,4 +41,5 @@ public class Customer {
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<MatchRequest> matchRequestList;
 	
+
 }
