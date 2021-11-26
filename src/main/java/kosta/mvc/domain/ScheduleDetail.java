@@ -30,7 +30,13 @@ public class ScheduleDetail {
 	private String title; 	//제목
 	private String content; //내용
 	
+	//매칭 게시물 번호
 	@ManyToOne
-	@JoinColumn(name = "schedule_no")
-	private Schedule schedule;
+	@JoinColumn(name = "match_no")
+	private MatchBoard matchBoard;
+	
+	//장소 게시물 번호
+	@ManyToOne
+	@JoinColumn(name = "place_no")
+	private PlaceBoard placeBoard;
 }

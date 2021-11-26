@@ -2,12 +2,11 @@ package kosta.mvc.domain;
 
 import java.time.LocalDateTime;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
-
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -80,8 +77,18 @@ public class PlaceBoard {
 	private String placeDetailImage;
 
 	
+	//일정 상세 (1:다)
+	@OneToMany(mappedBy = "placeBoard" , cascade = CascadeType.ALL )
+	private List<ScheduleDetail> scheduleDetailList;
+
+
+	
 	//리뷰 테이블 연관
 	@OneToMany(mappedBy = "placeBoard", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Review> reviewList; 
+
+	//관심장소(찜하기) 테이블 연관 - 은솔추가 
+	@OneToMany(mappedBy = "placeBoard", cascade = CascadeType.ALL)
+	Set<PlaceLike> likes = new HashSet<>();
 
 }
