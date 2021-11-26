@@ -25,8 +25,8 @@ import lombok.Setter;
 @Setter
 public class MatchReply {
 	@Id
-	@SequenceGenerator(name="replyNo_seq", sequenceName = "replyNo_seq", allocationSize = 1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="replyNo_seq")
+	@SequenceGenerator(name="reply_no_seq", sequenceName = "reply_no_seq", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reply_no_seq")
 	private Long replyNo;
 	
 	private String replyContent;//댓글 내용
@@ -40,7 +40,7 @@ public class MatchReply {
 	@JoinColumn(name = "rereply_no")
 	private MatchReply matchReply;//대댓글 번호
 	
-	@OneToMany(mappedBy = "match_reply", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "matchReply", cascade = CascadeType.ALL)
 	private List<MatchReply> rereplyNoList;
 	
 	@ManyToOne 

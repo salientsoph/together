@@ -12,7 +12,10 @@ import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.Builder;
+
 @Entity
+@Builder
 public class ChatMsg {
 	
 	@Id

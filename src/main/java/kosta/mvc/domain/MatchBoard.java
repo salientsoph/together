@@ -39,12 +39,9 @@ public class MatchBoard {
 	
 	//게시물 번호 : pk
 	@Id
-	@SequenceGenerator(name="matchNo_seq", sequenceName = "matchNo_seq", allocationSize = 1) //시퀀스 generator 이름, 시퀀스 이름, 메모리를 통해 할당할 범위 사이즈
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="matchNo_seq") //전략은 시퀀스, 시퀀스 generator 이름
+	@SequenceGenerator(name="match_no_seq", sequenceName = "match_no_seq", allocationSize = 1) //시퀀스 generator 이름, 시퀀스 이름, 메모리를 통해 할당할 범위 사이즈
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="match_no_seq") //전략은 시퀀스, 시퀀스 generator 이름
 	private Long matchNo; 
-
-	//게시물 작성자 (아이디) (fk)
-	private String userId;
 
 	//게시물 제목 
 	private String matchTitle;
