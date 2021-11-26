@@ -36,6 +36,7 @@ class KostaFinalApplicationTests {
 		//customerRep.save(Customer.builder().userId("kim").userPwd("1234").userName("수지").userNickname("bb").userEmail("bbb@naver.com").userPhone("01045674567").userGender("여").userAge(20).build());
 	}
 	
+	@Test
 	public void regionInsert() {
 		regionRep.save(Region.builder().regionCode(1).regionName("서울").build());
 		regionRep.save(Region.builder().regionCode(2).regionName("경기/인천").build());
