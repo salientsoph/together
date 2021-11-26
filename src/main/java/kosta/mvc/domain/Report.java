@@ -22,16 +22,32 @@ public class Report {
 	@SequenceGenerator(sequenceName = "report_no_seq", allocationSize = 1, name = "report_no_seq") //시퀀스 이름: report_no_seq
 	private Long reportNo;
 	
+	//신고 제목
 	private String reportTitle;
+	//신고 내용
 	private String reportContent;
 	
+	//작성일자
 	@CreationTimestamp
 	private LocalDateTime reportRegdate;
 	
+	//처리상태 (기본값: 처리중)
 	@Column(columnDefinition = "varchar2(30) default '처리중'")
 	private String reportStatus;
 	
+	//신고사유 번호 ( 다:1 )
 	@ManyToOne
-	@JoinColumn(name = "report_reasons_no")//Reply테이블에 report_reasons_no라는 필드 추가되고 fk설정됨.
+	@JoinColumn(name = "report_reasons_no")
 	private ReportReasons reportReasons;
+	
+	//작성자 ID ( 다:1 )
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private Customer customer;
+
+	//참고용 매칭 게시물 번호 ( 다:1 )
+	@ManyToOne
+	@JoinColumn(name = "match_no")
+	private MatchBoard matchBoard;
+	
 }
