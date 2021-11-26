@@ -25,7 +25,7 @@ public class ReportReasons {
 	//신고 사유 내용
 	private String reportContent;
 	
-	//신고 게시물 리스트 ( 1:다 )
-	@OneToMany(mappedBy = "reportReasons")
-	private List<Report> reportList;
+	//신고 게시물 리스트 ( 1:다 - 부모 )
+	//@OneToMany(mappedBy = "reportReasons")
+	//private List<Report> reportList;
 }
