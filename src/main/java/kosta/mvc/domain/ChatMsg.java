@@ -20,13 +20,21 @@ public class ChatMsg {
 	@SequenceGenerator(sequenceName = "chat_msg_no_seq", allocationSize = 1, name = "chat_msg_no_seq") //시퀀스 이름: chat_msg_no_seq
 	private Long chatMsgNo;
 	
-	private String chatMsgContent;	//댓글 내용
-	
-	@CreationTimestamp
-	private LocalDateTime chatMsgRegdate; 	//댓글 작성 시간
-	
+	//매칭 게시물 번호
 	@ManyToOne
-	@JoinColumn(name = "chat_no")//Reply테이블에 chat_no라는 필드 추가되고 fk설정됨.
-	private Chat chat;
+	@JoinColumn(name = "match_no")
+	private MatchBoard matchBoard;
+	
+	//메세지 보낸사람 ID
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private Customer customer;
+	
+	//댓글 내용
+	private String chatMsgContent;	
+	
+	//댓글 작성 시간
+	@CreationTimestamp
+	private LocalDateTime chatMsgRegdate; 	
 
 }

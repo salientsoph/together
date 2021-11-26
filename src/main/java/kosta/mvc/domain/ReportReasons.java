@@ -19,10 +19,13 @@ public class ReportReasons {
 	@SequenceGenerator(sequenceName = "report_reasons_no_seq", allocationSize = 1, name = "report_reasons_no_seq") //시퀀스 이름: report_reasons_no_seq
 	private Long reportReasonsNo;
 	
+	//신고 사유 제목 
 	private String reportTitle;
 	
+	//신고 사유 내용
 	private String reportContent;
 	
+	//신고 게시물 리스트 ( 1:다 )
 	@OneToMany(mappedBy = "reportReasons")
 	private List<Report> reportList;
 }

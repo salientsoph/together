@@ -1,11 +1,14 @@
 package kosta.mvc.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -67,4 +70,16 @@ public class MatchBoard {
 	//희망하는 여행모임 성별 (0: 혼성 / 1: 여성만 / 2: 남성만)
 	private int matchGender;
 	
+	
+	//일정 상세 리스트 (1:다)
+	@OneToMany(mappedBy = "matchBoard" , cascade = CascadeType.ALL )
+	private List<ScheduleDetail> scheduleDetailList;
+	
+	//채팅 메세지 리스트 (1:다)
+	@OneToMany(mappedBy = "matchBoard" , cascade = CascadeType.ALL )
+	private List<ChatMsg> chatMsgList;
+	
+	//신고 리스트 (1:다)
+	@OneToMany(mappedBy = "matchBoard" , cascade = CascadeType.ALL )
+	private List<Report> reportList;
 }
