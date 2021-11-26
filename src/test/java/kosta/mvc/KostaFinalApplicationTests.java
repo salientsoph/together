@@ -8,9 +8,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import kosta.mvc.domain.Customer;
+import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.Region;
 import kosta.mvc.domain.Seller;
 import kosta.mvc.repository.CustomerRepository;
+import kosta.mvc.repository.PlaceBoardRepository;
 import kosta.mvc.repository.RegionRepository;
 import kosta.mvc.repository.SellerRepository;
 
@@ -27,6 +29,9 @@ class KostaFinalApplicationTests {
 	
 	@Autowired
 	private SellerRepository sellerRep;
+	
+	@Autowired
+	public PlaceBoardRepository placeBoardRep;
 
 	@Test
 	void contextLoads() {
@@ -97,5 +102,19 @@ class KostaFinalApplicationTests {
 									 .sellerPhone("010-111-111")
 									 .sellerRegisterNumber(12345678)
 									 .build());
+	}
+	
+	@Test
+	public void placeInsert() {
+		
+		//Seller seller = sellerRep.getById("seller01");
+		//Region region = regionRep.getById(1);
+		
+		placeBoardRep.save(PlaceBoard.builder().seller(sellerRep.getById("seller01")) //셀러 아이디가 seller01 인놈
+												.region(regionRep.getById(1)) 	//리전 넘버가 1번 (서울)
+												.placeTitle("서울01")
+												.placeContent("서울서울서울")
+												.placeCategory(0)
+												.build());
 	}
 }
