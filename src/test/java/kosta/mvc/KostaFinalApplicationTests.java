@@ -8,7 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import kosta.mvc.domain.Customer;
+import kosta.mvc.domain.Region;
 import kosta.mvc.repository.CustomerRepository;
+import kosta.mvc.repository.RegionRepository;
 
 @SpringBootTest
 @Transactional
@@ -17,6 +19,9 @@ class KostaFinalApplicationTests {
 	
 	@Autowired
 	private CustomerRepository customerRep;
+	
+	@Autowired
+	private RegionRepository regionRep;
 
 	@Test
 	void contextLoads() {
@@ -31,4 +36,13 @@ class KostaFinalApplicationTests {
 		//customerRep.save(Customer.builder().userId("kim").userPwd("1234").userName("수지").userNickname("bb").userEmail("bbb@naver.com").userPhone("01045674567").userGender("여").userAge(20).build());
 	}
 	
+	public void regionInsert() {
+		regionRep.save(Region.builder().regionCode(1).regionName("서울").build());
+		regionRep.save(Region.builder().regionCode(2).regionName("경기/인천").build());
+		regionRep.save(Region.builder().regionCode(3).regionName("부산/경남").build());
+		regionRep.save(Region.builder().regionCode(4).regionName("대전/충청").build());
+		regionRep.save(Region.builder().regionCode(5).regionName("대구/경북").build());
+		regionRep.save(Region.builder().regionCode(6).regionName("광주/전라").build());
+		regionRep.save(Region.builder().regionCode(7).regionName("강원/제주").build());
+	}
 }
