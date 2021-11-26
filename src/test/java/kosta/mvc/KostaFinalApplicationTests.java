@@ -1,5 +1,11 @@
 package kosta.mvc;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
@@ -8,10 +14,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import kosta.mvc.domain.Customer;
+import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.Region;
 import kosta.mvc.domain.Seller;
 import kosta.mvc.repository.CustomerRepository;
+import kosta.mvc.repository.MatchBoardRepository;
 import kosta.mvc.repository.PlaceBoardRepository;
 import kosta.mvc.repository.RegionRepository;
 import kosta.mvc.repository.SellerRepository;
@@ -31,7 +39,10 @@ class KostaFinalApplicationTests {
 	private SellerRepository sellerRep;
 	
 	@Autowired
-	public PlaceBoardRepository placeBoardRep;
+	private PlaceBoardRepository placeBoardRep;
+	
+	@Autowired
+	private MatchBoardRepository matchBoardRep;
 
 	@Test
 	void contextLoads() {
@@ -116,5 +127,63 @@ class KostaFinalApplicationTests {
 												.placeContent("서울서울서울")
 												.placeCategory(0)
 												.build());
+	}
+	
+	@Test
+	public void matchInsert() {
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		//LocalDateTime dateTime = LocalDateTime.parse("2021-11-30", formatter);
+		
+		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+		//LocalDate dt = LocalDate.parse("20140218", formatter);
+		
+//		matchBoardRep.save(MatchBoard.builder()
+//									.matchTitle("테스트1")
+//									.matchContent("testtesttest")
+//									.matchRequestLastDate( LocalDate.parse("2021-11-30", formatter) )
+//									.tripDate(LocalDate.parse("2021-12-01", formatter))
+//									.matchPeopleNum(3)
+//									.matchAgeGroup(20)
+//									.matchGender(0)
+//									.customer(customerRep.getById("jang"))
+//									.region(regionRep.getById(1))
+//									.build());
+		
+		matchBoardRep.save(MatchBoard.builder()
+				.matchTitle("서울 경복궁 갈사람~")
+				.matchContent("배고프다")
+				.matchRequestLastDate( LocalDate.parse("2021-11-30", formatter) )
+				.tripDate(LocalDate.parse("2021-12-01", formatter))
+				.matchPeopleNum(3)
+				.matchAgeGroup(20)
+				.matchGender(0)
+				.customer(customerRep.getById("jang"))
+				.region(regionRep.getById(1))
+				.build());
+		
+		matchBoardRep.save(MatchBoard.builder()
+				.matchTitle("서울 동대문 갈사람~")
+				.matchContent("자고시프다")
+				.matchRequestLastDate( LocalDate.parse("2021-11-30", formatter) )
+				.tripDate(LocalDate.parse("2021-12-01", formatter))
+				.matchPeopleNum(3)
+				.matchAgeGroup(20)
+				.matchGender(0)
+				.customer(customerRep.getById("jang"))
+				.region(regionRep.getById(1))
+				.build());
+		
+		matchBoardRep.save(MatchBoard.builder()
+				.matchTitle("서울 잠실 롯데월드 같이 갈사람~")
+				.matchContent("심심하다")
+				.matchRequestLastDate( LocalDate.parse("2021-11-30", formatter) )
+				.tripDate(LocalDate.parse("2021-12-01", formatter))
+				.matchPeopleNum(3)
+				.matchAgeGroup(20)
+				.matchGender(0)
+				.customer(customerRep.getById("jang"))
+				.region(regionRep.getById(1))
+				.build());
 	}
 }
