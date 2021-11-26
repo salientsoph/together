@@ -51,11 +51,8 @@ public class PlaceBoard {
 	@JoinColumn(name = "region_code")
 	private Region region;
   
-	private String sellerId;
-	
 	//지역명
 	private String regionName;
-
 	
 	//게시물 제목
 	private String placeTitle;
