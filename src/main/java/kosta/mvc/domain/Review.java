@@ -26,17 +26,17 @@ public class Review {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reviewNo_seq")
 	private Long reviewNo;
 	
-	private String reviewContent;
-	private int star;
+	private String reviewContent;//리뷰 내용
+	private int star;//별점
 	
 	@CreationTimestamp
-	private LocalDateTime reviewRegDate;
+	private LocalDateTime reviewRegDate;//리뷰 작성일
 	
 	@ManyToOne 
 	@JoinColumn(name = "place_no")
-	private PlaceBoard placeBoard;
+	private PlaceBoard placeBoard;//게시물 번호
 	
 	@ManyToOne 
 	@JoinColumn(name = "user_id")
-	private Customer customer;
+	private Customer customer;//id
 }
