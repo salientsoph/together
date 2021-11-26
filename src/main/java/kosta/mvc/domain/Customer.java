@@ -42,8 +42,8 @@ public class Customer {
 
 	
 	//채팅 메세지 ( 1:다 )
-	@OneToMany(mappedBy = "customer" , cascade = CascadeType.ALL )
-	private List<ChatMsg> chatMsgList;
+	//@OneToMany(mappedBy = "customer" , cascade = CascadeType.ALL )
+	//private List<ChatMsg> chatMsgList;
 	
 	//신고 게시물 리스트 ( 1:다 )
 	@OneToMany(mappedBy = "customer" , cascade = CascadeType.ALL )

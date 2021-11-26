@@ -25,8 +25,8 @@ import lombok.Setter;
 @Setter
 public class MatchReply {
 	@Id
-	@SequenceGenerator(name="replyNo_seq", sequenceName = "replyNo_seq", allocationSize = 1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="replyNo_seq")
+	@SequenceGenerator(name="reply_no_seq", sequenceName = "reply_no_seq", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reply_no_seq")
 	private Long replyNo;
 	
 	private String replyContent;//댓글 내용

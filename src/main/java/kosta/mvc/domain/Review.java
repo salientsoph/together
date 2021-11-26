@@ -22,8 +22,8 @@ import lombok.Setter;
 @Setter
 public class Review {
 	@Id
-	@SequenceGenerator(name="reviewNo_seq", sequenceName = "reviewNo_seq", allocationSize = 1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reviewNo_seq")
+	@SequenceGenerator(name="review_no_seq", sequenceName = "review_no_seq", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="review_no_seq")
 	private Long reviewNo;
 	
 	private String reviewContent;//리뷰 내용

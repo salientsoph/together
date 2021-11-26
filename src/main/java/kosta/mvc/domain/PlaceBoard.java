@@ -33,12 +33,11 @@ public class PlaceBoard {
 
 	//게시물 번호(pk)
 	@Id
-	@SequenceGenerator(name="placeNo_seq", sequenceName = "placeNo_seq", allocationSize = 1) //시퀀스 generator 이름, 시퀀스 이름, 메모리를 통해 할당할 범위 사이즈
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="placeNo_seq") //전략은 시퀀스, 시퀀스 generator 이름
+	@SequenceGenerator(name="place_no_seq", sequenceName = "place_no_seq", allocationSize = 1) //시퀀스 generator 이름, 시퀀스 이름, 메모리를 통해 할당할 범위 사이즈
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="place_no_seq") //전략은 시퀀스, 시퀀스 generator 이름
 	private Long placeNo;
 	
 	//게시물 작성자(사업자) 아이디
-
 	@ManyToOne
 	@JoinColumn(name = "seller_id")
 	private Seller seller;
