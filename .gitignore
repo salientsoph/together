@@ -34,3 +34,4 @@ build/
 
 # classpath
 .classpath
+target/m2e-wtp/web-resources/META-INF/maven/kosta.mvc/kosta.mvc/pom.properties
