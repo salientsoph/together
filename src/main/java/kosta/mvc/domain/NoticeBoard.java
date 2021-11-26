@@ -6,6 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -40,4 +45,10 @@ public class NoticeBoard {
 	
 	//게시물 조회수
 	private int noticeCount;
+	
+	//글쓴이 
+	@ManyToOne
+	@JoinColumn(name = "admin_id")
+	private Admin admin;
+
 }
