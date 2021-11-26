@@ -32,7 +32,8 @@ class KostaFinalApplicationTests {
 		
 		//customerRep.save(new Customer("testId", "1234", "김아무개", "그레이색이야", "test@test.com", 01012341234, "남", 20, null, null, null, null, null));
 		
-		customerRep.save(Customer.builder().userId("jang").userName("희정").userNickname("aa").userEmail("aaa.daum.net").userPhone("100").userGender("남").userAge(20).build());
+		//customerRep.save(Customer.builder().userId("jang").userName("희정").userNickname("aa").userEmail("aaa.daum.net").userPhone("100").userGender("남").userAge(20).build());
+		customerRep.save(Customer.builder().userId("kim").userPwd("1234").userName("수지").userNickname("bb").userEmail("bbb@naver.com").userPhone("01045674567").userGender("여").userAge(20).build());
 	}
 	
 	public void regionInsert() {
