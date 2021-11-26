@@ -43,9 +43,6 @@ public class MatchBoard {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="matchNo_seq") //전략은 시퀀스, 시퀀스 generator 이름
 	private Long matchNo; 
 
-	//게시물 작성자 (아이디) (fk)
-	private String userId;
-
 	//게시물 제목 
 	private String matchTitle;
 	

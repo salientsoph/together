@@ -28,7 +28,7 @@ public class MatchRequest {
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private Customer user;
+	private Customer customer;
 	
 	@ManyToOne
 	@JoinColumn(name = "match_no")

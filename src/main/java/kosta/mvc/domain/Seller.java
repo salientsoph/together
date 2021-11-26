@@ -33,6 +33,6 @@ public class Seller {
 	
 	@ManyToOne
 	@JoinColumn(name = "region_code")
-	private int regionCode;
+	private Region region;
 
 }

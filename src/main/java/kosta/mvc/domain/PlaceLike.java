@@ -16,16 +16,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "placeLike")
-	public class PlaceLike { 
+public class PlaceLike { 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "place_like_no_seq") //시퀀스로 따로 관리하자.
+	@SequenceGenerator(sequenceName = "place_like_no_seq", allocationSize = 1, name = "place_like_no_seq") //시퀀스 이름: place_like_no_seq
 	@Column(name = "place_like_no")
 	private Long no; //찜하기 번호
 		
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
 	private Customer customer; 
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "place_no")
 	private PlaceBoard placeBoard;
 	
 	public PlaceLike(Customer customer, PlaceBoard placeBoard) {

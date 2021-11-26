@@ -40,7 +40,7 @@ public class MatchReply {
 	@JoinColumn(name = "rereply_no")
 	private MatchReply matchReply;//대댓글 번호
 	
-	@OneToMany(mappedBy = "match_reply", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "matchReply", cascade = CascadeType.ALL)
 	private List<MatchReply> rereplyNoList;
 	
 	@ManyToOne 
