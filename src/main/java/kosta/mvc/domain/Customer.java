@@ -36,7 +36,7 @@ public class Customer {
 	private String userName;
 	private String userNickname;
 	private String userEmail;
-	private int userPhone;
+	private String userPhone;
 	private String userGender;
 	private int userAge;
 

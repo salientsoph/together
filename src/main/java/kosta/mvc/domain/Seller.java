@@ -19,14 +19,13 @@ import lombok.Setter;
 @Setter
 public class Seller {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String sellerId;
 	
 	private String sellerPwd;
 	private String sellerName;
 	private String sellerNickname;
 	private String sellerEmail;
-	private int sellerPhone;
+	private String sellerPhone;
 	private int sellerRegisterNumber;
 
 	
