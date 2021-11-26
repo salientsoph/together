@@ -17,8 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -32,9 +30,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
-@Table(name="matchBoard")
-
+//@Table(name="matchBoard")
 public class MatchBoard {
 	
 	//게시물 번호 : pk
@@ -70,12 +66,6 @@ public class MatchBoard {
 	@Column(columnDefinition = "number(1) default 0")
 	private int tripState;
 	
-
-	private int tripState;
-	
-	//여행 지역명
-	private String region; 
-
 	//희망하는 여행 인원수
 	private int matchPeopleNum;
 	
@@ -84,8 +74,6 @@ public class MatchBoard {
 	
 	//희망하는 여행모임 성별 (0: 혼성 / 1: 여성만 / 2: 남성만)
 	private int matchGender;
-	
-
 	
 	//게시물 작성자 (아이디) (fk)
 	@ManyToOne
@@ -100,7 +88,6 @@ public class MatchBoard {
 	//모임신청 테이블 연관 
 	@OneToMany(mappedBy = "matchBoard", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<MatchRequest> matchRequestList;
-	
 	
 	//댓글 테이블 연관
 	@OneToMany(mappedBy = "matchBoard", cascade = CascadeType.REMOVE, orphanRemoval = true)

@@ -8,15 +8,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 
 
 @Entity
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Region {
 
 	@Id
-
 	private int region_code;
 	
 	private String regionName;
@@ -30,6 +36,5 @@ public class Region {
 	@OneToMany(mappedBy = "region", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Seller> sellerList;
 
-	private String regionName;
 
 }

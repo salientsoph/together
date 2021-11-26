@@ -45,7 +45,6 @@ public class NoticeBoard {
 	
 	//게시물 조회수
 	private int noticeCount;
-
 	
 	//글쓴이 
 	@ManyToOne

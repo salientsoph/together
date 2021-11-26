@@ -35,6 +35,4 @@ public class Seller {
 	@JoinColumn(name = "region_code")
 	private int regionCode;
 
-	private String regionName;
-
 }
