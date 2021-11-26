@@ -5,6 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,5 +28,13 @@ public class Seller {
 	private String sellerEmail;
 	private int sellerPhone;
 	private int sellerRegisterNumber;
+
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "region_code")
+	private int regionCode;
+
 	private String regionName;
+
 }

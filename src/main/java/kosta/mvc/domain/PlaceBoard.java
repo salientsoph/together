@@ -2,10 +2,22 @@ package kosta.mvc.domain;
 
 import java.time.LocalDateTime;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -29,10 +41,21 @@ public class PlaceBoard {
 	private Long placeNo;
 	
 	//게시물 작성자(사업자) 아이디
+
+	@ManyToOne
+	@JoinColumn(name = "seller_id")
+	private Seller seller;
+	
+	//지역명
+	@ManyToOne
+	@JoinColumn(name = "region_code")
+	private Region region;
+  
 	private String sellerId;
 	
 	//지역명
 	private String regionName;
+
 	
 	//게시물 제목
 	private String placeTitle;
@@ -58,4 +81,10 @@ public class PlaceBoard {
 	
 	//게시물 상세 사진(사진2)
 	private String placeDetailImage;
+
+	
+	//리뷰 테이블 연관
+	@OneToMany(mappedBy = "placeBoard", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	private List<Review> reviewList; 
+
 }
