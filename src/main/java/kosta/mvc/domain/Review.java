@@ -13,6 +13,8 @@ import javax.persistence.SequenceGenerator;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
@@ -20,6 +22,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
+@Getter
+@Builder
 public class Review {
 	@Id
 	@SequenceGenerator(name="review_no_seq", sequenceName = "review_no_seq", allocationSize = 1)

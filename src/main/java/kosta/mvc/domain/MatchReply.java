@@ -16,13 +16,19 @@ import javax.persistence.SequenceGenerator;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
+@Getter
+@Builder
+@ToString
 public class MatchReply {
 	@Id
 	@SequenceGenerator(name="reply_no_seq", sequenceName = "reply_no_seq", allocationSize = 1)
