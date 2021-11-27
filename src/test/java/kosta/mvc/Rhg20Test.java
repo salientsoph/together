@@ -1,5 +1,11 @@
 package kosta.mvc;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -12,11 +18,14 @@ import org.springframework.test.annotation.Commit;
 import kosta.mvc.domain.ChatMsg;
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
+import kosta.mvc.domain.PlaceBoard;
+import kosta.mvc.domain.ScheduleDetail;
 import kosta.mvc.repository.ChatMsgRepository;
 import kosta.mvc.repository.CustomerRepository;
 import kosta.mvc.repository.MatchBoardRepository;
 import kosta.mvc.repository.PlaceBoardRepository;
 import kosta.mvc.repository.RegionRepository;
+import kosta.mvc.repository.ScheduleDetailRepository;
 import kosta.mvc.repository.SellerRepository;
 
 @SpringBootTest
@@ -41,6 +50,9 @@ public class Rhg20Test {
 	
 	@Autowired
 	private ChatMsgRepository chatMsgRep;
+	
+	@Autowired
+	private ScheduleDetailRepository scheduleDetailRep;
 
 	@Test
 	public void chatMsgInsert() {
@@ -76,9 +88,7 @@ public class Rhg20Test {
 				.build());
 	}
 	
-	/**
-	 * failed attempt
-	 * */
+	
 	@Test
 	public void chatMsgSelectByMatchNo() {
 		System.out.println("****************    chatMsgSelectByMatchNo   **********************");
@@ -117,17 +127,79 @@ public class Rhg20Test {
 	
 	@Test
 	public void test() {
-		List<Customer> list = customerRep.findAll();
+		
+		MatchBoard board = matchBoardRep.findById(1L).orElse(null);
+		List<ScheduleDetail> list = scheduleDetailRep.findAll();
 		
 		System.out.println("***************************************************");
 		System.out.println();
 		
-		for(Customer cu : list) { 
-			System.out.println(cu);
+		for(ScheduleDetail sd : list) { 
+			System.out.println(sd);
 		}
 		 
 		//list.forEach(b->System.out.println(b));
 		System.out.println();
 		System.out.println("***************************************************");
 	}
+	
+	@Test
+	public void scheduleDetailInsert() throws ParseException {
+		
+		MatchBoard match = matchBoardRep.findById(1L).orElse(null);
+		PlaceBoard place = placeBoardRep.findById(1L).orElse(null);
+		
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String start = "14:30:00";
+		String end = "16:45:00";
+		LocalDateTime startTime = LocalDateTime.parse(match.getTripDate().toString() + " " + start, formatter);
+		LocalDateTime endTime = LocalDateTime.parse(match.getTripDate().toString() + " " + end, formatter);
+		
+		System.out.println("***************************************************");
+		System.out.println();
+		System.out.println("startTime: " + startTime);
+		System.out.println("endTime: "+ endTime);
+		System.out.println();
+		System.out.println("***************************************************");
+		
+		
+		  scheduleDetailRep.save(ScheduleDetail.builder() .matchBoard(match)
+		  .placeBoard(place) .startTime(startTime) .endTime(endTime)
+		  .title(place.getPlaceTitle()) .content(place.getPlaceContent()) .build());
+		 
+		 
+	}
+	
+	@Test
+	public void scheduleDetailUpdate() {
+		
+		ScheduleDetail sd = scheduleDetailRep.findById(17L).orElse(null);
+		
+		MatchBoard match = sd.getMatchBoard();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String start = "20:15:00";
+		String end = "21:35:00";
+		LocalDateTime startTime = LocalDateTime.parse(match.getTripDate().toString() + " " + start, formatter);
+		LocalDateTime endTime = LocalDateTime.parse(match.getTripDate().toString() + " " + end, formatter);
+		
+		sd.setStartTime(startTime);
+		sd.setEndTime(endTime);
+		
+		System.out.println("***************************************************");
+		System.out.println();
+		System.out.println(sd.toString());
+		System.out.println();
+		System.out.println("***************************************************");
+		
+	}
+	
+	@Test
+	public void scheduleDetailDelete() {
+		scheduleDetailRep.deleteById(17L);
+	}
+	
+	
+	
 }
