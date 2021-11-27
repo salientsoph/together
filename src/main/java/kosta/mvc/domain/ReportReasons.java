@@ -11,7 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import lombok.ToString;
+
 @Entity
+@ToString
 public class ReportReasons {
 
 	@Id

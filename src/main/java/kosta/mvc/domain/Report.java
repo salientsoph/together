@@ -14,7 +14,18 @@ import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Setter
+@ToString
 public class Report {
 	
 	@Id
@@ -33,7 +44,8 @@ public class Report {
 	
 	//처리상태 (기본값: 처리중)
 	@Column(columnDefinition = "varchar2(30) default '처리중'")
-	private String reportStatus;
+	@Builder.Default
+	private String reportStatus = "처리중";
 	
 	//신고사유 번호 ( 다:1 )
 	@ManyToOne

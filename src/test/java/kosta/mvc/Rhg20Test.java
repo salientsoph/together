@@ -19,12 +19,16 @@ import kosta.mvc.domain.ChatMsg;
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceBoard;
+import kosta.mvc.domain.Report;
+import kosta.mvc.domain.ReportReasons;
 import kosta.mvc.domain.ScheduleDetail;
 import kosta.mvc.repository.ChatMsgRepository;
 import kosta.mvc.repository.CustomerRepository;
 import kosta.mvc.repository.MatchBoardRepository;
 import kosta.mvc.repository.PlaceBoardRepository;
 import kosta.mvc.repository.RegionRepository;
+import kosta.mvc.repository.ReportReasonsRepository;
+import kosta.mvc.repository.ReportRepository;
 import kosta.mvc.repository.ScheduleDetailRepository;
 import kosta.mvc.repository.SellerRepository;
 
@@ -53,6 +57,12 @@ public class Rhg20Test {
 	
 	@Autowired
 	private ScheduleDetailRepository scheduleDetailRep;
+	
+	@Autowired
+	private ReportRepository reportRep;
+	
+	@Autowired
+	private ReportReasonsRepository reportReasonsRep;
 
 	@Test
 	public void chatMsgInsert() {
@@ -200,6 +210,69 @@ public class Rhg20Test {
 		scheduleDetailRep.deleteById(17L);
 	}
 	
+	@Test
+	public void reportInsert() {
+		
+		Customer customer = customerRep.getById("rhg20");
+		MatchBoard matchBoard = matchBoardRep.getById(1L);
+		ReportReasons reason = reportReasonsRep.getById(5L);
+		
+		reportRep.save(Report.builder()
+							.reportTitle("신고합니다")
+							.reportContent("저새끼 나쁜새끼예요")
+							.customer(customer)
+							.matchBoard(matchBoard)
+							.reportReasons(reason)
+							.build());
+	}
 	
+	@Test
+	public void reportUpdate() {
+		Report report = reportRep.getById(2L);
+		
+		report.setReportTitle("신고한다고요");
+		report.setReportContent("아 진짜");
+		report.setReportStatus("처리완료");
+	}
+	
+	@Test
+	public void reportSelectAll() {
+		List<Report> list = reportRep.findAll();
+		
+		System.out.println("***************************************************");
+		System.out.println();
+		list.forEach(b->System.out.println(b));
+		System.out.println();
+		System.out.println("***************************************************");
+	}
+	
+	@Test
+	public void reportSelectByCustomerNo() {
+		Customer customer = customerRep.findById("rhg20").orElse(null);
+		
+		List<Report> list = reportRep.selectByCustomerNo(customer);
+		
+		System.out.println("***************************************************");
+		System.out.println();
+		list.forEach(b->System.out.println(b));
+		System.out.println();
+		System.out.println("***************************************************");
+	}
+	
+	@Test
+	public void reportDeleteByReportNo() {
+		reportRep.deleteById(1L);
+	}
+	
+	@Test
+	public void reportReasonsSelectAll() {
+		List<ReportReasons> list = reportReasonsRep.findAll();
+		
+		System.out.println("***************************************************");
+		System.out.println();
+		list.forEach(b->System.out.println(b));
+		System.out.println();
+		System.out.println("***************************************************");
+	}
 	
 }
