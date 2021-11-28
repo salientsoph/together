@@ -1,5 +1,6 @@
 package kosta.mvc.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,6 +26,7 @@ import javax.persistence.SequenceGenerator;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +37,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 //@Table(name="matchBoard")
+@Builder
 public class MatchBoard {
 	
 	//게시물 번호 : pk
@@ -57,10 +60,10 @@ public class MatchBoard {
 	private int matchCount;
 	
 	//여행 신청 마감날 
-	private LocalDateTime matchRequestLastDate;
+	private LocalDate matchRequestLastDate;
 	
 	//여행 날짜
-	private LocalDateTime tripDate;
+	private LocalDate tripDate;
 	
 	//여행 완료 여부 (0: 여행전 / 1: 여행완료)
 

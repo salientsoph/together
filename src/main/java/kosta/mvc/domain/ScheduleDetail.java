@@ -21,10 +21,10 @@ public class ScheduleDetail {
 	@SequenceGenerator(sequenceName = "schedule_detail_no_seq", allocationSize = 1, name = "schedule_detail_no_seq") //시퀀스 이름: schedule_no_seq
 	private Long scheduleDetailNo;
 	
-	@Temporal(TemporalType.TIME) //시간
+	@Temporal(TemporalType.TIME) //시간 ( 시:분:초 )
  	private Date startTime;
 	
-	@Temporal(TemporalType.TIME) //시간
+	@Temporal(TemporalType.TIME) //시간 ( 시:분:초 )
  	private Date endTime;
 	
 	private String title; 	//제목
