@@ -40,4 +40,9 @@ public interface MatchBoardService {
 	 * 삭제하기
 	 * */
 	void delete(Long matchNo);
+
+	/**
+	 * 성별로 받기
+	 * */
+	List<MatchBoard> selectByMatchGender(int matchGender);
 }
