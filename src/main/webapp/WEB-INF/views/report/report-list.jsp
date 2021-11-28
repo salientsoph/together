@@ -1,34 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:set var = "path" value = "${pageContext.request.contextPath}" />
+
+
 <!DOCTYPE html>
 <html>
 <head>
   <!-- SITE TITTLE -->
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
     <title>Blog Fullwidth List View - Star Travel</title>
     
       <!-- Plugins css Style -->
-    <link href='assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
-    <link href='assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css' rel='stylesheet'>
-    <link href="assets/plugins/animate/animate.css" rel="stylesheet">
-    <link href="assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
-    <link href="assets/plugins/menuzord/css/menuzord-animations.css" rel="stylesheet">
+    <link href='/assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
+  <%-- <link href="<c:url value="assets/plugins/fontawesome-5.15.2/css/all.min.css" />" rel='stylesheet'> --%>
+    <link href='/assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css' rel='stylesheet'>
+    <link href="/assets/plugins/animate/animate.css" rel="stylesheet">
+    <link href="/assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
+    <link href="/assets/plugins/menuzord/css/menuzord-animations.css" rel="stylesheet">
 
     
-    <link href='assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
+    <link href='/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
     
     <!-- GOOGLE FONT -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700' rel='stylesheet'>
 
     <!-- CUSTOM CSS -->
-    <link href="assets/css/star.css" id="option_style" rel="stylesheet">
+    <link href="/assets/css/star.css" id="option_style" rel="stylesheet">
 
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,6 +41,14 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" >
+    $(function() {
+		console.log("test");
+	})u
+    </script>
+    
 </head>
 
 <body id="body" class="up-scroll">
@@ -49,7 +62,7 @@
       <div class="container clearfix">
         <div id="menuzord" class="menuzord">
           <a href="index.html" class="menuzord-brand">
-            <img class="lazyestload" data-src="assets/img/logo-color-big.png" src="assets/img/logo-color-big.png" alt="logo-img">
+            <img class="lazyestload" data-src="/assets/img/logo-color-big.png" src="/assets/img/logo-color-big.png" alt="logo-img">
           </a>
 
           <div class="nav-item dropdown nav-item-left me-0">
@@ -496,7 +509,7 @@
 ———	PAGE TITLE
 ===================================== -->
 <section class="page-title">
-  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(assets/img/pages/page-title-bg4.jpg);">
+  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(/assets/img/pages/page-title-bg4.jpg);">
     <div class="container">
       <div class="row align-items-center justify-content-center" style="height: 200px;">
         <div class="col-lg-6">
@@ -522,7 +535,7 @@
       <div class="row align-items-lg-center align-items-xl-stretch">
         <div class="col-md-6">
           <a href="blog-single-right-sidebar.html" class="position-relative">
-            <img class="card-img-top rounded lazyestload" data-src="assets/img/blog/blog-01.jpg" src="assets/img/blog/blog-01.jpg" alt="Card image cap">
+            <img class="card-img-top rounded lazyestload" data-src="/assets/img/blog/blog-01.jpg" src="/assets/img/blog/blog-01.jpg" alt="Card image cap">
             <div class="card-img-overlay card-hover-overlay rounded"></div>
           </a>
         </div>
@@ -576,7 +589,7 @@
       <div class="row align-items-lg-center align-items-xl-stretch">
         <div class="col-md-6">
           <a href="blog-single-right-sidebar.html" class="position-relative">
-            <img class="card-img-top rounded lazyestload" data-src="assets/img/blog/blog-02.jpg" src="assets/img/blog/blog-02.jpg" alt="Card image cap">
+            <img class="card-img-top rounded lazyestload" data-src="/assets/img/blog/blog-02.jpg" src="/assets/img/blog/blog-02.jpg" alt="Card image cap">
             <div class="card-img-overlay card-hover-overlay rounded"></div>
           </a>
         </div>
@@ -628,7 +641,7 @@
       <div class="row align-items-lg-center align-items-xl-stretch">
         <div class="col-md-6">
           <a href="blog-single-right-sidebar.html" class="position-relative">
-            <img class="card-img-top rounded lazyestload" data-src="assets/img/blog/blog-03.jpg" src="assets/img/blog/blog-03.jpg" alt="Card image cap">
+            <img class="card-img-top rounded lazyestload" data-src="/assets/img/blog/blog-03.jpg" src="/assets/img/blog/blog-03.jpg" alt="Card image cap">
             <div class="card-img-overlay card-hover-overlay rounded"></div>
           </a>
         </div>
@@ -680,7 +693,7 @@
       <div class="row align-items-lg-center align-items-xl-stretch">
         <div class="col-md-6">
           <a href="blog-single-right-sidebar.html" class="position-relative">
-            <img class="card-img-top rounded lazyestload" data-src="assets/img/blog/blog-04.jpg" src="assets/img/blog/blog-04.jpg" alt="Card image cap">
+            <img class="card-img-top rounded lazyestload" data-src="/assets/img/blog/blog-04.jpg" src="/assets/img/blog/blog-04.jpg" alt="Card image cap">
             <div class="card-img-overlay card-hover-overlay rounded"></div>
           </a>
         </div>
@@ -732,7 +745,7 @@
       <div class="row align-items-lg-center align-items-xl-stretch">
         <div class="col-md-6">
           <a href="blog-single-right-sidebar.html" class="position-relative">
-            <img class="card-img-top rounded lazyestload" data-src="assets/img/blog/blog-05.jpg" src="assets/img/blog/blog-05.jpg" alt="Card image cap">
+            <img class="card-img-top rounded lazyestload" data-src="/assets/img/blog/blog-05.jpg" src="/assets/img/blog/blog-05.jpg" alt="Card image cap">
             <div class="card-img-overlay card-hover-overlay rounded"></div>
           </a>
         </div>
@@ -784,7 +797,7 @@
       <div class="row align-items-lg-center align-items-xl-stretch">
         <div class="col-md-6">
           <a href="blog-single-right-sidebar.html" class="position-relative">
-            <img class="card-img-top rounded lazyestload" data-src="assets/img/blog/blog-06.jpg" src="assets/img/blog/blog-06.jpg" alt="Card image cap">
+            <img class="card-img-top rounded lazyestload" data-src="/assets/img/blog/blog-06.jpg" src="/assets/img/blog/blog-06.jpg" alt="Card image cap">
             <div class="card-img-overlay card-hover-overlay rounded"></div>
           </a>
         </div>
@@ -891,7 +904,7 @@
           <div class="row">
             <div class="col-md-6 col-lg-3 mb-7 mb-lg-0">
               <a class="d-inline-block" href="index.html">
-                <img class="w-100 mb-6 lazyestload" data-src="assets/img/logo-color-sm.png" src="assets/img/logo-color-sm.png" alt="img">
+                <img class="w-100 mb-6 lazyestload" data-src="/assets/img/logo-color-sm.png" src="/assets/img/logo-color-sm.png" alt="img">
               </a>
               <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
             </div>
@@ -941,9 +954,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-1.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-1.jpg"></a>
+                      <img class="media-img lazyestload" data-src="/assets/img/home/gallery/thumb-gallery-1.jpg"
+                        src="/assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="/assets/img/home/gallery/gallery-1.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -951,9 +964,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-2.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-2.jpg"></a>
+                      <img class="media-img lazyestload" data-src="/assets/img/home/gallery/thumb-gallery-2.jpg"
+                        src="/assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="/assets/img/home/gallery/gallery-2.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -961,9 +974,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-3.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-3.jpg"></a>
+                      <img class="media-img lazyestload" data-src="/assets/img/home/gallery/thumb-gallery-3.jpg"
+                        src="/assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="/assets/img/home/gallery/gallery-3.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -971,9 +984,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-4.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-4.jpg"></a>
+                      <img class="media-img lazyestload" data-src="/assets/img/home/gallery/thumb-gallery-4.jpg"
+                        src="/assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="/assets/img/home/gallery/gallery-4.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -981,9 +994,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-5.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-5.jpg"></a>
+                      <img class="media-img lazyestload" data-src="/assets/img/home/gallery/thumb-gallery-5.jpg"
+                        src="/assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="/assets/img/home/gallery/gallery-5.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -991,9 +1004,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-6.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-6.jpg"></a>
+                      <img class="media-img lazyestload" data-src="/assets/img/home/gallery/thumb-gallery-6.jpg"
+                        src="/assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="/assets/img/home/gallery/gallery-6.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -1225,29 +1238,29 @@
     </div>
 
     <!-- Javascript -->
-    <script src="assets/plugins/jquery/jquery-3.4.1.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/plugins/menuzord/js/menuzord.js"></script>
+    <script src="/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/plugins/menuzord/js/menuzord.js"></script>
     
     
     
-    <script src='assets/plugins/fancybox/jquery.fancybox.min.js'></script>
-    
-    
-    
-    
-    
-    <script src="assets/plugins/lazyestload/lazyestload.js"></script>
+    <script src='/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
     
     
     
     
     
+    <script src="/assets/plugins/lazyestload/lazyestload.js"></script>
     
     
     
-    <script src="assets/plugins/smoothscroll/SmoothScroll.js"></script>
     
-    <script src="assets/js/star.js"></script>
+    
+    
+    
+    
+    <script src="/assets/plugins/smoothscroll/SmoothScroll.js"></script>
+    
+    <script src="/assets/js/star.js"></script>
   </body>
 </html>

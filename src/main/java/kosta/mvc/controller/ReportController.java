@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kosta.mvc.service.ReportService;
 
 @Controller
-@RequestMapping("/report")
+//@RequestMapping("report")
 public class ReportController {
 	
 	@Autowired
@@ -16,10 +16,16 @@ public class ReportController {
 	/**
 	 * 전체검색하기
 	 * */
-	@RequestMapping("/list")
+	@RequestMapping("/match-report/list")
 	public String list() {
 		
-		return "/report/report-list";
+		return "report/report-list";
 	}
+	
+	@RequestMapping("test/test")
+	public void test() {}
+	
+	@RequestMapping("report/test")
+	public void test2() {}
 
 }
