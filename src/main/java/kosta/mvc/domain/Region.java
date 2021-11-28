@@ -38,5 +38,4 @@ public class Region {
 	@OneToMany(mappedBy = "region", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Seller> sellerList;
 
-
 }
