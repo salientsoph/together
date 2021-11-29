@@ -609,6 +609,12 @@
                   <span class="ms-1 text-capitalize">${report.reportReasons.reportTitle }</span>
                 </li>
                 
+                <li class="meta-tag text-gray-color me-4 mb-1">
+                  <i class="fas fa-check-circle" aria-hidden="true"></i>
+                  <span class="ms-1 text-capitalize">${report.reportStatus}</span>
+                </li>
+                
+                
               </ul>
                <!-- 부가 정보 -->
                
