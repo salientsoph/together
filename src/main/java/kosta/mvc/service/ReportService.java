@@ -2,6 +2,9 @@ package kosta.mvc.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import kosta.mvc.domain.Report;
 
 public interface ReportService {
@@ -9,7 +12,7 @@ public interface ReportService {
 	/**
 	 * 신고 게시물 전체 조회 (관리자용)
 	 * */
-	List<Report> selectAll();
+	Page<Report> selectAll(Pageable pageable);
 	
 	/**
 	 * 회원이 작성한 신고 게시물 조회 (고객용, 관리자 검색용)
@@ -41,4 +44,10 @@ public interface ReportService {
 	 * */
 	void updateStatus(Long reportNo, String reportStatus);
 
+	/**
+	 * 신고 게시물 상세 조회
+	 *  신고 게시물 번호 (어떤 게시물 조회하는지) 
+	 *  필요함.
+	 * */
+	Report selectByReportNo(Long reportNo);
 }

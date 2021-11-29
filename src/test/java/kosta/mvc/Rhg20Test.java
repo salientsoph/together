@@ -217,6 +217,7 @@ public class Rhg20Test {
 		MatchBoard matchBoard = matchBoardRep.getById(1L);
 		ReportReasons reason = reportReasonsRep.getById(5L);
 		
+		for(int i=0; i<100 ; i++) {
 		reportRep.save(Report.builder()
 							.reportTitle("신고합니다")
 							.reportContent("저새끼 나쁜새끼예요")
@@ -224,6 +225,7 @@ public class Rhg20Test {
 							.matchBoard(matchBoard)
 							.reportReasons(reason)
 							.build());
+		}
 	}
 	
 	@Test
