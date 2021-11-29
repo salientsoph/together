@@ -78,6 +78,26 @@ public class ReportController {
 		return mv;
 	}
 	
+	/**
+	 * 상태 수정 (관리자 전용)
+	 * */
+	@RequestMapping("/updateStatus")
+	public ModelAndView updateStatus(Long reportNo, String reportStatus) {
+		ModelAndView mv = new ModelAndView();
+		
+		System.out.println();
+		System.out.println("*********************************************");
+		
+		System.out.println("reportNo : " + reportNo);
+
+		System.out.println("reportStatus : " + reportStatus);
+
+		System.out.println("*********************************************");
+		System.out.println();
+		
+		return mv;
+	}
+	
 	@RequestMapping("/test")
 	public String test() {
 		

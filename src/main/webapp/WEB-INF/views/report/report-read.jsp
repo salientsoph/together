@@ -52,6 +52,17 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="${path}/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+		//console.log("test");
+		$("#submitStatus").click(function() {
+			$("#updateStatus").submit();
+		})
+		
+	})
+    </script>
 
   </head>     
 
@@ -580,26 +591,26 @@
 		        <div class="col-2 my-7 px-8 ">
 		           <h5 class="m-2 text-primary font-weight-bold "> 상태 : </h5> 
 		        </div>
-	            <from class="col-2 my-7 px-7">
-	            
+	            <from class="col-2 my-7 px-7" name="updateStatus" id="updateStatus" method=post action="${path}/report/updateStatus" >
+	            <input type='hidden' name='reportNo' value="${report.reportNo}">
 	                  <div class="mt-2">
 	                    <div class="form-check">
-	                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  ${report.reportStatus eq "처리중" ? "checked" : "" }>
-	                      <label class="form-check-label" for="flexRadioDefault1">
+	                       <input class="form-check-input" type="radio" name="reportStatus" id="reportStatus1"  ${report.reportStatus eq "처리중" ? "checked" : "" }>
+	                      <label class="form-check-label" for="reportStatus1">
 	                        처리중
 	                      </label>
 	                    </div>
 	
 	                    <div class="form-check">
-	                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" ${report.reportStatus eq "처리완료" ? "checked" : "" }>
-	                      <label class="form-check-label" for="flexRadioDefault2">
+	                      <input class="form-check-input" type="radio" name="reportStatus" id="reportStatus2" ${report.reportStatus eq "처리완료" ? "checked" : "" }>
+	                      <label class="form-check-label" for="reportStatus2">
 	                        처리완료
 	                      </label>
 	                    </div>
 	                  </div>
 	           </from>
 	           <div class="col-3  my-7 px-7">
-	           		<button type="button" onclick="location.href='javascript:void(0)';"
+	           		<button type="button" id="submitStatus"
 		              class="btn btn-hover btn-outline-secondary text-uppercase">
 		              상태변경 저장
 		            </button>
