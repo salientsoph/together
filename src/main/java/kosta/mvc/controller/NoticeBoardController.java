@@ -25,20 +25,23 @@ public class NoticeBoardController {
 	 * 전체 검색하기 
 	 * */
 	@RequestMapping("/list")
-	public void list(/*Model model, 
-				@RequestParam(defaultValue="1") int nowPage*/) {
-		/*Pageable pageable = PageRequest.of(nowPage-1, 10, Direction.DESC, "noticeNo"); 
+	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("notice/list");
+
+		Pageable pageable = PageRequest.of(nowPage-1, 10, Direction.DESC, "noticeNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
 		Page<NoticeBoard> pageList = noticeBoardService.selectAll(pageable);
-		
-		model.addAttribute("pageList", pageList); //view 쪽으로 전달될 데이터 정보 
-		
-		int blockCount = 3;
+
+		int blockCount = 5;
 		int temp = (nowPage - 1) % blockCount;
 		int startPage = nowPage - temp;
 		
-		model.addAttribute("blockCount", blockCount);
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("startPage", startPage);*/
+		mv.addObject("noticeList", pageList);
+		mv.addObject("blockCount", blockCount);
+		mv.addObject("nowPage", nowPage);
+		mv.addObject("startPage", startPage);
+		
+		return mv;
 	}
 	
 	
@@ -57,13 +60,10 @@ public class NoticeBoardController {
 	 * */
 	@RequestMapping("/insert")
 	public String insert(NoticeBoard board) {
-		
 		//등록 전에 입력한 데이터에 유효하지 않는 특수문자/스크립트태그 등이 있으면 태그가 아닌 문자열로 변경해준다. 
 		//실무에선 filter로 적용 
 		board.getNoticeContent().replace("<", "&lt;"); //그냥 텍스트로 나오게 한다. 
-		
 		noticeBoardService.insert(board);
-		
 		return "redirect:/notice/list";
 	}
 	
@@ -71,7 +71,7 @@ public class NoticeBoardController {
 	/**
 	 * 상세보기 
 	 * */
-	@RequestMapping("read/{bno}")
+	@RequestMapping("read/{noticeNo}")
 	public ModelAndView read(@PathVariable Long noticeNo, String flag) {
 		
 		boolean state = flag == null; 
@@ -91,6 +91,7 @@ public class NoticeBoardController {
 	 * */
 	@RequestMapping("/updateForm")
 	public ModelAndView updateForm(Long noticeNo) {
+		System.out.println("----------------------수정폼 띄우기");
 		NoticeBoard nb = noticeBoardService.selectBy(noticeNo, false); //조회수 증가 안되게 
 		ModelAndView mv = new ModelAndView("notice/update", "notice", nb);
 		return mv;
@@ -102,9 +103,9 @@ public class NoticeBoardController {
 	 * */
 	@RequestMapping("/update")
 	public ModelAndView update(NoticeBoard board) {
+		System.out.println("----------------------수정완료 ");
 		NoticeBoard noticeBoard = noticeBoardService.update(board);
-	
-		return new ModelAndView("board/read", "board", noticeBoard);
+		return new ModelAndView("notice/read", "notice", noticeBoard);
 	}
 	
 	
@@ -114,6 +115,7 @@ public class NoticeBoardController {
 	 * */
 	@RequestMapping("/delete")
 	public String delete(Long noticeNo) {
+		System.out.println("삭제하기 완료");
 		noticeBoardService.delete(noticeNo);
 		return "redirect:/notice/list";
 	}

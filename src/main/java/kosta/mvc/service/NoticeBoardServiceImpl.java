@@ -51,8 +51,8 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	public NoticeBoard update(NoticeBoard noticeBoard) {
 		NoticeBoard board = noticeRepository.findById(noticeBoard.getNoticeNo()).orElse(null);
 		if(board == null) throw new RuntimeException("글 번호 오류로 수정될 수 없습니다.");
-		board.setNoticeContent(board.getNoticeContent().replace("<", "&lt;"));
-		board.setNoticeTitle(board.getNoticeTitle());
+		board.setNoticeContent(noticeBoard.getNoticeContent().replace("<", "&lt;"));
+		board.setNoticeTitle(noticeBoard.getNoticeTitle());
 		return board;
 	}
 	
