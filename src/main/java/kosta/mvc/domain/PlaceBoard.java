@@ -90,7 +90,7 @@ public class PlaceBoard {
 	
 	//관심장소(찜하기) 테이블 연관 - 은솔추가 
 	@OneToMany(mappedBy = "placeBoard", cascade = CascadeType.ALL)
-	Set<PlaceLike> likes = new HashSet<>();
-//	private List<PlaceLike> placeLikeList;
+//	Set<PlaceLike> likes = new HashSet<>();
+	private List<PlaceLike> placeLikeList;
 
 }

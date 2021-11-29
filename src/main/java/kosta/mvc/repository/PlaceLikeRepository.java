@@ -18,9 +18,17 @@ import kosta.mvc.domain.PlaceLike;
  */
 public interface PlaceLikeRepository extends JpaRepository<PlaceLike,Long> {
 //이 메서드는 JPA의 쿼리 메소드 네이밍 컨벤션에 맞춰서 만든 것이므로 다른 이름으로 지으면 동작하지 않는다.
-    int countByPlaceBoard(PlaceBoard placeBoard);
-    
+	
+	Optional<PlaceLike> findByCustomerAndPlaceBoard(Customer customer, PlaceBoard placeBoard);
+
     @Query("select r from PlaceLike r where r.customer = ?1")
     List<PlaceLike> findByCustomer(Customer customer);
-
+    
+    /**
+     * 특정 장소 게시글에 찜하기가 총 몇 개인지 셀 때 사용할 메소드 
+     * @param placeBoard
+     * @return 
+     */
+    //int countByPlaceBoard(PlaceBoard placeBoard);
+    Optional<Integer> countByPlaceBoard(PlaceBoard placeBoard);
 }
