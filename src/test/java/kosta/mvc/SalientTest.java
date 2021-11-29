@@ -63,7 +63,7 @@ public class SalientTest {
 	/**공지사항 test*/
 	@Test
 	public void noticeInsert() {
-		for(int i = 0; i <= 10; i++) {
+		for(int i = 11; i <= 30; i++) {
 			noticeRep.save(NoticeBoard.builder()
 					.noticeTitle("공지사항 " + i + "번째 게시물")
 					.noticeContent("내용없음")

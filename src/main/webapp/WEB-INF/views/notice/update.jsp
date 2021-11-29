@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 <html lang="en">
   
@@ -14,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>공지사항</title>
 
+
     <!-- Plugins css Style -->
     <link href='${pageContext.request.contextPath}/assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
     <link href='${pageContext.request.contextPath}/assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css' rel='stylesheet'>
@@ -21,12 +20,16 @@
     <link href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord-animations.css" rel="stylesheet">
     <link href='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
+
     <!-- GOOGLE FONT -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700' rel='stylesheet'>
+
     <!-- CUSTOM CSS -->
     <link href="${pageContext.request.contextPath}/assets/css/star.css" id="option_style" rel="stylesheet">
+
+
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/assets/img/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,7 +51,7 @@
       <div class="container clearfix">
         <div id="menuzord" class="menuzord">
           <a href="index.html" class="menuzord-brand">
-            <img class="lazyestload" data-src="assets/img/logo-color-big.png" src="assets/img/logo-color-big.png" alt="logo-img">
+            <img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/logo-color-big.png" src="${pageContext.request.contextPath}/assets/img/logo-color-big.png" alt="logo-img">
           </a>
 
           <div class="nav-item dropdown nav-item-left me-0">
@@ -407,7 +410,7 @@
 
                 <li class=" ||
                    ||
-                   active ">
+                  ">
 
                   <a href="javascript:void(0)">Blog List View</a>
 
@@ -420,14 +423,14 @@
                       <a href="blog-list-left-sidebar.html">Blog List Left Sidebar</a>
                     </li>
 
-                    <li class=" active ">
+                    <li class="">
                       <a href="blog-list-fullwidth.html">Blog List Fullwidth</a>
                     </li>
                   </ul>
                 </li>
 
                 <li class=" ||
-                    ">
+                     active ">
 
                   <a href="javascript:void(0)">Blog Single Post</a>
 
@@ -436,7 +439,7 @@
                       <a href="blog-single-right-sidebar.html">Blog Right Sidebar</a>
                     </li>
 
-                    <li class="">
+                    <li class=" active ">
                       <a href="blog-single-left-sidebar.html">Blog Left Sidebar</a>
                     </li>
                   </ul>
@@ -488,22 +491,42 @@
       </div>
     </nav>
   </header>
-  <div class="main-wrapper blog-list-fullwidth">
+
 
 
 <!-- ====================================
-———	PAGE TITLE
+——— TRAVEL LIST SECTION
 ===================================== -->
-<section class="page-title">
-  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(assets/img/pages/page-title-bg4.jpg);">
+  <div class="main-wrapper blog-single-left-sidebar">
+
+<section class="section-top">
+  <div class="py-8 py-md-9 py-lg-10">
     <div class="container">
-      <div class="row align-items-center justify-content-center" style="height: 200px;">
-        <div class="col-lg-6">
-          <div class="page-title-content">
-            <div class="title-border">
-              <h2 class="text-uppercase text-white font-weight-bold"> 공지사항 </h2>
-            </div>
-            <p class="text-white mb-0"></p>
+      <div class="row">
+        <div class="col-lg-8 col-xl-9 order-1 order-md-0 order-lg-1">
+          
+
+          <div class="mb-7 mb-lg-0">
+            <h3 class="mb-6">공지사항 수정</h3>
+  
+            <form method="POST" role="form" class="form" action="${pageContext.request.contextPath}/notice/update">
+              <input type=hidden name="noticeNo" value="${notice.noticeNo}">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="text" name="noticeTitle" class="form-control border-0 bg-smoke" required="" placeholder="제목" style="width:850px;"
+                    value="${requestScope.notice.noticeTitle}">
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <textarea name="noticeContent" class="form-control border-0 bg-smoke" rows="7" placeholder="내용" required=""> ${requestScope.notice.noticeContent} </textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">수정완료</button>
+           	  <button type="reset" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">초기화</button>
+            </form>
           </div>
         </div>
       </div>
@@ -511,147 +534,6 @@
   </div>
 </section>
 
-
-<!-- ====================================
-——— TRAVEL LIST FULLWIDTH
-===================================== -->
-<section class="py-9 py-md-10">
-  <div class="container">
-    <div class="card rounded-0 card-transparent border-bottom mb-7 pb-7">
-    
-    <c:choose>
-	    <c:when test="${empty requestScope.noticeList}">
-		<tr>
-	        <td colspan="5">
-	            <p align="center"><b><span style="font-size:9pt;">등록된 게시물이 없습니다.</span></b></p>
-	        </td>
-	    </tr>
-	    </c:when>
-    <c:otherwise>
-    
-	<c:forEach items="${requestScope.noticeList.content}" var="board">
-    
-      <div class="row align-items-lg-center align-items-xl-stretch">
-        
-    
-    
-        <div class="col-md-6">
-          <div class="card-body px-md-0 py-6 pt-md-0 pt-xl-6">
-          
-          <!-- 글 번호 -->
-          	<div class="w-10 mw-0 col-1 p-0">
-		           	${board.noticeNo}
-		    </div>
-          
-          <!-- 제목 -->
-            <h3 class="mb-4">
-              <a href="/notice/read/${board.noticeNo}" class="text-capitalize text-dark hover-text-primary">${board.noticeTitle }</a>
-            </h3>
-    	
-            <div class="meta-post-sm mb-4">
-              <ul class="list-unstyled d-flex flex-wrap mb-0">
-                <li class="meta-tag me-4 mb-1">
-                  <i class="fa fa-user text-gray-color" aria-hidden="true"></i>
-                  <a class="text-gray-color hover-text-primary" href="blog-single-right-sidebar.html">
-                    <span class="ms-1 text-capitalize"> ${board.admin.adminNickname}</span>
-                  </a>
-                </li>
-    
-                <li class="meta-tag text-gray-color me-4 mb-1">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  <!-- <span class="ms-1 text-capitalize"> ${board.noticeRegdate }</span> -->
-               	  <tags:localDate date="${board.noticeRegdate }"/>
-                </li>
-  
-              </ul>
-            </div>
-          </div>
-        </div> <!--  글 1개 끝  -->
-      </div>
-      </c:forEach>
-	    </c:otherwise>
-	    </c:choose>
-    </div>  
-  </div>
-	
-    <div class="mb-6">
-    	<ul class="pagination justify-content-center align-items-center">
-    	<li class="page-item">
-    		<a href="/notice/write">
-    			<button type="button" class="btn btn-secondary btn-lg mb-2">글 작성하기</button>
-    		</a>
-    	</li>
-    	</ul>
-    </div>
-	
-	
-  <!-- ====================================
-———	PAGINATION
-===================================== -->
-<c:set var="doneLoop" value="false"/>
-
-<section class="pt-5 pt-md-7">
-  <div class="container">
-    <nav aria-label="Page navigation">
-    
-     <ul class="pagination justify-content-center align-items-center">
-    <!-- previous -->
-    <c:choose>
-    <c:when test="${(startPage-blockCount) > 0}"> <!-- (-2) > 0  -->		      
-		 <li class="page-item">
-          <a class="page-link" href="/notice/list?nowPage=${startPage-1}" >
-            <i class="fas fa-long-arrow-alt-left d-none d-md-inline-block me-md-1" aria-hidden="true" "></i> Previous
-          </a>
-        </li>
-	</c:when>
-	<c:otherwise>
-		<li class="page-item">
-          <a class="page-link disabled" >
-            <i class="fas fa-long-arrow-alt-left d-none d-md-inline-block me-md-1" aria-hidden="true" "></i> Previous
-          </a>
-        </li>
-	</c:otherwise>
-	</c:choose>
-	<!-- previous -->
-    
-     
-        <c:forEach var='i' begin='${startPage}' end='${(startPage-1)+blockCount}'> 
-		
-			<c:if test="${(i-1)>=noticeList.getTotalPages()}">
-				<c:set var="doneLoop" value="true"/>
-			</c:if> 
-				    
-			<c:if test="${not doneLoop}" >
-				 <li class="page-item">
-		          	<a class="page-link active" href="/notice/list?nowPage=${i}">${i}</a>
-		       	 </li> 
-			</c:if>
-		</c:forEach>
-    
-    <!-- Next -->
-    <c:choose>
-    <c:when test="${(startPage+blockCount)<=noticeList.getTotalPages()}">     
-		<li class="page-item">
-          <a class="page-link" href="/notice/list?nowPage=${startPage+blockCount}">Next
-            <i class="fas fa-long-arrow-alt-right d-none d-md-inline-block ms-md-1" aria-hidden="true"></i>
-          </a>
-        </li>
-	 </c:when>
-	 <c:otherwise>
-	 	<li class="page-item">
-          <a class="page-link disabled">Next
-            <i class="fas fa-long-arrow-alt-right d-none d-md-inline-block ms-md-1" aria-hidden="true"></i>
-          </a>
-        </li>
-	 </c:otherwise>
-	 </c:choose>
-	 <!-- Next -->
-      </ul>
-    </nav>
-  </div>
-</section>
-
-</section>
 
 
   </div><!-- element wrapper ends -->
@@ -1008,3 +890,4 @@
     <script src="${pageContext.request.contextPath}/assets/js/star.js"></script>
   </body>
 </html>
+
