@@ -2,6 +2,8 @@ package kosta.mvc.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,9 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.mvc.domain.Report;
+import kosta.mvc.domain.ReportReasons;
+import kosta.mvc.service.ReportReasonsService;
 import kosta.mvc.service.ReportService;
 
 @Controller
@@ -22,6 +27,9 @@ public class ReportController {
 	
 	@Autowired
 	private ReportService reportService;
+	
+	@Autowired
+	private ReportReasonsService reportReaonsService;
 	
 	/**
 	 * 전체검색하기
@@ -106,9 +114,28 @@ public class ReportController {
 		return mv;
 	}
 	
-	@RequestMapping("/test")
-	public String test() {
+	/**
+	 * AJAX로 신고 사유 리스트 뽑아오기
+	 * */
+	@RequestMapping("/reasonsList")
+	@ResponseBody
+	public List<ReportReasons> reasonsList(HttpServletRequest request){
+		List<ReportReasons> list = reportReaonsService.selectAll();
 		
-		return "report/tmp";
+		/*
+		 * System.out.println();
+		 * System.out.println("*********************************************");
+		 * 
+		 * for(ReportReasons reason : list) { System.out.println("reason : " + reason);
+		 * }
+		 * 
+		 * System.out.println("*********************************************");
+		 * System.out.println();
+		 */
+		
+		return list;
 	}
+	
+	@RequestMapping("/report-insert")
+	public void insertForm() {}
 }
