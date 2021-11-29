@@ -56,10 +56,13 @@
     function changeFunc() {
 	    var selectBox = document.getElementById("reasonsTitle");
 	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	    var selectedText = selectBox.options[selectBox.selectedIndex].text;
 	    //alert(selectedValue);
 	    
 	    var selectedBox = document.getElementById("selectedReason");
-	    selectedBox.value=selectedValue;
+	    var selectedNoBox = document.getElementById("selectedReasonNo");
+	    selectedBox.value=selectedText;
+	    selectedNoBox.value=selectedValue;
 	   }
     
     $(function() {
@@ -77,7 +80,7 @@
     				 
     				 let reason = item.reportTitle;
     				 
-    					data+='<option value=' + reason;
+    					data+='<option value=' + item.reportReasonsNo;
     					data+='>';
     					data+= item.reportTitle+'</option>';
     			 }) 
@@ -643,6 +646,7 @@
               <div class="form-group">
                 <label for="inputName">선택된 신고 사유</label>
                 <input type="text" class="form-control border-0 bg-smoke" id="selectedReason" readonly>
+                <input type="text" class="form-control border-0 bg-smoke" id="selectedReasonNo" readonly>
               </div>
             </div>
     
