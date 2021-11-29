@@ -82,9 +82,15 @@ public class ReportController {
 	 * 상태 수정 (관리자 전용)
 	 * */
 	@RequestMapping("/updateStatus")
-	public ModelAndView updateStatus(Long reportNo, String reportStatus) {
+	public ModelAndView updateStatus(Report report) {
 		ModelAndView mv = new ModelAndView();
 		
+		Long reportNo = report.getReportNo();
+		String reportStatus = report.getReportStatus();
+		
+		reportService.updateStatus(reportNo, reportStatus);
+		
+		/*
 		System.out.println();
 		System.out.println("*********************************************");
 		
@@ -94,7 +100,9 @@ public class ReportController {
 
 		System.out.println("*********************************************");
 		System.out.println();
+		*/
 		
+		mv.setViewName("redirect:/report/read/"+reportNo);
 		return mv;
 	}
 	

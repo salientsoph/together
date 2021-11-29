@@ -53,13 +53,41 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
+    <!-- Javascript -->
+    <script src="${path}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="${path}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/assets/plugins/menuzord/js/menuzord.js"></script>
+    
+    
+    
+    <script src='${path}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
+    
+    
+    
+    
+    <script src='${path}/assets/plugins/rateyo/jquery.rateyo.min.js'></script>
+    <script src="${path}/assets/plugins/lazyestload/lazyestload.js"></script>
+    
+    
+    
+    
+    
+    <script src='${path}/assets/plugins/owl-carousel/owl.carousel.min.js'></script>
+    
+    
+    <script src="${path}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDU79W1lu5f6PIiuMqNfT1C6M0e_lq1ECY'></script>
+    <script src="${path}/assets/js/star.js"></script>
+    
     <script src="${path}/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
     $(function() {
 		//console.log("test");
 		$("#submitStatus").click(function() {
+			
 			$("#updateStatus").submit();
-		})
+			//alert("adsfwae");
+		});
 		
 	})
     </script>
@@ -591,24 +619,24 @@
 		        <div class="col-2 my-7 px-8 ">
 		           <h5 class="m-2 text-primary font-weight-bold "> 상태 : </h5> 
 		        </div>
-	            <from class="col-2 my-7 px-7" name="updateStatus" id="updateStatus" method=post action="${path}/report/updateStatus" >
+	            <form class="col-2 my-7 px-7" name="updateStatus" id="updateStatus" method=post action="${path}/report/updateStatus" >
 	            <input type='hidden' name='reportNo' value="${report.reportNo}">
 	                  <div class="mt-2">
 	                    <div class="form-check">
-	                       <input class="form-check-input" type="radio" name="reportStatus" id="reportStatus1"  ${report.reportStatus eq "처리중" ? "checked" : "" }>
+	                       <input class="form-check-input" type="radio" name="reportStatus" id="reportStatus1" value="처리중"  ${report.reportStatus eq "처리중" ? "checked" : "" }>
 	                      <label class="form-check-label" for="reportStatus1">
 	                        처리중
 	                      </label>
 	                    </div>
 	
 	                    <div class="form-check">
-	                      <input class="form-check-input" type="radio" name="reportStatus" id="reportStatus2" ${report.reportStatus eq "처리완료" ? "checked" : "" }>
+	                      <input class="form-check-input" type="radio" name="reportStatus" id="reportStatus2" value="처리완료" ${report.reportStatus eq "처리완료" ? "checked" : "" }>
 	                      <label class="form-check-label" for="reportStatus2">
 	                        처리완료
 	                      </label>
 	                    </div>
 	                  </div>
-	           </from>
+	           </form>
 	           <div class="col-3  my-7 px-7">
 	           		<button type="button" id="submitStatus"
 		              class="btn btn-hover btn-outline-secondary text-uppercase">
@@ -989,30 +1017,6 @@
       </div>
     </div>
 
-    <!-- Javascript -->
-    <script src="${path}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
-    <script src="${path}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="${path}/assets/plugins/menuzord/js/menuzord.js"></script>
     
-    
-    
-    <script src='${path}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
-    
-    
-    
-    
-    <script src='${path}/assets/plugins/rateyo/jquery.rateyo.min.js'></script>
-    <script src="${path}/assets/plugins/lazyestload/lazyestload.js"></script>
-    
-    
-    
-    
-    
-    <script src='${path}/assets/plugins/owl-carousel/owl.carousel.min.js'></script>
-    
-    
-    <script src="${path}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
-    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDU79W1lu5f6PIiuMqNfT1C6M0e_lq1ECY'></script>
-    <script src="${path}/assets/js/star.js"></script>
   </body>
 </html>

@@ -87,9 +87,24 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public void updateStatus(Long reportNo, String reportStatus) {
 		Report report = reportRep.getById(reportNo);
+
+		/*
+		 * System.out.println(
+		 * "*********************************************************");
+		 * System.out.println(report); System.out.println(
+		 * "*********************************************************");
+		 */
 		
 		report.setReportStatus(reportStatus);
 
+		/*
+		 * System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+		 * ; System.out.println(report);
+		 * System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+		 * ;
+		 */
+		
+		reportRep.save(report);
 	}
 
 	@Override
