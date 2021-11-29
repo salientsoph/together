@@ -77,4 +77,10 @@ public class ReportController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/test")
+	public String test() {
+		
+		return "report/tmp";
+	}
 }
