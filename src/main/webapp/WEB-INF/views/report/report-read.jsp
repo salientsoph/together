@@ -1,24 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-
 <c:set var = "path" value = "${pageContext.request.contextPath}" />
 
-
 <!DOCTYPE html>
-<html>
-<head>
-  <!-- SITE TITTLE -->
+<html lang="en">
+  
+  <head>
+
+    <!-- SITE TITTLE -->
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
-    <title>Report List</title>
-    
-      <!-- Plugins css Style -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Report</title>
+
+    <!-- Plugins css Style -->
     <link href='${path}/assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
-  <%-- <link href="<c:url value="assets/plugins/fontawesome-5.15.2/css/all.min.css" />" rel='stylesheet'> --%>
     <link href='${path}/assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css' rel='stylesheet'>
     <link href="${path}/assets/plugins/animate/animate.css" rel="stylesheet">
     <link href="${path}/assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
@@ -27,6 +25,17 @@
     
     <link href='${path}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
     
+    
+    
+    <link href='${path}/assets/plugins/rateyo/jquery.rateyo.min.css' rel='stylesheet'>
+    
+    
+    
+    
+    <link href='${path}/assets/plugins/owl-carousel/owl.carousel.min.css' rel='stylesheet' media='screen'>
+    <link href='${path}/assets/plugins/owl-carousel/owl.theme.default.min.css' rel='stylesheet' media='screen'>
+    
+
     <!-- GOOGLE FONT -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700' rel='stylesheet'>
 
@@ -43,16 +52,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    
-    <script src="/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" >
-    $(function() {
-		//console.log("test");
-	})
-    </script>
-    
-</head>
+
+  </head>     
 
 <body id="body" class="up-scroll">
 
@@ -161,7 +162,7 @@
               </div>
             </li>
 
-            <li class="">
+            <li class=" active ">
               <a href="javascript:void(0)">Hotels</a>
               <div class="megamenu drop-up">
                 <div class="megamenu-row">
@@ -211,7 +212,7 @@
                         <a href="single-hotel-right-sidebar.html">Hotels Sidebar Right</a>
                       </li>
 
-                      <li class="">
+                      <li class=" active ">
                         <a href="single-hotel-fullwidth.html">Hotels Fullwidth</a>
                       </li>
                     </ul>
@@ -402,7 +403,7 @@
               </ul>
             </li>
 
-            <li class=" active ">
+            <li class="">
               <a href="javascript:void(0)">Blog</a>
 
               <ul class="dropdown drop-up">
@@ -424,7 +425,7 @@
 
                 <li class=" ||
                    ||
-                   active ">
+                  ">
 
                   <a href="javascript:void(0)">Blog List View</a>
 
@@ -437,7 +438,7 @@
                       <a href="blog-list-left-sidebar.html">Blog List Left Sidebar</a>
                     </li>
 
-                    <li class=" active ">
+                    <li class="">
                       <a href="blog-list-fullwidth.html">Blog List Fullwidth</a>
                     </li>
                   </ul>
@@ -505,22 +506,21 @@
       </div>
     </nav>
   </header>
-  <div class="main-wrapper blog-list-fullwidth">
+  <div class="main-wrapper single-hotel-fullwidth">
 
 
 <!-- ====================================
 ———	PAGE TITLE
 ===================================== -->
 <section class="page-title">
-  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${path}/assets/img/pages/page-title-bg4.jpg);">
+  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${path}/assets/img/pages/page-title-bg12.jpg);">
     <div class="container">
       <div class="row align-items-center justify-content-center" style="height: 200px;">
         <div class="col-lg-6">
           <div class="page-title-content">
-            <div class="title-border">
-              <h2 class="text-uppercase text-white font-weight-bold">Report List</h2>
+            <div class="">
+              <h2 class="text-uppercase text-white font-weight-bold">Report</h2>
             </div>
-            <p class="text-white mb-0"></p>
           </div>
         </div>
       </div>
@@ -530,186 +530,98 @@
 
 
 <!-- ====================================
-——— TRAVEL LIST FULLWIDTH
+———	PACKAGES SECTION
 ===================================== -->
-<section class="py-9 py-md-10">
+<section class="py-10">
   <div class="container">
-  
-  <c:choose>
-    <c:when test="${empty requestScope.reportList}">
-         <h3 class="mb-4 col">
-              <a href="blog-single-right-sidebar.html" class="text-capitalize text-dark hover-text-primary">등록된 게시물이 없습니다.</a>
-         </h3>
-    </c:when>
-    
-    <c:otherwise>
-		<c:forEach items="${requestScope.reportList.content}" var="report">
-	    <!------------------------ 글 한개 ----------------------------------------->
-    <div class="card rounded-0 card-transparent border-bottom mb-7 ">
-      <div class="row align-items-lg-center align-items-xl-stretch">
-        <!-- <div class="col-md-6">
-          <a href="blog-single-right-sidebar.html" class="position-relative">
-            <img class="card-img-top rounded lazyestload" data-src="${path}/assets/img/blog/blog-01.jpg" src="${path}/assets/img/blog/blog-01.jpg" alt="Card image cap">
-            <div class="card-img-overlay card-hover-overlay rounded"></div>
-          </a>
-        </div> -->
-    
-        <!-- <div class="col-md-6"> -->
-          <div class="card-body px-md-0 py-6 pt-md-0 container">
-           
-    
-            <div class="meta-post-sm mb-4 row justify-content-between">
-            
-            
-          
-            
-            <!-- 글 제목 -->
-            <div class="mb-4 w-75 col">
-            <div class="container">
-              <span class="row justify-content-start">
-              	<!-- 글 번호 -->
-		        <div class="w-10 mw-0 col-1 p-0">
-		           	${report.reportNo }
-		        </div>
-	        	<!-- 글 번호 -->
-             <h3 class="col-4">
-              <a href="/report/read/${report.reportNo }" class="text-capitalize text-dark hover-text-primary">
-              ${report.reportTitle }</a>
-              </h3>
-            </span>
-            </div>
-            <!-- 글 제목 -->
-            
-            </div>
-            <!-- 부가 정보 -->
-              <ul class="list-unstyled d-flex flex-wrap mb-0 col">
-                <li class="meta-tag me-4 mb-1">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="mt-8">
+          <h2 class="text-uppercase  font-weight-bold mb-5">${requestScope.report.reportTitle}</h2>
+          <div class="d-md-flex justify-content-end align-items-center mb-5">
+            <ul
+              class="list-unstyled d-flex flex-wrap justify-content-center justify-content-md-start font-weight-medium mb-md-0">
+              <li class="">
+                <a class="text-gray-color hover-text-primary me-4 disabled">
                   <i class="fa fa-user text-gray-color" aria-hidden="true"></i>
-                  <a class="text-gray-color hover-text-primary" href="blog-single-right-sidebar.html">
-                    <span class="ms-1 text-capitalize">${report.customer.userNickname }</span>
-                  </a>
-                </li>
-    
-                <li class="meta-tag text-gray-color me-4 mb-1">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  <span class="ms-1 text-capitalize">
-                  
-                   <tags:localDate date="${report.reportRegdate}"/>
-                  
-                  </span>
-                </li>
-    
-                <!-- <li class="meta-tag text-gray-color me-4 mb-1">
-                  <i class="fa fa fa-tags" aria-hidden="true"></i>
-                  <span class="ms-1 text-capitalize">Travel</span>
-                </li> -->
-    
-                <li class="meta-tag text-gray-color me-4 mb-1">
+					<span class="ms-1 text-capitalize">${report.customer.userNickname }</span>
+                </a>
+              </li>
+
+              <li class="">
+                <a class="text-gray-color hover-text-primary me-4 disabled">
+                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                   <span class="ms-1 text-capitalize">
+					<tags:localDate date="${report.reportRegdate}"/>
+				  </span>
+                </a>
+              </li>
+
+              <li class="">
+                <a class="text-gray-color hover-text-primary disabled">
                   <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
                   <span class="ms-1 text-capitalize">${report.reportReasons.reportTitle }</span>
-                </li>
-                
-              </ul>
-               <!-- 부가 정보 -->
-               
-            </div>
-    
-    		<!-- 글 내용 미리보기 또는 신고 사유 -->
-            <%-- <p class="mb-0">${report.reportReasons.reportTitle }</p> --%>
-              <!-- 글 내용 미리보기 또는 신고 사유 -->
+                </a>
+              </li>
+            </ul>
+
+            <h5 class="text-center text-lg-left">
+              <!-- <span class="text-gray-color font-weight-bold text-capitalize">Par night:</span>
+              <span class="text-primary font-weight-bold">$150</span> -->
+            </h5>
           </div>
-    
-          <!-- <div class="card-footer px-5 px-lg-0">
-            <a href="blog-single-right-sidebar.html" class="btn btn-sm btn-outline-secondary text-uppercase">View post</a>
-          </div> -->
-       <!--  </div> -->
+          <div class="border-bottom b-5">
+          <p class="mb-6 text-capitalize ">${requestScope.report.reportContent}</p>
+          </div>
+
+
+        <div class="mb-6 mt-5">
+          <h4 class="text-uppercase mb-5">신고 당한 글 : </h4>
+          <div class="continer ps-5">
+          	<div class="row justify-content-start">
+          		<p class="font-weight-bold">${requestScope.report.matchBoard.matchTitle}</p>
+          	</div>
+          	
+          	<div class="row justify-content-start">
+          		<p class="">${requestScope.report.matchBoard.matchContent}</p>
+          	</div>
+          	<div class="row justify-content-center">
+          	<button type="button" onclick="location.href='javascript:void(0)';"
+              class="btn btn-hover btn-outline-secondary text-uppercase col-4 ">
+              글 확인하러 가기
+            </button>
+            
+            <from class="col-4 mb-3 mt-3">
+            <div class="text-primary font-weight-bold">
+            상태 : 
+            </div>
+                  <div class="mt-2">
+                    <div class="form-check">
+                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        처리중
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        처리완료
+                      </label>
+                    </div>
+                  </div>
+           </from>
+            
+            </div>
+          </div>
+        </div>
+       </div>
       </div>
     </div>
-     <!------------------------ 글 한개 ----------------------------------------->
-	    </c:forEach>
-	</c:otherwise>
-    
-    </c:choose>
-  
-  
-	
-  </div>
-
-  <!-- ====================================
-———	PAGINATION
-===================================== -->
-<!-- 이전, 다음 표시하기 (한블럭당 페이지 개수 제한) -->
-<c:set var="doneLoop" value="false"/>
-
-<section class="pt-5 pt-md-7">
-  <div class="container">
-    <nav aria-label="Page navigation">
-    
-     <ul class="pagination justify-content-center align-items-center">
-    <!-- previous -->
-    <c:choose>
-    <c:when test="${(startPage-blockCount) > 0}"> <!-- (-2) > 0  -->		      
-		 <li class="page-item">
-          <a class="page-link" href="/report/list?nowPage=${startPage-1}" >
-            <i class="fas fa-long-arrow-alt-left d-none d-md-inline-block me-md-1" aria-hidden="true" "></i> Previous
-          </a>
-        </li>
-	</c:when>
-	<c:otherwise>
-		<li class="page-item">
-          <a class="page-link disabled" >
-            <i class="fas fa-long-arrow-alt-left d-none d-md-inline-block me-md-1" aria-hidden="true" "></i> Previous
-          </a>
-        </li>
-	</c:otherwise>
-	</c:choose>
-	<!-- previous -->
-    
-     
-        <c:forEach var='i' begin='${startPage}' end='${(startPage-1)+blockCount}'> 
-		
-			<c:if test="${(i-1)>=reportList.getTotalPages()}">
-				<c:set var="doneLoop" value="true"/>
-			</c:if> 
-				    
-			<c:if test="${not doneLoop}" >
-				 <li class="page-item">
-		          	<a class="page-link active" href="/report/list?nowPage=${i}">${i}</a>
-		       	 </li> 
-			</c:if>
-			
-		</c:forEach>
-    
-    
-    <!-- Next -->
-    <c:choose>
-    <c:when test="${(startPage+blockCount)<=reportList.getTotalPages()}">
-				     
-		<li class="page-item">
-          <a class="page-link" href="/report/list?nowPage=${startPage+blockCount}">Next
-            <i class="fas fa-long-arrow-alt-right d-none d-md-inline-block ms-md-1" aria-hidden="true"></i>
-          </a>
-        </li>
-	 </c:when>
-	 <c:otherwise>
-	 	<li class="page-item">
-          <a class="page-link disabled">Next
-            <i class="fas fa-long-arrow-alt-right d-none d-md-inline-block ms-md-1" aria-hidden="true"></i>
-          </a>
-        </li>
-	 </c:otherwise>
-	 </c:choose>
-	 <!-- Next -->
-      </ul>
-    </nav>
-  </div>
+  </div>     
 </section>
 
-</section>
-
-
-
-  </div><!-- element wrapper ends -->
 
     <!-- ====================================
     ——— FOOTER SECTION
@@ -1065,18 +977,18 @@
     
     
     
-    
+    <script src='${path}/assets/plugins/rateyo/jquery.rateyo.min.js'></script>
     <script src="${path}/assets/plugins/lazyestload/lazyestload.js"></script>
     
     
     
     
     
-    
+    <script src='${path}/assets/plugins/owl-carousel/owl.carousel.min.js'></script>
     
     
     <script src="${path}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
-    
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDU79W1lu5f6PIiuMqNfT1C6M0e_lq1ECY'></script>
     <script src="${path}/assets/js/star.js"></script>
   </body>
 </html>

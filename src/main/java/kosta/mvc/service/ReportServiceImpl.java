@@ -3,6 +3,8 @@ package kosta.mvc.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import kosta.mvc.domain.Customer;
@@ -30,9 +32,9 @@ public class ReportServiceImpl implements ReportService {
 	MatchBoardRepository matchBoardRep;
 	
 	@Override
-	public List<Report> selectAll() {
+	public Page<Report> selectAll(Pageable pageable) {
 
-		List<Report> list = reportRep.findAll();
+		Page<Report> list =  reportRep.findAll(pageable);
 		return list;
 	}
 
@@ -89,5 +91,12 @@ public class ReportServiceImpl implements ReportService {
 		report.setReportStatus(reportStatus);
 
 	}
+
+	@Override
+	public Report selectByReportNo(Long reportNo) {
+		Report report = reportRep.getById(reportNo);
+		
+		return report;
+	}	
 
 }
