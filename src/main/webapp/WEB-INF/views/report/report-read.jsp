@@ -571,10 +571,43 @@
               <span class="text-primary font-weight-bold">$150</span> -->
             </h5>
           </div>
-          <div class="border-bottom b-5">
-          <p class="mb-6 text-capitalize ">${requestScope.report.reportContent}</p>
+          <div class="border-bottom b-5 container">
+	          <div class="row justify-content-start">
+	          <p class="mb-6 text-capitalize ">${requestScope.report.reportContent}</p>
+	          </div>
+	          
+	          <div class="row justify-content-center align-items-center">
+		        <div class="col-2 my-7 px-8 ">
+		           <h5 class="m-2 text-primary font-weight-bold "> 상태 : </h5> 
+		        </div>
+	            <from class="col-2 my-7 px-7">
+	            
+	                  <div class="mt-2">
+	                    <div class="form-check">
+	                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  ${report.reportStatus eq "처리중" ? "checked" : "" }>
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        처리중
+	                      </label>
+	                    </div>
+	
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" ${report.reportStatus eq "처리완료" ? "checked" : "" }>
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        처리완료
+	                      </label>
+	                    </div>
+	                  </div>
+	           </from>
+	           <div class="col-3  my-7 px-7">
+	           		<button type="button" onclick="location.href='javascript:void(0)';"
+		              class="btn btn-hover btn-outline-secondary text-uppercase">
+		              상태변경 저장
+		            </button>
+	           </div>
+          	</div>
           </div>
 
+		   
 
         <div class="mb-6 mt-5">
           <h4 class="text-uppercase mb-5">신고 당한 글 : </h4>
@@ -588,30 +621,10 @@
           	</div>
           	<div class="row justify-content-center">
           	<button type="button" onclick="location.href='javascript:void(0)';"
-              class="btn btn-hover btn-outline-secondary text-uppercase col-4 ">
+              class="btn btn-hover btn-outline-secondary text-uppercase col-4 m-5">
               글 확인하러 가기
             </button>
-            
-            <from class="col-4 mb-3 mt-3">
-            <div class="text-primary font-weight-bold">
-            상태 : 
-            </div>
-                  <div class="mt-2">
-                    <div class="form-check">
-                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                      <label class="form-check-label" for="flexRadioDefault1">
-                        처리중
-                      </label>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
-                      <label class="form-check-label" for="flexRadioDefault2">
-                        처리완료
-                      </label>
-                    </div>
-                  </div>
-           </from>
+           
             
             </div>
           </div>
