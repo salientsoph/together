@@ -18,7 +18,7 @@ public interface ReportService {
 	 * 회원이 작성한 신고 게시물 조회 (고객용, 관리자 검색용)
 	 *  회원 아이디 필요함.
 	 * */
-	List<Report> selectByUserId(String userId);
+	public Page<Report> selectByUserId(Pageable pageable, String userId);
 	
 	/**
 	 * 신고 게시물 작성 (회원용)

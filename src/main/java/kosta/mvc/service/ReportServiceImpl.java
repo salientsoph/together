@@ -39,11 +39,11 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public List<Report> selectByUserId(String userId) {
+	public Page<Report> selectByUserId(Pageable pageable, String userId) {
 
 		Customer customer = customerRep.findById(userId).orElse(null);
 		
-		List<Report> list = reportRep.selectByCustomerNo(customer);
+		Page<Report> list = reportRep.findByCustomer(customer, pageable);
 		
 		return list;
 	}

@@ -12,12 +12,20 @@ import kosta.mvc.repository.ReportReasonsRepository;
 public class ReportReasonsServiceImpl implements ReportReasonsService {
 
 	@Autowired
-	ReportReasonsRepository ReportReasonsRep;
+	ReportReasonsRepository reportReasonsRep;
 	
 	@Override
 	public List<ReportReasons> selectAll() {
-		List<ReportReasons> list = ReportReasonsRep.findAll();
+		List<ReportReasons> list = reportReasonsRep.findAll();
 		return list;
 	}
+
+	@Override
+	public ReportReasons selectByReasonNo(Long no) {
+		ReportReasons reason = reportReasonsRep.findById(no).orElse(null);
+		return reason;
+	}
+	
+	
 
 }

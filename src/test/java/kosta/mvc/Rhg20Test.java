@@ -213,11 +213,11 @@ public class Rhg20Test {
 	@Test
 	public void reportInsert() {
 		
-		Customer customer = customerRep.getById("rhg20");
+		Customer customer = customerRep.getById("kim");
 		MatchBoard matchBoard = matchBoardRep.getById(1L);
 		ReportReasons reason = reportReasonsRep.getById(5L);
 		
-		for(int i=0; i<100 ; i++) {
+		for(int i=0; i<20 ; i++) {
 		reportRep.save(Report.builder()
 							.reportTitle("신고합니다")
 							.reportContent("저새끼 나쁜새끼예요")

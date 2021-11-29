@@ -48,7 +48,19 @@
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" >
     $(function() {
+    	console.log("${userId}");
+    	$("#writer").val("${userId}");
+    	
 		//console.log("test");
+		$("#searchBtn").click(function() {
+			$("#searchForm").submit();
+		})
+		
+		$("#writeReportBtn").click(function() {
+			//$(location).attr("href", "${path}/report/report-insert")
+			$("#insertForm").submit();
+
+		})
 	})
     </script>
     
@@ -637,9 +649,34 @@
     
     </c:choose>
   
+  <!----------------------------- 검색 및 글쓰기 버튼 등 ------------------------------------>
+   
+	  <div class="container">
+	  	<div class="row justify-content-end">
+	  	
+	  		
+	  		<form class="col input-group mb-3 w-25"action="${path}/report/list" method="post" id="searchForm">
+	  		 
+			   <input type="text" name="userId" class="form-control" placeholder="조회할 아이디를 입력하세요" aria-describedby="basic-addon2">
+				<button class="input-group-text btn btn-append hover-bg-primary text-white border-0 px-3" id="searchBtn">
+			  	<i class="fas fa-long-arrow-alt-right ltr" aria-hidden="true"></i>
+			   	</button>
+			   
+			</form>
+			 
+	  		<form class="col input-group mb-3 w-25"action="${path}/report/report-insert" method="post" id="insertForm">
+	  			<input type="text" id="writer" name="writer">
+	  			<button type="button" class="btn btn-primary btn-sm" id="writeReportBtn">신고작성</button>
+	  		
+	  		</form>
+	  	</div>
+	  </div>
   
+  <!----------------------------- 검색 및 글쓰기 버튼 등 ------------------------------------>
 	
   </div>
+  
+  
 
   <!-- ====================================
 ———	PAGINATION
@@ -656,7 +693,7 @@
     <c:choose>
     <c:when test="${(startPage-blockCount) > 0}"> <!-- (-2) > 0  -->		      
 		 <li class="page-item">
-          <a class="page-link" href="/report/list?nowPage=${startPage-1}" >
+          <a class="page-link" href="/report/list?nowPage=${startPage-1}&userId=${userId}" >
             <i class="fas fa-long-arrow-alt-left d-none d-md-inline-block me-md-1" aria-hidden="true" "></i> Previous
           </a>
         </li>
@@ -679,10 +716,20 @@
 			</c:if> 
 				    
 			<c:if test="${not doneLoop}" >
-				 <li class="page-item">
-		          	<a class="page-link active" href="/report/list?nowPage=${i}">${i}</a>
-		       	 </li> 
+			
+				<c:if test="${i==nowPage }">
+					<li class="page-item">
+			          	<a class="page-link active" href="/report/list?nowPage=${i}&userId=${userId}">${i}</a>
+			       	</li> 
+				</c:if>
+				<c:if test="${i!=nowPage }">
+					 <li class="page-item">
+			          	<a class="page-link " href="/report/list?nowPage=${i}&userId=${userId}">${i}</a>
+			       	 </li> 
+		       	 </c:if>
 			</c:if>
+			
+			
 			
 		</c:forEach>
     
@@ -692,7 +739,7 @@
     <c:when test="${(startPage+blockCount)<=reportList.getTotalPages()}">
 				     
 		<li class="page-item">
-          <a class="page-link" href="/report/list?nowPage=${startPage+blockCount}">Next
+          <a class="page-link" href="/report/list?nowPage=${startPage+blockCount}&userId=${userId}">Next
             <i class="fas fa-long-arrow-alt-right d-none d-md-inline-block ms-md-1" aria-hidden="true"></i>
           </a>
         </li>
@@ -712,7 +759,6 @@
 </section>
 
 </section>
-
 
 
   </div><!-- element wrapper ends -->

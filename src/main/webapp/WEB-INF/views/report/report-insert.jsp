@@ -67,7 +67,7 @@
     
     $(function() {
     	
-    	console.log("1111111111111");
+    	//console.log("1111111111111");
     	
     	$.ajax({
     		type:"POST",
@@ -91,7 +91,29 @@
     		}//function
     	});//ajax
     	
+    	$("#matchNo").keyup(function() {
+    		$.ajax({
+        		type:"POST",
+        		url:"${path}/report/matchNoCheck",
+        		data: "${_csrf.parameterName}=${_csrf.token}&&matchNo="+$(this).val(),
+        		dataType:"text",
+        		success:function(result){
+        			
+        			 //console.log(result);
+        			$("#matchNoConfirm").val(result);
+        							
+        		}//function
+        	});//ajax
+		});
     	
+    	$("#submitForm").click(function() {
+    		//console.log("clicked");
+			$("#insertForm").submit();
+		});
+    	
+		$("#cancel").click(function() {
+			$("#insertForm")[0].reset();
+		});
 	})
     
     </script>
@@ -607,25 +629,25 @@
       <div class="col order-1 order-md-0">
         <h3 class="text-capitalize mb-5">신고 내용을 작성해주세요</h3>
 
-        <form action="" method="post" target="_blank">
+        <form action="${path}/report/insert" method="post" id="insertForm">
           <div class="row">
           
               <div class="form-group">
                 <label for="inputName">신고 제목</label>
-                <input type="text" class="form-control border-0 bg-smoke">
+                <input type="text" class="form-control border-0 bg-smoke" name="reportTitle">
               </div>
           
             <div class="col-lg-6">
               <div class="form-group">
                 <label for="inputName">신고 게시물 번호</label>
-                <input type="number" class="form-control border-0 bg-smoke">
+                <input type="number" class="form-control border-0 bg-smoke" id="matchNo" name="matchNo">
               </div>
             </div>
     
             <div class="col-lg-6">
               <div class="form-group">
                 <label for="inputName">신고 게시물 번호 확인</label>
-                <input type="text" class="form-control border-0 bg-smoke" disabled>
+                <input type="text" class="form-control border-0 bg-smoke" id="matchNoConfirm" disabled>
               </div>
             </div>
     
@@ -646,20 +668,22 @@
               <div class="form-group">
                 <label for="inputName">선택된 신고 사유</label>
                 <input type="text" class="form-control border-0 bg-smoke" id="selectedReason" readonly>
-                <input type="text" class="form-control border-0 bg-smoke" id="selectedReasonNo" readonly>
+                <input type="text" class="form-control border-0 bg-smoke" id="selectedReasonNo" name="reportReasonNo" readonly>
+                <input type="text" class="form-control border-0 bg-smoke" id="userId" name="userId" >
               </div>
             </div>
     
           <div class="form-group mb-5">
             <label for="exampleFormControlTextarea1">신고 내용</label>
-            <textarea class="form-control border-0 bg-smoke" rows="7"></textarea>
+            <textarea class="form-control border-0 bg-smoke" rows="7" name="reportContent"></textarea>
+          </div>
           </div>
     
           <div class="text-center text-md-start text-lg-end">
-            <button type="button" onclick="location.href='booking-step-2.html';" class="btn btn-primary text-uppercase">
+            <button type="button" id="submitForm" class="btn btn-primary text-uppercase">
               신고 접수
             </button>
-            <button type="button" onclick="location.href='booking-step-2.html';" class="btn btn-primary text-uppercase mx-6">
+            <button type="button" id="cancel" class="btn btn-primary text-uppercase mx-6">
               취소
             </button>
           </div>
