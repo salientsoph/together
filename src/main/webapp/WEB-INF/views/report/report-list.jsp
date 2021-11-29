@@ -545,44 +545,38 @@
     <c:otherwise>
 		<c:forEach items="${requestScope.reportList.content}" var="report">
 	    <!------------------------ 글 한개 ----------------------------------------->
-    <div class="card rounded-0 card-transparent border-bottom mb-7 ">
+    <div class="card rounded-0 card-transparent border-bottom  ">
       <div class="row align-items-lg-center align-items-xl-stretch">
-        <!-- <div class="col-md-6">
-          <a href="blog-single-right-sidebar.html" class="position-relative">
-            <img class="card-img-top rounded lazyestload" data-src="${path}/assets/img/blog/blog-01.jpg" src="${path}/assets/img/blog/blog-01.jpg" alt="Card image cap">
-            <div class="card-img-overlay card-hover-overlay rounded"></div>
-          </a>
-        </div> -->
+       
     
-        <!-- <div class="col-md-6"> -->
-          <div class="card-body px-md-0 py-6 pt-md-0 container">
+          <div class="card-body container my-4">
            
     
-            <div class="meta-post-sm mb-4 row justify-content-between">
+            <div class="meta-post-sm mb-0 row justify-content-between d-flex justify-align-center">
             
             
           
             
             <!-- 글 제목 -->
-            <div class="mb-4 w-75 col">
+            <div class="mb-0 w-100 col">
             <div class="container">
-              <span class="row justify-content-start">
+              <div class="row justify-content-start d-flex">
               	<!-- 글 번호 -->
 		        <div class="w-10 mw-0 col-1 p-0">
 		           	${report.reportNo }
 		        </div>
 	        	<!-- 글 번호 -->
-             <h3 class="col-4">
+             <h3 class="col-7">
               <a href="/report/read/${report.reportNo }" class="text-capitalize text-dark hover-text-primary">
               ${report.reportTitle }</a>
               </h3>
-            </span>
+            </div>
             </div>
             <!-- 글 제목 -->
             
             </div>
             <!-- 부가 정보 -->
-              <ul class="list-unstyled d-flex flex-wrap mb-0 col">
+              <ul class="list-unstyled d-flex flex-wrap mb-0 col justify-content-between d-flex">
                 <li class="meta-tag me-4 mb-1">
                   <i class="fa fa-user text-gray-color" aria-hidden="true"></i>
                   <a class="text-gray-color hover-text-primary" href="blog-single-right-sidebar.html">
@@ -607,6 +601,11 @@
                 <li class="meta-tag text-gray-color me-4 mb-1">
                   <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
                   <span class="ms-1 text-capitalize">${report.reportReasons.reportTitle }</span>
+                </li>
+                
+                <li class="meta-tag text-gray-color me-4 mb-1">
+                  <i class="fas fa-check-circle" aria-hidden="true"></i>
+                  <span class="ms-1 text-capitalize">${report.reportStatus}</span>
                 </li>
                 
               </ul>
