@@ -27,7 +27,7 @@ import lombok.ToString;
 @Builder
 @Setter
 @Getter
-@ToString
+
 public class Report {
 	
 	@Id
@@ -63,5 +63,7 @@ public class Report {
 	@ManyToOne
 	@JoinColumn(name = "match_no")
 	private MatchBoard matchBoard;
+	
+	
 	
 }
