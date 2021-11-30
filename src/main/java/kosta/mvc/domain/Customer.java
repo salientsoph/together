@@ -16,7 +16,6 @@ import javax.persistence.OneToMany;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
@@ -24,7 +23,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
-@Builder
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -54,11 +52,6 @@ public class Customer {
 	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<MatchRequest> matchRequestList;
-	
-
-	//관심장소(찜하기) 테이블 연관 - 은솔추가 
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
-	private List<PlaceLike> placeLikeList;
 	
 
 }
