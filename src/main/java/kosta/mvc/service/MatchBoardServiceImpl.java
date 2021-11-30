@@ -1,5 +1,6 @@
 package kosta.mvc.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -86,6 +87,18 @@ public class MatchBoardServiceImpl implements MatchBoardService {
 	public List<MatchBoard> selectByMatchGender(int matchGender){
 		MatchBoard matchBoard = matchRepository.findById(null).orElse(null);
 		List<MatchBoard> list;
+		return null;
+	}
+
+	@Override
+	public List<MatchBoard> selectByRegionAndDate(int region, LocalDate date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<MatchBoard> selectByRegionAndDate(Pageable pageable) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
