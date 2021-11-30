@@ -6,12 +6,16 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
 import kosta.mvc.repository.PlaceLikeRepository;
+import kosta.mvc.repository.CustomerRepository;
 import kosta.mvc.repository.PlaceBoardRepository;
 import lombok.RequiredArgsConstructor;
 /**
@@ -23,9 +27,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional
 public class PlaceLikeServiceImpl implements PlaceLikeService{
-	private final PlaceLikeRepository likeRepository;
+	private final PlaceLikeRepository placeLikeRepository;
 	private final PlaceBoardRepository placeBoardRepository;
 
+	@Autowired
+	CustomerRepository customerRep;
+	
 	/**
 	 * addLike()가 찜하기 등록을 책임지는 메서드
 	 * 1. 메서드 인자로 받은 placeNo로 찜하기를 등록할 장소를 불러온다.
@@ -33,12 +40,12 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 	 * 3. 1, 2번을 모두 통과했다면 찜하기를 등록한다.
 	 */
 	@Override
-	public boolean addLike(Customer customer, Long placeNo) {
+	public boolean insertLike(Customer customer, Long placeNo) {
 		PlaceBoard place = placeBoardRepository.findById(placeNo).orElseThrow();
 
 		//중복 찜하기 방지
 		if(isNotAlreadyLike(customer, place)) {
-			likeRepository.save(new PlaceLike(customer,place));
+			placeLikeRepository.save(new PlaceLike(customer,place));
 			return true;
 		}
 		return false;
@@ -48,10 +55,10 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 	 * 찜하기 삭제
 	 */
 	@Override
-	public void cancelLike(Customer customer, Long placeNo) {
+	public void deleteLike(Customer customer, Long placeNo) {
 		PlaceBoard place = placeBoardRepository.findById(placeNo).orElseThrow();
-		PlaceLike like = likeRepository.findByCustomerAndPlaceBoard(customer, place).orElseThrow();
-		likeRepository.delete(like);
+		PlaceLike like = placeLikeRepository.findByCustomerAndPlaceBoard(customer, place).orElseThrow();
+		placeLikeRepository.delete(like);
 	}
 
 	/**
@@ -64,7 +71,7 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 	public List<String> count(Long placeNo, Customer loginCustomer){
 		PlaceBoard place = placeBoardRepository.findById(placeNo).orElseThrow();
 		
-		Integer placeLikedCount = likeRepository.countByPlaceBoard(place).orElse(0);
+		Integer placeLikedCount = placeLikeRepository.countByPlaceBoard(place).orElse(0);
 		
 		List<String> resultData = new ArrayList<>(Arrays.asList(String.valueOf(placeLikedCount)));
 
@@ -78,7 +85,17 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 	 * 사용자가 이미 찜하기 한 게시물인지 체크 
 	 */
 	private boolean isNotAlreadyLike(Customer customer, PlaceBoard place) {
-		return likeRepository.findByCustomerAndPlaceBoard(customer, place).isEmpty();
+		return placeLikeRepository.findByCustomerAndPlaceBoard(customer, place).isEmpty();
 	}
 
+
+	@Override
+	public Page<PlaceLike> selectByUserId(Pageable pageable, String userId) {
+		
+		Customer customer = customerRep.findById(userId).orElse(null);
+		
+		Page<PlaceLike> likelist = placeLikeRepository.findByCustomer(customer, pageable);
+		
+		return likelist;
+	}
 }
