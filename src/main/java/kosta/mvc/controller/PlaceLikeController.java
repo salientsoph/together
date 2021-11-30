@@ -32,13 +32,13 @@ public class PlaceLikeController {
 	private final PlaceLikeService placeLikeService;
 	
 	/**
-	 * 현재 로그인한 사용자에 해당하는 찜한 목록 전체 검색하기
+	 * 현재 로그인한 사용자에 해당하는 찜 목록 전체 검색하기
 	 */
-	@RequestMapping("/list/{userId}")
+	@RequestMapping("/mylike")
 	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage, @RequestParam(defaultValue="jang")String userId) {
 		ModelAndView mv = new ModelAndView();
 		
-		Pageable pageable = PageRequest.of(nowPage-1, 10, Direction.DESC, "placeNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
+		Pageable pageable = PageRequest.of(nowPage-1, 10, Direction.DESC, "placeLikeNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
 		Page<PlaceLike> pageList = placeLikeService.selectByUserId(pageable, userId);
 		
 		mv.setViewName("mypage/mylike");//뷰쪽으로 전달될 데이터정보

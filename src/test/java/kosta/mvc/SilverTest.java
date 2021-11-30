@@ -93,9 +93,9 @@ class SilverTest {
 	@Test
 	void testLikeSelectByUserId() {
 
-		Customer jang = customerRep.findById("jang").orElse(null);
+		Customer customer = customerRep.findById("jang").orElse(null);
 		
-		List<PlaceLike> list = jang.getPlaceLikeList();
+		List<PlaceLike> list = placeLikeRep.findAll();
 		
 		System.out.println("개수 : " + list.size());
 		

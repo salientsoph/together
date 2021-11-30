@@ -19,19 +19,16 @@ import kosta.mvc.domain.PlaceLike;
  * 해당 사용자가 좋아요를 등록한 적이 있는지 체크하는 용도로 사용
  */
 public interface PlaceLikeRepository extends JpaRepository<PlaceLike,Long> {
-	//이 메서드는 JPA의 쿼리 메소드 네이밍 컨벤션에 맞춰서 만든 것이므로 다른 이름으로 지으면 동작하지 않는다.
 	
-	Optional<PlaceLike> findByCustomerAndPlaceBoard(Customer customer, PlaceBoard placeBoard);
-
     @Query("select r from PlaceLike r where r.customer = ?1")
     List<PlaceLike> selectByCustomerNo(Customer customer);
     
-    /**
-     * 특정 장소 게시글에 찜하기가 총 몇 개인지 셀 때 사용할 메소드 
-     */
-    Optional<Integer> countByPlaceBoard(PlaceBoard placeBoard);
-    //int countByPlaceBoard(PlaceBoard placeBoard);
-    
     Page<PlaceLike> findByCustomer(Customer customer, Pageable pageable);
+
+    Optional<PlaceLike> findByCustomerAndPlaceBoard(Customer customer, PlaceBoard placeBoard);
+
+    //특정 장소 게시글에 찜하기가 총 몇 개인지 셀 때 사용할 메소드 
+    Optional<Integer> countByPlaceBoard(PlaceBoard placeBoard);
+    
 
 }

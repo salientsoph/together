@@ -21,12 +21,12 @@ public interface PlaceLikeService {
 	void deleteLike(Customer customer, Long placeNo);
 	
 	/**
-	 * 관심받은 수(찜하기) - 현재 로그인된 사용자 loginCustomer 정보가 필요함.... 
+	 * 관심받은 수(찜하기) - 현재 로그인된 사용자 loginCustomer 정보가 필요.... 
 	 */
 	List<String> count(Long placeNo, Customer loginCustomer);
 
 	/**
-	 * 로그인한 사용자에 해당하는 찜한 목록 검색하기 - Page처리
+	 * 로그인한 사용자에 해당하는 찜한 목록 검색하기 - Page처리 
 	 */
 	Page<PlaceLike> selectByUserId(Pageable pageable, String userId);
 //	Page<PlaceBoard> findLikedPlaceBoard(Customer customer, Pageable pageable);

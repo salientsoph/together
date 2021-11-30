@@ -34,7 +34,7 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 	CustomerRepository customerRep;
 	
 	/**
-	 * addLike()가 찜하기 등록을 책임지는 메서드
+	 * insertLike()가 찜하기 등록을 책임지는 메서드
 	 * 1. 메서드 인자로 받은 placeNo로 찜하기를 등록할 장소를 불러온다.
 	 * 2. 사용자가 이미 좋아요를 누른 게시물은 아닌지 체크한다.
 	 * 3. 1, 2번을 모두 통과했다면 찜하기를 등록한다.
