@@ -49,10 +49,15 @@ public class Customer {
 	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<MatchRequest> matchRequestList;
+
+	public List<PlaceLike> getPlaceLikeList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	//관심장소(찜하기) 테이블 연관 - 은솔추가 
-	//@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	//private List<PlaceLike> placeLikeList;
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
+	private List<PlaceLike> placeLikeList;
 	
 
 }
