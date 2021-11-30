@@ -6,12 +6,20 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.criterion.Projections;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
+import kosta.mvc.domain.Report;
 import kosta.mvc.repository.PlaceLikeRepository;
+import kosta.mvc.repository.CustomerRepository;
+import kosta.mvc.repository.PlaceBoardRepository;
 import lombok.RequiredArgsConstructor;
 /**
  * 찜한 목록 불러오기
@@ -22,35 +30,46 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional
 public class PlaceLikeServiceImpl implements PlaceLikeService{
-	private final PlaceLikeRepository likeRepository;
-//	private final PlaceRepository placeRepository;
+	private final PlaceLikeRepository placelikeRepository;
+	private final PlaceBoardRepository placeBoardRepository;
+	
+	@Autowired
+	CustomerRepository customerRep;
 
 	/**
-	 * addLike()가 찜하기 등록을 책임지는 메서드
+	 * insertLike()가 찜하기 등록을 책임지는 메서드
 	 * 1. 메서드 인자로 받은 placeNo로 찜하기를 등록할 장소를 불러온다.
-	 * 2. 사용자가 이미 좋아요를 누른 게시물은 아닌지 체크한다.
+	 * 2. 사용자가 이미 좋아요를 누른 게시물은 아닌지 체크한다.(view에서 체크)
 	 * 3. 1, 2번을 모두 통과했다면 찜하기를 등록한다.
 	 */
 	@Override
-	public boolean addLike(Customer customer, Long placeNo) {
-//		PlaceBoard place = placeRepository.findByNo(placeNo).orElseThrow();
-//
-//		//중복 찜하기 방지
-//		if(isNotAlreadyLike(customer, place)) {
-//			likeRepository.save(new PlaceLike(customer,place));
-//			return true;
-//		}
+	public boolean insertLike(Customer customer, Long placeNo) {
+		PlaceBoard place = placeBoardRepository.findById(placeNo).orElseThrow();
+
+		//중복 찜하기 방지
+		if(isNotAlreadyLike(customer, place)) {
+			placelikeRepository.save(new PlaceLike(customer,place));
+			return true;
+		}
 		return false;
 	}
+
+	/**
+	 * 사용자가 이미 찜하기 한 게시물인지 체크 
+	 */
+	private boolean isNotAlreadyLike(Customer customer, PlaceBoard place) {
+		return placelikeRepository.findByCustomerAndPlaceBoard(customer, place).isEmpty();
+	}
+
 
 	/**
 	 * 찜하기 삭제
 	 */
 	@Override
-	public void cancelLike(Customer customer, Long placeNo) {
-//		PlaceBoard place = placeRepository.findByNo(placeNo).orElseThrow();
-//		PlaceLike like = likeRepository.findByCustomerAndPlaceBoard(customer, place).orElseThrow();
-//		likeRepository.delete(like);
+	public void deleteLike(Customer customer, Long placeNo) {
+		PlaceBoard place = placeBoardRepository.findById(placeNo).orElseThrow();
+		PlaceLike like = placelikeRepository.findByCustomerAndPlaceBoard(customer, place).orElseThrow();
+		placelikeRepository.delete(like);
 	}
 	
 	/**
@@ -60,12 +79,12 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 	 */
 	@Override
 	public List<String> count(Long placeNo, Customer loginCustomer){
-//		PlaceBoard place = placeRepository.findByNo(placeNo).orElseThrow();
-//		
-//		Integer placeLikedCount = likeRepository.countByPlaceBoard(place).orElse(0);
-//		
-//		List<String> resultData = new ArrayList<>(Arrays.asList(String.valueOf(placeLikedCount)));
-//
+		PlaceBoard place = placeBoardRepository.findById(placeNo).orElseThrow();
+		
+		Integer placeLikedCount = placelikeRepository.countByPlaceBoard(place).orElse(0);
+		
+		List<String> resultData = new ArrayList<>(Arrays.asList(String.valueOf(placeLikedCount)));
+
 //		if(Object.nonNull(loginCustomer)) {
 //			resultData.add(String.valueOf(isNotAlreadyLike(loginCustomer, place)));
 //		}
@@ -73,11 +92,21 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 		return null;
 	}
 	
-	/**
-	 * 사용자가 이미 찜하기 한 게시물인지 체크 
-	 */
-	private boolean isNotAlreadyLike(Customer customer, PlaceBoard place) {
-		return likeRepository.findByCustomerAndPlaceBoard(customer, place).isEmpty();
+
+	@Override
+	public Page<PlaceLike> selectByUserId(Pageable pageable, String userId) {
+		
+		Customer customer = customerRep.findById(userId).orElse(null);
+		
+		Page<PlaceLike> likelist = placelikeRepository.findByCustomer(customer, pageable);
+		
+		return likelist;
 	}
 
+	
+
+
+
+	
+	
 }

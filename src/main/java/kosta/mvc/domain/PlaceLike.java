@@ -1,6 +1,7 @@
 package kosta.mvc.domain;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.*;
 
@@ -36,5 +37,6 @@ import lombok.NoArgsConstructor;
 		this.customer = customer;
 		this.placeBoard = placeBoard;
 	}
+
 
 }

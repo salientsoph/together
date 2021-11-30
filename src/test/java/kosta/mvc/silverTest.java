@@ -1,6 +1,5 @@
 package kosta.mvc;
 
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -26,126 +25,103 @@ import kosta.mvc.repository.CustomerRepository;
 import kosta.mvc.repository.MatchBoardRepository;
 import kosta.mvc.repository.PlaceBoardRepository;
 import kosta.mvc.repository.PlaceLikeRepository;
-import kosta.mvc.repository.RegionRepository;
-import kosta.mvc.repository.SellerRepository;
 
 @Transactional
 @AutoConfigureMockMvc
 @SpringBootTest
 @Commit
-class silverTest {
-	private final String LIKE_URL = "/like";
-	private final String USER_ID = "kim";
-	private final String USER_PWD = "1234";
-	private final String API_URL = "/api";
-
-	@Autowired
-	protected MockMvc mockMvc;
+class SilverTest {
 
 	@Autowired
 	private CustomerRepository customerRep;
 
 	@Autowired
-	private RegionRepository regionRep;
-
-	@Autowired
-	private SellerRepository sellerRep;
-
-	@Autowired
 	public PlaceBoardRepository placeBoardRep;
-
-	@Autowired
-	public MatchBoardRepository matchBoardRep;
 
 	@Autowired
 	public PlaceLikeRepository placeLikeRep; 
 
-
+	/**
+	 * 찜하기 버튼을 처음 누른 경우 → 내역 저장
+	 * 찜하기 버튼을 누른 상태에서 한 번 더 누른 경우 → 내역 삭제
+	 * 특정 게시글을 찜하기 개수 가져오기
+	 * 내가 찜하기한 게시글과 내 정보로 찜하기 내역을 가져오기
+	 */
+	
+	/**
+	 * 찜하기 클릭
+	 * 1. insert - placelike 테이블 (누가, 어떤 장소번호)
+	 * 2. update - plakce_board - place_liked_count 증가
+	 */
 	@DisplayName("찜하기 등록 테스트")
 	@Test
-	public void testlikeInsert() {
-		for(int i=0; i<=10 ; i++) {
-			Customer jang = customerRep.findById("jang").orElse(null);
-			PlaceBoard board = placeBoardRep.findById(1L+i).orElse(null);
-
-			placeLikeRep.save(PlaceLike.builder()
-					.customer(jang)
-					.placeBoard(board)
-					.build());
-		}
+	public void testCreateLike() throws Exception {
+		
+		PlaceBoard placeBoard = placeBoardRep.findById(5L).orElse(null);//찜하기를 클릭한 장소에 대한 정보 
+		
+		Customer customer= Customer.builder().userId("rhg20").build();//누가 찜하기를 클릭했는지에 대한 정보
+		
+		placeLikeRep.save(PlaceLike.builder().customer(customer).placeBoard(placeBoard).build());
+		
+		placeBoard.setPlaceLikedCount(placeBoard.getPlaceLikedCount()+1);
 	}
 
+	/**
+	 * 찜하기 버튼을 누른 상태에서 한 번 더 누른 경우 → 내역 삭제
+	 * 1. delete - placelike 테이블 (누가, 어떤 장소번호)
+	 * 2. update - place_board - place_liked_count 감소
+	 */
 	@DisplayName("찜하기 취소")
 	@Test
-	public void testlikeDeleteByPlaceLikeNo() {
-		placeLikeRep.deleteById(2L);
+	public void testDeleteLike() {
+
+		PlaceBoard placeBoard = placeBoardRep.findById(1L).orElse(null);
+		
+		Customer customer = Customer.builder().userId("kim").build();
+
+		placeLikeRep.delete(PlaceLike.builder().customer(customer).placeBoard(placeBoard).build());
+
+		placeBoard.setPlaceLikedCount(placeBoard.getPlaceLikedCount()-1);
 	}
 
+/**
 	@DisplayName("userId 에 해당하는 찜하기 조회 테스트")
 	@Test
 	void testLikeSelectByUserId() {
 		Customer customer = customerRep.findById("jang").orElse(null);
 		
-		List<PlaceLike> list = placeLikeRep.findByCustomer(customer);
+		List<PlaceLike> list = jang.getPlaceLikeList();
 		
 		System.out.println("개수 : " + list.size());
 		
 		list.forEach(b->System.out.println(b));	
 	}
-
+**/
+	
 	@DisplayName("찜하기 중복 테스트 - fail")
 	@WithMockUser
 	@Test
 	void testDuplicateLike() throws Exception {
-		//given
-		PlaceBoard place = addPlace();
 
-		//when
-		mockMvc.perform(post(API_URL + LIKE_URL + "/" + place.getPlaceNo()))
-		.andExpect(status().isOk());
-
-		mockMvc.perform(post(API_URL + LIKE_URL + "/" + place.getPlaceNo()))
-		.andExpect(status().isBadRequest());
-
-		//then
-		PlaceLike like = placeLikeRep.findAll().get(0);
-
-		Assert.notNull(like);
-		Assert.notNull(like.getCustomer().getUserId());
-		Assert.notNull(like.getPlaceBoard().getPlaceNo());
 	}
 
 	@DisplayName("찜하기 카운트")
 	@Test
 	public void testGetCount() throws Exception {
-		//given
-		PlaceBoard place = addPlace();
 
-		//when
-		mockMvc.perform(get(API_URL + LIKE_URL + "/" + place.getPlaceLikedCount()))
-		.andExpect(status().isOk());
 	}
 
-
-	private PlaceBoard addPlace() {
-		PlaceBoard place = PlaceBoard.builder()
-				.seller(sellerRep.getById("seller01")) //셀러 아이디가 seller01 인놈
-				.region(regionRep.getById(2)) 	//리전 넘버가 2번 (경기/인천)
-				.placeTitle("남양주시두물머리")
-				.placeContent("서울 인근 드라이브")
-				.placeLikedCount(0)
-				.placeCategory(1)
-				.build();	
-
-		PlaceBoard save = placeBoardRep.save(place);
-
-		return save;
+	@DisplayName("특정 게시글의 좋아요 개수")
+	@Test
+    void testPlaceCounting() {
+		
 	}
 
-	@DisplayName("장소 등록 테스트")
+	
+/**	
+ 	@DisplayName("장소 등록 테스트")
 	@Test
 	public void placeInsert() {
-
 		for(int i=0; i<=10 ; i++) {
 			placeBoardRep.save(PlaceBoard.builder().seller(sellerRep.getById("seller01")) //셀러 아이디가 seller01 인놈
 					.region(regionRep.getById(2)) 	//리전 넘버가 2번 (경기/인천)
@@ -220,6 +196,6 @@ class silverTest {
 		}
 	}
 
-
+**/
 
 }
