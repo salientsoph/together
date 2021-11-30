@@ -22,4 +22,8 @@ public interface LoginService {
 	String selectCustomerPwdByid(String id, String email);
 	
 	String selectSellerPwdByid(String id, String email);
+	
+	Customer customerIdCheck(String id);
+	
+	Seller sellerIdCheck(String id);
 }

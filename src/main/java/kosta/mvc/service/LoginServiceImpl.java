@@ -96,4 +96,16 @@ public class LoginServiceImpl implements LoginService {
 		return pwd;
 	}
 
+	@Override
+	public Customer customerIdCheck(String id) {
+		Customer customer = customerRep.selectidCheck(id);
+		return customer;
+	}
+
+	@Override
+	public Seller sellerIdCheck(String id) {
+		Seller seller = sellerRep.selectidCheck(id);
+		return seller;
+	}
+
 }

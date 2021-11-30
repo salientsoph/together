@@ -37,8 +37,58 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-  </head>     
+    <script src="${pageContext.request.contextPath }/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    
+    <script>
+		$(function(){
+			$("[name=userId]").keyup(function(){
+				 if($(this).val()==""){
+					 $("#customerIdCheck").text("");
+					 return; 
+				 }
+				 
+				$.ajax({
+					 url: "${pagecontext.request.contextPath}/user/customerIdCheck", 
+					 type: "post",
+					 dataType: "text",
+					 data: {id : $(this).val()}, 
+					 success: function(result){
+						 $("#customerIdCheck").text(result);
+						 $("#customerIdCheck").css("color", "red");
+						 $("#customerIdCheck").css("marginTop", "-10px");
+						 $("#customerIdCheck").css("marginLeft", "70px");
+					 }, 
+					 error: function(err){
+						 alert(err+"발생했어요");
+					 }
+				 });
+			 });
+			
+			$("[name=sellerId]").keyup(function(){
+				 if($(this).val()==""){
+					 $("#sellerIdCheck").text("");
+					 return; 
+				 }
+				 
+				$.ajax({
+					 url: "${pagecontext.request.contextPath}/user/sellerIdCheck", 
+					 type: "post",
+					 dataType: "text",
+					 data: {id : $(this).val()}, 
+					 success: function(result){
+						 $("#sellerIdCheck").text(result);
+						 $("#sellerIdCheck").css("color", "red");
+						 $("#sellerIdCheck").css("marginTop", "-10px");
+						 $("#sellerIdCheck").css("marginLeft", "70px");
+					 }, 
+					 error: function(err){
+						 alert(err+"발생했어요");
+					 }
+				 });
+			 });
+		});
+	</script>
+  </head>
 
 <body id="body" class="up-scroll">
 
@@ -485,6 +535,7 @@
 									<input type="text" class="form-control bg-smoke"
 										required="required" placeholder="ID" name="userId">
 								</div>
+								<div id="customerIdCheck"></div>
 
 								<div class="mb-3">
 									<input type="password" class="form-control bg-smoke"
@@ -546,6 +597,7 @@
 									<input type="text" class="form-control bg-smoke"
 										required="required" placeholder="ID" name="sellerId">
 								</div>
+								<div id="sellerIdCheck"></div>
 
 								<div class="mb-3">
 									<input type="password" class="form-control bg-smoke"
@@ -729,6 +781,35 @@
 								class="btn btn-primary btn-block text-uppercase">Find Password</button>
 						</div>
 					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<c:if test="${message ne null}">
+	  <script type="text/javascript">
+	    $(function(){
+	    	$("#messageTitle").text("<%= request.getAttribute("title")%>");
+	    	$("#messageContent").text("<%= request.getAttribute("message")%>");
+	    	$("#message").modal("show");
+	    	
+	    });
+	  </script>
+	</c:if>
+	<div class="modal fade" id="message" tabindex="-1" role="dialog"
+		aria-label="messageModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header rounded">
+					<h3 class="modal-title text-uppercase font-weight-bold" id="messageTitle">Find Your Password</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+
+				<div class="modal-body">
+					<div>
+					  <h3 id="messageContent"></h3>
+					</div>
 				</div>
 			</div>
 		</div>
