@@ -1,5 +1,8 @@
 package kosta.mvc.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +19,25 @@ public class UserController {
 	private LoginService loginService;
 	
 	@RequestMapping("/login")
-	public String list(String id, String pwd, String user) {
+	public String list(HttpServletRequest request, String id, String pwd, String user) {
+		HttpSession session = request.getSession();
 		if("Customer".equals(user)) {
 			if("admin".equals(id)) {
 				Admin admin = loginService.adminLogin(id, pwd);
+				session.setAttribute("id", id);
+				session.setAttribute("pwd", pwd);
+				session.setAttribute("role", "admin");
 				return "user/login";
 			}
 			Customer customer = loginService.customerLogin(id, pwd);
+			session.setAttribute("id", id);
+			session.setAttribute("pwd", pwd);
+			session.setAttribute("role", "customer");
 		} else if("Seller".equals(user)) {
 			Seller seller = loginService.sellerLogin(id, pwd);
+			session.setAttribute("id", id);
+			session.setAttribute("pwd", pwd);
+			session.setAttribute("role", "seller");
 		}
 		
 		return "user/login";

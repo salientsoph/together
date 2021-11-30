@@ -430,7 +430,300 @@
   </header>
 
     <!-- ##### Header Area End ##### -->
+<!-- ====================================
+    ——— MODAL SECTION
+    ===================================== -->
+	<!-- Signup Modal -->
+	<div class="modal fade" id="signup" tabindex="-1" role="dialog"
+		aria-label="signupModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header rounded">
+					<h3 class="modal-title text-uppercase font-weight-bold">Create
+						your account</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="tab-features shadow">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item"><a
+							class="nav-link first-child last-child active" id="Customer-tab"
+							data-bs-toggle="tab" href="#Customer" role="tab"
+							aria-controls="customer" aria-selected="true">
+								<div class="text-center">
+									<i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span
+										class="d-block text-uppercase">Customer</span>
+								</div>
+						</a></li>
 
+						<li class="nav-item"><a class="nav-link last-child"
+							id="Seller-tab" data-bs-toggle="tab" href="#Seller" role="tab"
+							aria-controls="seller" aria-selected="false">
+								<div class="text-center">
+									<i class="fa fa-home" aria-hidden="true"></i> <span
+										class="d-block text-uppercase">Seller</span>
+								</div>
+						</a></li>
+					</ul>
+				</div>
+				<div class="tab-content px-6 py-7" id="myTabContent">
+					<div class="tab-pane fade show active" id="Customer"
+						role="tabpanel" aria-labelledby="Customer-tab">
+						<div class="modal-body">
+							<form class="" action="/user/customerRegister" method="post">
+								<div class="mb-3">
+									<input type="text" class="form-control bg-smoke"
+										required="required" placeholder="ID" name="userId">
+								</div>
+
+								<div class="mb-3">
+									<input type="password" class="form-control bg-smoke"
+										required="required" placeholder="Password" name="userPwd">
+								</div>
+
+								<div class="mb-3">
+									<input type="text" class="form-control bg-smoke"
+										required="required" placeholder="Name" name="userName">
+								</div>
+
+								<div class="mb-3">
+									<input type="text" class="form-control bg-smoke"
+										required="required" placeholder="NickName" name="userNickname">
+								</div>
+
+								<div class="mb-3">
+									<input type="email" class="form-control bg-smoke"
+										required="required" placeholder="Email" name="userEmail">
+								</div>
+
+								<div class="mb-3">
+									<input type="text" class="form-control bg-smoke"
+										required="required" placeholder="PhoneNumber" name="userPhone">
+								</div>
+
+								<div class="mb-3">
+									<input type="number" class="form-control bg-smoke"
+										required="required" placeholder="age" name="userAge" min="20">
+								</div>
+
+								<div class="mb-3">
+									<input type="radio" class="form-check-input" value="man"
+										name="userGender" required="required"> <label class=".radio-control-label">Man</label>
+									<input type="radio" class="form-check-input" value="women"
+										name="userGender" required="required"> <label class=".radio-control-label">Women</label>
+								</div>
+
+								<div class="mb-3 form-check mb-0">
+									<input type="checkbox" class="form-check-input"
+										id="exampleCheck1" required="required"> <label
+										class="form-check-label text-gray-color mb-3"
+										for="exampleCheck1"> I agree to the terms of use and
+										privacy. </label>
+								</div>
+
+								<div class="d-grid">
+									<button type="submit" class="btn btn-primary text-uppercase">SignUp</button>
+								</div>
+
+							</form>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="Seller" role="tabpanel"
+						aria-labelledby="Seller-tab">
+						<div class="modal-body">
+							<form class="" action="/user/sellerRegister" method="post">
+								<div class="mb-3">
+									<input type="text" class="form-control bg-smoke"
+										required="required" placeholder="ID" name="sellerId">
+								</div>
+
+								<div class="mb-3">
+									<input type="password" class="form-control bg-smoke"
+										required="required" placeholder="Password" name="sellerPwd">
+								</div>
+
+								<div class="mb-3">
+									<input type="text" class="form-control bg-smoke"
+										required="required" placeholder="Name" name="sellerName">
+								</div>
+
+								<div class="mb-3">
+									<input type="text" class="form-control bg-smoke"
+										required="required" placeholder="NickName" name="sellerNickname">
+								</div>
+
+								<div class="mb-3">
+									<input type="email" class="form-control bg-smoke"
+										required="required" placeholder="Email" name="sellerEmail">
+								</div>
+
+								<div class="mb-3">
+									<input type="text" class="form-control bg-smoke"
+										required="required" placeholder="PhoneNumber" name="sellerPhone">
+								</div>
+
+								<div class="mb-3">
+									<input type="text" class="form-control bg-smoke"
+										required="required" placeholder="Company Registration Number"
+										name="sellerRegisterNumber">
+								</div>
+
+								<div>
+									<select name="region" class="form-select" required="required">
+										<option value="1">--지역 선택--</option>
+										<option value="1">서울</option>
+										<option value="2">경기/인천</option>
+										<option value="3">부산/경남</option>
+										<option value="4">대전/충청</option>
+										<option value="5">대구/경북</option>
+										<option value="6">광주/전라</option>
+										<option value="7">강원/제주</option>
+									</select>
+								</div>
+								<div class="mb-3 form-check mb-0">
+									<input type="checkbox" class="form-check-input"
+										id="exampleCheck1" required="required"> <label
+										class="form-check-label text-gray-color mb-3"
+										for="exampleCheck1"> I agree to the terms of use and
+										privacy. </label>
+								</div>
+
+								<div class="d-grid">
+									<button type="submit" class="btn btn-primary text-uppercase">SignUp</button>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Login Modal -->
+	<div class="modal fade" id="login" tabindex="-1" role="dialog"
+		aria-label="loginModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header rounded">
+					<h3 class="modal-title text-uppercase font-weight-bold">Log in
+						to your account</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+
+				<div class="modal-body">
+					<form class="" action="/user/login" method="post">
+						<div class="mb-3">
+							<input type="text" class="form-control bg-smoke"
+								required="required" placeholder="ID" name="id">
+						</div>
+
+						<div class="mb-3">
+							<input type="password" class="form-control bg-smoke"
+								required="required" placeholder="Password" name="pwd">
+						</div>
+
+						<div class="mb-3">
+							<input type="radio" class="form-check-input" value="Customer"
+								name="user" required="required"> <label class=".radio-control-label">Customer</label>
+							<input type="radio" class="form-check-input" value="Seller"
+								name="user" required="required"> <label class=".radio-control-label">Seller</label>
+						</div>
+
+						<div class="mb-3 form-check mb-0">&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="javascript:void(0)" class="pull-right"
+								data-bs-toggle="modal" data-bs-target="#findId" aria-label="Close"	data-bs-dismiss="modal">Find Id</a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="javascript:void(0)" class="pull-right"
+								data-bs-toggle="modal" data-bs-target="#findPwd" aria-label="Close"	data-bs-dismiss="modal">Find Password</a>
+						</div>
+
+						<div class="d-grid">
+							<button type="submit"
+								class="btn btn-primary btn-block text-uppercase">Login</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="findId" tabindex="-1" role="dialog"
+		aria-label="findIdModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header rounded">
+					<h3 class="modal-title text-uppercase font-weight-bold">Find Your Id</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+
+				<div class="modal-body">
+					<form class="" action="/user/findId" method="post">
+						<div class="mb-3">
+							<input type="email" class="form-control bg-smoke"
+								required="required" placeholder="Email" name="email">
+						</div>
+
+						<div class="mb-3">
+							<input type="radio" class="form-check-input" value="Customer"
+								name="user" required="required"> <label class=".radio-control-label">Customer</label>
+							<input type="radio" class="form-check-input" value="Seller"
+								name="user" required="required"> <label class=".radio-control-label">Seller</label>
+						</div>
+
+						
+						<div class="d-grid">
+							<button type="submit"
+								class="btn btn-primary btn-block text-uppercase">Find Id</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="findPwd" tabindex="-1" role="dialog"
+		aria-label="findPwdModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-dialog-centered"
+			role="document">
+			<div class="modal-content">
+				<div class="modal-header rounded">
+					<h3 class="modal-title text-uppercase font-weight-bold">Find Your Password</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+
+				<div class="modal-body">
+					<form class="" action="/user/findPwd" method="post">
+						<div class="mb-3">
+							<input type="text" class="form-control bg-smoke"
+								required="required" placeholder="ID" name="id">
+						</div>
+
+						<div class="mb-3">
+							<input type="email" class="form-control bg-smoke"
+								required="required" placeholder="Email" name="email">
+						</div>
+
+						<div class="mb-3">
+							<input type="radio" class="form-check-input" value="Customer"
+								name="user" required="required"> <label class=".radio-control-label">Customer</label>
+							<input type="radio" class="form-check-input" value="Seller"
+								name="user" required="required"> <label class=".radio-control-label">Seller</label>
+						</div>
+
+						<div class="d-grid">
+							<button type="submit"
+								class="btn btn-primary btn-block text-uppercase">Find Password</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
