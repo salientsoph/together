@@ -72,7 +72,7 @@
           </div>
           
           <ul class="menuzord-menu menuzord-right">
-            <li class="">
+            <li class="active">
               <a class="" href="javascript:void(0)">Home</a>
               <ul class="dropdown drop-up">
                 <li class="">
@@ -325,7 +325,7 @@
             </li>
     <!-- ##### mypage Area End ##### -->
     
-            <li class=" active ">
+            <li class="">
               <a href="javascript:void(0)">Blog</a>
 
               <ul class="dropdown drop-up">
@@ -402,14 +402,23 @@
                 <li class="">
                   <a href="setting.html">Settings</a>
                 </li>
-
-                <li class="">
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signup">Signup</a>
-                </li>
-
-                <li class="">
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#login">Login</a>
-                </li>
+                <c:choose>
+                  <c:when test="${sessionScope.id eq null}">
+                    <li class="">
+                      <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signup">Signup</a>
+                    </li>
+  
+                    <li class="">
+                      <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#login">Login</a>
+                    </li>
+                  </c:when>
+                  <c:otherwise>
+                    <li class="">
+                      <a href="/user/logout">Logout</a>
+                    </li>
+                  </c:otherwise>
+                </c:choose>
+                
               </ul>
             </li>
 
