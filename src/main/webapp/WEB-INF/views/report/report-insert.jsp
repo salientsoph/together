@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:set var = "path" value = "${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -7,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Single Hotel Fullwidth - Star Travel</title>
+    <title>Report Insert</title>
 
     <!-- Plugins css Style -->
     <link href='${path}/assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
@@ -19,15 +25,105 @@
     
     <link href='${path}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
     
+    <!-- Javascript -->
+    <script src="${path}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="${path}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/assets/plugins/menuzord/js/menuzord.js"></script>
     
     
-    <link href='${path}/assets/plugins/rateyo/jquery.rateyo.min.css' rel='stylesheet'>
+    
+    <script src='${path}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
     
     
     
     
-    <link href='${path}/assets/plugins/owl-carousel/owl.carousel.min.css' rel='stylesheet' media='screen'>
-    <link href='${path}/assets/plugins/owl-carousel/owl.theme.default.min.css' rel='stylesheet' media='screen'>
+    
+    <script src="${path}/assets/plugins/lazyestload/lazyestload.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="${path}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
+    
+    <script src="${path}/assets/js/star.js"></script>
+    <script src="${path}/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+    
+    function changeFunc() {
+	    var selectBox = document.getElementById("reasonsTitle");
+	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	    var selectedText = selectBox.options[selectBox.selectedIndex].text;
+	    //alert(selectedValue);
+	    
+	    var selectedBox = document.getElementById("selectedReason");
+	    var selectedNoBox = document.getElementById("selectedReasonNo");
+	    selectedBox.value=selectedText;
+	    selectedNoBox.value=selectedValue;
+	   }
+    
+    $(function() {
+    	
+    	//console.log("1111111111111");
+    	
+    	$.ajax({
+    		type:"POST",
+    		url:"${path}/report/reasonsList",
+    		dataType:"json",
+    		success:function(result){
+    			
+    			 var data="";
+    			 $.each(result, function(index, item){
+    				 
+    				 let reason = item.reportTitle;
+    				 
+    					data+='<option value=' + item.reportReasonsNo;
+    					data+='>';
+    					data+= item.reportTitle+'</option>';
+    			 }) 
+    			
+    			$("#reasonsTitle").html(data);	
+    			
+    							
+    		}//function
+    	});//ajax
+    	
+    	$("#matchNo").keyup(function() {
+    		$.ajax({
+        		type:"POST",
+        		url:"${path}/report/matchNoCheck",
+        		data: "${_csrf.parameterName}=${_csrf.token}&&matchNo="+$(this).val(),
+        		dataType:"text",
+        		success:function(result){
+        			
+        			 //console.log(result);
+        			$("#matchNoConfirm").val(result);
+        							
+        		}//function
+        	});//ajax
+		});
+    	
+    	$("#submitForm").click(function() {
+    		//console.log("clicked");
+			$("#insertForm").submit();
+		});
+    	
+		$("#cancel").click(function() {
+			$("#insertForm")[0].reset();
+		});
+	})
+    
+    </script>
+    
+    
+    
+    
+    
+    
+    
     
 
     <!-- GOOGLE FONT -->
@@ -206,7 +302,7 @@
                         <a href="single-hotel-right-sidebar.html">Hotels Sidebar Right</a>
                       </li>
 
-                      <li class=" active ">
+                      <li class="">
                         <a href="single-hotel-fullwidth.html">Hotels Fullwidth</a>
                       </li>
                     </ul>
@@ -215,7 +311,7 @@
                   <div class="col3">
                     <ul class="list-unstyled">
                       <li>Booking Steps</li>
-                      <li class="">
+                      <li class=" active ">
                         <a href="booking-step-1.html">Step 1 - Personal Info</a>
                       </li>
 
@@ -500,22 +596,22 @@
       </div>
     </nav>
   </header>
-  <div class="main-wrapper single-hotel-fullwidth">
+  <div class="main-wrapper booking-step-1">
 
 
 <!-- ====================================
 ———	PAGE TITLE
 ===================================== -->
 <section class="page-title">
-  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${path}/assets/img/pages/page-title-bg12.jpg);">
+  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${path}/assets/img/pages/page-title-bg7.jpg);">
     <div class="container">
       <div class="row align-items-center justify-content-center" style="height: 200px;">
         <div class="col-lg-6">
           <div class="page-title-content">
-            <div class="">
-              <h2 class="text-uppercase text-white font-weight-bold">Marriott Hotel</h2>
+            <div class="title-border">
+              <h2 class="text-uppercase text-white font-weight-bold">신고하기</h2>
             </div>
-            <p class="text-white mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <p class="text-white mb-0"></p>
           </div>
         </div>
       </div>
@@ -525,544 +621,75 @@
 
 
 <!-- ====================================
-———	PACKAGES SECTION
+———	BOOKING SECTION
 ===================================== -->
-<section class="py-10">
-  <div class="container">
+<section class="py-8 py-md-10">
+  <div class="container">    
     <div class="row">
-      <div class="col-md-12">
-        <div id="package-slider" class="owl-carousel owl-theme package-slider">
-          <div class="item">
-            <img class="lazyestload" data-src="${path}/assets/img/holets/hotel-slider-03.jpg" src="${path}/assets/img/holets/hotel-slider-03.jpg" alt="image">
-          </div>
+      <div class="col order-1 order-md-0">
+        <h3 class="text-capitalize mb-5">신고 내용을 작성해주세요</h3>
 
-          <div class="item">
-            <img class="lazyestload" data-src="${path}/assets/img/holets/hotel-slider-01.jpg" src="${path}/assets/img/holets/hotel-slider-01.jpg" alt="image">
-          </div>
-
-          <div class="item">
-            <img class="lazyestload" data-src="${path}/assets/img/holets/hotel-slider-02.jpg" src="${path}/assets/img/holets/hotel-slider-02.jpg" alt="image">
-          </div>
-        </div>
-
-        <div class="mt-8">
-          <h2 class="text-uppercase mb-5">Description</h2>
-          <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip commodo consequat. Duis aute irure dolor in reprehenderit</p>
-
-          <div class="mb-5">
-            <div class="row">
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li class="media">
-                    <div class="text-gray-color me-2">
-                      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="media-body">
-                      <p>Cras tincidunt mi a sodales pulvinar.</p>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <div class="text-gray-color me-2">
-                      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="media-body">
-                      <p>Mauris in libero sodales ultrices purus</p>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <div class="text-gray-color me-2">
-                      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="media-body">
-                      <p>Quisque vulputate enim eu fringilla.</p>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <div class="text-gray-color me-2">
-                      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="media-body">
-                      <p>Eleifend mi vel nisl lobortis nec tincidunt</p>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <div class="text-gray-color me-2">
-                      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="media-body">
-                      <p>Mauris in libero sodales ultrices purus</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li class="media">
-                    <div class="text-gray-color me-2">
-                      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="media-body">
-                      <p>Praesent nec nisl iaculis, pulvinar nunc.</p>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <div class="text-gray-color me-2">
-                      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="media-body">
-                      <p>Sed at erat lacinia, condimentum eros non</p>
-                    </div>
-                  </li>
-
-                  <li class="media">
-                    <div class="text-gray-color me-2">
-                      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="media-body">
-                      <p>Mauris in libero sodales ultrices purus at</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <h2 class="text-uppercase mb-5">Rooms types</h2>
-          <p class="mb-5">Pellen tesque vitae ultrices magna. Cras vul putate commodo justo. Fusce vitae justo efficitur, condi mentum ante a,
-          tempor velit. Proin portt itor tortor</p>
-        </div>
-
-        <div class="mb-6 border-bottom">
-          <h4 class="text-uppercase mb-5">Double Room</h4>
-          <p class="">Consuat sed libero eu feugiat. Praesent vel hendrerit erat. Phasellus gravida efficitur lectus, placerat semper est
-          tristique nec. Proin magna enim, nunc ultricies dui sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna</p>
-
-          <div class="d-md-flex justify-content-between align-items-center mb-5">
-            <ul
-              class="list-unstyled d-flex flex-wrap justify-content-center justify-content-md-start font-weight-medium mb-md-0">
-              <li class="">
-                <a href="" class="text-gray-color hover-text-primary me-4">
-                  <img class="me-2" src="${path}/assets/img/packages/shape-icon-1.png" alt="Image">Breakfast
-                </a>
-              </li>
-
-              <li class="">
-                <a href="" class="text-gray-color hover-text-primary me-4">
-                  <img class="me-2" src="${path}/assets/img/packages/shape-icon-2.png" alt="Image">Plasma TV
-                </a>
-              </li>
-
-              <li class="">
-                <a href="" class="text-gray-color hover-text-primary">
-                  <img class="me-2" src="${path}/assets/img/packages/shape-icon-3.png" alt="Image">Free wifi
-                </a>
-              </li>
-            </ul>
-
-            <h5 class="text-center text-lg-left">
-              <span class="text-gray-color font-weight-bold text-capitalize">Par night:</span>
-              <span class="text-primary font-weight-bold">$150</span>
-            </h5>
-          </div>
-
+        <form action="${path}/report/insert" method="post" id="insertForm">
           <div class="row">
-            <div class="col-lg-10 col-xl-8">
-              <div class="pb-3">
-                <div class="row row-cols-2 row-cols-md-5 g-2 g-md-3">
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/double-room-img1.jpg" src="${path}/assets/img/packages/double-room-img1.jpg" alt="Generic placeholder image">
-                      <a href="${path}/assets/img/holets/hotel-list-01.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/double-room-img2.jpg" src="${path}/assets/img/packages/double-room-img2.jpg" alt="Generic placeholder image">
-                        <a href="${path}/assets/img/holets/hotel-list-02.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/double-room-img3.jpg" src="${path}/assets/img/packages/double-room-img3.jpg" alt="Generic placeholder image">
-                        <a href="${path}/assets/img/holets/hotel-list-03.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/double-room-img4.jpg" src="${path}/assets/img/packages/double-room-img4.jpg" alt="Generic placeholder image">
-                        <a href="${path}/assets/img/holets/hotel-list-04.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/double-room-img5.jpg" src="${path}/assets/img/packages/double-room-img5.jpg" alt="Generic placeholder image">
-                        <a href="${path}/assets/img/holets/hotel-list-05.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          
+              <div class="form-group">
+                <label for="inputName">신고 제목</label>
+                <input type="text" class="form-control border-0 bg-smoke" name="reportTitle">
+              </div>
+          
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="inputName">신고 게시물 번호</label>
+                <input type="number" class="form-control border-0 bg-smoke" id="matchNo" name="matchNo">
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="mb-8 border-bottom">
-          <h4 class="text-uppercase mb-5">Single Room</h4>
-          <p class="">Donec phareta nec quam congue egestas. Sed aliquam mauris quam, id molestie erat tristique vel. Donec euismod malesuada
-          rhoncus. Nulla vestibulum Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip commodo
-          consequat</p>
-
-          <div class="d-md-flex justify-content-between align-items-center mb-5">
-            <ul
-              class="list-unstyled d-flex flex-wrap justify-content-center justify-content-md-start font-weight-medium mb-md-0">
-              <li class="">
-                <a href="" class="text-gray-color hover-text-primary me-4">
-                  <img class="me-2" src="${path}/assets/img/packages/shape-icon-1.png" alt="Image">Breakfast
-                </a>
-              </li>
-
-              <li class="">
-                <a href="" class="text-gray-color hover-text-primary me-4">
-                  <img class="me-2" src="${path}/assets/img/packages/shape-icon-2.png" alt="Image">Plasma TV
-                </a>
-              </li>
-
-              <li class="">
-                <a href="" class="text-gray-color hover-text-primary">
-                  <img class="me-2" src="${path}/assets/img/packages/shape-icon-3.png" alt="Image">Free wifi
-                </a>
-              </li>
-            </ul>
-
-            <h5 class="text-center text-lg-left">
-              <span class="text-gray-color font-weight-bold text-capitalize">Par night:</span>
-              <span class="text-primary font-weight-bold">$100</span>
-            </h5>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-10 col-xl-8">
-              <div class="pb-3">
-                <div class="row row-cols-2 row-cols-md-5 g-2 g-md-3">
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/single-room-img1.jpg" src="${path}/assets/img/packages/single-room-img1.jpg" alt="Generic placeholder image">
-                        <a href="${path}/assets/img/holets/hotel-list-01.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/single-room-img2.jpg" src="${path}/assets/img/packages/single-room-img2.jpg" alt="Generic placeholder image">
-                        <a href="${path}/assets/img/holets/hotel-list-02.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/single-room-img3.jpg" src="${path}/assets/img/packages/single-room-img3.jpg" alt="Generic placeholder image">
-                        <a href="${path}/assets/img/holets/hotel-list-03.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/single-room-img4.jpg" src="${path}/assets/img/packages/single-room-img4.jpg" alt="Generic placeholder image">
-                        <a href="${path}/assets/img/holets/hotel-list-04.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="col">
-                    <div class="media img-overlay">
-                      <div class="media-content w-100">
-                        <img class="media-img rounded w-100 lazyestload" data-src="${path}/assets/img/packages/single-room-img5.jpg" src="${path}/assets/img/packages/single-room-img5.jpg" alt="Generic placeholder image">
-                        <a href="${path}/assets/img/holets/hotel-list-05.jpg" data-fancybox="gallery" class="hover-img-overlay-dark"></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="inputName">신고 게시물 번호 확인</label>
+                <input type="text" class="form-control border-0 bg-smoke" id="matchNoConfirm" disabled>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="mb-7">
-          <h2 class="text-uppercase mb-6">Location</h2>
-          <p class="mb-0">Pellen tesque vitae ultrices magna. Cras vul putate commodo justo. Fusce vitae justo efficitur, condi mentum ante a,
-          tempor velit. Proin portt itor tortor</p>
-        </div>
-
-        <div class="mb-7" id="map" style="width:100%; height:400px;"></div>
-
-        <div class="mb-7">
-          <h2 class="text-uppercase mb-6">Reviews</h2>
-          <p class="mb-6">Pulla consuat sed libero eu feugiat. Praesent vel hendrerit erat. Phasellus gravida efficitur
-            lectus, placerat semper
-            est tristique nec. Proin magna enim</p>
-        
-          <div class="d-flex align-items-center mb-6">
-            <h3 class="text-uppercase mb-0">
-              <span class="me-2">Reviews (3)</span>
-        
-              <span class="text-warning">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fas fa-star-half-alt" aria-hidden="true"></i>
-              </span>
-            </h3>
-          </div>
-        
-          <div class="media mb-6">
-            <a class="me-6" href="">
-              <img class="rounded lazyestload" data-src="${path}/assets/img/blog/comments-02.jpg" src="${path}/assets/img/blog/comments-02.jpg" alt="Generic placeholder image">
-            </a>
-        
-            <div class="media-body">
-              <h5>Samanta Doe</h5>
-              <span class="star add-rating-default pb-1"></span>
-              <p class="mb-0">Pellen tesque vitae ultrices magna. Cras vul putate commodo justo. Fusce vitae justo
-                efficitur, condi mentum ante.</p>
+    
+    		
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="inputName">신고 사유</label>
+                  
+                    <select multiple="" class="form-control" id="reasonsTitle" onchange="changeFunc();">
+                     
+                    </select>
+                  
+                  
             </div>
-          </div>
-        
-          <div class="media mb-6">
-            <a class="me-6" href="">
-              <img class="rounded lazyestload" data-src="${path}/assets/img/blog/comments-01.jpg" src="${path}/assets/img/blog/comments-01.jpg" alt="Generic placeholder image">
-            </a>
-        
-            <div class="media-body">
-              <h5>Amanda Smith</h5>
-              <span class="star add-rating-default pb-1"></span>
-              <p class="mb-0">Nunc ultricies dui sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna
-                aliqua.</p>
             </div>
-          </div>
-        
-          <div class="media">
-            <a class="me-6" href="">
-              <img class="rounded lazyestload" data-src="${path}/assets/img/blog/comments-03.jpg" src="${path}/assets/img/blog/comments-03.jpg" alt="Generic placeholder image">
-            </a>
-            <div class="media-body">
-              <h5>Rodney Artichoke</h5>
-              <span class="star add-rating-default pb-1"></span>
-              <p class="mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                laudan totam rem ape riam</p>
+    
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="inputName">선택된 신고 사유</label>
+                <input type="text" class="form-control border-0 bg-smoke" id="selectedReason" readonly>
+                <input type="text" class="form-control border-0 bg-smoke" id="selectedReasonNo" name="reportReasonNo" readonly>
+                <input type="text" class="form-control border-0 bg-smoke" id="userId" name="userId" >
+              </div>
             </div>
+    
+          <div class="form-group mb-5">
+            <label for="exampleFormControlTextarea1">신고 내용</label>
+            <textarea class="form-control border-0 bg-smoke" rows="7" name="reportContent"></textarea>
           </div>
-        </div>
-        
-        <form class="">
-          <h3 class="text-uppercase mb-6">Leave your review</h3>
-        
-          <p class="rating-view d-flex align-items-center">
-            <span class="content-view">Want to Rate it?</span>
-            <span class="star add-rating-default ms-2"></span>
-          </p>
-        
-          <div class="form-group mb-6">
-            <textarea class="form-control border-0 bg-smoke" placeholder="Comment" rows="6"></textarea>
           </div>
-        
-          <div class="">
-            <button type="button" onclick="location.href='javascript:void(0)';"
-              class="btn btn-hover btn-outline-secondary text-uppercase">
-              Submit
+    
+          <div class="text-center text-md-start text-lg-end">
+            <button type="button" id="submitForm" class="btn btn-primary text-uppercase">
+              신고 접수
+            </button>
+            <button type="button" id="cancel" class="btn btn-primary text-uppercase mx-6">
+              취소
             </button>
           </div>
         </form>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================================
-———	PACKAGES LIKE SECTION
-===================================== -->
-<section class="pb-10">
-  <div class="container">
-    <div class="text-uppercase mb-4">
-      <h2 class="mb-0">you may also like</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-        <div class="card card-bg">
-          <a href="" class="position-relative">
-            <img class="card-img-top lazyestload" data-src="${path}/assets/img/holets/hotel-list-01.jpg" src="${path}/assets/img/holets/hotel-list-01.jpg" alt="Card image cap">
-            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
-              <ul class="list-unstyled d-flex mt-auto text-warning mb-1">
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="far fa-star" aria-hidden="true"></i>
-                </li>
-              </ul>
-              <h6 class="text-white font-weight-bold">4 Review</h6>
-            </div>
-          </a>
-
-          <div class="card-body">
-            <h5>
-              <a href="" class="card-title text-uppercase">The London Hotel</a>
-            </h5>
-
-            <p class="mb-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore
-              aliqua.</p>
-
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <p class="mb-0 text-capitalize">Start from</p>
-                <h3 class="text-primary">$40</h3>
-              </div>
-
-              <div>
-                <a href="booking-step-1.html" class="btn btn-xs btn-outline-secondary text-uppercase">Book now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-        <div class="card card-bg">
-          <a href="" class="position-relative">
-            <img class="card-img-top lazyestload" data-src="${path}/assets/img/holets/hotel-list-02.jpg" src="${path}/assets/img/holets/hotel-list-02.jpg" alt="Card image cap">
-            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
-              <ul class="list-unstyled d-flex mt-auto text-warning mb-1">
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="far fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="far fa-star" aria-hidden="true"></i>
-                </li>
-              </ul>
-              <h6 class="text-white font-weight-bold">3 Review</h6>
-            </div>
-          </a>
-
-          <div class="card-body">
-            <h5>
-              <a href="" class="card-title text-uppercase">The Europe Hotel</a>
-            </h5>
-
-            <p class="mb-7">Integer purus ex, dictum nec elementum eu, tristique vel lectus. Donec rutrum lectus et
-              pharetra egestas.</p>
-
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <p class="mb-0 text-capitalize">Start from</p>
-                <h3 class="text-primary">$35</h3>
-              </div>
-
-              <div>
-                <a href="booking-step-1.html" class="btn btn-xs btn-outline-secondary text-uppercase">Book now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4">
-        <div class="card card-bg">
-          <a href="" class="position-relative">
-            <img class="card-img-top lazyestload" data-src="${path}/assets/img/holets/hotel-list-03.jpg" src="${path}/assets/img/holets/hotel-list-03.jpg" alt="Card image cap">
-            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
-              <ul class="list-unstyled d-flex mt-auto text-warning mb-1">
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </li>
-              </ul>
-              <h6 class="text-white font-weight-bold">5 Review</h6>
-            </div>
-          </a>
-
-          <div class="card-body">
-            <h5>
-              <a href="" class="card-title text-uppercase">The Rookery Hotel</a>
-            </h5>
-
-            <p class="mb-7">Sed ut perspi ciatis unde omnis iste natus error volu ptatem accusantium unde omnis iste
-              doloremque laudan totam</p>
-
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <p class="mb-0 text-capitalize">Start from</p>
-                <h3 class="text-primary">$30</h3>
-              </div>
-
-              <div>
-                <a href="booking-step-1.html" class="btn btn-xs btn-outline-secondary text-uppercase">Book now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    
     </div>
   </div>
 </section>
@@ -1413,31 +1040,7 @@
       </div>
     </div>
 
-    <!-- Javascript -->
-    <script src="${path}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
-    <script src="${path}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="${path}/assets/plugins/menuzord/js/menuzord.js"></script>
-    
-    
-    
-    <script src='${path}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
-    
-    
-    
-    
-    <script src='${path}/assets/plugins/rateyo/jquery.rateyo.min.js'></script>
-    <script src="${path}/assets/plugins/lazyestload/lazyestload.js"></script>
-    
-    
-    
-    
-    
-    <script src='${path}/assets/plugins/owl-carousel/owl.carousel.min.js'></script>
-    
-    
-    <script src="${path}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
-    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDU79W1lu5f6PIiuMqNfT1C6M0e_lq1ECY'></script>
-    <script src="${path}/assets/js/star.js"></script>
+   
   </body>
 </html>
 

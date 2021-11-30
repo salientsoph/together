@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,12 +23,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
+@DynamicUpdate
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Setter
 @Getter
-
+@ToString
 public class Report {
 	
 	@Id
