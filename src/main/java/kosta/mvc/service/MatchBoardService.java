@@ -1,5 +1,6 @@
 package kosta.mvc.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -18,6 +19,19 @@ public interface MatchBoardService {
 	* */
 	Page<MatchBoard> selectAll(Pageable pageable);
 		
+	
+	/**
+	  * 지역, 날짜로 검색
+	  * */
+	List<MatchBoard> selectByRegionAndDate(int region, LocalDate date);
+		
+	/**
+	* 지역, 날짜로 검색 - Page처리
+	* */
+	Page<MatchBoard> selectByRegionAndDate(Pageable pageable);
+	
+	
+	
 	/**
 	 * 등록
 	 * */

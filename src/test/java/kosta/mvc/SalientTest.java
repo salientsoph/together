@@ -167,28 +167,53 @@ public class SalientTest {
 	@Test
 	public void insertMatch() {
 		matchBoardRep.save(MatchBoard.builder()
-				.matchTitle("경기도 맛집 같이가자")
+				.matchTitle("가자가자~~")
 				.matchContent("고기 짱맛있음")
-				.matchRequestLastDate( LocalDate.parse("2021-11-30", formatter) )
-				.tripDate(LocalDate.parse("2021-12-01", formatter))
+				.matchRequestLastDate( LocalDate.parse("2021-12-01", formatter) )
+				.tripDate(LocalDate.parse("2021-12-11", formatter))
 				.matchPeopleNum(3)
 				.matchAgeGroup(20)
 				.matchGender(0)
-				.customer(customerRep.getById("jang"))
+				.customer(customerRep.getById("kim"))
 				.region(regionRep.getById(2))
 				.build());
 		
 		matchBoardRep.save(MatchBoard.builder()
-				.matchTitle("아무거나")
+				.matchTitle("아무거나 넣어봄")
 				.matchContent("고기 짱맛있음")
-				.matchRequestLastDate( LocalDate.parse("2021-11-30", formatter) )
-				.tripDate(LocalDate.parse("2021-12-01", formatter))
+				.matchRequestLastDate( LocalDate.parse("2021-12-01", formatter) )
+				.tripDate(LocalDate.parse("2021-12-11", formatter))
+				.matchPeopleNum(3)
+				.matchAgeGroup(20)
+				.matchGender(0)
+				.customer(customerRep.getById("kim"))
+				.region(regionRep.getById(2))
+				.build());
+		
+		matchBoardRep.save(MatchBoard.builder()
+				.matchTitle("아무거나 넣어봄4")
+				.matchContent("고기 짱맛있음")
+				.matchRequestLastDate( LocalDate.parse("2021-12-01", formatter) )
+				.tripDate(LocalDate.parse("2021-12-11", formatter))
 				.matchPeopleNum(3)
 				.matchAgeGroup(20)
 				.matchGender(0)
 				.customer(customerRep.getById("jang"))
-				.region(regionRep.getById(2))
+				.region(regionRep.getById(7))
 				.build());
+		
+		matchBoardRep.save(MatchBoard.builder()
+				.matchTitle("아무거나 넣어봄3")
+				.matchContent("고기 짱맛있음")
+				.matchRequestLastDate( LocalDate.parse("2021-12-01", formatter) )
+				.tripDate(LocalDate.parse("2021-12-11", formatter))
+				.matchPeopleNum(3)
+				.matchAgeGroup(20)
+				.matchGender(0)
+				.customer(customerRep.getById("kim"))
+				.region(regionRep.getById(6))
+				.build());
+		
 	}
 	
 	@Test
@@ -251,5 +276,14 @@ public class SalientTest {
 	//신청취소
     public void deleteRequest() {
 		matchBoardRep.deleteById(4L);
+	}
+	
+	
+	@Test
+	public void test() {
+		List<MatchBoard> list = matchBoardRep.findByRegionAndDate(6, LocalDate.parse("2021-12-11", formatter));
+		for (MatchBoard board : list) {
+			System.out.println(board.getMatchTitle());
+		}
 	}
 }
