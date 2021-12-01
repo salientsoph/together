@@ -632,7 +632,7 @@
 
 								<div>
 									<select name="region" class="form-select" required="required">
-										<option value="1">--지역 선택--</option>
+										<option value="0">--지역 선택--</option>
 										<option value="1">서울</option>
 										<option value="2">경기/인천</option>
 										<option value="3">부산/경남</option>

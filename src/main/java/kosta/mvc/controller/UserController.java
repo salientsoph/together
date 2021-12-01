@@ -68,14 +68,29 @@ public class UserController {
 	}
 	
 	@RequestMapping("/customerRegister")
-	public String CustomerRegister(Customer customer) {
+	public String CustomerRegister(HttpServletRequest request, Customer customer) {
+		if(loginService.customerIdCheck(customer.getUserId())!=null) {
+			request.setAttribute("title", "SIGNUP FAILED");
+			request.setAttribute("message", "회원가입에 실패하였습니다");
+			return "user/login";
+		}
 		loginService.customerRegister(customer);
 		
 		return "user/login";
 	}
 	
 	@RequestMapping("/sellerRegister")
-	public String SellerRegister(Seller seller) {
+	public String SellerRegister(HttpServletRequest request, Seller seller) {
+		if(seller.getRegion()==null) {
+			request.setAttribute("title", "SIGNUP FAILED");
+			request.setAttribute("message", "지역을 선택하세요");
+			return "user/login";
+		}
+		if(loginService.sellerIdCheck(seller.getSellerId())!=null) {
+			request.setAttribute("title", "SIGNUP FAILED");
+			request.setAttribute("message", "회원가입에 실패하였습니다");
+			return "user/login";
+		}
 		loginService.sellerRegister(seller);
 		
 		return "user/login";
