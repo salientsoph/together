@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <c:set var = "path" value = "${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -588,8 +590,8 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 8; white-space: wrap; font-size: 14px; line-height: 21px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:montserrat;">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore <br> Ut
-          enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex consequat. </div>
+          <strong>Withrago<strong>는 여행자들에게 다양한 즐거움을 제공하기 위한 종합 플랫폼입니다<br>
+          지루하고 지쳤던 일상에서 벗어나 모험이 가득한 새로운 곳에서 Witrago 이용자 여러분들이 에너지를 재충전 할 수 있게 도와줍니다</div>
 
         <!-- LAYER NR. 5 -->
         <a href="https://wrapbootstrap.com/theme/star-travel-tour-booking-theme-admin-WB05T4R0J" target="_blank" class="tp-caption rev-btn " id="slide-33-layer-11" data-x="['left','left','left','left']"
@@ -1005,6 +1007,7 @@
 <!-- ====================================
 ———	VACETION SECTION
 ===================================== -->
+
 <section class="dzsparallaxer auto-init use-loading promotion-paralax">
   <div class="divimage dzsparallaxer--target" style="height: 700px;" data-src="${path}/assets/img/home/promotion/promotion-1.jpg">
   </div>
@@ -1013,8 +1016,7 @@
     <div class="row align-items-center justify-content-center text-center">
       <div class="col-12">
         <div class="content mb-7">
-          <h4 class="text-uppercase text-white mb-2">Winter Promotion</h4>
-          <h2 class="text-uppercase text-white font-weight-bold">Greek Island Vacation Tour</h2>
+          <h2 class="text-uppercase text-white font-weight-bold">에디터가 추천하는 국내 여행지</h2>
         </div>
         <ul class="list-unstyled icon-rating d-flex justify-content-center text-warning mb-1">
           <li class="me-1">
@@ -1033,294 +1035,10 @@
             <i class="fa fa-star" aria-hidden="true"></i>
           </li>
         </ul>		
-        <h4 class="text-white mb-4">$599 per person - 5 nights</h4>
-        <a href="single-package-right-sidebar.html" class="btn btn-primary text-uppercase">View Details</a>
+        <h4 class="text-white mb-4">여행만족도</h4>
+        <a href="single-package-right-sidebar.html" class="btn btn-primary text-uppercase">자세히 보기</a>
       </div>
     </div>			
-  </div>
-</section>
-
-<!-- ====================================
-———	DESTINATIONS SECTION
-===================================== -->
-<section class="py-8 py-lg-10">
-  <div class="container">
-    <div class="text-center section-title">
-      <h2 class="text-uppercase font-weight-bold position-relative">
-        <span class="bg-white">
-          Our Destinations
-        </span>
-      </h2>
-      <p class="text-capitalize text-center">Nullam vitae risus commodo arcu tincidunt ultricies</p>
-    </div>
-
-    <div class="bg-dark-light media media-large">
-      <div class="row no-gutters align-items-center">
-        <div class="col-md-6 overflow-hidden">
-          <a href="destination-cities.html">
-            <img class="lazyestload" data-src="${path}/assets/img/home/destination.jpg" src="${path}/assets/img/home/destination.jpg" alt="image">
-          </a>
-        </div>
-      
-        <div class="col-md-6">
-          <div class="media-body">
-            <h3 class="text-uppercase text-white font-weight-bold mb-xl-5">Choose <br>Your Destination</h3>
-            <p class="mb-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.</p>
-            
-            <div class="row">
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled mb-xl-5">
-                  <li class="media align-items-center mb-xl-2">
-                    <div class="me-2">
-                      <i class="fa fa-minus"></i>
-                    </div>
-                    <div class="media-body">
-                      Asia
-                    </div>
-                  </li>
-
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Aenean
-                      </div>
-                    </a>
-                  </li>
-
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Etiam
-                      </div>
-                    </a>
-                  </li>
-
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Donec
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled mb-xl-5">
-                  <li class="media align-items-center mb-xl-2">
-                    <div class="me-2">
-                      <i class="fa fa-minus"></i>
-                    </div>
-                    <div class="media-body">
-                      Europe
-                    </div>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Maecenas
-                      </div>
-                    </a>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Cras Sagittis
-                      </div>
-                    </a>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Vestibulum
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled mb-xl-5">
-                  <li class="media align-items-center mb-xl-2">
-                    <div class="me-2">
-                      <i class="fa fa-minus"></i>
-                    </div>
-                    <div class="media-body">
-                      America
-                    </div>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Morbi Sed
-                      </div>
-                    </a>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Pellentesque
-                      </div>
-                    </a>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Proin
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            
-              <div class="col-md-4">
-                <ul class="list-unstyled mb-xl-5">
-                  <li class="media align-items-center mb-xl-2">
-                    <div class="me-2">
-                      <i class="fa fa-minus"></i>
-                    </div>
-                    <div class="media-body">
-                      Africa
-                    </div>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Duis Eu
-                      </div>
-                    </a>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Morbi Nisl
-                      </div>
-                    </a>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Curabitur
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled mb-xl-5">
-                  <li class="media align-items-center mb-xl-2">
-                    <div class="me-2">
-                      <i class="fa fa-minus"></i>
-                    </div>
-                    <div class="media-body">
-                      Australia
-                    </div>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Vivamus
-                      </div>
-                    </a>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Nibh Odio
-                      </div>
-                    </a>
-                  </li>
-                
-                  <li class="">
-                    <a href="destination-single-city.html" class="media d-inline-flex align-items-center">
-                      <i class="fa fa-square me-2"></i>
-                      <div class="media-body">
-                        Dictum
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="text-uppercase">
-              <a href="destination-cities.html" class="btn btn-sm btn-outline-white">View all</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================================
-———	COUNTER SECTION
-===================================== -->
-<section class="counter-up dzsparallaxer auto-init use-loading counterup-paralax">
-  <div class="divimage dzsparallaxer--target" style="height: 700px;" data-src="${path}/assets/img/home/promotion/promotion-2.jpg">
-  </div>
-  
-  <div class="container paralax-container">
-    <div class="row align-items-center text-center" id="counter">
-      <div class="col-6 col-md-3 mb-5 mb-md-0">
-        <div class="icon icon-lg rounded-circle mx-auto bg-primary mb-3">
-          <i class="fas fa-map-marker-alt text-white" aria-hidden="true"></i>
-        </div>
-        <h1 class="counter-value mb-2" data-count="179">0</h1>
-        <h6 class="">Destinations</h6>
-      </div>
-
-      <div class="col-6 col-md-3 mb-5 mb-md-0">
-        <div class="icon icon-lg rounded-circle mx-auto bg-primary mb-3">
-          <i class="fa fa-gift text-white" aria-hidden="true"></i>
-        </div>
-        <h1 class="counter-value mb-2" data-count="48">0</h1>
-        <h6 class="">Tour pack</h6>
-      </div>
-
-      <div class="col-6 col-md-3">
-        <div class="icon icon-lg rounded-circle mx-auto bg-primary mb-3">
-          <i class="far fa-smile text-white" aria-hidden="true"></i>
-        </div>
-        <h1 class="counter-value mb-2" data-count="4562">0</h1>
-        <h6 class="">Happy clients</h6>
-      </div>
-
-      <div class="col-6 col-md-3">
-        <div class="icon icon-lg rounded-circle mx-auto bg-primary mb-3">
-          <i class="fa fa-life-ring text-white" aria-hidden="true"></i>
-        </div>
-        <h1 class="counter-value mb-2" data-count="24">0</h1>
-        <h6 class="">Hours support</h6>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1467,6 +1185,52 @@
 
   </div><!-- element wrapper ends -->
 
+
+<!-- ====================================
+———	COUNTER SECTION
+===================================== -->
+<section class="counter-up dzsparallaxer auto-init use-loading counterup-paralax">
+  <div class="divimage dzsparallaxer--target" style="height: 700px;" data-src="${path}/assets/img/home/promotion/promotion-2.jpg">
+  </div>
+  
+  <div class="container paralax-container">
+    <div class="row align-items-center text-center" id="counter">
+      <div class="col-6 col-md-3 mb-5 mb-md-0">
+        <div class="icon icon-lg rounded-circle mx-auto bg-primary mb-3">
+          <i class="fas fa-map-marker-alt text-white" aria-hidden="true"></i>
+        </div>
+        <h1 class="counter-value mb-2" data-count="179">0</h1>
+        <h6 class="">Destinations</h6>
+      </div>
+
+      <div class="col-6 col-md-3 mb-5 mb-md-0">
+        <div class="icon icon-lg rounded-circle mx-auto bg-primary mb-3">
+          <i class="fa fa-gift text-white" aria-hidden="true"></i>
+        </div>
+        <h1 class="counter-value mb-2" data-count="48">0</h1>
+        <h6 class="">Tour pack</h6>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="icon icon-lg rounded-circle mx-auto bg-primary mb-3">
+          <i class="far fa-smile text-white" aria-hidden="true"></i>
+        </div>
+        <h1 class="counter-value mb-2" data-count="4562">0</h1>
+        <h6 class="">Happy clients</h6>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="icon icon-lg rounded-circle mx-auto bg-primary mb-3">
+          <i class="fa fa-life-ring text-white" aria-hidden="true"></i>
+        </div>
+        <h1 class="counter-value mb-2" data-count="24">0</h1>
+        <h6 class="">Hours support</h6>
+      </div>
+    </div>
+  </div>
+</section>
+
+
     <!-- ====================================
     ——— FOOTER SECTION
     ===================================== -->
@@ -1485,33 +1249,34 @@
               <div class="title-tag">
                 <h6>Contact us</h6>
               </div>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.</p>
+              	상담전화 13:00 ~ 16:00(평일)</p>
               <ul class="list-unstyled mb-0">
+              	<li class="media mb-2">
+                  <div class="me-3">
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                  </div>
+                  <div class="media-body">
+                    <a href="tel:88657524332">대표전화 1666-3333</a>
+                  </div>
+                </li>
+                
+              
                 <li class="media mb-2">
                   <div class="me-3">
                     <i class="fa fa-home" aria-hidden="true"></i>
                   </div>
                   <div class="media-body">
-                     <a href="contact.html">61 Park Street, Fifth Avenue, NY</a>
+                     <a href="contact.html">(13637) 경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)</a>
                   </div>
                 </li>
-
-                <li class="media mb-2">
-                  <div class="me-3">
-                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                  </div>
-                  <div class="media-body">
-                    <a href="tel:88657524332">[88] 657 524 332</a>
-                  </div>
-                </li>
+                
                 
                 <li class="media">
                   <div class="me-3">
                     <i class="far fa-envelope" aria-hidden="true"></i>
                   </div>
                   <div class="media-body">
-                    <a href="mailTo:info@star-travel.com">info@star-travel.com</a>
+                    <a href="mailTo:info@star-travel.com">info@Withrago.com</a>
                   </div>
                 </li>
               </ul>
@@ -1590,7 +1355,8 @@
                 <h6>Newsletter</h6>
               </div>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+              <p>매주 금요일 오후, 구독자님을 위한 여행지 추천과 베스트 여행 후기를 전해드립니다.<br>
+              	 구독은 언제든지 해지하실 수 있습니다.</p>
 
               <form class="mb-6" action="index.html" method="post">
                 <div class="input-group input-group-sm">
