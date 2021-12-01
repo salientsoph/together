@@ -73,12 +73,12 @@ public class MatchBoard {
 	//희망하는 여행 인원수
 	private int matchPeopleNum;
 	
+	
 	//희망하는 여행 연령대
 	private int matchAgeGroup;
 	
 	//희망하는 여행모임 성별 (0: 혼성 / 1: 여성만 / 2: 남성만)
 	private int matchGender;
-	
 
 
 	//일정 상세 리스트 (1:다)

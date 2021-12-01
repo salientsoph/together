@@ -30,7 +30,7 @@
 
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/assets/img/favicon.png"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,13 +44,13 @@
 	<SCRIPT language=javascript>
 	   $(function(){
 		   $("#updateButton").click(function(){
-			   $("#requestForm").attr("action", "${pageContext.request.contextPath}/notice/updateForm");
+			   $("#requestForm").attr("action", "${pageContext.request.contextPath}/match/updateForm");
 			   $("#requestForm").submit();
 		   })
 		   
 		   $("#deleteButton").click(function(){
 			   if (confirm("정말 삭제하시겠습니까?") == true){
-				   $("#requestForm").attr("action","${pageContext.request.contextPath}/notice/delete");
+				   $("#requestForm").attr("action","${pageContext.request.contextPath}/match/delete");
 				   $("#requestForm").submit();
 			   }
 		   })
@@ -71,7 +71,7 @@
       <div class="container clearfix">
         <div id="menuzord" class="menuzord">
           <a href="index.html" class="menuzord-brand">
-            <img class="lazyestload" data-src="assets/img/logo-color-big.png" src="assets/img/logo-color-big.png" alt="logo-img">
+            <img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/logo-color-big.png" src="assets/img/logo-color-big.png" alt="logo-img">
           </a>
 
           <div class="nav-item dropdown nav-item-left me-0">
@@ -511,7 +511,25 @@
       </div>
     </nav>
   </header>
-  <div class="main-wrapper blog-single-right-sidebar">
+
+<!-- ====================================
+———	PAGE TITLE
+===================================== -->
+<section class="page-title">
+  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${pageContext.request.contextPath}/assets/img/pages/page-title-bg12.jpg);">
+    <div class="container">
+      <div class="row align-items-center justify-content-center" style="height: 200px;">
+        <div class="col-lg-6">
+          <div class="page-title-content">
+            <div class="">
+              <h2 class="text-uppercase text-white font-weight-bold">모임 게시판</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <!-- ====================================
@@ -523,58 +541,638 @@
       <div class="row">
         <div class="col-lg-8 col-xl-9 order-1 order-md-0">
           <div class="card card-lg card-transparent mb-8">
-            <div class="position-relative">
-              <img class="card-img-top rounded-lg lazyestload" data-src="assets/img/blog/blog-single-01.jpg" src="assets/img/blog/blog-single-01.jpg" alt="Card image cap">
-            </div>
+            
   
             <div class="card-body px-2 py-6">
-              <h3 class="mb-4">${requestScope.notice.noticeTitle}</h3>
+              <h3 class="mb-4">${requestScope.match.matchTitle}</h3>
   
               <div class="meta-post-sm mb-4">
                 <ul class="list-unstyled d-flex flex-wrap mb-0">
                   <li class="meta-tag me-4 mb-1">
                     <i class="fa fa-user text-gray-color" aria-hidden="true"></i>
                     <a class="text-gray-color hover-text-primary" href="">
-                      <span class="ms-1 text-capitalize">${requestScope.notice.admin.adminNickname}</span>
+                      <span class="ms-1 text-capitalize">${requestScope.match.customer.userNickname}</span>
                     </a>
                   </li>
   
                   <li class="meta-tag text-gray-color me-4 mb-1">
                     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  	<tags:localDate date="${requestScope.notice.noticeRegdate}"/>
+                    <span class="ms-1 text-capitalize">${requestScope.match.tripDate}</span>
                   </li>
   
+                  <li class="meta-tag text-gray-color me-4 mb-1">
+                    <i class="fa fa fa-tags" aria-hidden="true"></i>
+                    <span class="ms-1 text-capitalize">${requestScope.match.region.regionName}</span>
+                  </li>
+  
+  <!--
+                  <li class="meta-tag text-gray-color me-4 mb-1">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span class="ms-1 text-capitalize">8 com</span>
+                  </li>
+                  
+    -->
                 </ul>
               </div>
   
-              <p>${requestScope.notice.noticeContent}</p>
+              <p>${requestScope.match.matchContent}</p>
+  
+              
+  
+              <blockquote class="blockquote rounded p-7 mb-5"
+                style="background-image: url(${pageContext.request.contextPath}/assets/img/blog/blog-single-02.png); background-size: cover; background-position: center top; background-repeat: no-repeat">
+                <p class="line-height-24 h4 text-white mb-5"> 신청한사람 이름이랑 신청하기 버튼 넣기</p>
+                <footer class="blockquote-footer text-white">by <cite title="Source Title">Adam Smith</cite></footer>
+              </blockquote>
             </div>
-  		</div>
-  	</div>
+  
+  			<table style="margin:auto">
+			   <tr>
+			        <td height="20" colspan="4" align="center" valign="middle">
+						<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
+						<form name="requestForm" method="post" id="requestForm">
+							<input type=hidden name="matchNo" value="${requestScope.match.matchNo}">
+							<button id="updateButton" type="button" name="update" class="btn btn-secondary btn-lg mb-2">수정하기</button>
+							<button id="deleteButton" type="button" name="delete" class="btn btn-secondary btn-lg mb-2">삭제하기</button>
+							<a href="${pageContext.request.contextPath}/match/list" >
+								<button  type="button" name="list" class="btn btn-secondary btn-lg mb-2">목록으로</button>
+							</a>
+						</form>
+					</td>
+			    </tr>
+			  </table>
+  
+  
+            <div class="card-footer d-flex align-items-center bg-smoke rounded p-3 p-md-4">
+              <span class="font-weight-bold font-size-15">Share it</span>
+  
+              <ul class="list-unstyled d-flex ms-auto mb-0">
+                <li class="me-3">
+                  <a href="javascript:void(0)" class="text-gray-color hover-text-primary">
+                    <i class="fab fa-facebook-f icon-medium" aria-hidden="true"></i>
+                  </a>
+                </li>
+  
+                <li class="me-3">
+                  <a href="avascript:void(0)" class="text-gray-color hover-text-primary">
+                    <i class="fab fa-twitter icon-medium" aria-hidden="true"></i>
+                  </a>
+                </li>
+  
+                <li class="me-3">
+                  <a href="avascript:void(0)" class="text-gray-color hover-text-primary">
+                    <i class="fab fa-linkedin-in icon-medium" aria-hidden="true"></i>
+                  </a>
+                </li>
+  
+                <li class="me-3">
+                  <a href="avascript:void(0)" class="text-gray-color hover-text-primary">
+                    <i class="fab fa-google-plus-g icon-medium" aria-hidden="true"></i>
+                  </a>
+                </li>
+  
+                <li class="me-3">
+                  <a href="avascript:void(0)" class="text-gray-color hover-text-primary">
+                    <i class="fab fa-pinterest-p icon-medium" aria-hidden="true"></i>
+                  </a>
+                </li>
+  
+                <li class="me-3">
+                  <a href="avascript:void(0)" class="text-gray-color hover-text-primary">
+                    <i class="fab fa-tumblr icon-medium" aria-hidden="true"></i>
+                  </a>
+                </li>
+  
+                <li>
+                  <a href="avascript:void(0)" class="text-gray-color hover-text-primary">
+                    <i class="fab fa-instagram icon-medium" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+  
+          <div class="mb-7">
+            <h3 class="mb-6">Comments (4)</h3>
+  
+            <div class="media mb-8">
+              <div class="img-overlay rounded me-4">
+                <img class="w-100 lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/comments-01.jpg" src="assets/img/blog/comments-01.jpg" alt="Generic placeholder image">
+                <a href="" class="hover-img-overlay-dark"></a>
+              </div>
+  
+              <div class="media-body">
+                <div class="mb-7">
+                  <h6 class="font-weight-bold text-capitalize mb-2">Jessica Brown</h6>
+  
+                  <div class="meta-tag text-gray-color mb-3">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    <span class="ms-2 text-capitalize">Mar 20, 2021</span>
+                  </div>
+  
+                  <p>Pellen tesque vitae ultrices magna. Cras vul putate commodo justo. Fusce vitae justo
+                    efficitur, condi mentum ante. Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore
+                    Et Dolore Magna
+                    Aliqua. Ut Enim Ad Minim
+                    Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute
+                    Irure Dolor In
+                    Reprehenderit.</p>
+  
+                  <button type="submit" onclick="location.href='javascript:void(0)';" class="btn text-primary p-0">
+                    Reply
+                  </button>
+                </div>
+  
+                <div class="media flex-column flex-md-row mb-7">
+                  <div class="img-overlay rounded mb-4 mb-md-0 me-md-4">
+                    <img class="w-100 lazyestload" data-src="assets/img/blog/comments-02.jpg" src="assets/img/blog/comments-02.jpg" alt="Generic placeholder image">
+                    <a href="" class="hover-img-overlay-dark"></a>
+                  </div>
+  
+                  <div class="media-body">
+                    <h6 class="font-weight-bold text-capitalize mb-2">Samants deo</h6>
+  
+                    <div class="meta-tag text-gray-color mb-3">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-2 text-capitalize">Mar 20, 2021</span>
+                    </div>
+  
+                    <p>Nullam placerat varius scelerisque. Proin non lorem ac eros placerat porta. Nullam quis bibendum
+                      nibh. Cras id ipsum
+                      aliquam, efficitur neque vitae, faucibus justo. Sed sagittis blandit tincidunt. Vestibulum nisi
+                      orci, sollicitudin
+                      porttitor eros et, dignissim euismod neque. Suspendisse feugiat id erat non porta. Mauris facilisis
+                      ligula neque, nec
+                      gravida metus consectetur a. Nam sit amet pulvinar ante, sed accumsan.</p>
+                  </div>
+                </div>
+  
+                <div class="media flex-column flex-md-row">
+                  <div class="img-overlay rounded mb-4 mb-md-0 me-md-4">
+                    <img class="w-100 lazyestload" data-src="assets/img/blog/comments-03.jpg" src="assets/img/blog/comments-03.jpg" alt="Generic placeholder image">
+                    <a href="" class="hover-img-overlay-dark"></a>
+                  </div>
+  
+                  <div class="media-body">
+                    <h6 class="font-weight-bold text-capitalize mb-2">Quanta meri</h6>
+  
+                    <div class="meta-tag text-gray-color mb-3">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-2 text-capitalize">Mar 20, 2021</span>
+                    </div>
+  
+                    <p class="mb-0">Aliquam pellentesque tristique felis, sed placerat justo accumsan id. Nulla facilisi.
+                      Cras mattis urna eu tincidunt
+                      congue. Fusce bibendum, augue ut tempus vulputate, tellus libero tincidunt mi, et facilisis nunc
+                      mauris at neque. Sed
+                      vitae dolor at tortor venenatis euismod ut sed odio. Mauris vitae quam risus. Aenean felis justo,
+                      iaculis sit amet
+                      sagittis ac, condimentum at urna. Fusce vel gravida velit. Sed nec sem sapien.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="media">
+              <div class="img-overlay rounded me-4">
+                <img class="w-100 lazyestload" data-src="assets/img/blog/comments-04.jpg" src="assets/img/blog/comments-04.jpg" alt="Generic placeholder image">
+                <a href="" class="hover-img-overlay-dark"></a>
+              </div>
+  
+              <div class="media-body">
+                <div class="">
+                  <h6 class="font-weight-bold text-capitalize mb-2">Philep crown</h6>
+  
+                  <div class="meta-tag text-gray-color mb-3">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    <span class="ms-2 text-capitalize">Mar 20, 2021</span>
+                  </div>
+  
+                  <p>Pellen tesque vitae ultrices magna. Cras vul putate commodo justo. Fusce vitae justo
+                    efficitur, condi mentum ante. Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore
+                    Et Dolore
+                    Magna
+                    Aliqua. Ut Enim Ad Minim
+                    Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute
+                    Irure Dolor
+                    In
+                    Reprehenderit.</p>
+  
+                  <button type="submit" onclick="location.href='javascript:void(0)';" class="btn text-primary p-0">
+                    Reply
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="mb-7 mb-lg-0">
+            <h3 class="mb-6">Leave A Comments</h3>
+  
+            <form action="" method="POST" role="form" class="form">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control border-0 bg-smoke" required="" placeholder="Name">
+                  </div>
+                </div>
+  
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="email" class="form-control border-0 bg-smoke" required="" placeholder="Email">
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <textarea class="form-control border-0 bg-smoke" rows="7" placeholder="Your Message"></textarea>
+              </div>
+  
+              <button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">send
+                now</button>
+            </form>
+          </div>
+        </div>
+  
+        
+      </div>
+  
+      <div class="d-md-none">
+        <div class="mb-4">
+          <ul class="nav nav-tabs nav-justified blog-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="recent-blog-tab" data-bs-toggle="tab" href="#recent-blog" role="tab"
+                aria-controls="recent-blog" aria-selected="true">Recent</a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link" id="popular-blog-tab" data-bs-toggle="tab" href="#popular-blog" role="tab"
+                aria-controls="popular-blog" aria-selected="false">Popular</a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link" id="new-blog-tab" data-bs-toggle="tab" href="#new-blog" role="tab" aria-controls="new-blog"
+                aria-selected="false">New</a>
+            </li>
+          </ul>
+  
+          <div class="tab-content bg-smoke border border-light-gray border-top-0 rounded-bottom px-3 py-5"
+            id="myTabContent">
+            <div class="tab-pane fade show active" id="recent-blog" role="tabpanel" aria-labelledby="recent-blog-tab">
+              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-01.jpg" src="assets/img/blog/tab-01.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Totam rem apriam eaque.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-02.jpg" src="assets/img/blog/tab-02.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Pitter soan smeeit herick.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-03.jpg" src="assets/img/blog/tab-03.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Amanda disuja carl parkar.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="media meta-post-sm">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-04.jpg" src="assets/img/blog/tab-04.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Rodney samp deo artich.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+  
+            <div class="tab-pane fade" id="popular-blog" role="tabpanel" aria-labelledby="popular-blog-tab">
+              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-04.jpg" src="assets/img/blog/tab-04.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Rodney samp deo artich.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-03.jpg" src="assets/img/blog/tab-03.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Amanda disuja carl parkar.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-02.jpg" src="assets/img/blog/tab-02.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Pitter soan smeeit herick.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="media meta-post-sm">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-01.jpg" src="assets/img/blog/tab-01.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Totam rem apriam eaque.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+  
+            <div class="tab-pane fade" id="new-blog" role="tabpanel" aria-labelledby="new-blog-tab">
+              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-02.jpg" src="assets/img/blog/tab-02.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Pitter soan smeeit herick.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-04.jpg" src="assets/img/blog/tab-04.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Rodney samp deo artich.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-01.jpg" src="assets/img/blog/tab-01.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Totam rem apriam eaque.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="media meta-post-sm">
+                <div class="img-overlay rounded me-2">
+                  <img class="lazyestload" data-src="assets/img/blog/tab-03.jpg" src="assets/img/blog/tab-03.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+  
+                <div class="media-body">
+                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
+                    Amanda disuja carl parkar.
+                  </a>
+  
+                  <ul class="list-unstyled d-flex flex-wrap mb-0">
+                    <li class="meta-tag text-gray-color me-4 mb-1">
+                      <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">5 March, 2021</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="bg-smoke border border-light-gray rounded p-3 mb-4">
+          <h3 class="mb-4">Categories</h3>
+    
+          <ul class="list-unstyled list-group list-group-flush">
+            <li class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+              <a href=""
+                class="d-flex text-dark hover-text-primary py-3">
+                <span>Business</span>
+                <small class="ms-auto font-weight-bold">(9)</small>
+              </a>
+            </li>
+    
+            <li class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+              <a href=""
+                class="d-flex text-dark hover-text-primary py-3">
+                <span>Design</span>
+                <small class="ms-auto font-weight-bold">(7)</small>
+              </a>
+            </li>
+    
+            <li class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+              <a href=""
+                class="d-flex text-dark hover-text-primary py-3">
+                <span>Photography</span>
+                <small class="ms-auto font-weight-bold">(5)</small>
+              </a>
+            </li>
+    
+            <li class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+              <a href=""
+                class="d-flex text-dark hover-text-primary py-3">
+                <span>Creative</span>
+                <small class="ms-auto font-weight-bold">(8)</small>
+              </a>
+            </li>
+    
+            <li class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+              <a href=""
+                class="d-flex text-dark hover-text-primary py-3">
+                <span>Tours</span>
+                <small class="ms-auto font-weight-bold">(6)</small>
+              </a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="bg-smoke border border-light-gray rounded p-3 mb-4 mb-lg-0">
+          <h3 class="mb-6">Instagram</h3>
+  
+          <div class="mb-2">
+            <div class="row px-2">
+              <div class="col-4 px-1">
+                <div class="img-overlay rounded">
+                  <img class="w-100 lazyestload" data-src="assets/img/blog/instagram-new-01.jpg" src="assets/img/blog/instagram-new-01.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+              </div>
+  
+              <div class="col-4 px-1">
+                <div class="img-overlay rounded">
+                  <img class="w-100 lazyestload" data-src="assets/img/blog/instagram-new-02.jpg" src="assets/img/blog/instagram-new-02.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+              </div>
+  
+              <div class="col-4 px-1">
+                <div class="img-overlay rounded">
+                  <img class="w-100 lazyestload" data-src="assets/img/blog/instagram-new-03.jpg" src="assets/img/blog/instagram-new-03.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="">
+            <div class="row px-2">
+              <div class="col-4 px-1">
+                <div class="img-overlay rounded">
+                  <img class="w-100 lazyestload" data-src="assets/img/blog/instagram-new-04.jpg" src="assets/img/blog/instagram-new-04.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+              </div>
+  
+              <div class="col-4 px-1">
+                <div class="img-overlay rounded">
+                  <img class="w-100 lazyestload" data-src="assets/img/blog/instagram-new-05.jpg" src="assets/img/blog/instagram-new-05.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+              </div>
+  
+              <div class="col-4 px-1">
+                <div class="img-overlay rounded">
+                  <img class="w-100 lazyestload" data-src="assets/img/blog/instagram-new-06.jpg" src="assets/img/blog/instagram-new-06.jpg" alt="Generic placeholder image">
+                  <a href="" class="hover-img-overlay-dark"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
-  
-  
-  <table style="margin:auto">
-   <tr>
-        <td height="20" colspan="4" align="center" valign="middle">
-			<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
-			<form name="requestForm" method="post" id="requestForm">
-				<input type=hidden name="noticeNo" value="${notice.noticeNo}">
-				<button id="updateButton" type="button" name="update" class="btn btn-secondary btn-lg mb-2">수정하기</button>
-				<button id="deleteButton" type="button" name="delete" class="btn btn-secondary btn-lg mb-2">삭제하기</button>
-				<a href="${pageContext.request.contextPath}/notice/list" >
-					<button  type="button" name="list" class="btn btn-secondary btn-lg mb-2">목록으로</button>
-				</a>
-			</form>
-		</td>
-    </tr>
-  </table>
-  
-  
-  
-  </div>
-  </section>
+</section>
+
+
+
+ 
  
  		
     <!-- ====================================

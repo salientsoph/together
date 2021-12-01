@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -12,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>공지사항</title>
+    <title>장소 게시판</title>
 
     <!-- Plugins css Style -->
     <link href='${pageContext.request.contextPath}/assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
@@ -20,9 +18,9 @@
     <link href="${pageContext.request.contextPath}/assets/plugins/animate/animate.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord-animations.css" rel="stylesheet">
-    <link href='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
-
-    <!-- GOOGLE FONT -->
+	<link href='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
+    
+	<!-- GOOGLE FONT -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700' rel='stylesheet'>
 
     <!-- CUSTOM CSS -->
@@ -30,7 +28,7 @@
 
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/assets/img/favicon.png"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,25 +36,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-	<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-	<SCRIPT language=javascript>
-	   $(function(){
-		   $("#updateButton").click(function(){
-			   $("#requestForm").attr("action", "${pageContext.request.contextPath}/notice/updateForm");
-			   $("#requestForm").submit();
-		   })
-		   
-		   $("#deleteButton").click(function(){
-			   if (confirm("정말 삭제하시겠습니까?") == true){
-				   $("#requestForm").attr("action","${pageContext.request.contextPath}/notice/delete");
-				   $("#requestForm").submit();
-			   }
-		   })
-	   })
-	</script>
-	
 
   </head>     
 
@@ -71,7 +50,7 @@
       <div class="container clearfix">
         <div id="menuzord" class="menuzord">
           <a href="index.html" class="menuzord-brand">
-            <img class="lazyestload" data-src="assets/img/logo-color-big.png" src="assets/img/logo-color-big.png" alt="logo-img">
+            <img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/logo-color-big.png" src="${pageContext.request.contextPath}/assets/img/logo-color-big.png" alt="logo-img">
           </a>
 
           <div class="nav-item dropdown nav-item-left me-0">
@@ -109,7 +88,7 @@
               </ul>
             </li>
 
-            <li class="">
+            <li class=" active ">
               <a href="javascript:void(0)">Tours</a>
               <div class="megamenu drop-up">
                 <div class="megamenu-row">
@@ -124,7 +103,7 @@
                         <a href="packages-grid-right-sidebar.html">Packages Sidebar Right</a>
                       </li>
 
-                      <li class="">
+                      <li class=" active ">
                         <a href="packages-grid.html">Packages 3 Columns</a>
                       </li>
                     </ul>
@@ -408,7 +387,7 @@
               </ul>
             </li>
 
-            <li class=" active ">
+            <li class="">
               <a href="javascript:void(0)">Blog</a>
 
               <ul class="dropdown drop-up">
@@ -449,13 +428,13 @@
                   </ul>
                 </li>
 
-                <li class=" active  ||
+                <li class=" ||
                     ">
 
                   <a href="javascript:void(0)">Blog Single Post</a>
 
                   <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class=" active ">
+                    <li class="">
                       <a href="blog-single-right-sidebar.html">Blog Right Sidebar</a>
                     </li>
 
@@ -511,71 +490,634 @@
       </div>
     </nav>
   </header>
- 
+  <div class="main-wrapper packages-grid">
+
 
 <!-- ====================================
-——— TRAVEL LIST SECTION
+———	PAGE TITLE
 ===================================== -->
-<section class="section-top">
-  <div class="py-8 py-md-9 py-lg-10">
+<section class="page-title">
+  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${pageContext.request.contextPath}/assets/img/pages/page-title-bg5.jpg);">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-xl-9 order-1 order-md-0">
-          <div class="card card-lg card-transparent mb-8">
-            <div class="position-relative">
-              <img class="card-img-top rounded-lg lazyestload" data-src="assets/img/blog/blog-single-01.jpg" src="assets/img/blog/blog-single-01.jpg" alt="Card image cap">
+      <div class="row align-items-center justify-content-center" style="height: 200px;">
+        <div class="col-lg-6">
+          <div class="page-title-content">
+            <div class="title-border">
+              <h2 class="text-uppercase text-white font-weight-bold">장소 게시판</h2>
             </div>
-  
-            <div class="card-body px-2 py-6">
-              <h3 class="mb-4">${requestScope.notice.noticeTitle}</h3>
-  
-              <div class="meta-post-sm mb-4">
-                <ul class="list-unstyled d-flex flex-wrap mb-0">
-                  <li class="meta-tag me-4 mb-1">
-                    <i class="fa fa-user text-gray-color" aria-hidden="true"></i>
-                    <a class="text-gray-color hover-text-primary" href="">
-                      <span class="ms-1 text-capitalize">${requestScope.notice.admin.adminNickname}</span>
-                    </a>
-                  </li>
-  
-                  <li class="meta-tag text-gray-color me-4 mb-1">
-                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  	<tags:localDate date="${requestScope.notice.noticeRegdate}"/>
-                  </li>
-  
+            <p class="text-white mb-0"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================
+———	TOUR PACKAGES SECTION
+===================================== -->
+<section class="bg-smoke py-10">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="card card-hover">
+          <a href="single-package-right-sidebar.html" class="position-relative">
+            <img class="card-img-top lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/deal/deal-01.jpg" src="${pageContext.request.contextPath}/assets/img/home/deal/deal-01.jpg" alt="Card image cap">
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+             
+        
+              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+        
+              <small>
+                <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                  <li class="border-right border-white pe-2">7 days</li>
+                  <li class="border-right border-white px-2">15 hrs</li>
+                  <li class="ps-2">15 min</li>
                 </ul>
-              </div>
-  
-              <p>${requestScope.notice.noticeContent}</p>
+              </small>
             </div>
-  		</div>
-  	</div>
+          </a>
+        
+          <div class="card-body px-4">
+            <h5>
+              <a href="single-package-right-sidebar.html" class="card-title text-uppercase">Suspendisse Tour</a>
+            </h5>
+            <p class="mb-5">Integer purus ex, dictum nec elementum eu, tristique vel lectus. Donec rutrum lectus et pharetra
+              egestas.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">Start from</p>
+                <h3 class="text-primary">$299</h3>
+              </div>
+              <div>
+                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#inquiry" class="btn btn-xs btn-outline-secondary text-uppercase">Inquiry</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="card card-hover">
+          <a href="single-package-right-sidebar.html" class="position-relative">
+            <img class="card-img-top lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/deal/deal-02.jpg" src="${pageContext.request.contextPath}/assets/img/home/deal/deal-02.jpg" alt="Card image cap">
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+        
+              <small>
+                <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                  <li class="border-right border-white pe-2">12 days</li>
+                  <li class="border-right border-white px-2">3 hrs</li>
+                  <li class="ps-2">12 min</li>
+                </ul>
+              </small>
+            </div>
+          </a>
+        
+          <div class="card-body px-4">
+            <h5 class="">
+              <a href="single-package-right-sidebar.html" class="card-title text-uppercase">Eros Erat Tour</a>
+            </h5>
+            <p class="mb-5">Proin convallis magna vel libero accumsan sollicitudin. Quisque dapibus vitae turpis eu magna
+              sagittis.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">Start from</p>
+                <h3 class="text-primary">$499</h3>
+              </div>
+              <div>
+                <a href="booking-step-1.html" class="btn btn-xs btn-outline-secondary text-uppercase">Book now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="card card-hover">
+          <a href="single-package-right-sidebar.html" class="position-relative">
+            <img class="card-img-top lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/deal/deal-03.jpg" src="${pageContext.request.contextPath}/assets/img/home/deal/deal-03.jpg" alt="Card image cap">
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+        
+              <small>
+                <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                  <li class="border-right border-white pe-2">17 days</li>
+                  <li class="border-right border-white px-2">14 hrs</li>
+                  <li class="ps-2">10 min</li>
+                </ul>
+              </small>
+            </div>
+          </a>
+        
+          <div class="card-body px-4">
+            <h5>
+              <a href="single-package-right-sidebar.html" class="card-title text-uppercase">Quisque Tour</a>
+            </h5>
+            <p class="mb-5">Vivamus eu mattis nibh. Quisque eget ipsum at odio fringilla consequat vel id erat. Suspendisse non
+              feugiat mi.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">Start from</p>
+                <h3 class="text-primary">$349</h3>
+              </div>
+              <div>
+                <a href="single-package-fullwidth.html" class="btn btn-xs btn-outline-secondary text-uppercase">Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="card card-hover">
+          <a href="single-package-right-sidebar.html" class="position-relative">
+            <img class="card-img-top lazyestload" data-src="${pageContext.request.contextPath}/assets/img/packages/package-01.jpg" src="${pageContext.request.contextPath}/assets/img/packages/package-01.jpg" alt="Card image cap">
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+        
+              <small>
+                <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                  <li class="border-right border-white pe-2">25 days</li>
+                  <li class="border-right border-white px-2">01 hrs</li>
+                  <li class="ps-2">03 min</li>
+                </ul>
+              </small>
+            </div>
+          </a>
+        
+          <div class="card-body px-4">
+            <h5 class="">
+              <a href="single-package-right-sidebar.html" class="card-title text-uppercase">Blandit Tour</a>
+            </h5>
+        
+            <p class="mb-5">Sagittis proin convallis magna vel libero accumsan sollicitudin. Quisque dapibus vitae turpis eu
+              magna.</p>
+        
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">Start from</p>
+                <h3 class="text-primary">$199</h3>
+              </div>
+              <div>
+                <a href="single-package-fullwidth.html" class="btn btn-xs btn-outline-secondary text-uppercase">Details</a>
+                <a href="" class="btn btn-xs btn-outline-secondary px-3">
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="card card-hover">
+          <a href="single-package-right-sidebar.html" class="position-relative">
+            <img class="card-img-top lazyestload" data-src="${pageContext.request.contextPath}/assets/img/packages/package-02.jpg" src="${pageContext.request.contextPath}/assets/img/packages/package-02.jpg" alt="Card image cap">
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+        
+              <small>
+                <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                  <li class="border-right border-white pe-2">27 days</li>
+                  <li class="border-right border-white px-2">05 hrs</li>
+                  <li class="ps-2">33 min</li>
+                </ul>
+              </small>
+            </div>
+          </a>
+        
+          <div class="card-body px-4">
+            <h5 class="">
+              <a href="single-package-right-sidebar.html" class="card-title text-uppercase">Turpis Eu Tour</a>
+            </h5>
+        
+            <p class="mb-5">Suspendisse non feugiat mi. Vivamus eu mattis nibh. Quisque eget ipsum at odio fringilla consequat
+              vel id erat.</p>
+        
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">Start from</p>
+                <h3 class="text-primary">$249</h3>
+              </div>
+              <div>
+                <a href="booking-step-1.html" class="btn btn-xs btn-outline-secondary text-uppercase">Book</a>
+                <a href="" class="btn btn-xs btn-outline-secondary px-3">
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="card card-hover">
+          <a href="single-package-right-sidebar.html" class="position-relative">
+            <img class="card-img-top lazyestload" data-src="${pageContext.request.contextPath}/assets/img/packages/package-03.jpg" src="${pageContext.request.contextPath}/assets/img/packages/package-03.jpg" alt="Card image cap">
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+              <div class="badge bg-primary badge-rounded-circle">
+                <span class="d-block">
+                  50%<br>off
+                </span>
+              </div>
+        
+              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+        
+              <small>
+                <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                  <li class="border-right border-white pe-2">35 days</li>
+                  <li class="border-right border-white px-2">11 hrs</li>
+                  <li class="ps-2">03 min</li>
+                </ul>
+              </small>
+            </div>
+          </a>
+        
+          <div class="card-body px-4">
+            <h5>
+              <a href="single-package-right-sidebar.html" class="card-title text-uppercase">Pharetra Tour</a>
+            </h5>
+            <p class="mb-5">Donec rutrum lectus et pharetra egestas. Integer purus ex, dictum nec elementum eu, tristique vel
+              lectus.</p>
+        
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">Start from</p>
+                <h3 class="text-primary">$149</h3>
+              </div>
+              <div>
+                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#inquiry" class="btn btn-xs btn-outline-secondary text-uppercase">Inquiry</a>
+                <a href="" class="btn btn-xs btn-outline-secondary px-3">
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+        <div class="card card-hover">
+          <a href="single-package-right-sidebar.html" class="position-relative">
+            <img class="card-img-top lazyestload" data-src="${pageContext.request.contextPath}/assets/img/packages/package-04.jpg" src="${pageContext.request.contextPath}/assets/img/packages/package-04.jpg" alt="Card image cap">
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+        
+              <small>
+                <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                  <li class="border-right border-white pe-2">07 days</li>
+                  <li class="border-right border-white px-2">15 hrs</li>
+                  <li class="ps-2">20 min</li>
+                </ul>
+              </small>
+            </div>
+          </a>
+        
+          <div class="card-body px-4">
+            <h5 class="">
+              <a href="single-package-right-sidebar.html" class="card-title text-uppercase">France / Europe</a>
+            </h5>
+        
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+        
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">Start from</p>
+                <h3 class="text-primary">$150</h3>
+              </div>
+              <div>
+                <a href="single-package-fullwidth.html" class="btn btn-xs btn-outline-secondary text-uppercase">Details</a>
+                <a href="" class="btn btn-xs btn-outline-secondary px-3">
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+        <div class="card card-hover">
+          <a href="single-package-right-sidebar.html" class="position-relative">
+            <img class="card-img-top lazyestload" data-src="${pageContext.request.contextPath}/assets/img/packages/package-05.jpg" src="${pageContext.request.contextPath}/assets/img/packages/package-05.jpg" alt="Card image cap">
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+              <div class="badge bg-primary badge-rounded-circle">
+                <span class="d-block">
+                  50%<br>off
+                </span>
+              </div>
+        
+              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+        
+              <small>
+                <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                  <li class="border-right border-white pe-2">07 days</li>
+                  <li class="border-right border-white px-2">15 hrs</li>
+                  <li class="ps-2">20 min</li>
+                </ul>
+              </small>
+            </div>
+          </a>
+        
+          <div class="card-body px-4">
+            <h5 class="">
+              <a href="single-package-right-sidebar.html" class="card-title text-uppercase"> Europe / France</a>
+            </h5>
+        
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+        
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">Start from</p>
+                <h3 class="text-primary">$150</h3>
+              </div>
+              <div>
+                <a href="single-package-fullwidth.html" class="btn btn-xs btn-outline-secondary text-uppercase">Details</a>
+                <a href="" class="btn btn-xs btn-outline-secondary px-3">
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-hover">
+          <a href="single-package-right-sidebar.html" class="position-relative">
+            <img class="card-img-top lazyestload" data-src="${pageContext.request.contextPath}/assets/img/packages/package-06.jpg" src="${pageContext.request.contextPath}/assets/img/packages/package-06.jpg" alt="Card image cap">
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+        
+              <small>
+                <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                  <li class="border-right border-white pe-2">07 days</li>
+                  <li class="border-right border-white px-2">15 hrs</li>
+                  <li class="ps-2">20 min</li>
+                </ul>
+              </small>
+            </div>
+          </a>
+        
+          <div class="card-body px-4">
+            <h5 class="">
+              <a href="single-package-right-sidebar.html" class="card-title text-uppercase"> Europe / France</a>
+            </h5>
+        
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+        
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">Start from</p>
+                <h3 class="text-primary">$150</h3>
+              </div>
+              <div>
+                <a href="single-package-fullwidth.html" class="btn btn-xs btn-outline-secondary text-uppercase">Details</a>
+                <a href="" class="btn btn-xs btn-outline-secondary px-3">
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>		
   </div>
+  
+  
+  <!-- ====================================
+———	PAGINATION
+===================================== -->
+<c:set var="doneLoop" value="false"/>
+
+<section class="pt-5 pt-md-7">
+  <div class="container">
+    <nav aria-label="Page navigation">
+    
+     <ul class="pagination justify-content-center align-items-center">
+    <!-- previous -->
+    <c:choose>
+    <c:when test="${(startPage-blockCount) > 0}"> <!-- (-2) > 0  -->		      
+		 <li class="page-item">
+          <a class="page-link" href="/notice/list?nowPage=${startPage-1}" >
+            <i class="fas fa-long-arrow-alt-left d-none d-md-inline-block me-md-1" aria-hidden="true" "></i> Previous
+          </a>
+        </li>
+	</c:when>
+	<c:otherwise>
+		<li class="page-item">
+          <a class="page-link disabled" >
+            <i class="fas fa-long-arrow-alt-left d-none d-md-inline-block me-md-1" aria-hidden="true" "></i> Previous
+          </a>
+        </li>
+	</c:otherwise>
+	</c:choose>
+	<!-- previous -->
+    
+     
+        <c:forEach var='i' begin='${startPage}' end='${(startPage-1)+blockCount}'> 
+		
+			<c:if test="${(i-1)>=noticeList.getTotalPages()}">
+				<c:set var="doneLoop" value="true"/>
+			</c:if> 
+				    
+			<c:if test="${not doneLoop}" >
+				 <li class="page-item">
+		          	<a class="page-link active" href="/notice/list?nowPage=${i}">${i}</a>
+		       	 </li> 
+			</c:if>
+		</c:forEach>
+    
+    <!-- Next -->
+    <c:choose>
+    <c:when test="${(startPage+blockCount)<=noticeList.getTotalPages()}">     
+		<li class="page-item">
+          <a class="page-link" href="/notice/list?nowPage=${startPage+blockCount}">Next
+            <i class="fas fa-long-arrow-alt-right d-none d-md-inline-block ms-md-1" aria-hidden="true"></i>
+          </a>
+        </li>
+	 </c:when>
+	 <c:otherwise>
+	 	<li class="page-item">
+          <a class="page-link disabled">Next
+            <i class="fas fa-long-arrow-alt-right d-none d-md-inline-block ms-md-1" aria-hidden="true"></i>
+          </a>
+        </li>
+	 </c:otherwise>
+	 </c:choose>
+	 <!-- Next -->
+      </ul>
+    </nav>
   </div>
-  
-  
-  <table style="margin:auto">
-   <tr>
-        <td height="20" colspan="4" align="center" valign="middle">
-			<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
-			<form name="requestForm" method="post" id="requestForm">
-				<input type=hidden name="noticeNo" value="${requestScope.notice.noticeNo}">
-				<button id="updateButton" type="button" name="update" class="btn btn-secondary btn-lg mb-2">수정하기</button>
-				<button id="deleteButton" type="button" name="delete" class="btn btn-secondary btn-lg mb-2">삭제하기</button>
-				<a href="${pageContext.request.contextPath}/notice/list" >
-					<button  type="button" name="list" class="btn btn-secondary btn-lg mb-2">목록으로</button>
-				</a>
-			</form>
-		</td>
-    </tr>
-  </table>
+</section>
+
+</section>
+
   
   
   
-  </div>
-  </section>
- 
- 		
+</section>
+
+
+
+
+
+
+  </div><!-- element wrapper ends -->
+
+
+
+
+
+
+
+
     <!-- ====================================
     ——— FOOTER SECTION
     ===================================== -->
@@ -585,7 +1127,7 @@
           <div class="row">
             <div class="col-md-6 col-lg-3 mb-7 mb-lg-0">
               <a class="d-inline-block" href="index.html">
-                <img class="w-100 mb-6 lazyestload" data-src="assets/img/logo-color-sm.png" src="assets/img/logo-color-sm.png" alt="img">
+                <img class="w-100 mb-6 lazyestload" data-src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png" src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png" alt="img">
               </a>
               <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
             </div>
@@ -635,9 +1177,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-1.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-1.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-1.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-1.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -645,9 +1187,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-2.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-2.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-2.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-2.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -655,9 +1197,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-3.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-3.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-3.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-3.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -665,9 +1207,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-4.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-4.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-4.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-4.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -675,9 +1217,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-5.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-5.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-5.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-5.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -685,9 +1227,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-6.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-6.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-6.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-6.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -776,7 +1318,6 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <script>
@@ -923,10 +1464,10 @@
     <script src="${pageContext.request.contextPath}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/plugins/menuzord/js/menuzord.js"></script>
-    <script src='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/lazyestload/lazyestload.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/star.js"></script>
+	<script src='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
+	<script src="${pageContext.request.contextPath}/assets/plugins/lazyestload/lazyestload.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/star.js"></script>
   </body>
 </html>
 

@@ -172,7 +172,7 @@ public class SalientTest {
 				.matchRequestLastDate( LocalDate.parse("2021-12-01", formatter) )
 				.tripDate(LocalDate.parse("2021-12-11", formatter))
 				.matchPeopleNum(3)
-				.matchAgeGroup(20)
+				.matchAgeGroup(40)
 				.matchGender(0)
 				.customer(customerRep.getById("kim"))
 				.region(regionRep.getById(2))
@@ -185,7 +185,7 @@ public class SalientTest {
 				.tripDate(LocalDate.parse("2021-12-11", formatter))
 				.matchPeopleNum(3)
 				.matchAgeGroup(20)
-				.matchGender(0)
+				.matchGender(1)
 				.customer(customerRep.getById("kim"))
 				.region(regionRep.getById(2))
 				.build());
@@ -197,7 +197,7 @@ public class SalientTest {
 				.tripDate(LocalDate.parse("2021-12-11", formatter))
 				.matchPeopleNum(3)
 				.matchAgeGroup(20)
-				.matchGender(0)
+				.matchGender(2)
 				.customer(customerRep.getById("jang"))
 				.region(regionRep.getById(7))
 				.build());
@@ -209,7 +209,7 @@ public class SalientTest {
 				.tripDate(LocalDate.parse("2021-12-11", formatter))
 				.matchPeopleNum(3)
 				.matchAgeGroup(20)
-				.matchGender(0)
+				.matchGender(1)
 				.customer(customerRep.getById("kim"))
 				.region(regionRep.getById(6))
 				.build());
