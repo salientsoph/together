@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:set var = "path" value = "${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -10,26 +13,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>공지사항</title>
-
+    <title>모임 게시판</title>
 
     <!-- Plugins css Style -->
-    <link href='${pageContext.request.contextPath}/assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
-    <link href='${pageContext.request.contextPath}/assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css' rel='stylesheet'>
-    <link href="${pageContext.request.contextPath}/assets/plugins/animate/animate.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord-animations.css" rel="stylesheet">
-    <link href='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
+    <link href='${path}/assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
+    <link href='${path}/assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css' rel='stylesheet'>
+    <link href="${path}/assets/plugins/animate/animate.css" rel="stylesheet">
+    <link href="${path}/assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
+    <link href="${path}/assets/plugins/menuzord/css/menuzord-animations.css" rel="stylesheet">
+    <link href='${path}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
+    
+    <!-- Javascript -->
+    <script src="${path}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="${path}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/assets/plugins/menuzord/js/menuzord.js"></script>
+    <script src='${path}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
+    <script src="${path}/assets/plugins/lazyestload/lazyestload.js"></script>
+    <script src="${path}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
+    <script src="${path}/assets/js/star.js"></script>
+    <script src="${path}/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+    
+    </script>
+    
+
 
     <!-- GOOGLE FONT -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700' rel='stylesheet'>
 
     <!-- CUSTOM CSS -->
-    <link href="${pageContext.request.contextPath}/assets/css/star.css" id="option_style" rel="stylesheet">
+    <link href="${path}/assets/css/star.css" id="option_style" rel="stylesheet">
 
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="${path}/assets/img/favicon.png"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,7 +68,7 @@
       <div class="container clearfix">
         <div id="menuzord" class="menuzord">
           <a href="index.html" class="menuzord-brand">
-            <img class="lazyestload" data-src="assets/img/logo-color-big.png" src="assets/img/logo-color-big.png" alt="logo-img">
+            <img class="lazyestload" data-src="${path}/assets/img/logo-color-big.png" src="${path}/assets/img/logo-color-big.png" alt="logo-img">
           </a>
 
           <div class="nav-item dropdown nav-item-left me-0">
@@ -147,7 +164,7 @@
               </div>
             </li>
 
-            <li class="">
+            <li class=" active ">
               <a href="javascript:void(0)">Hotels</a>
               <div class="megamenu drop-up">
                 <div class="megamenu-row">
@@ -206,7 +223,7 @@
                   <div class="col3">
                     <ul class="list-unstyled">
                       <li>Booking Steps</li>
-                      <li class="">
+                      <li class=" active ">
                         <a href="booking-step-1.html">Step 1 - Personal Info</a>
                       </li>
 
@@ -388,7 +405,7 @@
               </ul>
             </li>
 
-            <li class=" active ">
+            <li class="">
               <a href="javascript:void(0)">Blog</a>
 
               <ul class="dropdown drop-up">
@@ -430,7 +447,7 @@
                 </li>
 
                 <li class=" ||
-                     active ">
+                    ">
 
                   <a href="javascript:void(0)">Blog Single Post</a>
 
@@ -439,7 +456,7 @@
                       <a href="blog-single-right-sidebar.html">Blog Right Sidebar</a>
                     </li>
 
-                    <li class=" active ">
+                    <li class="">
                       <a href="blog-single-left-sidebar.html">Blog Left Sidebar</a>
                     </li>
                   </ul>
@@ -491,44 +508,145 @@
       </div>
     </nav>
   </header>
-
+  <div class="main-wrapper booking-step-1">
 
 
 <!-- ====================================
-——— TRAVEL LIST SECTION
+———	PAGE TITLE
 ===================================== -->
-  <div class="main-wrapper blog-single-left-sidebar">
-
-<section class="section-top">
-  <div class="py-8 py-md-9 py-lg-10">
+<section class="page-title">
+  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${path}/assets/img/pages/page-title-bg7.jpg);">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-xl-9 order-1 order-md-0 order-lg-1">
-          
-
-          <div class="mb-7 mb-lg-0">
-            <h3 class="mb-6">공지사항 새 글 작성</h3>
-  
-            <form method="POST" role="form" class="form" action="${pageContext.request.contextPath}/notice/insert">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <input type="text" name="noticeTitle" class="form-control border-0 bg-smoke" required="" placeholder="제목" style="width:850px;">
-                  </div>
-                </div>
-              </div>
-  
-              <div class="form-group">
-                <textarea name="noticeContent" class="form-control border-0 bg-smoke" rows="7" placeholder="내용" required=""></textarea>
-              </div>
-  			 
-              <button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">작성완료</button>
-              
-              
-            </form>
+      <div class="row align-items-center justify-content-center" style="height: 200px;">
+        <div class="col-lg-6">
+          <div class="page-title-content">
+            <div class="title-border">
+              <h2 class="text-uppercase text-white font-weight-bold">모임 게시판</h2>
+            </div>
+            <p class="text-white mb-0"></p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================
+———	BOOKING SECTION
+===================================== -->
+<section class="py-8 py-md-10">
+  <div class="container">    
+    <div class="row">
+      <div class="col order-1 order-md-0">
+        <h3 class="text-capitalize mb-5">게시물을 작성해주세요</h3>
+
+        <form action="${path}/match/insert" method="post" id="insertForm">
+          <div class="row">
+          
+              <div class="form-group">
+                <label for="inputName">게시물 제목</label>
+                <input type="text" required="" class="form-control border-0 bg-smoke" name="matchTitle">
+              </div>
+          
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="inputName">희망하는 인원수</label>
+                <input type="number" value="matchPeopleNum" class="form-control border-0 bg-smoke">
+              </div>
+            </div>
+            
+
+            <div class="mb-5">
+                  <div class="select-default select-category-1">
+                    <select class="select-option" value ="region">
+                      <option> 모임 지역</option>
+                      	<c:forEach items="${requestScope.region}" var="region">
+                     		<option>${region.regionName}</option>
+                      	</c:forEach>
+                    </select>
+                  </div>
+            </div>
+    
+    		<div class="form-group form-group-icon form-group-icon-dark mb-5">
+	                  <i class="far fa-calendar-alt" aria-hidden="true"></i>
+	                  <input type="text" class="form-control daterange-picker sidebar-daterange-picker text-uppercase"
+	                    name="dateRange" autocomplete="off" value="여행 날짜" placeholder="여행 날짜" />
+           	</div>
+    
+    	<div class="accordion" id="accordionOne">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h5 class="icon-bg" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                      aria-controls="collapseOne">
+                      <span>연령대</span>
+                    </h5>
+                  </div>
+            
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionOne">
+                    <div class="form-group">
+                    <div class="select-default">
+                      <select class="select-option">
+                        <option>20대</option>
+                        <option>30대</option>
+                        <option>40대</option>
+                        <option>50대 이상</option>
+                      </select>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+            
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h5 class="icon-bg collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                      aria-controls="collapseTwo">
+                      <span>모임 성별</span>
+                    </h5>
+                  </div>
+            
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOne">
+                    <div class="card-body">
+                      <div class="form-check custom-form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6">
+                        <label class="form-check-label" for="flexCheckDefault6">
+                          혼성
+                        </label>
+                      </div>
+
+                      <div class="form-check custom-form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7">
+                        <label class="form-check-label" for="flexCheckDefault7">
+                          여자만
+                        </label>
+                      </div>
+
+                      <div class="form-check custom-form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault8">
+                        <label class="form-check-label" for="flexCheckDefault8">
+                          남자만
+                        </label>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+    
+          <div class="form-group mb-5">
+            <label for="exampleFormControlTextarea1">게시물 내용</label>
+            <textarea class="form-control border-0 bg-smoke" rows="10" name="matchContent"></textarea>
+          </div>
+          </div>
+    
+          <div class="text-center text-md-start text-lg-end">
+            <button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">작성완료</button>
+            <button type="button" id="cancel" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">취소</button>
+          </div>
+        </form>
+      </div>
+    
     </div>
   </div>
 </section>
@@ -546,7 +664,7 @@
           <div class="row">
             <div class="col-md-6 col-lg-3 mb-7 mb-lg-0">
               <a class="d-inline-block" href="index.html">
-                <img class="w-100 mb-6 lazyestload" data-src="assets/img/logo-color-sm.png" src="assets/img/logo-color-sm.png" alt="img">
+                <img class="w-100 mb-6 lazyestload" data-src="${path}/assets/img/logo-color-sm.png" src="${path}/assets/img/logo-color-sm.png" alt="img">
               </a>
               <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
             </div>
@@ -596,9 +714,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-1.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-1.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg"
+                        src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-1.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -606,9 +724,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-2.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-2.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg"
+                        src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-2.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -616,9 +734,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-3.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-3.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg"
+                        src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-3.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -626,9 +744,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-4.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-4.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg"
+                        src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-4.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -636,9 +754,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-5.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-5.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg"
+                        src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-5.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -646,9 +764,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="assets/img/home/gallery/thumb-gallery-6.jpg"
-                        src="assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="assets/img/home/gallery/gallery-6.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg"
+                        src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-6.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -879,14 +997,7 @@
       </div>
     </div>
 
-    <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/menuzord/js/menuzord.js"></script>
-    <script src='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/lazyestload/lazyestload.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/star.js"></script>
+   
   </body>
 </html>
 

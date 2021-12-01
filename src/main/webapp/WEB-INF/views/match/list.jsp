@@ -530,7 +530,7 @@
             <div class="mb-6 bg-white px-3 py-6 border-top border-top-5 border-primary rounded">
               <h4 class="text-uppercase font-weight-bold">모임 검색</h4>
 
-              <form class="" action="index.html" method="post">
+              <form class="form" action="${pageContext.request.contextPath}/list/search" method="post">
                 
                 <!-- <div class="mb-5">
                   <input type="text" class="form-control border-top-0 border-start-0 border-end-0 ps-0" required=""
@@ -539,7 +539,7 @@
 
 				<div class="mb-5">
                   <div class="select-default select-category-1">
-                    <select class="select-option">
+                    <select class="select-option" value = "region">
                       <option> 모임 지역</option>
                       	<c:forEach items="${requestScope.region}" var="region">
                      		<option>${region.regionName}</option>
@@ -602,8 +602,6 @@
                 </div>
  -->
                 
-                
-
                 <div class="d-grid">
                   <button type="submit" onclick="location.href='javascript:void(0)';"
                   class="btn btn-block btn-xs btn-outline-secondary text-uppercase">Search</button>
@@ -611,6 +609,8 @@
               </form>
             </div>
           </div>
+	<!-- 검색창 끝 -->
+
 
           <div class="col-md-6 col-lg-12">
             <div class="mb-6 bg-white p-3 pt-6 border-top border-top-5 border-primary rounded">
@@ -778,9 +778,7 @@
                   
                   <span class="text-gray-color hover-text-primary">
                   <i class="fa fa fa-tags" aria-hidden="true"></i>
-                    
                     	<span class="ms-1 text-capitalize"> 댓글 몇개</span>
-                   
                   </span>
 
                 </div>
@@ -797,7 +795,24 @@
 
 
       </div>
+      
+      
+      
     </div>
+    
+    <p>
+      <div class="mb-6">
+    	<ul class="pagination justify-content-center align-items-center">
+    	<li class="page-item">
+    		<a href="/match/write">
+    			<button type="button" class="btn btn-secondary btn-lg mb-2">글 작성하기</button>
+    		</a>
+    	</li>
+    	</ul>
+      </div>
+    
+    
+    
   </div>
 
   <!-- ====================================

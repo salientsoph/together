@@ -1,7 +1,6 @@
 package kosta.mvc.controller;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -15,16 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.mvc.domain.MatchBoard;
-import kosta.mvc.domain.NoticeBoard;
 import kosta.mvc.domain.Region;
 import kosta.mvc.service.MatchBoardService;
 import kosta.mvc.service.RegionService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/match")
+@RequestMapping("/place")
 @RequiredArgsConstructor
-public class MatchBoardController {
+public class PlaceBoardController {
 	private final MatchBoardService matchBoardService; 
 	private final RegionService regionService; 
 	
@@ -34,7 +32,7 @@ public class MatchBoardController {
 	@RequestMapping("/list")
 	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("match/list");
+		mv.setViewName("place/place-list");
 
 		Pageable pageable = PageRequest.of(nowPage-1, 10, Direction.DESC, "matchNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
 		Page<MatchBoard> pageList = matchBoardService.selectAll(pageable);
@@ -163,7 +161,4 @@ public class MatchBoardController {
 		matchBoardService.delete(noticeNo);
 		return "redirect:/match/list";
 	}
-	
-	
-	
 }
