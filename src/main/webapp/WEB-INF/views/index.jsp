@@ -814,15 +814,16 @@
 <!-- ====================================
 ———	TOP DEALS SECTION
 ===================================== -->
+
 <section class="bg-smoke py-8 py-lg-9">
   <div class="container">
     <div class="text-center section-title">
       <h2 class="text-uppercase font-weight-bold position-relative">
         <span class="bg-smoke">
-          Our top deals
+         Withrago 체험 둘러보기
         </span>
       </h2>
-      <p class="text-capitalize text-center">Quisque lacus augue, blandit non est a, dictum malesuada odio.</p>
+      <p class="text-capitalize text-center">여행 중 만나는 이색적인 즐길 거리</p>
     </div>
 
     <div class="row justify-content-center">
@@ -834,7 +835,7 @@
             <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
               <div class="badge bg-primary badge-rounded-circle">  
                 <span class="d-block">
-                  50%<br>off
+                  10%<br>off
                 </span>
               </div>
 
@@ -857,22 +858,21 @@
               </ul>
 
               <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
-                <li class="border-right border-white pe-2">7 days</li>
-                <li class="border-right border-white px-2">15 hrs</li>
-                <li class="ps-2">15 min</li>
+                <li class="border-right border-white pe-2">1:1 class</li>
+                <li class="border-right border-white px-2">Group class(5)</li>       
               </ul>
             </div>
           </a>
 
           <div class="card-body">
             <h5>
-              <a href="single-package-left-sidebar.html" class="card-title text-uppercase">Suspendisse Blandit</a>
+              <a href="single-package-left-sidebar.html" class="card-title text-uppercase">앙금찰떡 만들기</a>
             </h5>		    
-            <p class="mb-5">Integer purus ex, dictum nec elementum eu, tristique vel lectus. Donec rutrum lectus et pharetra egestas.</p>
+            <p class="mb-5">약 1시간 반 동안의 클래스 동안 초보자도 가능한 한국식 화과자를 만듭니다.</p>
             <div class="d-flex justify-content-between align-items-center">
               <div>
-                <p class="mb-0 text-capitalize">Start from</p>
-                <h3 class="text-primary">$299</h3>
+                <p class="mb-0 text-capitalize">최저가</p>
+                <h3 class="text-primary">￦65,000/인</h3>
               </div>
 
               <div>
@@ -883,15 +883,15 @@
         </div>
       </div>
 
-      <div class="col-md-6 col-lg-4">
+     <div class="col-md-6 col-lg-4">
         <div class="card card-hover mb-5 mb-lg-0">
           <a href="single-package-left-sidebar.html" class="position-relative">
-            <img class="card-img-top lazyestload" data-src="${path}/assets/img/home/deal/deal-02.jpg" src="${path}/assets/img/home/deal/deal-02.jpg" alt="Card image cap">
-
+            <img class="card-img-top" data-src="/assets/img/home/deal/deal-02.jpg" src="/assets/img/home/deal/deal-02.jpg" alt="Card image cap">
+            
             <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
-              <div class="badge bg-primary badge-rounded-circle">
+              <div class="badge bg-primary badge-rounded-circle">  
                 <span class="d-block">
-                  Free<br>gift
+                  5%<br>off
                 </span>
               </div>
 
@@ -914,79 +914,21 @@
               </ul>
 
               <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
-                <li class="border-right border-white pe-2">7 days</li>
-                <li class="border-right border-white px-2">15 hrs</li>
-                <li class="ps-2">15 min</li>
-              </ul>
-            </div>
-          </a>
-
-          <div class="card-body">
-            <h5 class="">
-              <a href="single-package-left-sidebar.html" class="card-title text-uppercase">Suspendisse Eros Erat</a>
-            </h5>
-            <p class="mb-5">Proin convallis magna vel libero accumsan sollicitudin. Quisque dapibus vitae turpis eu magna sagittis.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <p class="mb-0 text-capitalize">Start from</p>
-                <h3 class="text-primary">$499</h3>
-              </div>
-
-              <div>
-                <a href="jascript:void(0)"  data-bs-toggle="modal" data-bs-target="#inquiry" class="btn btn-sm btn-outline-secondary text-uppercase">Inquiry</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4">
-        <div class="card card-hover">
-          <a href="single-package-left-sidebar.html" class="position-relative">
-            <img class="card-img-top lazyestload" data-src="${path}/assets/img/home/deal/deal-03.jpg" src="${path}/assets/img/home/deal/deal-03.jpg" alt="Card image cap">
-
-            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
-              <div class="badge bg-primary badge-rounded-circle">
-                <span class="d-block">
-                  25%<br>off
-                </span>
-              </div>
-
-              <ul class="list-unstyled d-flex mt-auto text-warning">
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star me-1" aria-hidden="true"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </li>
-              </ul>
-
-              <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
-                <li class="border-right border-white pe-2">7 days</li>
-                <li class="border-right border-white px-2">15 hrs</li>
-                <li class="ps-2">15 min</li>
+                <li class="border-right border-white pe-2">1:1 class</li>
+                <li class="border-right border-white px-2">Group class(5)</li>       
               </ul>
             </div>
           </a>
 
           <div class="card-body">
             <h5>
-              <a href="single-package-left-sidebar.html" class="card-title text-uppercase">Quisque Placerat Nunc</a>
-            </h5>
-            <p class="mb-5">Vivamus eu mattis nibh. Quisque eget ipsum at odio fringilla consequat vel id erat. Suspendisse non feugiat mi.</p>
+              <a href="single-package-left-sidebar.html" class="card-title text-uppercase">나만의 자개 작품 만들기</a>
+            </h5>		    
+            <p class="mb-5">한국 전통 공예 중 하나인 '나전칠기'에 대해 알아보는 시간을 가집니다.</p>
             <div class="d-flex justify-content-between align-items-center">
               <div>
-                <p class="mb-0 text-capitalize">Start from</p>
-                <h3 class="text-primary">$299</h3>
+                <p class="mb-0 text-capitalize">최저가</p>
+                <h3 class="text-primary">￦85,000/인</h3>
               </div>
 
               <div>
@@ -996,7 +938,63 @@
           </div>
         </div>
       </div>
-    </div>
+      
+	<div class="col-md-6 col-lg-4">
+        <div class="card card-hover mb-5 mb-lg-0">
+          <a href="single-package-left-sidebar.html" class="position-relative">
+            <img class="card-img-top" data-src="/assets/img/home/deal/deal-03.jpg" src="/assets/img/home/deal/deal-03.jpg" alt="Card image cap">
+            
+            <div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
+              <div class="badge bg-primary badge-rounded-circle">  
+                <span class="d-block">
+                  15%<br>off
+                </span>
+              </div>
+
+              <ul class="list-unstyled d-flex mt-auto text-warning">
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star me-1" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </li>
+              </ul>
+
+              <ul class="list-unstyled d-flex text-white font-weight-bold mb-0">
+                <li class="border-right border-white pe-2">sunrise tour</li>
+                <li class="border-right border-white px-2">sunset tour</li>       
+              </ul>
+            </div>
+          </a>
+	
+		<div class="card-body">
+            <h5>
+              <a href="single-package-left-sidebar.html" class="card-title text-uppercase">부산 해운대 요트체험</a>
+            </h5>		    
+            <p class="mb-5">해운대 바다에서 특별한 요트체험 하시고 행복한 추억 만들어가세요.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0 text-capitalize">최저가</p>
+                <h3 class="text-primary">￦35,000/인</h3>
+              </div>
+
+              <div>
+                <a href="booking-step-1.html" class="btn btn-sm btn-outline-secondary text-uppercase">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
 
     <div class="text-center mt-7">
       <a href="packages-grid.html" class="btn btn-sm btn-outline-secondary text-uppercase">View all</a>
@@ -1050,17 +1048,17 @@
     <div class="text-center section-title">
       <h2 class="text-uppercase font-weight-bold position-relative">
         <span class="bg-white">
-          Our Packages
+         설레는 다음 여행을 위한 아이디어
         </span>
       </h2>
-      <p class="text-capitalize text-center">Ut facilisis facilisis metus quis semper</p>
+      <p class="text-capitalize text-center">국내여행지</p>
     </div>
 
     <div id="filters" class="button-group">
-      <button class="button is-checked" data-filter="*">All Places</button>
-      <button class="button" data-filter=".asia">Asia</button>
-      <button class="button" data-filter=".america">America</button>
-      <button class="button" data-filter=".africa">Africa</button>
+      <button class="button is-checked" data-filter="*">모든지역</button>
+      <button class="button" data-filter=".asia"></button>
+      <button class="button" data-filter=".africa">부산</button>
+      <button class="button" data-filter=".africa">광주</button>
     </div>
 
     <div class="row grid">
