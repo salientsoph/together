@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.mvc.domain.MatchBoard;
+import kosta.mvc.domain.MatchReply;
 import kosta.mvc.domain.NoticeBoard;
 import kosta.mvc.domain.Region;
 import kosta.mvc.service.MatchBoardService;
+import kosta.mvc.service.MatchReplyService;
 import kosta.mvc.service.RegionService;
 import lombok.RequiredArgsConstructor;
 
@@ -27,6 +29,7 @@ import lombok.RequiredArgsConstructor;
 public class MatchBoardController {
 	private final MatchBoardService matchBoardService; 
 	private final RegionService regionService; 
+	private final MatchReplyService matchReplyService;
 	
 	/**
 	 * 전체 검색하기 
@@ -121,6 +124,7 @@ public class MatchBoardController {
 		boolean state = flag == null; 
 		
 		MatchBoard mb = matchBoardService.selectBy(matchNo, true); 
+		List<MatchReply> mr = matchReplyService.selectByMatchBoard(matchNo);
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("match/read");

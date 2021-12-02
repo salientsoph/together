@@ -181,119 +181,8 @@
               </div>
             </li>
 
-            <li class="">
-              <a href="javascript:void(0)">Hotels</a>
-              <div class="megamenu drop-up">
-                <div class="megamenu-row">
-                  <div class="col3">
-                    <ul class="list-unstyled">
-                      <li>Hotels Grid View</li>
+       
 
-                      <li class="">
-                        <a href="hotels-grid-left-sidebar.html">Hotels Sidebar Left</a>
-                      </li>
-
-                      <li class="">
-                        <a href="hotels-grid-right-sidebar.html">Hotels Sidebar Right</a>
-                      </li>
-
-                      <li class="">
-                        <a href="hotels-grid.html">Hotels 3 Columns</a>
-                      </li>
-                    </ul>
-                  </div>
-            
-                  <div class="col3">
-                    <ul class="list-unstyled">
-                      <li>Hotels List View</li>
-                      <li class="">
-                        <a href="hotels-list-left-sidebar.html">Hotels Sidebar Left</a>
-                      </li>
-
-                      <li class="">
-                        <a href="hotels-list-right-sidebar.html">Hotels Sidebar Right</a>
-                      </li>
-
-                      <li class="">
-                        <a href="hotels-list.html">Hotels List</a>
-                      </li>
-                    </ul>
-                  </div>
-            
-                  <div class="col3">
-                    <ul class="list-unstyled">
-                      <li>Single Hotel</li>
-                      <li class="">
-                        <a href="single-hotel-left-sidebar.html">Hotels Sidebar Left</a>
-                      </li>
-
-                      <li class="">
-                        <a href="single-hotel-right-sidebar.html">Hotels Sidebar Right</a>
-                      </li>
-
-                      <li class="">
-                        <a href="single-hotel-fullwidth.html">Hotels Fullwidth</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="col3">
-                    <ul class="list-unstyled">
-                      <li>Booking Steps</li>
-                      <li class="">
-                        <a href="booking-step-1.html">Step 1 - Personal Info</a>
-                      </li>
-
-                      <li class="">
-                        <a href="booking-step-2.html">Step 2 - Payment Info</a>
-                      </li>
-
-                      <li class="">
-                        <a href="booking-step-3.html">Step 3 - Confirmation</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="">
-              <a href="javascript:void(0)">Rental</a>
-
-              <ul class="dropdown drop-up">
-                <li class=" ||
-                  ">
-
-                  <a href="javascript:void(0)">Cars</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="cars-list.html">Cars List View</a>
-                    </li>
-
-                    <li class="">
-                      <a href="cars-grid.html">Cars Grid View</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class=" ||
-                  ">
-
-                  <a href="javascript:void(0)">Cruises</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="cruises-list.html">Cruises List View</a>
-                    </li>
-
-                    <li class="">
-                      <a href="cruises-grid.html">Cruises Grid View</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
 
             <li class="">
               <a href="javascript:void(0)">Pages</a>
@@ -1056,24 +945,25 @@
 
     <div id="filters" class="button-group">
       <button class="button is-checked" data-filter="*">모든지역</button>
-      <button class="button" data-filter=".asia"></button>
-      <button class="button" data-filter=".africa">부산</button>
+      <button class="button" data-filter=".asia">서울</button>
+      <button class="button" data-filter=".america">부산</button>
       <button class="button" data-filter=".africa">광주</button>
     </div>
 
-    <div class="row grid">
-      <div class="col-md-6 col-lg-4 element-item america">
+    <div class="row grid" style="position: relative; height: 483.11px;">
+    
+      <div class="col-md-6 col-lg-4 element-item america" style="position: absolute; left: 0px; top: 0px;">
         <div class="media media-hoverable justify-content-center mb-2 mb-md-4 mb-lg-6">
           <a href="single-package-fullwidth.html" class="media-content">
-            <img class="media-img lazyestload" data-src="${path}/assets/img/home/packages/packages-1.jpg" src="${path}/assets/img/home/packages/packages-1.jpg" alt="Generic placeholder image">
+            <img class="media-img" height="276.52" data-src="assets/img/home/packages/packages-1.jpg" src="assets/img/home/packages/packages-1.jpg" alt="Generic placeholder image">
             <div class="media-object">
-              <h3 class="text-uppercase mb-0">Vestibulum Tour</h3>
+              <h3 class="text-uppercase mb-0">광안리해변</h3>
             </div>
             <div class="media-img-overlay">
               <div class="overlay-content">
-                <h3 class="">from <span class="text-primary">$399</span></h3>
+                <h3 class="">from <span class="text-primary">￦0</span></h3>
                 <p class="text-white mb-0">
-                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 27 Jan, 2021
+                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 365 Days
                 </p>
               </div>
             </div>
@@ -1081,75 +971,77 @@
         </div>
       </div>
       
-      <div class="col-md-6 col-lg-4 element-item africa">
-        <div class="media media-hoverable justify-content-center mb-2 mb-md-4 mb-lg-6">
-          <a href="single-package-fullwidth.html" class="media-content">
-            <img class="media-img lazyestload" data-src="${path}/assets/img/home/packages/packages-2.jpg" src="${path}/assets/img/home/packages/packages-2.jpg" alt="Generic placeholder image">
-            <div class="media-object">
-              <h3 class="text-uppercase mb-0">Maecenas Tour</h3>
-            </div>
-            <div class="media-img-overlay">
-              <div class="overlay-content">
-                <h3 class="">from <span class="text-primary">$599</span></h3>
-                <p class="text-white mb-0">
-                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 09 Feb, 2021
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 element-item asia america">
-        <div class="media media-hoverable justify-content-center mb-2 mb-md-4 mb-lg-6">
-          <a href="single-package-fullwidth.html" class="media-content">
-            <img class="media-img lazyestload" data-src="${path}/assets/img/home/packages/packages-3.jpg" src="${path}/assets/img/home/packages/packages-3.jpg" alt="Generic placeholder image">
-            <div class="media-object">
-              <h3 class="text-uppercase mb-0">Lobortis Tour</h3>
-            </div>
-            <div class="media-img-overlay">
-              <div class="overlay-content">
-                <h3 class="">from <span class="text-primary">$299</span></h3>
-                <p class="text-white mb-0">
-                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 14 Feb, 2021
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 element-item asia africa">
-        <div class="media media-hoverable justify-content-center mb-2 mb-md-4 mb-lg-0">
-          <a href="single-package-fullwidth.html" class="media-content">
-            <img class="media-img lazyestload" data-src="${path}/assets/img/home/packages/packages-4.jpg" src="${path}/assets/img/home/packages/packages-4.jpg" alt="Generic placeholder image">
-            <div class="media-object">
-              <h3 class="text-uppercase mb-0">Leo Lacus Tour</h3>
-            </div>
-            <div class="media-img-overlay">
-              <div class="overlay-content">
-                <h3 class="">from <span class="text-primary">$399</span></h3>
-                <p class="text-white mb-0">
-                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 11 Jan, 2021
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 element-item america">
+      <div class="col-md-6 col-lg-4 element-item america" style="position: absolute; left: 323px; top: 256px;">
         <div class="media media-hoverable justify-content-center mb-2 mb-md-0">
           <a href="single-package-fullwidth.html" class="media-content">
-            <img class="media-img lazyestload" data-src="${path}/assets/img/home/packages/packages-5.jpg" src="${path}/assets/img/home/packages/packages-5.jpg" alt="Generic placeholder image">
+            <img class="media-img" height="276.52" data-src="assets/img/home/packages/packages-5.jpg" src="assets/img/home/packages/packages-5.jpg" alt="Generic placeholder image">
             <div class="media-object">
-              <h3 class="text-uppercase mb-0">Nullam Tour</h3>
+              <h3 class="text-uppercase mb-0">해동 용궁사</h3>
             </div>
             <div class="media-img-overlay">
               <div class="overlay-content">
-                <h3 class="">from <span class="text-primary">$199</span></h3>
+                <h3 class="">from <span class="text-primary">￦0</span></h3>
                 <p class="text-white mb-0">
-                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 02 Feb, 2021
+                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 365 Days
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4 element-item america" style="position: absolute; left: 323px; top: 256px;">
+        <div class="media media-hoverable justify-content-center mb-2 mb-md-0">
+          <a href="single-package-fullwidth.html" class="media-content">
+            <img class="media-img" height="276.52" data-src="assets/img/home/packages/packages-8.jpg" src="assets/img/home/packages/packages-8.jpg" alt="Generic placeholder image">
+            <div class="media-object">
+              <h3 class="text-uppercase mb-0">청사포 해변열차</h3>
+            </div>
+            <div class="media-img-overlay">
+              <div class="overlay-content">
+                <h3 class="">from <span class="text-primary">￦7,000</span></h3>
+                <p class="text-white mb-0">
+                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 365 Days
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      
+      <div class="col-md-6 col-lg-4 element-item asia" style="position: absolute; left: 646px; top: 0px;">
+        <div class="media media-hoverable justify-content-center mb-2 mb-md-4 mb-lg-6">
+          <a href="single-package-fullwidth.html" class="media-content">
+            <img class="media-img" height="276.52" data-src="assets/img/home/packages/packages-3.jpg" src="assets/img/home/packages/packages-3.jpg" alt="Generic placeholder image">
+            <div class="media-object">
+              <h3 class="text-uppercase mb-0">경복궁</h3>
+            </div>
+            <div class="media-img-overlay">
+              <div class="overlay-content">
+                <h3 class="">from <span class="text-primary">￦0</span></h3>
+                <p class="text-white mb-0">
+                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 365 Days
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+
+      <div class="col-md-6 col-lg-4 element-item asia" style="position: absolute; left: 0px; top: 256px;">
+        <div class="media media-hoverable justify-content-center mb-2 mb-md-4 mb-lg-0">
+          <a href="single-package-fullwidth.html" class="media-content">
+            <img class="media-img" height="276.52" data-src="assets/img/home/packages/packages-4.jpg" src="assets/img/home/packages/packages-4.jpg" alt="Generic placeholder image">
+            <div class="media-object">
+              <h3 class="text-uppercase mb-0">서촌,북촌 한옥마을</h3>
+            </div>
+            <div class="media-img-overlay">
+              <div class="overlay-content">
+                <h3 class="">from <span class="text-primary">￦0</span></h3>
+                <p class="text-white mb-0">
+                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 365 Days
                 </p>
               </div>
             </div>
@@ -1157,18 +1049,79 @@
         </div>
       </div>
 
-      <div class="col-md-6 col-lg-4 element-item asia africa">
-        <div class="media media-hoverable justify-content-center">
+
+      <div class="col-md-6 col-lg-4 element-item asia" style="position: absolute; left: 646px; top: 0px;">
+        <div class="media media-hoverable justify-content-center mb-2 mb-md-4 mb-lg-6">
           <a href="single-package-fullwidth.html" class="media-content">
-            <img class="media-img lazyestload" data-src="${path}/assets/img/home/packages/packages-6.jpg" src="${path}/assets/img/home/packages/packages-6.jpg" alt="Generic placeholder image">
+            <img class="media-img" height="276.52" data-src="assets/img/home/packages/packages-7.jpg" src="assets/img/home/packages/packages-7.jpg" alt="Generic placeholder image">
             <div class="media-object">
-              <h3 class="text-uppercase mb-0">Hendrerit Tour</h3>
+              <h3 class="text-uppercase mb-0">남산타워</h3>
             </div>
             <div class="media-img-overlay">
               <div class="overlay-content">
-                <h3 class="">from <span class="text-primary">$799</span></h3>
+                <h3 class="">from <span class="text-primary">￦11,000</span></h3>
                 <p class="text-white mb-0">
-                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 26 Feb, 2021
+                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 365 Days
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+	
+	<div class="col-md-6 col-lg-4 element-item africa" style="position: absolute; left: 323px; top: 0px;">
+        <div class="media media-hoverable justify-content-center mb-2 mb-md-4 mb-lg-6">
+          <a href="single-package-fullwidth.html" class="media-content">
+            <img class="media-img" height="276.52" data-src="assets/img/home/packages/packages-2.jpg" src="assets/img/home/packages/packages-2.jpg" alt="Generic placeholder image">
+            <div class="media-object">
+              <h3 class="text-uppercase mb-0">무등산</h3>
+            </div>
+            <div class="media-img-overlay">
+              <div class="overlay-content">
+                <h3 class="">from <span class="text-primary">￦0</span></h3>
+                <p class="text-white mb-0">
+                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 365 Days
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+
+      <div class="col-md-6 col-lg-4 element-item africa" style="position: absolute; left: 646px; top: 256px;">
+        <div class="media media-hoverable justify-content-center">
+          <a href="single-package-fullwidth.html" class="media-content">
+            <img class="media-img" height="276.52" data-src="assets/img/home/packages/packages-6.jpg" src="assets/img/home/packages/packages-6.jpg" alt="Generic placeholder image">
+            <div class="media-object">
+              <h3 class="text-uppercase mb-0">광주호 호수생태원</h3>
+            </div>
+            <div class="media-img-overlay">
+              <div class="overlay-content">
+                <h3 class="">from <span class="text-primary">￦0</span></h3>
+                <p class="text-white mb-0">
+                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 365 Days
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      
+      <div class="col-md-6 col-lg-4 element-item africa" style="position: absolute; left: 323px; top: 0px;">
+        <div class="media media-hoverable justify-content-center mb-2 mb-md-4 mb-lg-6">
+          <a href="single-package-fullwidth.html" class="media-content">
+            <img class="media-img" height="276.52" data-src="assets/img/home/packages/packages-9.jpg" src="assets/img/home/packages/packages-9.jpg" alt="Generic placeholder image">
+            <div class="media-object">
+              <h3 class="text-uppercase mb-0">양림동'펭귄마을'</h3>
+            </div>
+            <div class="media-img-overlay">
+              <div class="overlay-content">
+                <h3 class="">from <span class="text-primary">￦0</span></h3>
+                <p class="text-white mb-0">
+                  <span class="me-1"><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 365 Days
                 </p>
               </div>
             </div>
@@ -1178,10 +1131,8 @@
     </div>
   </div>
 </section>
-
-
-
-  </div><!-- element wrapper ends -->
+  </div>
+  <!-- element wrapper ends -->
 
 
 <!-- ====================================
@@ -1198,7 +1149,7 @@
           <i class="fas fa-map-marker-alt text-white" aria-hidden="true"></i>
         </div>
         <h1 class="counter-value mb-2" data-count="179">0</h1>
-        <h6 class="">Destinations</h6>
+        <h6 class="">여행지</h6>
       </div>
 
       <div class="col-6 col-md-3 mb-5 mb-md-0">
@@ -1206,15 +1157,15 @@
           <i class="fa fa-gift text-white" aria-hidden="true"></i>
         </div>
         <h1 class="counter-value mb-2" data-count="48">0</h1>
-        <h6 class="">Tour pack</h6>
+        <h6 class="">투어상품</h6>
       </div>
 
       <div class="col-6 col-md-3">
         <div class="icon icon-lg rounded-circle mx-auto bg-primary mb-3">
           <i class="far fa-smile text-white" aria-hidden="true"></i>
         </div>
-        <h1 class="counter-value mb-2" data-count="4562">0</h1>
-        <h6 class="">Happy clients</h6>
+        <h1 class="counter-value mb-2" data-count="4862">0</h1>
+        <h6 class="">하루평균매칭수</h6>
       </div>
 
       <div class="col-6 col-md-3">
@@ -1222,7 +1173,7 @@
           <i class="fa fa-life-ring text-white" aria-hidden="true"></i>
         </div>
         <h1 class="counter-value mb-2" data-count="24">0</h1>
-        <h6 class="">Hours support</h6>
+        <h6 class="">고객센터</h6>
       </div>
     </div>
   </div>
@@ -1240,14 +1191,14 @@
               <a class="d-inline-block" href="index.html">
                 <img class="w-100 mb-6 lazyestload" data-src="${path}/assets/img/logo-color-sm.png" src="${path}/assets/img/logo-color-sm.png" alt="img">
               </a>
-              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+              <p class="mb-0" weight="212" height="186"><Strong>Witrago</Strong>는 여행 종합 플랫폼입니다. 지루하고 지쳤던 일상에서 벗어나 모험이 가득한 새로운 곳에서 Witrago 이용자 여러분들이 에너지를 재충전 할 수 있게 도와줍니다</p>
             </div>
     
             <div class="col-md-6 col-lg-3 mt-md-4 mb-7 mb-lg-0">
               <div class="title-tag">
                 <h6>Contact us</h6>
               </div>
-              	상담전화 13:00 ~ 16:00(평일)</p>
+              	<p>상담전화 13:00 ~ 16:00(평일)</p>
               <ul class="list-unstyled mb-0">
               	<li class="media mb-2">
                   <div class="me-3">
@@ -1282,14 +1233,14 @@
     
             <div class="col-md-6 col-lg-3 mt-lg-4 mb-7 mb-md-0">
               <div class="title-tag pb-1">
-                <h6>Gallery</h6>
+                <h6>city</h6>
               </div>
 
               <div class="row me-auto gallery mb-2 mb-md-0">
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg"
+                      <img class="media-img lazyestload" height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-1.jpg"></a>
                     </div>
@@ -1299,7 +1250,7 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-2.jpg"></a>
                     </div>
@@ -1309,7 +1260,7 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-3.jpg"></a>
                     </div>
@@ -1319,7 +1270,7 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-4.jpg"></a>
                     </div>
@@ -1329,7 +1280,7 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-5.jpg"></a>
                     </div>
@@ -1339,7 +1290,7 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-6.jpg"></a>
                     </div>
@@ -1353,8 +1304,7 @@
                 <h6>Newsletter</h6>
               </div>
 
-              <p>매주 금요일 오후, 구독자님을 위한 여행지 추천과 베스트 여행 후기를 전해드립니다.<br>
-              	 구독은 언제든지 해지하실 수 있습니다.</p>
+              <p>매주 금요일 오후, 구독자님을 위한 여행지 추천과 베스트 여행 후기를 전해드립니다.구독은 언제든지 해지하실 수 있습니다.</p>
 
               <form class="mb-6" action="index.html" method="post">
                 <div class="input-group input-group-sm">
