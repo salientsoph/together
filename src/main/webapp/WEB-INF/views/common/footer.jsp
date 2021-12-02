@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <!-- ====================================
+    <!-- ====================================
     ——— FOOTER SECTION
     ===================================== -->
     <footer class="footer">
@@ -23,40 +23,41 @@
               <a class="d-inline-block" href="index.html">
                 <img class="w-100 mb-6 lazyestload" data-src="${path}/assets/img/logo-color-sm.png" src="${path}/assets/img/logo-color-sm.png" alt="img">
               </a>
-              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+              <p class="mb-0" weight="212" height="186"><Strong>Witrago</Strong>는 여행 종합 플랫폼입니다. 지루하고 지쳤던 일상에서 벗어나 모험이 가득한 새로운 곳에서 Witrago 이용자 여러분들이 에너지를 재충전 할 수 있게 도와줍니다</p>
             </div>
     
             <div class="col-md-6 col-lg-3 mt-md-4 mb-7 mb-lg-0">
               <div class="title-tag">
                 <h6>Contact us</h6>
               </div>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.</p>
+              	<p>상담전화 13:00 ~ 16:00(평일)</p>
               <ul class="list-unstyled mb-0">
+              	<li class="media mb-2">
+                  <div class="me-3">
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                  </div>
+                  <div class="media-body">
+                    <a href="tel:88657524332">대표전화 1666-3333</a>
+                  </div>
+                </li>
+                
+              
                 <li class="media mb-2">
                   <div class="me-3">
                     <i class="fa fa-home" aria-hidden="true"></i>
                   </div>
                   <div class="media-body">
-                     <a href="contact.html">61 Park Street, Fifth Avenue, NY</a>
+                     <a href="contact.html">(13637) 경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)</a>
                   </div>
                 </li>
-
-                <li class="media mb-2">
-                  <div class="me-3">
-                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                  </div>
-                  <div class="media-body">
-                    <a href="tel:88657524332">[88] 657 524 332</a>
-                  </div>
-                </li>
+                
                 
                 <li class="media">
                   <div class="me-3">
                     <i class="far fa-envelope" aria-hidden="true"></i>
                   </div>
                   <div class="media-body">
-                    <a href="mailTo:info@star-travel.com">info@star-travel.com</a>
+                    <a href="mailTo:info@star-travel.com">info@Withrago.com</a>
                   </div>
                 </li>
               </ul>
@@ -64,14 +65,14 @@
     
             <div class="col-md-6 col-lg-3 mt-lg-4 mb-7 mb-md-0">
               <div class="title-tag pb-1">
-                <h6>Gallery</h6>
+                <h6>city</h6>
               </div>
 
               <div class="row me-auto gallery mb-2 mb-md-0">
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg"
+                      <img class="media-img lazyestload" height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-1.jpg"></a>
                     </div>
@@ -81,7 +82,7 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-2.jpg"></a>
                     </div>
@@ -91,7 +92,7 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-3.jpg"></a>
                     </div>
@@ -101,7 +102,7 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-4.jpg"></a>
                     </div>
@@ -111,7 +112,7 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-5.jpg"></a>
                     </div>
@@ -121,7 +122,7 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg"
+                      <img class="media-img lazyestload"  height="61.83" data-src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg"
                         src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
                       <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-6.jpg"></a>
                     </div>
@@ -135,7 +136,7 @@
                 <h6>Newsletter</h6>
               </div>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+              <p>매주 금요일 오후, 구독자님을 위한 여행지 추천과 베스트 여행 후기를 전해드립니다.구독은 언제든지 해지하실 수 있습니다.</p>
 
               <form class="mb-6" action="index.html" method="post">
                 <div class="input-group input-group-sm">
@@ -358,9 +359,23 @@
     <script src="${path}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
     <script src="${path}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="${path}/assets/plugins/menuzord/js/menuzord.js"></script>
+    
+    <script src='${path}/assets/plugins/isotope/isotope.min.js'></script>
+    <script src='${path}/assets/plugins/images-loaded/js/imagesloaded.pkgd.min.js'></script>
     <script src='${path}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
+    
+    <script src='${path}/assets/plugins/selectric/jquery.selectric.min.js'></script>
+    <script src='${path}/assets/plugins/daterangepicker/js/moment.min.js'></script>
+    <script src='${path}/assets/plugins/daterangepicker/js/daterangepicker.min.js'></script>
+    
     <script src="${path}/assets/plugins/lazyestload/lazyestload.js"></script>
+    <script src='${path}/assets/plugins/dzsparallaxer/dzsparallaxer.js'></script>
+    
+    <script src='${path}/assets/plugins/revolution/js/jquery.themepunch.tools.min.js'></script>
+    <script src='${path}/assets/plugins/revolution/js/jquery.themepunch.revolution.min.js'></script>
     <script src="${path}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
+    
     <script src="${path}/assets/js/star.js"></script>
+    
   </body>
 </html>
