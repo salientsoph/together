@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:set var = "path" value = "${pageContext.request.contextPath}" />
-
 <!DOCTYPE html>
 <html lang="en">
   
@@ -16,22 +14,25 @@
     <title>모임 게시판</title>
 
     <!-- Plugins css Style -->
-    <link href='${path}/assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
-    <link href='${path}/assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css' rel='stylesheet'>
-    <link href="${path}/assets/plugins/animate/animate.css" rel="stylesheet">
-    <link href="${path}/assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
-    <link href="${path}/assets/plugins/menuzord/css/menuzord-animations.css" rel="stylesheet">
-    <link href='${path}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
+    <link href='${pageContext.request.contextPath}/assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
+    <link href='${pageContext.request.contextPath}/assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css' rel='stylesheet'>
+    <link href="${pageContext.request.contextPath}/assets/plugins/animate/animate.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord-animations.css" rel="stylesheet">
+    <link href='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
+    <link href='${pageContext.request.contextPath}/assets/plugins/selectric/selectric.css' rel='stylesheet'>
+    <link href='${pageContext.request.contextPath}/assets/plugins/daterangepicker/css/daterangepicker.css' rel='stylesheet'>
+    <link href='${pageContext.request.contextPath}/assets/plugins/rateyo/jquery.rateyo.min.css' rel='stylesheet'>
     
     <!-- Javascript -->
-    <script src="${path}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
-    <script src="${path}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="${path}/assets/plugins/menuzord/js/menuzord.js"></script>
-    <script src='${path}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
-    <script src="${path}/assets/plugins/lazyestload/lazyestload.js"></script>
-    <script src="${path}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
-    <script src="${path}/assets/js/star.js"></script>
-    <script src="${path}/js/jquery-3.6.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/menuzord/js/menuzord.js"></script>
+    <script src='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.js'></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/lazyestload/lazyestload.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/smoothscroll/SmoothScroll.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/star.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
     
     </script>
@@ -42,11 +43,11 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700' rel='stylesheet'>
 
     <!-- CUSTOM CSS -->
-    <link href="${path}/assets/css/star.css" id="option_style" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/star.css" id="option_style" rel="stylesheet">
 
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/png" href="${path}/assets/img/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/assets/img/favicon.png"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,7 +69,7 @@
       <div class="container clearfix">
         <div id="menuzord" class="menuzord">
           <a href="index.html" class="menuzord-brand">
-            <img class="lazyestload" data-src="${path}/assets/img/logo-color-big.png" src="${path}/assets/img/logo-color-big.png" alt="logo-img">
+            <img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/logo-color-big.png" src="${pageContext.request.contextPath}/assets/img/logo-color-big.png" alt="logo-img">
           </a>
 
           <div class="nav-item dropdown nav-item-left me-0">
@@ -515,7 +516,7 @@
 ———	PAGE TITLE
 ===================================== -->
 <section class="page-title">
-  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${path}/assets/img/pages/page-title-bg7.jpg);">
+  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${pageContext.request.contextPath}/assets/img/pages/page-title-bg7.jpg);">
     <div class="container">
       <div class="row align-items-center justify-content-center" style="height: 200px;">
         <div class="col-lg-6">
@@ -552,19 +553,62 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label for="inputName">희망하는 인원수</label>
-                <input type="number" value="matchPeopleNum" class="form-control border-0 bg-smoke">
+                <input type="number"  name="matchPeopleNum" class="form-control border-0 bg-smoke">
               </div>
             </div>
             
 
             <div class="mb-5">
                   <div class="select-default select-category-1">
-                    <select class="select-option" value ="region">
-                      <option> 모임 지역</option>
-                      	<c:forEach items="${requestScope.region}" var="region">
-                     		<option>${region.regionName}</option>
-                      	</c:forEach>
-                    </select>
+                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="1" id="flexRadioDefault2" checked>
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        서울
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="2" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        경기/인천
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="3" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        부산/경남
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="4" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        대전/충청
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="5" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        대구/경북
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="6" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        광주/전라
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="7" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        강원/제주
+	                      </label>
+	                 </div>
+	        
                   </div>
             </div>
     
@@ -584,19 +628,44 @@
                   </div>
             
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionOne">
-                    <div class="form-group">
-                    <div class="select-default">
-                      <select class="select-option">
-                        <option>20대</option>
-                        <option>30대</option>
-                        <option>40대</option>
-                        <option>50대 이상</option>
-                      </select>
-                    </div>
+                  <p>
+                    <div class="mb-3">
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchAgeGroup" value="20" id="flexRadioDefault2" checked>
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        20대
+	                      </label>
+	                    </div>
+	                    
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchAgeGroup" value="30"id="flexRadioDefault1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        30대
+	                      </label>
+	                    </div>
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchAgeGroup" value="40 "id="flexRadioDefault1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        40대
+	                      </label>
+	                    </div>
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchAgeGroup" value="50" id="flexRadioDefault1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        50대 이상
+	                      </label>
+	                    </div>
+					</div>
                   </div>
-                  </div>
+                  
                 </div>
-            
+            <!-- 모임 연령대 끝 -->
+       
+       
+            <!-- 모임 성별 시작 -->
                 <div class="card">
                   <div class="card-header" id="headingTwo">
                     <h5 class="icon-bg collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
@@ -606,29 +675,31 @@
                   </div>
             
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOne">
-                    <div class="card-body">
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6">
-                        <label class="form-check-label" for="flexCheckDefault6">
-                          혼성
-                        </label>
-                      </div>
+                     <p>
+                    <div class="mb-3">
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchGender" id="flexRadioDefault2" value="0" checked>
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        혼성
+	                      </label>
+	                    </div>
+	                    
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchGender" id="flexRadioDefault1" value="1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        여자만
+	                      </label>
+	                    </div>
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchGender" id="flexRadioDefault1" value="2">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        남자만
+	                      </label>
+	                    </div>
 
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7">
-                        <label class="form-check-label" for="flexCheckDefault7">
-                          여자만
-                        </label>
-                      </div>
-
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault8">
-                        <label class="form-check-label" for="flexCheckDefault8">
-                          남자만
-                        </label>
-                      </div>
-                      
-                    </div>
+					</div>
                   </div>
                 </div>
               </div>
@@ -664,7 +735,7 @@
           <div class="row">
             <div class="col-md-6 col-lg-3 mb-7 mb-lg-0">
               <a class="d-inline-block" href="index.html">
-                <img class="w-100 mb-6 lazyestload" data-src="${path}/assets/img/logo-color-sm.png" src="${path}/assets/img/logo-color-sm.png" alt="img">
+                <img class="w-100 mb-6 lazyestload" data-src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png" src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png" alt="img">
               </a>
               <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
             </div>
@@ -714,9 +785,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg"
-                        src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-1.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-1.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-1.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -724,9 +795,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg"
-                        src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-2.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-2.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-2.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -734,9 +805,9 @@
                 <div class="col-4 mb-3">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg"
-                        src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-3.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-3.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-3.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -744,9 +815,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg"
-                        src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-4.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-4.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-4.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -754,9 +825,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg"
-                        src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-5.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-5.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-5.jpg"></a>
                     </div>
                   </div>
                 </div>
@@ -764,9 +835,9 @@
                 <div class="col-4">
                   <div class="media media-hover">
                     <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg"
-                        src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${path}/assets/img/home/gallery/gallery-6.jpg"></a>
+                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-6.jpg"
+                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
+                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-6.jpg"></a>
                     </div>
                   </div>
                 </div>
