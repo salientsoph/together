@@ -456,7 +456,7 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 6; white-space: wrap; font-size: 30px; line-height: 35px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Montserrat;text-transform:uppercase;">
-          Discover The Most Amazing </div>
+          설레는 여행지에서 새로운 만남</div>
 
         <!-- LAYER NR. 3 -->
         <div class="tp-caption   tp-resizeme" id="slide-33-layer-7" data-x="['left','left','left','left']"
@@ -467,7 +467,7 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 7; white-space: wrap; font-size: 65px; line-height: 70px; font-weight: 700; color: #ffffff; letter-spacing: 0px;font-family:montserrat;text-transform:uppercase;">
-          Travel Template </div>
+          Witrago</div>
 
         <!-- LAYER NR. 4 -->
         <div class="tp-caption   tp-resizeme" id="slide-33-layer-10" data-x="['left','left','left','center']"
@@ -478,9 +478,7 @@
           data-frames='[{"delay":1050,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"+3940","speed":300,"frame":"999","to":"y:-50px;opacity:0;","ease":"Power3.easeInOut"}]'
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-          style="z-index: 8; white-space: wrap; font-size: 14px; line-height: 21px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:montserrat;">
-          <strong>Withrago<strong>는 여행자들에게 다양한 즐거움을 제공하기 위한 종합 플랫폼입니다<br>
-          지루하고 지쳤던 일상에서 벗어나 모험이 가득한 새로운 곳에서 Witrago 이용자 여러분들이 에너지를 재충전 할 수 있게 도와줍니다</div>
+          style="z-index: 8; white-space: wrap; font-size: 14px; line-height: 21px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:montserrat;"></div>
 
         <!-- LAYER NR. 5 -->
         <a href="https://wrapbootstrap.com/theme/star-travel-tour-booking-theme-admin-WB05T4R0J" target="_blank" class="tp-caption rev-btn " id="slide-33-layer-11" data-x="['left','left','left','left']"
@@ -491,7 +489,7 @@
           data-textAlign="['center','center','center','center']" data-paddingtop="[14,14,14,14]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[14,14,14,14]" data-paddingleft="[0,0,0,0]"
           style="z-index: 9; min-width: 132px; max-width: 132px; white-space: nowrap; font-size: 14px; line-height: 17px; font-weight: 500; color: #ffffff; letter-spacing: 0;font-family:Montserrat;text-transform:uppercase;background-color:rgb(255,137,30);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
-          Buy Now </a>
+          여행 시작하기 </a>
       </li>
       <!-- SLIDE  -->
       <li data-index="rs-54" data-transition="slideoverdown" data-slotamount="default" data-hideafterloop="0"
@@ -523,7 +521,7 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 6; white-space: nowrap; font-size: 30px; line-height: 35px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Montserrat;text-transform:uppercase;">
-          Discover The Most Amazing </div>
+          이번에는 어디로 가볼까? </div>
 
         <!-- LAYER NR. 8 -->
         <div class="tp-caption   tp-resizeme" id="slide-54-layer-7" data-x="['center','center','center','center']"
@@ -534,7 +532,7 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 7; white-space: nowrap; font-size: 65px; line-height: 70px; font-weight: 700; color: #ffffff; letter-spacing: 0px;font-family:montserrat;text-transform:uppercase;">
-          Travel Template </div>
+          요즘 인기있는 국내 여행지 </div>
 
         <!-- LAYER NR. 9 -->
         <div class="tp-caption   tp-resizeme" id="slide-54-layer-10" data-x="['center','center','center','center']"
@@ -546,8 +544,7 @@
           data-textAlign="['center','center','center','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 8; white-space: nowrap; font-size: 14px; line-height: 21px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:montserrat;">
-          Maecenas nec sodales justo. Vivamus auctor pulvinar mattis. Ut at elementum nunc. Quisque ante, non <br>
-          luctus enim pulvinar sed. Fusce quis congue odio. </div>
+          이 맘때 가면 가장 예쁜 곳들 </div>
 
         <!-- LAYER NR. 10 -->
         <a href="https://wrapbootstrap.com/theme/star-travel-tour-booking-theme-admin-WB05T4R0J" target="_blank" class="tp-caption rev-btn " id="slide-54-layer-11" data-x="['center','center','center','center']"
@@ -558,7 +555,7 @@
           data-textAlign="['center','center','center','center']" data-paddingtop="[14,14,14,14]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[14,14,14,14]" data-paddingleft="[0,0,0,0]"
           style="z-index: 9; min-width: 132px; max-width: 132px; white-space: nowrap; font-size: 14px; line-height: 17px; font-weight: 500; color: #ffffff; letter-spacing: 0;font-family:Montserrat;text-transform:uppercase;background-color:rgb(255,137,30);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
-          Buy Now </a>
+          모두 보기 </a>
       </li>
       <!-- SLIDE  -->
       <li data-index="rs-56" data-transition="slideoverdown" data-slotamount="default" data-hideafterloop="0"
@@ -580,17 +577,7 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 5;background-color:rgba(0,0,0,0.15);"> </div>
-
-        <!-- LAYER NR. 12 -->
-        <div class="tp-caption   tp-resizeme" id="slide-56-layer-6" data-x="['left','left','left','left']"
-          data-hoffset="['0','100','50','70']" data-y="['middle','middle','middle','middle']"
-          data-voffset="['-100','-100','-100','-100']" data-fontsize="['30','30','22','20']" data-width="none"
-          data-height="none" data-whitespace="wrap" data-type="text" data-responsive_offset="on"
-          data-frames='[{"delay":650,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"y:-50px;opacity:0;","ease":"Power3.easeInOut"}]'
-          data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
-          data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-          style="z-index: 6; white-space: nowrap; font-size: 30px; line-height: 35px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Montserrat;text-transform:uppercase;">
-          Enjoy Ultimate Freedom </div>
+       
 
         <!-- LAYER NR. 13 -->
         <div class="tp-caption   tp-resizeme" id="slide-56-layer-7" data-x="['left','left','left','left']"
@@ -601,7 +588,8 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 7; white-space: nowrap; font-size: 65px; line-height: 70px; font-weight: 700; color: #ffffff; letter-spacing: 0px;font-family:montserrat;text-transform:uppercase;">
-          Bootstrap Theme </div>
+          가을의 절정,<br>
+          단풍 구경을 놓치지 마세요</div>
 
         <!-- LAYER NR. 14 -->
         <div class="tp-caption   tp-resizeme" id="slide-56-layer-10" data-x="['left','left','left','center']"
@@ -613,8 +601,7 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 8; white-space: nowrap; font-size: 14px; line-height: 21px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:montserrat;">
-          Aenean congue nisi elit, vitae viverra leo luctus et. erat id mi scelerisque, vitae gravida. <br> Nunc sed
-          maximus ante. Nulla dictum turpis vitae vehicula auctor. </div>
+          언제, 어디서 단풍을 즐기면 좋을까? </div>
 
         <!-- LAYER NR. 15 -->
         <a href="https://wrapbootstrap.com/theme/star-travel-tour-booking-theme-admin-WB05T4R0J" target="_blank" class="tp-caption rev-btn " id="slide-56-layer-11" data-x="['left','left','left','left']"
@@ -625,8 +612,9 @@
           data-textAlign="['center','center','center','center']" data-paddingtop="[14,14,14,14]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[14,14,14,14]" data-paddingleft="[0,0,0,0]"
           style="z-index: 9; min-width: 132px; max-width: 132px; white-space: nowrap; font-size: 14px; line-height: 17px; font-weight: 500; color: #ffffff; letter-spacing: 0;font-family:Montserrat;text-transform:uppercase;background-color:rgb(255,137,30);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
-          Buy Now </a>
+          모두 보기 </a>
       </li>
+     
       <!-- SLIDE  -->
       <li data-index="rs-57" data-transition="slideoverdown" data-slotamount="default" data-hideafterloop="0"
         data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default"
@@ -657,7 +645,7 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 6; white-space: nowrap; font-size: 30px; line-height: 35px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Montserrat;text-transform:uppercase;">
-          Go Where You Wanna Go </div>
+          연말연시 국내여행 </div>
 
         <!-- LAYER NR. 18 -->
         <div class="tp-caption   tp-resizeme" id="slide-57-layer-7" data-x="['center','center','center','center']"
@@ -668,7 +656,7 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 7; white-space: nowrap; font-size: 65px; line-height: 70px; font-weight: 700; color: #ffffff; letter-spacing: 0px;font-family:montserrat;text-transform:uppercase;">
-          24/7 Quick Support </div>
+          '이 도시'가 뜬다! </div>
 
         <!-- LAYER NR. 19 -->
         <div class="tp-caption   tp-resizeme" id="slide-57-layer-10" data-x="['center','center','center','center']"
@@ -680,8 +668,7 @@
           data-textAlign="['center','center','center','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 8; white-space: nowrap; font-size: 14px; line-height: 21px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:montserrat;">
-          Maecenas et leo nec nunc rutrum tempor. Mauris pharetra porttitor odio eget convallis. Praesent <br> Aliquam
-          sagittis efficitur risus,interdum euismod urna. Pellentesque vel augue augue. </div>
+          12월에 가기 좋은 국내 인기 여행지 총 정리 </div>
 
         <!-- LAYER NR. 20 -->
         <a href="https://wrapbootstrap.com/theme/star-travel-tour-booking-theme-admin-WB05T4R0J" target="_blank" class="tp-caption rev-btn" id="slide-57-layer-11" data-x="['center','center','center','center']"
@@ -692,7 +679,7 @@
           data-textAlign="['center','center','center','center']" data-paddingtop="[14,14,14,14]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[14,14,14,14]" data-paddingleft="[0,0,0,0]"
           style="z-index: 9; min-width: 132px; max-width: 132px; white-space: nowrap; font-size: 14px; line-height: 17px; font-weight: 500; color: #ffffff; letter-spacing: 0;font-family:Montserrat;text-transform:uppercase;background-color:rgb(255,137,30);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
-          Buy Now </a>
+          모두 보기 </a>
       </li>
     </ul>
     <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
