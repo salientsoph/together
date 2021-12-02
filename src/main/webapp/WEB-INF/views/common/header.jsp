@@ -23,11 +23,23 @@
     <link href="${path}/assets/plugins/animate/animate.css" rel="stylesheet">
     <link href="${path}/assets/plugins/menuzord/css/menuzord.css" rel="stylesheet">
     <link href="${path}/assets/plugins/menuzord/css/menuzord-animations.css" rel="stylesheet">
+
+    <link href='${path}/assets/plugins/isotope/isotope.min.css' rel='stylesheet'>
     <link href='${path}/assets/plugins/fancybox/jquery.fancybox.min.css' rel='stylesheet'>
+    
+    <link href='${path}/assets/plugins/selectric/selectric.css' rel='stylesheet'>
+    <link href='${path}/assets/plugins/daterangepicker/css/daterangepicker.css' rel='stylesheet'>
+    
+    <link href='${path}/assets/plugins/dzsparallaxer/dzsparallaxer.css' rel='stylesheet'>
+    
+    <link href='${path}/assets/plugins/revolution/css/settings.css' rel='stylesheet'>
+
     <!-- GOOGLE FONT -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700' rel='stylesheet'>
+
     <!-- CUSTOM CSS -->
     <link href="${path}/assets/css/star.css" id="option_style" rel="stylesheet">
+
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/png" href="${path}/assets/img/favicon.png"/>
 
@@ -122,25 +134,12 @@
           </div>
           
           <ul class="menuzord-menu menuzord-right">
-            <li class="active">
-              <a class="" href="javascript:void(0)">Home</a>
-              <ul class="dropdown drop-up">
-                <li class="">
-                  <a href="index.html">Home Main</a>
-                </li>
-
-                <li class="">
-                  <a href="index-2.html">Home City</a>
-                </li>
-
-                <li class="">
-                  <a href="index-3.html">Home Destination</a>
-                </li>
-              </ul>
+            <li class="">
+              <a class="" href="">Home</a>
             </li>
 
             <li class="">
-              <a href="javascript:void(0)">Tours</a>
+              <a href="javascript:void(0)">여행일정</a>
               <div class="megamenu drop-up">
                 <div class="megamenu-row">
                   <div class="col4">
@@ -198,7 +197,7 @@
             </li>
 
             <li class="">
-              <a href="javascript:void(0)">Hotels</a>
+              <a href="javascript:void(0)">매칭게시판</a>
               <div class="megamenu drop-up">
                 <div class="megamenu-row">
                   <div class="col3">
@@ -274,7 +273,7 @@
             </li>
 
             <li class="">
-              <a href="javascript:void(0)">Rental</a>
+              <a href="javascript:void(0)">장소 게시판</a>
 
               <ul class="dropdown drop-up">
                 <li class=" ||
@@ -311,9 +310,69 @@
               </ul>
             </li>
             
-    <!-- ##### Silver mypage Area End ##### -->
+   
+    
+            <li class="">
+              <a href="javascript:void(0)">커뮤니티</a>
+
+              <ul class="dropdown drop-up">
+                <li class=" ||
+                  ">
+
+                  <a href="javascript:void(0)">공지사항</a>
+
+                  <ul class="dropdown drop-sub-menu-left drop-up">
+                    <li class="">
+                      <a href="/notice/list"">공지사항보기</a>
+                    </li>
+
+                    <li class="">
+                      <a href="blog-grid-two-col.html">Blog Grid 2 Col</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class=" ||
+                   ||
+                   active ">
+
+                  <a href="javascript:void(0)">신고 게시판</a>
+
+                  <ul class="dropdown drop-sub-menu-left drop-up">
+                    <li class="">
+                      <a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a>
+                    </li>
+
+                    <li class="">
+                      <a href="blog-list-left-sidebar.html">Blog List Left Sidebar</a>
+                    </li>
+
+                    <li class=" active ">
+                      <a href="blog-list-fullwidth.html">Blog List Fullwidth</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class=" ||
+                    ">
+
+                  <a href="javascript:void(0)">Blog Single Post</a>
+
+                  <ul class="dropdown drop-sub-menu-left drop-up">
+                    <li class="">
+                      <a href="blog-single-right-sidebar.html">Blog Right Sidebar</a>
+                    </li>
+
+                    <li class="">
+                      <a href="blog-single-left-sidebar.html">Blog Left Sidebar</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+ <!-- ##### Silver mypage Area End ##### -->
   		<li class="">
-             <a href="javascript:void(0)">MyPage</a>
+             <a href="javascript:void(0)">마이페이지</a>
               <ul class="dropdown drop-up">
                
                 <li class="">
@@ -371,69 +430,28 @@
                 <li><a href="404.html">내 여행 일정</a></li>
 
                 <li><a href="coming-soon.html">내 친구 관리</a></li>
+                
+                <c:choose>
+                  <c:when test="${sessionScope.id eq null}">
+                    <li class="">
+                      <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signup">Signup</a>
+                    </li>
+  
+                    <li class="">
+                      <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#login">Login</a>
+                    </li>
+                  </c:when>
+                  <c:otherwise>
+                    <li class="">
+                      <a href="/user/logout">Logout</a>
+                    </li>
+                  </c:otherwise>
+                </c:choose>
+                
               </ul>
             </li>
     <!-- ##### mypage Area End ##### -->
     
-            <li class="">
-              <a href="javascript:void(0)">Blog</a>
-
-              <ul class="dropdown drop-up">
-                <li class=" ||
-                  ">
-
-                  <a href="javascript:void(0)">공지사항</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="/notice/list"">공지사항보기</a>
-                    </li>
-
-                    <li class="">
-                      <a href="blog-grid-two-col.html">Blog Grid 2 Col</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class=" ||
-                   ||
-                   active ">
-
-                  <a href="javascript:void(0)">Blog List View</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a>
-                    </li>
-
-                    <li class="">
-                      <a href="blog-list-left-sidebar.html">Blog List Left Sidebar</a>
-                    </li>
-
-                    <li class=" active ">
-                      <a href="blog-list-fullwidth.html">Blog List Fullwidth</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class=" ||
-                    ">
-
-                  <a href="javascript:void(0)">Blog Single Post</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="blog-single-right-sidebar.html">Blog Right Sidebar</a>
-                    </li>
-
-                    <li class="">
-                      <a href="blog-single-left-sidebar.html">Blog Left Sidebar</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-
             <li class="">
               <a href="javascript:void(0)">Admin</a>
               <ul id="admin" class="dropdown drop-up">
