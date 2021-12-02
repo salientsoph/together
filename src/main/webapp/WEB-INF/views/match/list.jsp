@@ -554,8 +554,6 @@
                     name="dateRange" autocomplete="off" value="" placeholder="여행 날짜" />
                 </div>
 
-
-
 <!-- 
                 <div class="form-group mb-5">
                   <div class="row align-items-center">
