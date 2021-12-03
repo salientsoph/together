@@ -10,6 +10,6 @@ import kosta.mvc.domain.MatchBoard;
 
 public interface ChatMsgRepository extends JpaRepository<ChatMsg, Long> {
 
-	@Query("select msg from ChatMsg msg where msg.matchBoard = ?1")
+	@Query("select msg from ChatMsg msg where msg.matchBoard = ?1 order by chatMsgRegdate")
 	List<ChatMsg> selectByMatchNo(MatchBoard board);
 }
