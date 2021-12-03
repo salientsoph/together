@@ -76,7 +76,7 @@ class KostaFinalApplicationTests {
 									 .sellerNickname("셀러닉1")
 									 .sellerEmail("seller@sell.com")
 									 .sellerPhone("010-111-111")
-									 .sellerRegisterNumber(12345678)
+									 .sellerRegisterNumber("1111")
 									 .build());
 		sellerRep.save(Seller.builder().sellerId("seller02")
 				 .sellerPwd("1234")
@@ -84,7 +84,7 @@ class KostaFinalApplicationTests {
 				 .sellerNickname("셀러닉2")
 				 .sellerEmail("seller@sell.com")
 				 .sellerPhone("010-111-111")
-				 .sellerRegisterNumber(12345678)
+				 .sellerRegisterNumber("1111")
 				 .build());
 
 		sellerRep.save(Seller.builder().sellerId("seller03")
@@ -93,7 +93,7 @@ class KostaFinalApplicationTests {
 									 .sellerNickname("셀러닉3")
 									 .sellerEmail("seller@sell.com")
 									 .sellerPhone("010-111-111")
-									 .sellerRegisterNumber(12345678)
+									 .sellerRegisterNumber("1111")
 									 .build());
 
 		sellerRep.save(Seller.builder().sellerId("seller04")
@@ -102,7 +102,7 @@ class KostaFinalApplicationTests {
 									 .sellerNickname("셀러닉4")
 									 .sellerEmail("seller@sell.com")
 									 .sellerPhone("010-111-111")
-									 .sellerRegisterNumber(12345678)
+									 .sellerRegisterNumber("1111")
 									 .build());
 
 		sellerRep.save(Seller.builder().sellerId("seller05")
@@ -111,7 +111,7 @@ class KostaFinalApplicationTests {
 									 .sellerNickname("셀러닉5")
 									 .sellerEmail("seller@sell.com")
 									 .sellerPhone("010-111-111")
-									 .sellerRegisterNumber(12345678)
+									 .sellerRegisterNumber("!111")
 									 .build());
 	}
 	

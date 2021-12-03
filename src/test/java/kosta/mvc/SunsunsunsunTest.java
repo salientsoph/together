@@ -68,7 +68,7 @@ public class SunsunsunsunTest {
 					                               .secretReply("true")
 					                               .matchBoard(matchReplyRep.getById(1L).getMatchBoard())
 					                               .customer(customerRep.getById("jang"))
-					                               .matchReply(matchReplyRep.getById(1L))
+					                               .matchRereply(matchReplyRep.getById(1L))
 					                               .build());
 		}
 	}

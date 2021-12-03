@@ -14,7 +14,9 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
@@ -22,6 +24,8 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 public class ChatMsg {
 	
 	@Id
@@ -41,6 +45,7 @@ public class ChatMsg {
 	
 	//댓글 내용
 	private String chatMsgContent;	
+	
 	
 	//댓글 작성 시간
 	@CreationTimestamp

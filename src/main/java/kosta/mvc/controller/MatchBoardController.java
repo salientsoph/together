@@ -126,9 +126,9 @@ public class MatchBoardController {
 		MatchBoard mb = matchBoardService.selectBy(matchNo, true); 
 		List<MatchReply> mr = matchReplyService.selectByMatchBoard(matchNo);
 		ModelAndView mv = new ModelAndView();
-		
 		mv.setViewName("match/read");
 		mv.addObject("match", mb);
+		mv.addObject("matchReply", mr);
 		
 		return mv; 
 	}

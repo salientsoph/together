@@ -28,13 +28,13 @@ public class MatchReplyServiceImpl implements MatchReplyService {
 	public void matchReplyInsert(MatchReply matchReply) {
 		Customer customer = customerRep.findById(matchReply.getCustomer().getUserId()).orElse(null);
 		MatchBoard matchBoard = matchBoardRep.findById(matchReply.getMatchBoard().getMatchNo()).orElse(null);
-		if(matchReply.getMatchReply()!=null) {
-			MatchReply Rereply = matchReplyRep.findById(matchReply.getMatchReply().getReplyNo()).orElse(null);
+		if(matchReply.getMatchRereply()!=null) {
+			MatchReply Rereply = matchReplyRep.findById(matchReply.getMatchRereply().getReplyNo()).orElse(null);
 			matchReplyRep.save(MatchReply.builder().replyContent(matchReply.getReplyContent())
 	                .secretReply(matchReply.getSecretReply())
 	                .matchBoard(matchBoard)
 	                .customer(customer)
-	                .matchReply(Rereply)
+	                .matchRereply(Rereply)
 	                .build());
 			
 			return;

@@ -21,7 +21,7 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	
 	@Override
 	public List<NoticeBoard> selectAll() {
-		return null;
+		return noticeRepository.findAll();
 	}
 
 	@Override
