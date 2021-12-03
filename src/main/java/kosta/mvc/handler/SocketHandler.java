@@ -53,6 +53,19 @@ public class SocketHandler extends TextWebSocketHandler {
 					}
 				}
 			}
+			
+			//채팅친거 DB에 저장
+			Long matchNo = Long.parseLong(rN);
+			String chatContent = (String)obj.get("msg");
+			System.out.println();
+			System.out.println("****************************************************");
+			System.out.println();
+			System.out.println("matchNo :" + matchNo);
+			System.out.println("chatContent :" + chatContent);
+			System.out.println();
+			System.out.println("****************************************************");
+			System.out.println();
+			
 		}
 		
 		@SuppressWarnings("unchecked")

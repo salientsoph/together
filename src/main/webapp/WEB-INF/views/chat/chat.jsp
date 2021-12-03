@@ -62,6 +62,15 @@ function wsOpen(){
 function wsEvt() {
 	ws.onopen = function(data){
 		//소켓이 열리면 동작
+		/*
+		var msg = data.data;
+		if(msg != null && msg.trim() != ''){
+			var d = JSON.parse(msg);
+			if(d.type == "chatList"){
+				
+			}
+		*/
+		
 	}
 	
 	ws.onmessage = function(data) {
@@ -126,6 +135,16 @@ function send() {
 		<input type="hidden" id="roomNumber" value="${roomNumber}">
 		
 		<div id="chating" class="chating">
+		<c:choose>
+			<c:when test="${empty requestScope.chatList}">
+			</c:when>
+			 <c:otherwise>
+			 	<c:forEach items="${requestScope.chatList}" var="chatMsg">
+			 	
+			 		<p class='others'> ${chatMsg.customer.userNickname} : ${chatMsg.chatMsgContent} </p>
+			 	</c:forEach>
+			 </c:otherwise>
+		 </c:choose>
 		</div>
 		
 		<div id="yourName">
