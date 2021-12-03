@@ -60,28 +60,27 @@
 	href="${pageContext.request.contextPath}/css/style.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <SCRIPT language=javascript>
-	$(
-			function() {
-				$("#updateButton")
-						.click(
-								function() {
-									$("#requestForm")
-											.attr("action",
-													"${pageContext.request.contextPath}/match/updateForm");
-									$("#requestForm").submit();
-								})
+	$(function() {
+		$("#updateButton")
+				.click(
+						function() {
+							$("#requestForm")
+									.attr("action",
+											"${pageContext.request.contextPath}/match/updateForm");
+							$("#requestForm").submit();
+						})
 
-				$("#deleteButton")
-						.click(
-								function() {
-									if (confirm("정말 삭제하시겠습니까?") == true) {
-										$("#requestForm")
-												.attr("action",
-														"${pageContext.request.contextPath}/match/delete");
-										$("#requestForm").submit();
-									}
-								})
-			})
+		$("#deleteButton")
+				.click(
+						function() {
+							if (confirm("정말 삭제하시겠습니까?") == true) {
+								$("#requestForm")
+										.attr("action",
+												"${pageContext.request.contextPath}/match/delete");
+								$("#requestForm").submit();
+							}
+						})
+	})
 </script>
 
 
@@ -121,644 +120,697 @@
 		<div class="py-8 py-md-9 py-lg-10">
 			<div class="container">
 				<div class="row">
-					
-						<div class="card card-lg card-transparent mb-8">
+
+					<div class="card card-lg card-transparent mb-8">
 
 
-							<div class="card-body px-2 py-6">
-								<h3 class="mb-4">${requestScope.match.matchTitle}</h3>
+						<div class="card-body px-2 py-6">
+							<h3 class="mb-4">${requestScope.match.matchTitle}</h3>
 
-								<div class="meta-post-sm mb-4">
-									<ul class="list-unstyled d-flex flex-wrap mb-0">
-										<li class="meta-tag me-4 mb-1"><i
-											class="fa fa-user text-gray-color" aria-hidden="true"></i> <a
-											class="text-gray-color hover-text-primary" href=""> <span
-												class="ms-1 text-capitalize">${requestScope.match.customer.userNickname}</span>
-										</a></li>
+							<div class="meta-post-sm mb-4">
+								<ul class="list-unstyled d-flex flex-wrap mb-0">
+									<li class="meta-tag me-4 mb-1"><i
+										class="fa fa-user text-gray-color" aria-hidden="true"></i> <a
+										class="text-gray-color hover-text-primary" href=""> <span
+											class="ms-1 text-capitalize">${requestScope.match.customer.userNickname}</span>
+									</a></li>
 
-										<li class="meta-tag text-gray-color me-4 mb-1"><i
-											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-											class="ms-1 text-capitalize">${requestScope.match.tripDate}</span>
-										</li>
+									<li class="meta-tag text-gray-color me-4 mb-1"><i
+										class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+										class="ms-1 text-capitalize">${requestScope.match.tripDate}</span>
+									</li>
 
-										<li class="meta-tag text-gray-color me-4 mb-1"><i
-											class="fa fa fa-tags" aria-hidden="true"></i> <span
-											class="ms-1 text-capitalize">${requestScope.match.region.regionName}</span>
-										</li>
+									<li class="meta-tag text-gray-color me-4 mb-1"><i
+										class="fa fa fa-tags" aria-hidden="true"></i> <span
+										class="ms-1 text-capitalize">${requestScope.match.region.regionName}</span>
+									</li>
 
-										<!--
+									<!--
                   <li class="meta-tag text-gray-color me-4 mb-1">
                     <i class="fa fa-envelope" aria-hidden="true"></i>
                     <span class="ms-1 text-capitalize">8 com</span>
                   </li>
                   
     -->
-									</ul>
-								</div>
-
-								<p>${requestScope.match.matchContent}</p>
-
-
-
-								<blockquote class="blockquote rounded p-7 mb-5"
-									style="background-image: url(${pageContext.request.contextPath}/assets/img/blog/blog-single-02.png); background-size: cover; background-position: center top; background-repeat: no-repeat">
-									<p class="line-height-24 h4 text-white mb-5">신청한사람 이름이랑
-										신청하기 버튼 넣기</p>
-									<footer class="blockquote-footer text-white">
-										by <cite title="Source Title">Adam Smith</cite>
-									</footer>
-								</blockquote>
-							</div>
-
-							<table style="margin: auto">
-								<tr>
-									<td height="20" colspan="4" align="center" valign="middle">
-										<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
-										<form name="requestForm" method="post" id="requestForm">
-											<input type=hidden name="matchNo"
-												value="${requestScope.match.matchNo}">
-											<button id="updateButton" type="button" name="update"
-												class="btn btn-secondary btn-lg mb-2">수정하기</button>
-											<button id="deleteButton" type="button" name="delete"
-												class="btn btn-secondary btn-lg mb-2">삭제하기</button>
-											<a href="${pageContext.request.contextPath}/match/list">
-												<button type="button" name="list"
-													class="btn btn-secondary btn-lg mb-2">목록으로</button>
-											</a>
-										</form>
-									</td>
-								</tr>
-							</table>
-
-
-							<div
-								class="card-footer d-flex align-items-center bg-smoke rounded p-3 p-md-4">
-								<span class="font-weight-bold font-size-15">Share it</span>
-
-								<ul class="list-unstyled d-flex ms-auto mb-0">
-									<li class="me-3"><a href="javascript:void(0)"
-										class="text-gray-color hover-text-primary"> <i
-											class="fab fa-facebook-f icon-medium" aria-hidden="true"></i>
-									</a></li>
-
-									<li class="me-3"><a href="avascript:void(0)"
-										class="text-gray-color hover-text-primary"> <i
-											class="fab fa-twitter icon-medium" aria-hidden="true"></i>
-									</a></li>
-
-									<li class="me-3"><a href="avascript:void(0)"
-										class="text-gray-color hover-text-primary"> <i
-											class="fab fa-linkedin-in icon-medium" aria-hidden="true"></i>
-									</a></li>
-
-									<li class="me-3"><a href="avascript:void(0)"
-										class="text-gray-color hover-text-primary"> <i
-											class="fab fa-google-plus-g icon-medium" aria-hidden="true"></i>
-									</a></li>
-
-									<li class="me-3"><a href="avascript:void(0)"
-										class="text-gray-color hover-text-primary"> <i
-											class="fab fa-pinterest-p icon-medium" aria-hidden="true"></i>
-									</a></li>
-
-									<li class="me-3"><a href="avascript:void(0)"
-										class="text-gray-color hover-text-primary"> <i
-											class="fab fa-tumblr icon-medium" aria-hidden="true"></i>
-									</a></li>
-
-									<li><a href="avascript:void(0)"
-										class="text-gray-color hover-text-primary"> <i
-											class="fab fa-instagram icon-medium" aria-hidden="true"></i>
-									</a></li>
 								</ul>
 							</div>
+
+							<p>${requestScope.match.matchContent}</p>
+
+
+
+							<blockquote class="blockquote rounded p-7 mb-5"
+								style="background-image: url(${pageContext.request.contextPath}/assets/img/blog/blog-single-02.png); background-size: cover; background-position: center top; background-repeat: no-repeat">
+								<p class="line-height-24 h4 text-white mb-5">신청한사람 이름이랑 신청하기
+									버튼 넣기</p>
+								<footer class="blockquote-footer text-white">
+									by <cite title="Source Title">Adam Smith</cite>
+								</footer>
+							</blockquote>
 						</div>
 
-						<div class="mb-7">
-							<h3 class="mb-6">Comments
-								(${requestScope.matchReply.size()})</h3>
-							<c:forEach var="reply" items="${matchReply}" varStatus="status">
-								<div class="media-body">
-									<div class="mb-7">
-										<h6 class="font-weight-bold text-capitalize mb-2">${reply.customer.userId}</h6>
+						<table style="margin: auto">
+							<tr>
+								<td height="20" colspan="4" align="center" valign="middle">
+									<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
+									<form name="requestForm" method="post" id="requestForm">
+										<input type=hidden name="matchNo"
+											value="${requestScope.match.matchNo}">
+										<button id="updateButton" type="button" name="update"
+											class="btn btn-secondary btn-lg mb-2">수정하기</button>
+										<button id="deleteButton" type="button" name="delete"
+											class="btn btn-secondary btn-lg mb-2">삭제하기</button>
+										<a href="${pageContext.request.contextPath}/match/list">
+											<button type="button" name="list"
+												class="btn btn-secondary btn-lg mb-2">목록으로</button>
+										</a>
+									</form>
+								</td>
+							</tr>
+						</table>
 
-										<div class="meta-tag text-gray-color mb-3">
-											<i  class="fas fa-calendar-alt"  aria-hidden="true"></i> <span
-												class="ms-2 text-capitalize"><tags:localDate date="${reply.replyDate }"/></span>
-										</div>
-										<c:choose>
-											<c:when test="${reply.secretReply eq 'true' }">
-												<c:choose>
-													<c:when test="${sessionScope.id eq reply.customer.userId}">${reply.replyContent }</c:when>
-													<c:when test="${sessionScope.id eq match.customer.userId}">${reply.replyContent }</c:when>
-													<c:otherwise>
-														<p>비밀댓글입니다</p>
-													</c:otherwise>
-												</c:choose>
-											</c:when>
-											<c:otherwise>
-												<p>${reply.replyContent }</p>
-											</c:otherwise>
-										</c:choose>
-										<button type="button" class="btn text-primary p-0" name="reply" id="${reply.replyNo}">Reply</button>
-										<c:forEach var="rereply" items="${reply.rereplyNoList}">
-											<div class="media flex-column flex-md-row">
-												<div class="media-body">
-													<h6 class="font-weight-bold text-capitalize mb-2">${rereply.customer.userId}</h6>
-													
-													<div class="meta-tag text-gray-color mb-3">
-														<i class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-															class="ms-2 text-capitalize"><tags:localDate date="${reply.replyDate }"/></span>
-													</div>
-													<c:choose>
-														<c:when test="${rereply.secretReply eq 'true' }">
-															<c:choose>
-
-																<c:when
-																	test="${sessionScope.id eq rereply.customer.userId}">${rereply.replyContent }</c:when>
-																<c:when
-																	test="${sessionScope.id eq match.customer.userId}">${rereply.replyContent }</c:when>
-																<c:otherwise>
-																	<p>비밀댓글입니다</p>
-																</c:otherwise>
-															</c:choose>
-														</c:when>
-														<c:otherwise>
-															<p>${rereply.replyContent }</p>
-														</c:otherwise>
-
-													</c:choose>
-												</div>
-											</div>
-										</c:forEach>
-									</div>
-								</div>
-							</c:forEach>
-
-						</div>
-
-						<div class="mb-7 mb-lg-0">
-							<h3 class="mb-6" name="LeaveAComments">Leave A Comments</h3>
-
-							<form action="/reply/insert" method="POST" role="form"
-								class="form">
-								<div class="col-lg-6">
-									<div class="form-group">
-										<input type="hidden" value="${match.matchNo}" name="matchBoard">
-									</div>
-								</div>
-
-								<div class="col-lg-6">
-									<div class="form-group">
-										<input type="hidden" value="${sessionScope.id }" name="customer">
-									</div>
-								</div>
-								<script type="text/javascript">
-								    $(function(){
-								    	if(!$("#input_check").is(":checked")){
-								    		$("#input_check_hidden").attr("disabled", true);
-								    	}
-								    	
-								    	$("[name=reply]").on("click", function(){
-								    		var offset = $("[name=LeaveAComments]").offset();
-								            $('html, body').animate({scrollTop : offset.top}, 100);
-								    		$("[name=matchRereply]").val($(this).attr("id"));
-								    		$("[name=matchRereply]").attr("disabled", false);
-								    	})
-								    		
-								    });
-								</script>
-								<input type="hidden" name="matchRereply" disabled="disabled">
-								<div class="col-lg-6">
-									<div class="form-group">
-										<input type="checkbox" class="form-check-input"
-											name="secretReply" value='true' id="input_check" /> 
-									    <input type="hidden" name="secretReply" value='false'
-											id="input_check_hidden" /> secret comment
-									</div>
-								</div>
-
-								<div class="form-group">
-									<textarea class="form-control border-0 bg-smoke" rows="7"
-										name="replyContent" placeholder="Your Message"></textarea>
-								</div>
-
-								<button type="submit"
-									class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">send
-									now</button>
-							</form>
-						</div>
-					</div>
-
-
-				</div>
-
-				<div class="d-md-none">
-					<div class="mb-4">
-						<ul class="nav nav-tabs nav-justified blog-tabs" id="myTab"
-							role="tablist">
-							<li class="nav-item"><a class="nav-link active"
-								id="recent-blog-tab" data-bs-toggle="tab" href="#recent-blog"
-								role="tab" aria-controls="recent-blog" aria-selected="true">Recent</a>
-							</li>
-
-							<li class="nav-item"><a class="nav-link"
-								id="popular-blog-tab" data-bs-toggle="tab" href="#popular-blog"
-								role="tab" aria-controls="popular-blog" aria-selected="false">Popular</a></li>
-
-							<li class="nav-item"><a class="nav-link" id="new-blog-tab"
-								data-bs-toggle="tab" href="#new-blog" role="tab"
-								aria-controls="new-blog" aria-selected="false">New</a></li>
-						</ul>
 
 						<div
-							class="tab-content bg-smoke border border-light-gray border-top-0 rounded-bottom px-3 py-5"
-							id="myTabContent">
-							<div class="tab-pane fade show active" id="recent-blog"
-								role="tabpanel" aria-labelledby="recent-blog-tab">
-								<div
-									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-01.jpg"
-											src="assets/img/blog/tab-01.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
+							class="card-footer d-flex align-items-center bg-smoke rounded p-3 p-md-4">
+							<span class="font-weight-bold font-size-15">Share it</span>
 
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Totam rem apriam eaque. </a>
+							<ul class="list-unstyled d-flex ms-auto mb-0">
+								<li class="me-3"><a href="javascript:void(0)"
+									class="text-gray-color hover-text-primary"> <i
+										class="fab fa-facebook-f icon-medium" aria-hidden="true"></i>
+								</a></li>
 
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
+								<li class="me-3"><a href="avascript:void(0)"
+									class="text-gray-color hover-text-primary"> <i
+										class="fab fa-twitter icon-medium" aria-hidden="true"></i>
+								</a></li>
 
-								<div
-									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-02.jpg"
-											src="assets/img/blog/tab-02.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
+								<li class="me-3"><a href="avascript:void(0)"
+									class="text-gray-color hover-text-primary"> <i
+										class="fab fa-linkedin-in icon-medium" aria-hidden="true"></i>
+								</a></li>
 
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Pitter soan smeeit herick. </a>
+								<li class="me-3"><a href="avascript:void(0)"
+									class="text-gray-color hover-text-primary"> <i
+										class="fab fa-google-plus-g icon-medium" aria-hidden="true"></i>
+								</a></li>
 
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
+								<li class="me-3"><a href="avascript:void(0)"
+									class="text-gray-color hover-text-primary"> <i
+										class="fab fa-pinterest-p icon-medium" aria-hidden="true"></i>
+								</a></li>
 
-								<div
-									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-03.jpg"
-											src="assets/img/blog/tab-03.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
+								<li class="me-3"><a href="avascript:void(0)"
+									class="text-gray-color hover-text-primary"> <i
+										class="fab fa-tumblr icon-medium" aria-hidden="true"></i>
+								</a></li>
 
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Amanda disuja carl parkar. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="media meta-post-sm">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-04.jpg"
-											src="assets/img/blog/tab-04.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
-
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Rodney samp deo artich. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="popular-blog" role="tabpanel"
-								aria-labelledby="popular-blog-tab">
-								<div
-									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-04.jpg"
-											src="assets/img/blog/tab-04.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
-
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Rodney samp deo artich. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-
-								<div
-									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-03.jpg"
-											src="assets/img/blog/tab-03.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
-
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Amanda disuja carl parkar. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-
-								<div
-									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-02.jpg"
-											src="assets/img/blog/tab-02.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
-
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Pitter soan smeeit herick. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="media meta-post-sm">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-01.jpg"
-											src="assets/img/blog/tab-01.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
-
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Totam rem apriam eaque. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="new-blog" role="tabpanel"
-								aria-labelledby="new-blog-tab">
-								<div
-									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-02.jpg"
-											src="assets/img/blog/tab-02.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
-
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Pitter soan smeeit herick. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-
-								<div
-									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-04.jpg"
-											src="assets/img/blog/tab-04.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
-
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Rodney samp deo artich. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-
-								<div
-									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-01.jpg"
-											src="assets/img/blog/tab-01.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
-
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Totam rem apriam eaque. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="media meta-post-sm">
-									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-03.jpg"
-											src="assets/img/blog/tab-03.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
-
-									<div class="media-body">
-										<a href=""
-											class="text-dark hover-text-primary text-capitalize mb-1">
-											Amanda disuja carl parkar. </a>
-
-										<ul class="list-unstyled d-flex flex-wrap mb-0">
-											<li class="meta-tag text-gray-color me-4 mb-1"><i
-												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-1 text-capitalize">5 March, 2021</span></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+								<li><a href="avascript:void(0)"
+									class="text-gray-color hover-text-primary"> <i
+										class="fab fa-instagram icon-medium" aria-hidden="true"></i>
+								</a></li>
+							</ul>
 						</div>
 					</div>
 
-					<div class="bg-smoke border border-light-gray rounded p-3 mb-4">
-						<h3 class="mb-4">Categories</h3>
+					<div class="mb-7">
+						<h3 class="mb-6">Comments (${requestScope.matchReply.size()})</h3>
+						<c:forEach var="reply" items="${matchReply}" varStatus="status">
+							<div class="media-body">
+								<div class="mb-7">
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag me-4 mb-1"><i
+											class="fa fa-user text-gray-color" aria-hidden="true"></i> <a
+											class="text-gray-color hover-text-primary" href=""> <span
+												class="ms-1 text-capitalize">${reply.customer.userId}</span>
+										</a></li>
 
-						<ul class="list-unstyled list-group list-group-flush">
-							<li
-								class="list-group-item bg-transparent border-off-white border-top-0 p-0">
-								<a href="" class="d-flex text-dark hover-text-primary py-3">
-									<span>Business</span> <small class="ms-auto font-weight-bold">(9)</small>
-							</a>
-							</li>
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize"><tags:localDate
+													date="${reply.replyDate }" /></span></li>
+										<c:if test="${sessionScope.id eq reply.customer.userId}">
+											<li class="meta-tag text-gray-color me-4 mb-1">
+												<button type="button" class="btn text-primary p-0"
+													name="update" onclick="updateReview(${reply.replyNo}, '${reply.replyContent }')">수정</button>
+											</li>
+											<li class="meta-tag text-gray-color me-4 mb-1">
+												<button type="button" class="btn text-primary p-0"
+													name="delete" onclick="deleteReview(${reply.replyNo}, ${match.matchNo})">삭제</button>
+											</li>
+										</c:if>
+									</ul>
+									<c:choose>
+										<c:when test="${reply.secretReply eq 'true' }">
+											<c:choose>
+												<c:when test="${sessionScope.id eq reply.customer.userId}">${reply.replyContent }</c:when>
+												<c:when test="${sessionScope.id eq match.customer.userId}">${reply.replyContent }</c:when>
+												<c:otherwise>
+													<p>비밀댓글입니다</p>
+												</c:otherwise>
+											</c:choose>
+										</c:when>
+										<c:otherwise>
+											<p>${reply.replyContent }</p>
+										</c:otherwise>
+									</c:choose>
+									<button type="button" class="btn text-primary p-0" name="reply"
+										id="${reply.replyNo}" >Reply</button>
+									<c:forEach var="rereply" items="${reply.rereplyNoList}">
+										<div class="media flex-column flex-md-row">
+											<div class="media-body">
+												<ul class="list-unstyled d-flex flex-wrap mb-0">
+													<li class="meta-tag me-4 mb-1"><i
+														class="fa fa-user text-gray-color" aria-hidden="true"></i>
+														<a class="text-gray-color hover-text-primary" href="">
+															<span class="ms-1 text-capitalize">${rereply.customer.userId}</span>
+													</a></li>
 
-							<li
-								class="list-group-item bg-transparent border-off-white border-top-0 p-0">
-								<a href="" class="d-flex text-dark hover-text-primary py-3">
-									<span>Design</span> <small class="ms-auto font-weight-bold">(7)</small>
-							</a>
-							</li>
+													<li class="meta-tag text-gray-color me-4 mb-1"><i
+														class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+														class="ms-1 text-capitalize"><tags:localDate
+																date="${rereply.replyDate }" /></span></li>
 
-							<li
-								class="list-group-item bg-transparent border-off-white border-top-0 p-0">
-								<a href="" class="d-flex text-dark hover-text-primary py-3">
-									<span>Photography</span> <small
-									class="ms-auto font-weight-bold">(5)</small>
-							</a>
-							</li>
+													<c:if test="${sessionScope.id eq rereply.customer.userId}">
+														<li class="meta-tag text-gray-color me-4 mb-1">
+															<button type="button" class="btn text-primary p-0"
+																name="update" onclick="updateReview(${rereply.replyNo}, '${rereply.replyContent }')">수정</button>
+														</li>
+														<li class="meta-tag text-gray-color me-4 mb-1">
+															<button type="button" class="btn text-primary p-0"
+																name="delete" onclick="deleteReview(${rereply.replyNo}, ${match.matchNo })">삭제</button>
+														</li>
+													</c:if>
+												</ul>
+												<c:choose>
+													<c:when test="${rereply.secretReply eq 'true' }">
+														<c:choose>
 
-							<li
-								class="list-group-item bg-transparent border-off-white border-top-0 p-0">
-								<a href="" class="d-flex text-dark hover-text-primary py-3">
-									<span>Creative</span> <small class="ms-auto font-weight-bold">(8)</small>
-							</a>
-							</li>
+															<c:when
+																test="${sessionScope.id eq rereply.customer.userId}">${rereply.replyContent }</c:when>
+															<c:when
+																test="${sessionScope.id eq match.customer.userId}">${rereply.replyContent }</c:when>
+															<c:otherwise>
+																<p>비밀댓글입니다</p>
+															</c:otherwise>
+														</c:choose>
+													</c:when>
+													<c:otherwise>
+														<p>${rereply.replyContent }</p>
+													</c:otherwise>
 
-							<li
-								class="list-group-item bg-transparent border-off-white border-top-0 p-0">
-								<a href="" class="d-flex text-dark hover-text-primary py-3">
-									<span>Tours</span> <small class="ms-auto font-weight-bold">(6)</small>
-							</a>
-							</li>
-						</ul>
+												</c:choose>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+							</div>
+						</c:forEach>
+
 					</div>
+
+					<div class="mb-7 mb-lg-0">
+						<h3 class="mb-6" name="LeaveAComments">Leave A Comments</h3>
+
+						<form action="/reply/insert" method="POST" role="form"
+							class="form" name="replyForm">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input type="hidden" value="${match.matchNo}" name="matchBoard">
+								</div>
+							</div>
+
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input type="hidden" value="${sessionScope.id }"
+										name="customer">
+								</div>
+							</div>
+							<script type="text/javascript">
+								$(function() {
+									$("#inputCheck").on("click", function(){
+										if ($("#inputCheck").is(":checked")){
+											$("#inputCheckHidden").attr("disabled", true);
+										}
+									});
+									
+
+									$("[name=reply]").on("click", function() {
+										var offset = $("[name=LeaveAComments]").offset();
+										$('html, body').animate({scrollTop : offset.top}, 100);
+										$("[name=matchRereply]").val($(this).attr("id"));
+										$("[name=matchRereply]").attr("disabled",false);
+									});
+								});
+								
+								function updateReview(replyNo, replyContent){
+									alert(replyNo + ", " + replyContent);
+									var offset = $("[name=LeaveAComments]").offset();
+									$('html, body').animate({scrollTop : offset.top}, 100);
+									$(function(){
+										$("[name=replyForm]").html(`<div class="form-group">
+																		<textarea class="form-control border-0 bg-smoke" rows="7"
+																		name="replyContent">` + replyContent + `</textarea>
+																	</div>
+																	<button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">send
+																		now</button>`)
+									});
+								}
+								
+								function deleteReview(replyNo, matchNo){
+									location.href="/reply/delete/" + replyNo + "/" + matchNo;
+								}
+							</script>
+							<input type="hidden" name="matchRereply" disabled="disabled">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input type="checkbox" class="form-check-input"
+										name="secretReply" value='true' id="inputCheck" /> 
+									<input type="hidden" name="secretReply" value='false'
+										id="inputCheckHidden"/> secret comment
+								</div>
+							</div>
+
+							<div class="form-group">
+								<textarea class="form-control border-0 bg-smoke" rows="7"
+									name="replyContent" placeholder="Your Message"></textarea>
+							</div>
+
+							<button type="submit"
+								class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">send
+								now</button>
+						</form>
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="d-md-none">
+				<div class="mb-4">
+					<ul class="nav nav-tabs nav-justified blog-tabs" id="myTab"
+						role="tablist">
+						<li class="nav-item"><a class="nav-link active"
+							id="recent-blog-tab" data-bs-toggle="tab" href="#recent-blog"
+							role="tab" aria-controls="recent-blog" aria-selected="true">Recent</a>
+						</li>
+
+						<li class="nav-item"><a class="nav-link"
+							id="popular-blog-tab" data-bs-toggle="tab" href="#popular-blog"
+							role="tab" aria-controls="popular-blog" aria-selected="false">Popular</a></li>
+
+						<li class="nav-item"><a class="nav-link" id="new-blog-tab"
+							data-bs-toggle="tab" href="#new-blog" role="tab"
+							aria-controls="new-blog" aria-selected="false">New</a></li>
+					</ul>
 
 					<div
-						class="bg-smoke border border-light-gray rounded p-3 mb-4 mb-lg-0">
-						<h3 class="mb-6">Instagram</h3>
-
-						<div class="mb-2">
-							<div class="row px-2">
-								<div class="col-4 px-1">
-									<div class="img-overlay rounded">
-										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-01.jpg"
-											src="assets/img/blog/instagram-new-01.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
+						class="tab-content bg-smoke border border-light-gray border-top-0 rounded-bottom px-3 py-5"
+						id="myTabContent">
+						<div class="tab-pane fade show active" id="recent-blog"
+							role="tabpanel" aria-labelledby="recent-blog-tab">
+							<div
+								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
 								</div>
 
-								<div class="col-4 px-1">
-									<div class="img-overlay rounded">
-										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-02.jpg"
-											src="assets/img/blog/instagram-new-02.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Totam rem apriam eaque. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+
+							<div
+								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
 								</div>
 
-								<div class="col-4 px-1">
-									<div class="img-overlay rounded">
-										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-03.jpg"
-											src="assets/img/blog/instagram-new-03.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Pitter soan smeeit herick. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+
+							<div
+								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Amanda disuja carl parkar. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="media meta-post-sm">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Rodney samp deo artich. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
 								</div>
 							</div>
 						</div>
 
-						<div class="">
-							<div class="row px-2">
-								<div class="col-4 px-1">
-									<div class="img-overlay rounded">
-										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-04.jpg"
-											src="assets/img/blog/instagram-new-04.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
+						<div class="tab-pane fade" id="popular-blog" role="tabpanel"
+							aria-labelledby="popular-blog-tab">
+							<div
+								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
 								</div>
 
-								<div class="col-4 px-1">
-									<div class="img-overlay rounded">
-										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-05.jpg"
-											src="assets/img/blog/instagram-new-05.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Rodney samp deo artich. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+
+							<div
+								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
 								</div>
 
-								<div class="col-4 px-1">
-									<div class="img-overlay rounded">
-										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-06.jpg"
-											src="assets/img/blog/instagram-new-06.jpg"
-											alt="Generic placeholder image"> <a href=""
-											class="hover-img-overlay-dark"></a>
-									</div>
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Amanda disuja carl parkar. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+
+							<div
+								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Pitter soan smeeit herick. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="media meta-post-sm">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Totam rem apriam eaque. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
 								</div>
 							</div>
 						</div>
+
+						<div class="tab-pane fade" id="new-blog" role="tabpanel"
+							aria-labelledby="new-blog-tab">
+							<div
+								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Pitter soan smeeit herick. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+
+							<div
+								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Rodney samp deo artich. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+
+							<div
+								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Totam rem apriam eaque. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="media meta-post-sm">
+								<div class="img-overlay rounded me-2">
+									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+
+								<div class="media-body">
+									<a href=""
+										class="text-dark hover-text-primary text-capitalize mb-1">
+										Amanda disuja carl parkar. </a>
+
+									<ul class="list-unstyled d-flex flex-wrap mb-0">
+										<li class="meta-tag text-gray-color me-4 mb-1"><i
+											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+											class="ms-1 text-capitalize">5 March, 2021</span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-smoke border border-light-gray rounded p-3 mb-4">
+					<h3 class="mb-4">Categories</h3>
+
+					<ul class="list-unstyled list-group list-group-flush">
+						<li
+							class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+							<a href="" class="d-flex text-dark hover-text-primary py-3">
+								<span>Business</span> <small class="ms-auto font-weight-bold">(9)</small>
+						</a>
+						</li>
+
+						<li
+							class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+							<a href="" class="d-flex text-dark hover-text-primary py-3">
+								<span>Design</span> <small class="ms-auto font-weight-bold">(7)</small>
+						</a>
+						</li>
+
+						<li
+							class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+							<a href="" class="d-flex text-dark hover-text-primary py-3">
+								<span>Photography</span> <small class="ms-auto font-weight-bold">(5)</small>
+						</a>
+						</li>
+
+						<li
+							class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+							<a href="" class="d-flex text-dark hover-text-primary py-3">
+								<span>Creative</span> <small class="ms-auto font-weight-bold">(8)</small>
+						</a>
+						</li>
+
+						<li
+							class="list-group-item bg-transparent border-off-white border-top-0 p-0">
+							<a href="" class="d-flex text-dark hover-text-primary py-3">
+								<span>Tours</span> <small class="ms-auto font-weight-bold">(6)</small>
+						</a>
+						</li>
+					</ul>
+				</div>
+
+				<div
+					class="bg-smoke border border-light-gray rounded p-3 mb-4 mb-lg-0">
+					<h3 class="mb-6">Instagram</h3>
+
+					<div class="mb-2">
+						<div class="row px-2">
+							<div class="col-4 px-1">
+								<div class="img-overlay rounded">
+									<img class="w-100 lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-01.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-01.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+							</div>
+
+							<div class="col-4 px-1">
+								<div class="img-overlay rounded">
+									<img class="w-100 lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-02.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-02.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+							</div>
+
+							<div class="col-4 px-1">
+								<div class="img-overlay rounded">
+									<img class="w-100 lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-03.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-03.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="">
+						<div class="row px-2">
+							<div class="col-4 px-1">
+								<div class="img-overlay rounded">
+									<img class="w-100 lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-04.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-04.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+							</div>
+
+							<div class="col-4 px-1">
+								<div class="img-overlay rounded">
+									<img class="w-100 lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-05.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-05.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+							</div>
+
+							<div class="col-4 px-1">
+								<div class="img-overlay rounded">
+									<img class="w-100 lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-06.jpg"
+										src="${pageContext.request.contextPath}/assets/img/blog/instagram-new-06.jpg"
+										alt="Generic placeholder image"> <a href=""
+										class="hover-img-overlay-dark"></a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -779,8 +831,8 @@
 					<div class="col-md-6 col-lg-3 mb-7 mb-lg-0">
 						<a class="d-inline-block" href="index.html"> <img
 							class="w-100 mb-6 lazyestload"
-							data-src="assets/img/logo-color-sm.png"
-							src="assets/img/logo-color-sm.png" alt="img">
+							data-src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png"
+							src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png" alt="img">
 						</a>
 						<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
 							adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -836,11 +888,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-1.jpg"
-											src="assets/img/home/gallery/thumb-gallery-1.jpg"
+											data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-1.jpg"
+											src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-1.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-1.jpg"></a>
+											href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-1.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -849,11 +901,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-2.jpg"
-											src="assets/img/home/gallery/thumb-gallery-2.jpg"
+											data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-2.jpg"
+											src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-2.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-2.jpg"></a>
+											href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-2.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -862,11 +914,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-3.jpg"
-											src="assets/img/home/gallery/thumb-gallery-3.jpg"
+											data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-3.jpg"
+											src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-3.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-3.jpg"></a>
+											href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-3.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -875,11 +927,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-4.jpg"
-											src="assets/img/home/gallery/thumb-gallery-4.jpg"
+											data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-4.jpg"
+											src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-4.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-4.jpg"></a>
+											href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-4.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -888,11 +940,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-5.jpg"
-											src="assets/img/home/gallery/thumb-gallery-5.jpg"
+											data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-5.jpg"
+											src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-5.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-5.jpg"></a>
+											href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-5.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -901,11 +953,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-6.jpg"
-											src="assets/img/home/gallery/thumb-gallery-6.jpg"
+											data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-6.jpg"
+											src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-6.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-6.jpg"></a>
+											href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-6.jpg"></a>
 									</div>
 								</div>
 							</div>
