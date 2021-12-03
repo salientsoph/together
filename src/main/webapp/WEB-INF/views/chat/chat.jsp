@@ -102,7 +102,7 @@ function wsEvt() {
 			}
 		}
 		
-		console.log("msg is null");
+		//console.log("msg is null");
 	}
 
 	document.addEventListener("keypress", function(e){
@@ -132,13 +132,14 @@ function send() {
 		roomNumber: $("#roomNumber").val(),
 		sessionId : $("#sessionId").val(),
 		userName : $("#userName").val(),
+		userId : $("#userId").val(),
 		msg : $("#chatting").val()
 	}
 	
-	console.log($("#roomNumber").val());
-	console.log($("#sessionId").val());
-	console.log($("#userName").val());
-	console.log($("#chatting").val());
+	//console.log($("#roomNumber").val());
+	//console.log($("#sessionId").val());
+	//console.log($("#userName").val());
+	//console.log($("#userId").val());
 	
 	ws.send(JSON.stringify(option))
 	$('#chatting').val("");
@@ -154,6 +155,7 @@ function send() {
 		<h1>${roomName}의 채팅방</h1>
 		<input type="text" id="sessionId" value="">
 		<input type="text" id="roomNumber" value="${roomNumber}">
+		<input type="text" id="userId" value="${sessionScope.id}">
 		
 		<div id="chating" class="chating">
 		<c:choose>
@@ -187,5 +189,9 @@ function send() {
 			</table>
 		</div>
 	</div>
+	
+	
+<jsp:include page="../common/footer.jsp" />
+	
 </body>
 </html>

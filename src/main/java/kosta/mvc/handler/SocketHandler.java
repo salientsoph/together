@@ -8,14 +8,21 @@ import java.util.List;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import kosta.mvc.service.ChatMsgService;
+
 @Component
 public class SocketHandler extends TextWebSocketHandler {
+	
+	@Autowired
+	private ChatMsgService chatMsgService;
+	
 	
 	//HashMap<String, WebSocketSession> sessionMap = new HashMap<>(); //웹소켓 세션을 담아둘 맵
 		List<HashMap<String, Object>> rls = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트 ---roomListSessions
@@ -57,8 +64,9 @@ public class SocketHandler extends TextWebSocketHandler {
 			//채팅친거 DB에 저장
 			Long matchNo = Long.parseLong(rN);
 			String chatContent = (String)obj.get("msg");
-			
+
 			String nickNmae = (String)obj.get("userName");
+			String userId = (String)obj.get("userId");
 			
 			/*
 			System.out.println();
@@ -67,10 +75,13 @@ public class SocketHandler extends TextWebSocketHandler {
 			System.out.println("matchNo :" + matchNo);
 			System.out.println("chatContent :" + chatContent);
 			System.out.println("nickNmae :" + nickNmae);
+			System.out.println("userId :" + userId);
 			System.out.println();
 			System.out.println("****************************************************");
 			System.out.println();
 			*/
+			
+			chatMsgService.insertChatMsg(matchNo, userId, chatContent);
 			
 		}
 		
