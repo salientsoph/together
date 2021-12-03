@@ -33,4 +33,10 @@ public class MatchReplyController {
 		return "redirect:/match/read/" + matchNo;
 	}
 	
+	@RequestMapping("/update/{matchNo}")
+	public String updateReply(@PathVariable Long matchNo, MatchReply matchReply) {
+		//System.out.println(matchNo + ", " + matchReply.getReplyNo() + ", " + matchReply.getReplyContent());
+		matchReplyService.matchReplyUpdate(matchReply.getReplyNo(), matchReply.getReplyContent());
+		return "redirect:/match/read/" + matchNo;
+	}
 }

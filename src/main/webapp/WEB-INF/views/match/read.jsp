@@ -252,7 +252,7 @@
 										<c:if test="${sessionScope.id eq reply.customer.userId}">
 											<li class="meta-tag text-gray-color me-4 mb-1">
 												<button type="button" class="btn text-primary p-0"
-													name="update" onclick="updateReview(${reply.replyNo}, '${reply.replyContent }')">수정</button>
+													name="update" onclick="updateReview(${reply.replyNo}, '${reply.replyContent }', ${match.matchNo})">수정</button>
 											</li>
 											<li class="meta-tag text-gray-color me-4 mb-1">
 												<button type="button" class="btn text-primary p-0"
@@ -294,7 +294,7 @@
 													<c:if test="${sessionScope.id eq rereply.customer.userId}">
 														<li class="meta-tag text-gray-color me-4 mb-1">
 															<button type="button" class="btn text-primary p-0"
-																name="update" onclick="updateReview(${rereply.replyNo}, '${rereply.replyContent }')">수정</button>
+																name="update" onclick="updateReview(${rereply.replyNo}, '${rereply.replyContent }', ${match.matchNo})">수정</button>
 														</li>
 														<li class="meta-tag text-gray-color me-4 mb-1">
 															<button type="button" class="btn text-primary p-0"
@@ -363,12 +363,13 @@
 									});
 								});
 								
-								function updateReview(replyNo, replyContent){
-									alert(replyNo + ", " + replyContent);
+								function updateReview(replyNo, replyContent, matchNo){
 									var offset = $("[name=LeaveAComments]").offset();
 									$('html, body').animate({scrollTop : offset.top}, 100);
 									$(function(){
-										$("[name=replyForm]").html(`<div class="form-group">
+										$("[name=replyForm]").attr("action", "/reply/update/"+matchNo);
+										$("[name=replyForm]").html(`<input type="hidden" value=` + replyNo + ` name="replyNo">
+																	<div class="form-group">
 																		<textarea class="form-control border-0 bg-smoke" rows="7"
 																		name="replyContent">` + replyContent + `</textarea>
 																	</div>
