@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 	<title>Chating</title>
 	<style>
-		*{
+		/* *{
 			margin:0;
 			padding:0;
 		}
@@ -46,16 +46,20 @@
 		}
 		#yourMsg{
 			display: none;
-		}
+		} */
 	</style>
 
 <script src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 var ws;
+var userName = "${nickname}";
+wsOpen();
 
 function wsOpen(){
 	//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
-	ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+	
+	console.log("wsOpen");
+	ws = new WebSocket("ws://" + location.host + "/chating/${roomNumber}");
 	wsEvt();
 }
 	
@@ -70,6 +74,9 @@ function wsEvt() {
 				
 			}
 		*/
+		
+
+		console.log(userName);
 		
 	}
 	
@@ -94,6 +101,8 @@ function wsEvt() {
 				console.warn("unknown type!")
 			}
 		}
+		
+		console.log("msg is null");
 	}
 
 	document.addEventListener("keypress", function(e){
@@ -115,6 +124,8 @@ function chatName(){
 	}
 }
 
+
+
 function send() {
 	var option ={
 		type: "message",
@@ -123,16 +134,26 @@ function send() {
 		userName : $("#userName").val(),
 		msg : $("#chatting").val()
 	}
+	
+	console.log($("#roomNumber").val());
+	console.log($("#sessionId").val());
+	console.log($("#userName").val());
+	console.log($("#chatting").val());
+	
 	ws.send(JSON.stringify(option))
 	$('#chatting').val("");
 }
 </script>
 </head>
 <body>
+
+<jsp:include page="../common/header.jsp" />
+
+
 	<div id="container" class="container">
 		<h1>${roomName}의 채팅방</h1>
-		<input type="hidden" id="sessionId" value="">
-		<input type="hidden" id="roomNumber" value="${roomNumber}">
+		<input type="text" id="sessionId" value="">
+		<input type="text" id="roomNumber" value="${roomNumber}">
 		
 		<div id="chating" class="chating">
 		<c:choose>
@@ -151,7 +172,7 @@ function send() {
 			<table class="inputTable">
 				<tr>
 					<th>사용자명</th>
-					<th><input type="text" name="userName" id="userName"></th>
+					<th><input type="text" name="userName" id="userName" value="${nickname}"></th>
 					<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
 				</tr>
 			</table>

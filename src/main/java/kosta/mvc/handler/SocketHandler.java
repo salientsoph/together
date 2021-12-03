@@ -57,14 +57,20 @@ public class SocketHandler extends TextWebSocketHandler {
 			//채팅친거 DB에 저장
 			Long matchNo = Long.parseLong(rN);
 			String chatContent = (String)obj.get("msg");
+			
+			String nickNmae = (String)obj.get("userName");
+			
+			/*
 			System.out.println();
 			System.out.println("****************************************************");
 			System.out.println();
 			System.out.println("matchNo :" + matchNo);
 			System.out.println("chatContent :" + chatContent);
+			System.out.println("nickNmae :" + nickNmae);
 			System.out.println();
 			System.out.println("****************************************************");
 			System.out.println();
+			*/
 			
 		}
 		
@@ -103,6 +109,16 @@ public class SocketHandler extends TextWebSocketHandler {
 			JSONObject obj = new JSONObject();
 			obj.put("type", "getId");
 			obj.put("sessionId", session.getId());
+			
+			/*
+			System.out.println();
+			System.out.println("****************************************************");
+			System.out.println();
+			System.out.println("sessionId :" + session.getId());
+			System.out.println();
+			System.out.println("****************************************************");
+			System.out.println();
+			*/
 			session.sendMessage(new TextMessage(obj.toJSONString()));
 		}
 		
@@ -125,6 +141,15 @@ public class SocketHandler extends TextWebSocketHandler {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
+			/*
+			System.out.println();
+			System.out.println("****************************************************");
+			System.out.println();
+			System.out.println("obj :" + obj);
+			System.out.println();
+			System.out.println("****************************************************");
+			System.out.println();
+			*/
 			return obj;
 		}
 }
