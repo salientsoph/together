@@ -46,9 +46,9 @@ public class MatchReply {
 	
 	@ManyToOne 
 	@JoinColumn(name = "rereply_no")
-	private MatchReply matchReply;//대댓글 번호
+	private MatchReply matchRereply;//대댓글 번호
 	
-	@OneToMany(mappedBy = "matchReply", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "matchRereply", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<MatchReply> rereplyNoList = new ArrayList<MatchReply>();
 	
 	@ManyToOne 

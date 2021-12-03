@@ -121,7 +121,7 @@
 		<div class="py-8 py-md-9 py-lg-10">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-8 col-xl-9 order-1 order-md-0">
+					
 						<div class="card card-lg card-transparent mb-8">
 
 
@@ -243,8 +243,8 @@
 										<h6 class="font-weight-bold text-capitalize mb-2">${reply.customer.userId}</h6>
 
 										<div class="meta-tag text-gray-color mb-3">
-											<i class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-												class="ms-2 text-capitalize">${reply.replyDate }</span>
+											<i  class="fas fa-calendar-alt"  aria-hidden="true"></i> <span
+												class="ms-2 text-capitalize"><tags:localDate date="${reply.replyDate }"/></span>
 										</div>
 										<c:choose>
 											<c:when test="${reply.secretReply eq 'true' }">
@@ -260,17 +260,15 @@
 												<p>${reply.replyContent }</p>
 											</c:otherwise>
 										</c:choose>
-										<button type="submit"
-											onclick="location.href='javascript:void(0)';"
-											class="btn text-primary p-0">Reply</button>
+										<button type="button" class="btn text-primary p-0" name="reply" id="${reply.replyNo}">Reply</button>
 										<c:forEach var="rereply" items="${reply.rereplyNoList}">
 											<div class="media flex-column flex-md-row">
 												<div class="media-body">
 													<h6 class="font-weight-bold text-capitalize mb-2">${rereply.customer.userId}</h6>
-
+													
 													<div class="meta-tag text-gray-color mb-3">
 														<i class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-															class="ms-2 text-capitalize">${rereply.replyDate }</span>
+															class="ms-2 text-capitalize"><tags:localDate date="${reply.replyDate }"/></span>
 													</div>
 													<c:choose>
 														<c:when test="${rereply.secretReply eq 'true' }">
@@ -300,7 +298,7 @@
 						</div>
 
 						<div class="mb-7 mb-lg-0">
-							<h3 class="mb-6">Leave A Comments</h3>
+							<h3 class="mb-6" name="LeaveAComments">Leave A Comments</h3>
 
 							<form action="/reply/insert" method="POST" role="form"
 								class="form">
@@ -320,8 +318,17 @@
 								    	if(!$("#input_check").is(":checked")){
 								    		$("#input_check_hidden").attr("disabled", true);
 								    	}
+								    	
+								    	$("[name=reply]").on("click", function(){
+								    		var offset = $("[name=LeaveAComments]").offset();
+								            $('html, body').animate({scrollTop : offset.top}, 100);
+								    		$("[name=matchRereply]").val($(this).attr("id"));
+								    		$("[name=matchRereply]").attr("disabled", false);
+								    	})
+								    		
 								    });
 								</script>
+								<input type="hidden" name="matchRereply" disabled="disabled">
 								<div class="col-lg-6">
 									<div class="form-group">
 										<input type="checkbox" class="form-check-input"
@@ -752,7 +759,6 @@
 								</div>
 							</div>
 						</div>
-					</div>
 				</div>
 			</div>
 		</div>
