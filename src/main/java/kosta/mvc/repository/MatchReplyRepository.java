@@ -9,6 +9,6 @@ import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.MatchReply;
 
 public interface MatchReplyRepository extends JpaRepository<MatchReply, Long> {
-	@Query("select m from MatchReply m where m.matchBoard = ?1")
+	@Query("select m from MatchReply m where m.matchBoard = ?1 and rereply_no = null order by rereply_no desc")
 	List<MatchReply> selectByMatchNo(MatchBoard matchBoard);
 }

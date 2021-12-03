@@ -44,7 +44,7 @@ public class Seller {
 	private String sellerPhone;
 	
 	//사업자 등록 번호
-	private int sellerRegisterNumber;
+	private String sellerRegisterNumber;
 
 	
 	//지역 (다 : 1)
