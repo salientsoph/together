@@ -27,9 +27,9 @@ public class MatchReplyController {
 	@RequestMapping("/delete/{replyNo}/{matchNo}")
 	public String deleteReply(@PathVariable(value = "replyNo") Long replyNo, @PathVariable(value = "matchNo") Long matchNo) {
 		//System.out.println(replyNo + ", " + matchNo);
-		System.out.println("why");
+		System.out.println(replyNo);
 		matchReplyService.matchReplyDelete(replyNo);
-		System.out.println("shit");
+		System.out.println(replyNo);
 		return "redirect:/match/read/" + matchNo;
 	}
 	

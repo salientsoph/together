@@ -235,49 +235,56 @@
 
 					<div class="mb-7">
 						<h3 class="mb-6">Comments (${requestScope.matchReply.size()})</h3>
-						<c:forEach var="reply" items="${matchReply}" varStatus="status">
-							<div class="media-body">
-								<div class="mb-7">
-									<ul class="list-unstyled d-flex flex-wrap mb-0">
-										<li class="meta-tag me-4 mb-1"><i
-											class="fa fa-user text-gray-color" aria-hidden="true"></i> <a
-											class="text-gray-color hover-text-primary" href=""> <span
-												class="ms-1 text-capitalize">${reply.customer.userId}</span>
-										</a></li>
 
-										<li class="meta-tag text-gray-color me-4 mb-1"><i
-											class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-											class="ms-1 text-capitalize"><tags:localDate
-													date="${reply.replyDate }" /></span></li>
-										<c:if test="${sessionScope.id eq reply.customer.userId}">
-											<li class="meta-tag text-gray-color me-4 mb-1">
-												<button type="button" class="btn text-primary p-0"
-													name="update" onclick="updateReview(${reply.replyNo}, '${reply.replyContent }', ${match.matchNo})">수정</button>
-											</li>
-											<li class="meta-tag text-gray-color me-4 mb-1">
-												<button type="button" class="btn text-primary p-0"
-													name="delete" onclick="deleteReview(${reply.replyNo}, ${match.matchNo})">삭제</button>
-											</li>
-										</c:if>
-									</ul>
-									<c:choose>
-										<c:when test="${reply.secretReply eq 'true' }">
-											<c:choose>
-												<c:when test="${sessionScope.id eq reply.customer.userId}">${reply.replyContent }</c:when>
-												<c:when test="${sessionScope.id eq match.customer.userId}">${reply.replyContent }</c:when>
-												<c:otherwise>
-													<p>비밀댓글입니다</p>
-												</c:otherwise>
-											</c:choose>
-										</c:when>
-										<c:otherwise>
-											<p>${reply.replyContent }</p>
-										</c:otherwise>
-									</c:choose>
-									<button type="button" class="btn text-primary p-0" name="reply"
-										id="${reply.replyNo}" >Reply</button>
+						<c:forEach var="reply" items="${matchReply}" varStatus="status">
+							<div class="media mb-8">
+								<div class="media-body">
+									<div class="mb-7">
+										<ul class="list-unstyled d-flex flex-wrap mb-0">
+											<li class="meta-tag me-4 mb-1"><i
+												class="fa fa-user text-gray-color" aria-hidden="true"></i> <a
+												class="text-gray-color hover-text-primary" href=""> <span
+													class="ms-1 text-capitalize">${reply.customer.userId}</span>
+											</a></li>
+
+											<li class="meta-tag text-gray-color me-4 mb-1"><i
+												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+												class="ms-1 text-capitalize"><tags:localDate
+														date="${reply.replyDate }" /></span></li>
+											<c:if test="${sessionScope.id eq reply.customer.userId}">
+												<li class="meta-tag text-gray-color me-4 mb-1">
+													<button type="button" class="btn text-primary p-0"
+														name="update"
+														onclick="updateReview(${reply.replyNo}, '${reply.replyContent }', ${match.matchNo})">수정</button>
+												</li>
+												<li class="meta-tag text-gray-color me-4 mb-1">
+													<button type="button" class="btn text-primary p-0"
+														name="delete"
+														onclick="deleteReview(${reply.replyNo}, ${match.matchNo})">삭제</button>
+												</li>
+											</c:if>
+										</ul>
+										<c:choose>
+											<c:when test="${reply.secretReply eq 'true' }">
+												<c:choose>
+													<c:when test="${sessionScope.id eq reply.customer.userId}">${reply.replyContent }</c:when>
+													<c:when test="${sessionScope.id eq match.customer.userId}">${reply.replyContent }</c:when>
+													<c:otherwise>
+														<p>비밀댓글입니다</p>
+													</c:otherwise>
+												</c:choose>
+											</c:when>
+											<c:otherwise>
+												<p>${reply.replyContent }</p>
+											</c:otherwise>
+										</c:choose>
+										<button type="button" class="btn text-primary p-0"
+											name="reply" id="${reply.replyNo}">Reply</button>
+									</div>
 									<c:forEach var="rereply" items="${reply.rereplyNoList}">
-										<div class="media flex-column flex-md-row">
+										<div class="media flex-column flex-md-row mb-7">
+										<div class="img-overlay rounded mb-4 mb-md-0 me-md-4">
+                  </div>
 											<div class="media-body">
 												<ul class="list-unstyled d-flex flex-wrap mb-0">
 													<li class="meta-tag me-4 mb-1"><i
@@ -294,11 +301,13 @@
 													<c:if test="${sessionScope.id eq rereply.customer.userId}">
 														<li class="meta-tag text-gray-color me-4 mb-1">
 															<button type="button" class="btn text-primary p-0"
-																name="update" onclick="updateReview(${rereply.replyNo}, '${rereply.replyContent }', ${match.matchNo})">수정</button>
+																name="update"
+																onclick="updateReview(${rereply.replyNo}, '${rereply.replyContent }', ${match.matchNo})">수정</button>
 														</li>
 														<li class="meta-tag text-gray-color me-4 mb-1">
 															<button type="button" class="btn text-primary p-0"
-																name="delete" onclick="deleteReview(${rereply.replyNo}, ${match.matchNo })">삭제</button>
+																name="delete"
+																onclick="deleteReview(${rereply.replyNo}, ${match.matchNo })">삭제</button>
 														</li>
 													</c:if>
 												</ul>
@@ -318,7 +327,6 @@
 													<c:otherwise>
 														<p>${rereply.replyContent }</p>
 													</c:otherwise>
-
 												</c:choose>
 											</div>
 										</div>
@@ -386,9 +394,9 @@
 							<div class="col-lg-6">
 								<div class="form-group">
 									<input type="checkbox" class="form-check-input"
-										name="secretReply" value='true' id="inputCheck" /> 
-									<input type="hidden" name="secretReply" value='false'
-										id="inputCheckHidden"/> secret comment
+										name="secretReply" value='true' id="inputCheck" /> <input
+										type="hidden" name="secretReply" value='false'
+										id="inputCheckHidden" /> secret comment
 								</div>
 							</div>
 
@@ -433,7 +441,8 @@
 							<div
 								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -455,7 +464,8 @@
 							<div
 								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -477,7 +487,8 @@
 							<div
 								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -498,7 +509,8 @@
 
 							<div class="media meta-post-sm">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -523,7 +535,8 @@
 							<div
 								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -545,7 +558,8 @@
 							<div
 								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -567,7 +581,8 @@
 							<div
 								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -588,7 +603,8 @@
 
 							<div class="media meta-post-sm">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -613,7 +629,8 @@
 							<div
 								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-02.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -635,7 +652,8 @@
 							<div
 								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-04.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -657,7 +675,8 @@
 							<div
 								class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-01.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -678,7 +697,8 @@
 
 							<div class="media meta-post-sm">
 								<div class="img-overlay rounded me-2">
-									<img class="lazyestload" data-src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
+									<img class="lazyestload"
+										data-src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
 										src="${pageContext.request.contextPath}/assets/img/blog/tab-03.jpg"
 										alt="Generic placeholder image"> <a href=""
 										class="hover-img-overlay-dark"></a>
@@ -833,7 +853,8 @@
 						<a class="d-inline-block" href="index.html"> <img
 							class="w-100 mb-6 lazyestload"
 							data-src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png"
-							src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png" alt="img">
+							src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png"
+							alt="img">
 						</a>
 						<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
 							adipisicing elit, sed do eiusmod tempor incididunt ut labore et

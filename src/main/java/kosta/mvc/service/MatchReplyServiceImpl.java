@@ -51,9 +51,9 @@ public class MatchReplyServiceImpl implements MatchReplyService {
 
 	@Override
 	public void matchReplyDelete(Long replyNo) {
-		System.out.println("what");
+		System.out.println(replyNo);
 		matchReplyRep.deleteById(replyNo);
-		System.out.println("fuck");
+		System.out.println(replyNo);
 	}
 
 	@Override
