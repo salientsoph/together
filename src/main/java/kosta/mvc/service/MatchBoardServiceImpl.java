@@ -102,4 +102,25 @@ public class MatchBoardServiceImpl implements MatchBoardService {
 		return null;
 	}
 
+	
+	
+	//게시물 모임에 참석하는 모든 유저 출력 
+		@Override
+		public List<String> selectAllRequestedCustomer(Long matchNo) {
+			List<String> list = matchRepository.selectAllRequestedCustomer(matchNo);
+			return list;
+		}
+		
+		//게시물 모임에 신청한 모든 유저 출력 
+		@Override
+		public List<String> selectAllApprovedCustomer(Long matchNo) {
+			List<String> list = matchRepository.selectAllApprovedCustomer(matchNo);
+			return list;
+		}
+		
+		@Override
+		public MatchBoard selectMatchBoard(Long matchNo) {
+			return matchRepository.findById(matchNo).orElse(null);
+		}
+		
 }
