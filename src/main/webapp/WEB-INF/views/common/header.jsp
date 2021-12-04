@@ -112,7 +112,7 @@
     <nav class="nav-menuzord navbar-sticky">
       <div class="container clearfix">
         <div id="menuzord" class="menuzord">
-          <a href="index.html" class="menuzord-brand">
+          <a href="" class="menuzord-brand">
             <img class="lazyestload" data-src="${path}/assets/img/logo-color-big.png" src="${path}/assets/img/logo-color-big.png" alt="logo-img">
           </a>
 
@@ -197,7 +197,7 @@
             </li>
 
             <li class="">
-              <a href="javascript:void(0)">매칭게시판</a>
+              <a href="/match/list">매칭게시판</a>
               <div class="megamenu drop-up">
                 <div class="megamenu-row">
                   <div class="col3">
@@ -273,7 +273,7 @@
             </li>
 
             <li class="">
-              <a href="javascript:void(0)">장소 게시판</a>
+              <a href="/place/list">장소 게시판</a>
 
               <ul class="dropdown drop-up">
                 <li class=" ||
@@ -316,41 +316,12 @@
               <a href="javascript:void(0)">커뮤니티</a>
 
               <ul class="dropdown drop-up">
-                <li class=" ||
-                  ">
-
-                  <a href="javascript:void(0)">공지사항</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="/notice/list"">공지사항보기</a>
-                    </li>
-
-                    <li class="">
-                      <a href="blog-grid-two-col.html">Blog Grid 2 Col</a>
-                    </li>
-                  </ul>
+                <li class="">
+                  <a href="/notice/list">공지사항</a>
                 </li>
-
-                <li class=" ||
-                   ||
-                   active ">
-
-                  <a href="javascript:void(0)">신고 게시판</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a>
-                    </li>
-
-                    <li class="">
-                      <a href="blog-list-left-sidebar.html">Blog List Left Sidebar</a>
-                    </li>
-
-                    <li class=" active ">
-                      <a href="blog-list-fullwidth.html">Blog List Fullwidth</a>
-                    </li>
-                  </ul>
+                
+                <li class="">
+                  <a href="/report/list">신고 게시판</a>
                 </li>
 
                 <li class=" ||
@@ -376,7 +347,7 @@
               <ul class="dropdown drop-up">
                
                 <li class="">
-                  <a href="about-us.html">내 프로필</a>
+                  <a href="/mypage/myprofile">내 프로필</a>
                 </li>
 
                 <li class="">
@@ -384,7 +355,7 @@
                 </li>
 
                  <li class="">
-                  <a href="javascript:void(0)">내가 쓴 글</a>
+                  <a href="/mypage/mywrite">내가 쓴 글</a>
                   <ul class="dropdown drop-sub-menu-left drop-up">
                     <li class="">
                       <a href="gallery-grid.html">Gallery Grid</a>
