@@ -92,7 +92,7 @@
 									}		
 								)
 								
-				$(document).on("click", "[value=수락]", function(){
+				$(document).on("click", "#accept", function(){
 							$.ajax({
 								type: "post", 
 								url: "${pageContext.request.contextPath}/match/matchApprove", //데이터 받아올 페이지
@@ -108,7 +108,7 @@
 							});
 						});
 								
-				$(document).on("click", "[value=거절]", function(){
+				$(document).on("click", "#reject", function(){
 							$.ajax({
 								type: "post",
 								url: "${pageContext.request.contextPath}/match/matchDeny",
@@ -229,7 +229,7 @@
     								</c:choose>
     								</c:if>
     								
-										 <c:if test="${sessionScope.id == requestScope.match.customer}">
+										 <c:if test="${sessionScope.id == requestScope.match.customer.userId}">
 										 <c:choose>
 											<c:when test = "${empty requestScope.requestedCustomerList}">
 												<tr><th><h5>신청자가 없습니다.</h5></th></tr>
@@ -238,8 +238,8 @@
 												<c:forEach items = "${requestedCustomerList}" var = "user">
 												<tr>
 													<th><h6>${user}</h6></th>
-													<th><button type="button"  name="${user}">수락</button></th>
-													<th><button type="button"  name="${user}">거절</button></th>
+													<th><button type="button"  name="${user}" id="accept">수락</button></th>
+													<th><button type="button"  name="${user}" id="reject">거절</button></th>
 												</tr>
 												</c:forEach>
 											</c:otherwise>
@@ -318,18 +318,37 @@
 							</div>
 						</div>
 
-						<div class="mb-7">
-							<h3 class="mb-6">Comments
-								(${requestScope.matchReply.size()})</h3>
-							<c:forEach var="reply" items="${matchReply}" varStatus="status">
+						
+						<h3 class="mb-6">Comments (${requestScope.matchReply.size()})</h3>
+
+						<c:forEach var="reply" items="${matchReply}" varStatus="status">
+							<div class="media mb-8">
 								<div class="media-body">
 									<div class="mb-7">
-										<h6 class="font-weight-bold text-capitalize mb-2">${reply.customer.userId}</h6>
+										<ul class="list-unstyled d-flex flex-wrap mb-0">
+											<li class="meta-tag me-4 mb-1"><i
+												class="fa fa-user text-gray-color" aria-hidden="true"></i> <a
+												class="text-gray-color hover-text-primary" href=""> <span
+													class="ms-1 text-capitalize">${reply.customer.userId}</span>
+											</a></li>
 
-										<div class="meta-tag text-gray-color mb-3">
-											<i  class="fas fa-calendar-alt"  aria-hidden="true"></i> <span
-												class="ms-2 text-capitalize"><tags:localDate date="${reply.replyDate }"/></span>
-										</div>
+											<li class="meta-tag text-gray-color me-4 mb-1"><i
+												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+												class="ms-1 text-capitalize"><tags:localDate
+														date="${reply.replyDate }" /></span></li>
+											<c:if test="${sessionScope.id eq reply.customer.userId}">
+												<li class="meta-tag text-gray-color me-4 mb-1">
+													<button type="button" class="btn text-primary p-0"
+														name="update"
+														onclick="updateReview(${reply.replyNo}, '${reply.replyContent }', ${match.matchNo})">수정</button>
+												</li>
+												<li class="meta-tag text-gray-color me-4 mb-1">
+													<button type="button" class="btn text-primary p-0"
+														name="delete"
+														onclick="deleteReview(${reply.replyNo}, ${match.matchNo})">삭제</button>
+												</li>
+											</c:if>
+										</ul>
 										<c:choose>
 											<c:when test="${reply.secretReply eq 'true' }">
 												<c:choose>
@@ -344,98 +363,141 @@
 												<p>${reply.replyContent }</p>
 											</c:otherwise>
 										</c:choose>
-										<button type="button" class="btn text-primary p-0" name="reply" id="${reply.replyNo}">Reply</button>
-										<c:forEach var="rereply" items="${reply.rereplyNoList}">
-											<div class="media flex-column flex-md-row">
-												<div class="media-body">
-													<h6 class="font-weight-bold text-capitalize mb-2">${rereply.customer.userId}</h6>
-													
-													<div class="meta-tag text-gray-color mb-3">
-														<i class="fas fa-calendar-alt" aria-hidden="true"></i> <span
-															class="ms-2 text-capitalize"><tags:localDate date="${reply.replyDate }"/></span>
-													</div>
-													<c:choose>
-														<c:when test="${rereply.secretReply eq 'true' }">
-															<c:choose>
+										<button type="button" class="btn text-primary p-0"
+											name="reply" id="${reply.replyNo}">Reply</button>
+									</div>
+									<c:forEach var="rereply" items="${reply.rereplyNoList}">
+										<div class="media flex-column flex-md-row mb-7">
+										<div class="img-overlay rounded mb-4 mb-md-0 me-md-4">
+                  </div>
+											<div class="media-body">
+												<ul class="list-unstyled d-flex flex-wrap mb-0">
+													<li class="meta-tag me-4 mb-1"><i
+														class="fa fa-user text-gray-color" aria-hidden="true"></i>
+														<a class="text-gray-color hover-text-primary" href="">
+															<span class="ms-1 text-capitalize">${rereply.customer.userId}</span>
+													</a></li>
 
-																<c:when
-																	test="${sessionScope.id eq rereply.customer.userId}">${rereply.replyContent }</c:when>
-																<c:when
-																	test="${sessionScope.id eq match.customer.userId}">${rereply.replyContent }</c:when>
-																<c:otherwise>
-																	<p>비밀댓글입니다</p>
-																</c:otherwise>
-															</c:choose>
-														</c:when>
-														<c:otherwise>
-															<p>${rereply.replyContent }</p>
-														</c:otherwise>
+													<li class="meta-tag text-gray-color me-4 mb-1"><i
+														class="fas fa-calendar-alt" aria-hidden="true"></i> <span
+														class="ms-1 text-capitalize"><tags:localDate
+																date="${rereply.replyDate }" /></span></li>
 
-													</c:choose>
-												</div>
+													<c:if test="${sessionScope.id eq rereply.customer.userId}">
+														<li class="meta-tag text-gray-color me-4 mb-1">
+															<button type="button" class="btn text-primary p-0"
+																name="update"
+																onclick="updateReview(${rereply.replyNo}, '${rereply.replyContent }', ${match.matchNo})">수정</button>
+														</li>
+														<li class="meta-tag text-gray-color me-4 mb-1">
+															<button type="button" class="btn text-primary p-0"
+																name="delete"
+																onclick="deleteReview(${rereply.replyNo}, ${match.matchNo })">삭제</button>
+														</li>
+													</c:if>
+												</ul>
+												<c:choose>
+													<c:when test="${rereply.secretReply eq 'true' }">
+														<c:choose>
+
+															<c:when
+																test="${sessionScope.id eq rereply.customer.userId}">${rereply.replyContent }</c:when>
+															<c:when
+																test="${sessionScope.id eq match.customer.userId}">${rereply.replyContent }</c:when>
+															<c:otherwise>
+																<p>비밀댓글입니다</p>
+															</c:otherwise>
+														</c:choose>
+													</c:when>
+													<c:otherwise>
+														<p>${rereply.replyContent }</p>
+													</c:otherwise>
+												</c:choose>
 											</div>
-										</c:forEach>
-									</div>
+										</div>
+									</c:forEach>
 								</div>
-							</c:forEach>
+							</div>
+						</c:forEach>
 
-						</div>
-
-						<div class="mb-7 mb-lg-0">
-							<h3 class="mb-6" name="LeaveAComments">Leave A Comments</h3>
-
-							<form action="/reply/insert" method="POST" role="form"
-								class="form">
-								<div class="col-lg-6">
-									<div class="form-group">
-										<input type="hidden" value="${match.matchNo}" name="matchBoard">
-									</div>
-								</div>
-
-								<div class="col-lg-6">
-									<div class="form-group">
-										<input type="hidden" value="${sessionScope.id }" name="customer">
-									</div>
-								</div>
-								<script type="text/javascript">
-								    $(function(){
-								    	if(!$("#input_check").is(":checked")){
-								    		$("#input_check_hidden").attr("disabled", true);
-								    	}
-								    	
-								    	$("[name=reply]").on("click", function(){
-								    		var offset = $("[name=LeaveAComments]").offset();
-								            $('html, body').animate({scrollTop : offset.top}, 100);
-								    		$("[name=matchRereply]").val($(this).attr("id"));
-								    		$("[name=matchRereply]").attr("disabled", false);
-								    	})
-								    		
-								    });
-								</script>
-								<input type="hidden" name="matchRereply" disabled="disabled">
-								<div class="col-lg-6">
-									<div class="form-group">
-										<input type="checkbox" class="form-check-input"
-											name="secretReply" value='true' id="input_check" /> 
-									    <input type="hidden" name="secretReply" value='false'
-											id="input_check_hidden" /> secret comment
-									</div>
-								</div>
-
-								<div class="form-group">
-									<textarea class="form-control border-0 bg-smoke" rows="7"
-										name="replyContent" placeholder="Your Message"></textarea>
-								</div>
-
-								<button type="submit"
-									class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">send
-									now</button>
-							</form>
-						</div>
 					</div>
 
+					<div class="mb-7 mb-lg-0">
+						<h3 class="mb-6" name="LeaveAComments">Leave A Comments</h3>
 
+						<form action="/reply/insert" method="POST" role="form"
+							class="form" name="replyForm">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input type="hidden" value="${match.matchNo}" name="matchBoard">
+								</div>
+							</div>
+
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input type="hidden" value="${sessionScope.id }"
+										name="customer">
+								</div>
+							</div>
+							<script type="text/javascript">
+								$(function() {
+									$("#inputCheck").on("click", function(){
+										if ($("#inputCheck").is(":checked")){
+											$("#inputCheckHidden").attr("disabled", true);
+										}
+									});
+									
+									$("[name=reply]").on("click", function() {
+										var offset = $("[name=LeaveAComments]").offset();
+										$('html, body').animate({scrollTop : offset.top}, 100);
+										$("[name=matchRereply]").val($(this).attr("id"));
+										$("[name=matchRereply]").attr("disabled",false);
+									});
+								});
+								
+								function updateReview(replyNo, replyContent, matchNo){
+									var offset = $("[name=LeaveAComments]").offset();
+									$('html, body').animate({scrollTop : offset.top}, 100);
+									$(function(){
+										$("[name=replyForm]").attr("action", "/reply/update/"+matchNo);
+										$("[name=replyForm]").html(`<input type="hidden" value=` + replyNo + ` name="replyNo">
+																	<div class="form-group">
+																		<textarea class="form-control border-0 bg-smoke" rows="7"
+																		name="replyContent">` + replyContent + `</textarea>
+																	</div>
+																	<button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">send
+																		now</button>`)
+									});
+								}
+								
+								function deleteReview(replyNo, matchNo){
+									location.href="/reply/delete/" + replyNo + "/" + matchNo;
+								}
+							</script>
+							<input type="hidden" name="matchRereply" disabled="disabled">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input type="checkbox" class="form-check-input"
+										name="secretReply" value='true' id="inputCheck" /> <input
+										type="hidden" name="secretReply" value='false'
+										id="inputCheckHidden" /> secret comment
+								</div>
+							</div>
+
+							<div class="form-group">
+								<textarea class="form-control border-0 bg-smoke" rows="7"
+									name="replyContent" placeholder="Your Message"></textarea>
+							</div>
+
+							<button type="submit"
+								class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">send
+								now</button>
+						</form>
+					</div>
 				</div>
+
+
+			</div>
 
 				<div class="d-md-none">
 					<div class="mb-4">

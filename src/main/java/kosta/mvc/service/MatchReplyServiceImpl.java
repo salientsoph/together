@@ -51,9 +51,19 @@ public class MatchReplyServiceImpl implements MatchReplyService {
 
 	@Override
 	public void matchReplyDelete(Long replyNo) {
-		System.out.println(replyNo);
-		matchReplyRep.deleteById(replyNo);
-		System.out.println(replyNo);
+		MatchReply matchReply = matchReplyRep.findById(replyNo).orElse(null);
+		try {
+			MatchReply matchRereply = matchReplyRep.findById(matchReply.getMatchRereply().getReplyNo()).orElse(null);
+			System.out.println(matchReply.getReplyContent() + "22");
+			matchReplyRep.delete(matchReply);
+			List<MatchReply> rereplyList = matchRereply.getRereplyNoList();
+			rereplyList.remove(matchReply);
+			System.out.println(matchReply.getReplyContent() + "33");
+		} catch (Exception e) {
+			System.out.println(matchReply.getReplyContent() + "22");
+			matchReplyRep.delete(matchReply);
+			System.out.println(matchReply.getReplyContent() + "33");
+		}
 	}
 
 	@Override
