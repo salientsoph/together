@@ -125,11 +125,15 @@ public class MatchBoardController {
 		
 		MatchBoard mb = matchBoardService.selectBy(matchNo, true); 
 		List<MatchReply> mr = matchReplyService.selectByMatchBoard(matchNo);
+		List<String> requestedCustomerList = matchBoardService.selectAllRequestedCustomer(matchNo);
+		List<String> approvedCustomerList = matchBoardService.selectAllApprovedCustomer(matchNo);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("match/read");
+		mv.addObject("approvedCustomerList", approvedCustomerList);
+		mv.addObject("requestedCustomerList", requestedCustomerList);
 		mv.addObject("match", mb);
 		mv.addObject("matchReply", mr);
-		
 		return mv; 
 	}
 	

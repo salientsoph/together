@@ -59,4 +59,22 @@ public interface MatchBoardService {
 	 * 성별로 받기
 	 * */
 	List<MatchBoard> selectByMatchGender(int matchGender);
+	
+	
+	/**
+	 * 모임 수락된 모든 사용자
+	 * */
+	List<String> selectAllApprovedCustomer(Long matchNo);
+	
+	
+	/**
+	 * 모임 신청한 모든 사용자 보기
+	 * */
+	List<String> selectAllRequestedCustomer(Long matchNo);
+	
+	/**
+	 * 게시물 검색 
+	 * */
+	MatchBoard selectMatchBoard(Long matchNo);
+	
 }
