@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
@@ -13,6 +14,7 @@ import kosta.mvc.repository.MatchBoardRepository;
 import kosta.mvc.repository.MatchReplyRepository;
 
 @Service
+@Transactional
 public class MatchReplyServiceImpl implements MatchReplyService {
 	
 	@Autowired
@@ -49,7 +51,9 @@ public class MatchReplyServiceImpl implements MatchReplyService {
 
 	@Override
 	public void matchReplyDelete(Long replyNo) {
+		System.out.println(replyNo);
 		matchReplyRep.deleteById(replyNo);
+		System.out.println(replyNo);
 	}
 
 	@Override

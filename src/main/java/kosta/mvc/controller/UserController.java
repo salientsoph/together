@@ -31,7 +31,7 @@ public class UserController {
 					return "user/login";
 				}
 				session.setAttribute("id", id);
-				session.setAttribute("pwd", pwd);
+				session.setAttribute("nickname", admin.getAdminNickname());
 				session.setAttribute("role", "admin");
 				return "user/login";
 			}
@@ -42,7 +42,7 @@ public class UserController {
 				return "user/login";
 			}
 			session.setAttribute("id", id);
-			session.setAttribute("pwd", pwd);
+			session.setAttribute("nickname", customer.getUserNickname());
 			session.setAttribute("role", "customer");
 		} else if("Seller".equals(user)) {
 			Seller seller = loginService.sellerLogin(id, pwd);
@@ -52,7 +52,7 @@ public class UserController {
 				return "user/login";
 			}
 			session.setAttribute("id", id);
-			session.setAttribute("pwd", pwd);
+			session.setAttribute("nickname", seller.getSellerNickname());
 			session.setAttribute("role", "seller");
 		}
 		
