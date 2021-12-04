@@ -82,6 +82,22 @@ public class MatchBoardServiceImpl implements MatchBoardService {
 	}
 	
 	
+	//게시물 모임에 참석하는 모든 유저 출력 
+	@Override
+	public List<String> selectAllRequestedCustomer(Long matchNo) {
+		List<String> list = matchRepository.selectAllRequestedCustomer(matchNo);
+		return list;
+	}
+	
+	//게시물 모임에 신청한 모든 유저 출력 
+	@Override
+	public List<String> selectAllApprovedCustomer(Long matchNo) {
+		List<String> list = matchRepository.selectAllApprovedCustomer(matchNo);
+		return list;
+	}
+	
+	
+	
 	//게시물 검색 
 	@Override
 	public List<MatchBoard> selectByMatchGender(int matchGender){
@@ -90,6 +106,9 @@ public class MatchBoardServiceImpl implements MatchBoardService {
 		return null;
 	}
 
+	
+	
+	
 	@Override
 	public List<MatchBoard> selectByRegionAndDate(int region, LocalDate date) {
 		// TODO Auto-generated method stub
@@ -101,5 +120,12 @@ public class MatchBoardServiceImpl implements MatchBoardService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public MatchBoard selectMatchBoard(Long matchNo) {
+		return matchRepository.findById(matchNo).orElse(null);
+	}
+
+	
 
 }

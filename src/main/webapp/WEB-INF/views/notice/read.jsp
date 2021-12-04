@@ -520,7 +520,7 @@
   <div class="py-8 py-md-9 py-lg-10">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-xl-9 order-1 order-md-0">
+
           <div class="card card-lg card-transparent mb-8">
             <div class="position-relative">
               <img class="card-img-top rounded-lg lazyestload" data-src="assets/img/blog/blog-single-01.jpg" src="assets/img/blog/blog-single-01.jpg" alt="Card image cap">
@@ -549,7 +549,6 @@
               <p>${requestScope.notice.noticeContent}</p>
             </div>
   		</div>
-  	</div>
   </div>
   </div>
   
