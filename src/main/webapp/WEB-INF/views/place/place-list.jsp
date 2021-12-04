@@ -180,11 +180,22 @@ $(document).ready(function() {
 			    <span id="placeLikeNo" style="display: none;">${prdLikeVal.placeLikeNo}</span>
 				<%-- 찜하기 기능은 고객(MEMBER 권한)만 이용할 수 있게 설정 --%>     
 	       			<button type="button"  name="place_like" 
-	         				class="btn btn-xs btn-outline-secondary text-uppercase fa fa-heart"> 찜하기 </button>
+	         				class="btn btn-xs btn-outline-secondary text-uppercase fa fa-heart" id="${board.placeNo }"> 찜하기 </button>
 	                   	<input type="hidden" value="${board.placeNo}" name="like_placeNo"/>
                 		
             <%-- place_like 테이블을 가져와 비교후 예전에 찜하기를 안했다면(혹은 찜취소를 했었다면) 찜하기로 활성화가 된다 --%>
-	       		  
+	       		  <c:if test="${board.placeLikeList ne null}">
+	       		    <c:forEach items="${board.placeLikeList }" var="placeLike">
+	       		      <c:if test="${placeLike.customer.userId eq sessionScope.id}">
+	       		        <script type="text/javascript">
+	       		          $(function(){
+	       		        	  var id = "#" + ${board.placeNo }
+	       		        	 $(id).html("찜취소");
+	       		          });
+	       		        </script>
+	       		      </c:if>
+	       		    </c:forEach>
+	       		  </c:if>
 	       		  
 	       		  
 	       		<div class="row">

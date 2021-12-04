@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Controller
-@RequestMapping("/place")
+@RequestMapping("/placeLike")
 @RequiredArgsConstructor
 public class PlaceLikeController {
 
@@ -34,7 +34,7 @@ public class PlaceLikeController {
 	/**
 	 * 찜하기 클릭시 찜하기 저장 
 	 */
-	@RequestMapping("/{placeNo}")
+	@RequestMapping("/insert/{placeNo}")
 	@ResponseBody
 	public String insertLike(HttpSession session, @PathVariable Long placeNo) {
   
@@ -54,7 +54,7 @@ public class PlaceLikeController {
 	/**
 	 * 찜하기 취소
 	 */
-	@DeleteMapping("/{placeNo}")
+	@DeleteMapping("/delete/{placeNo}")
 	public String deleteLike(HttpSession session, @PathVariable Long placeNo) {
 
 		//세션 객체 안에 있는 ID정보 저장
@@ -71,7 +71,7 @@ public class PlaceLikeController {
 	/** 
 	 * 이미 찜하기 했는지 카운트 
 	 */
-	@RequestMapping("/{placeNo}")
+	@RequestMapping("/count/{placeNo}")
 	public  ResponseEntity<List<String>> getLikeCount(HttpSession session, @PathVariable Long placeNo) {
 
 		//세션 객체 안에 있는 ID정보 저장

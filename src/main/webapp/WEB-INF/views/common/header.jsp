@@ -135,7 +135,7 @@
           
           <ul class="menuzord-menu menuzord-right">
             <li class="">
-              <a class="" href="">Home</a>
+              <a class="" href="/">Home</a>
             </li>
 
             <li class="">
