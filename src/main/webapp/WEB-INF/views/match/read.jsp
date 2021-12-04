@@ -60,7 +60,8 @@
 	href="${pageContext.request.contextPath}/css/style.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <SCRIPT language=javascript>
-	$(function() {
+	$(
+			function() {
 				$("#updateButton")
 						.click(
 								function() {
@@ -80,52 +81,10 @@
 										$("#requestForm").submit();
 									}
 								})
-				$("#insertButton")
-						.click(
-							function(){
-								$("#requestForm")
-								.attr("action",
-										"${pageContext.request.contextPath}/match/matchRequest");
-								$("#requestForm").submit();
-							}		
-						)
-						
-				$(document).on("click", "[value=수락]", function(){
-					$.ajax({
-						type: "post", 
-						url: "${pageContext.request.contextPath}/match/matchApprove", //데이터 받아올 페이지
-						data: {"customer" : $(this).attr("name"), "matchNo" : "${match.matchNo}"}, //요청시 보낼 파라미터
-						dataType: "", //받아올 데이터 형식 
-						success: function(result){ //성공시 수행할 핸들러 
-							alert("수락하셨습니다");
-							location.reload();
-						},
-						error:function() { //실패시 수행할 핸들러
-							console.log("실패");
-						}
-					});
-				});
-						
-				$(document).on("click", "[value=거절]", function(){
-					$.ajax({
-						type: "post",
-						url: "${pageContext.request.contextPath}/match/matchDeny",
-						data: {"customer" : $(this).attr("name"), "matchNo" : "${match.matchNo}"},
-						dataType: "",
-						success: function(result){
-							alert("거절하셨습니다");
-							location.reload();
-						},
-						error:function() {
-							console.log("실패");
-						}
-					});
-				});		
-							
-			
 			})
+</script>
 
-</script>   	
+
 </head>
 
 <body id="body" class="up-scroll">
@@ -162,6 +121,7 @@
 		<div class="py-8 py-md-9 py-lg-10">
 			<div class="container">
 				<div class="row">
+					
 						<div class="card card-lg card-transparent mb-8">
 
 
@@ -202,56 +162,11 @@
 
 								<blockquote class="blockquote rounded p-7 mb-5"
 									style="background-image: url(${pageContext.request.contextPath}/assets/img/blog/blog-single-02.png); background-size: cover; background-position: center top; background-repeat: no-repeat">
-									<p class="line-height-24 h4 text-white mb-5">
-									<c:if test="${sessionScope.id != requestScope.match.customer}">
-									<c:choose>
-										<c:when test="${empty requestScope.approvedCustomerList}">
-											<tr>
-									        	<td colspan="5">
-									            <p align="center"><b><span style="font-size:12pt;">참석하는 사람이 아직 없어요.</span></b></p>
-									       		</td>
-									    	</tr>
-									    	<form name="signUpForm" method="post" id="requestForm">
-											<input type=hidden name="matchNo" value="${requestScope.match.matchNo}">
-											<input type="hidden" value="${sessionScope.id}" name="customer">
-											<button id="insertButton" type="button" name="signup"
-												class="btn btn-secondary btn-lg mb-2">신청하기</button>
-											</form>
-										</c:when>
-									<c:otherwise>
-											<span style="font-size:12pt;"> 신청 목록 아이디 </span>
-									    <c:forEach items="${requestScope.approvedCustomerList}" var="customer">
-    										<p align="left"><span style="font-size:12pt;">${customer}</span><br/></p>
-    									</c:forEach>
-    								</c:otherwise>
-    								</c:choose>
-    								</c:if>
-    								
-										 <c:if test="${sessionScope.id == requestScope.match.customer}">
-										 <c:choose>
-											<c:when test = "${empty requestScope.requestedCustomerList}">
-												<tr><th><h5>신청자가 없습니다.</h5></th></tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items = "${requestedCustomerList}" var = "user">
-												<tr>
-													<th><h6>${user}</h6></th>
-													<th><button type="button"  name="${user}">수락</button></th>
-													<th><button type="button"  name="${user}">거절</button></th>
-												</tr>
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
-									  	</c:if>
-									
-									
-									</p>
-									<!--  <footer class="blockquote-footer text-white">
+									<p class="line-height-24 h4 text-white mb-5">신청한사람 이름이랑
+										신청하기 버튼 넣기</p>
+									<footer class="blockquote-footer text-white">
 										by <cite title="Source Title">Adam Smith</cite>
 									</footer>
-									-->
-									
-								
 								</blockquote>
 							</div>
 

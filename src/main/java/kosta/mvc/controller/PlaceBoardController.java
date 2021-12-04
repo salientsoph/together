@@ -93,7 +93,7 @@ public class PlaceBoardController {
 		PlaceBoard pb = placeBoardService.selectBy(placeNo, true); 
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("place/place-read");
+		mv.setViewName("place/read");
 		mv.addObject("place", pb);
 		
 		return mv; 

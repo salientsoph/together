@@ -14,7 +14,6 @@ import org.springframework.test.annotation.Commit;
 
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
-import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.MatchRequest;
 import kosta.mvc.domain.NoticeBoard;
@@ -285,30 +284,6 @@ public class SalientTest {
 		List<MatchBoard> list = matchBoardRep.findByRegionAndDate(6, LocalDate.parse("2021-12-11", formatter));
 		for (MatchBoard board : list) {
 			System.out.println(board.getMatchTitle());
-		}
-	}
-	
-	@Test
-	public void requestAllList() {
-		List<MatchBoard> list = matchBoardRep.selectMatchByCustomer("jang");
-		System.out.println(list.size());
-		for (MatchBoard board : list) {
-			System.out.println(board.getMatchRequestList().size());
-		}
-	}
-	
-	@Test
-	public void requestStateChange() {
-		MatchRequest match = requestRep.selectMatchByCustomerAndMatchNo("jang", 2L);
-		match.setRequestedState(2);
-	}
-	
-	
-	@Test
-	public void testest() {
-		List<String> list = matchBoardRep.selectAllRequestedCustomer(2L);
-		for (String i : list) {
-			System.out.println(i);
 		}
 	}
 }
