@@ -1,61 +1,145 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
-<c:set var = "path" value = "${pageContext.request.contextPath}" />
 
+<jsp:include page="../common/header.jsp" />
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-	<title>Chating</title>
-	<style>
-		*{
-			margin:0;
-			padding:0;
-		}
-		.container{
-			width: 500px;
-			margin: 0 auto;
-			padding: 25px
-		}
-		.container h1{
-			text-align: left;
-			padding: 5px 5px 5px 15px;
-			color: #FFBB00;
-			border-left: 3px solid #FFBB00;
-			margin-bottom: 20px;
-		}
-		.chating{
-			background-color: #000;
-			width: 500px;
-			height: 500px;
-			overflow: auto;
-		}
-		.chating .me{
-			color: #F6F6F6;
-			text-align: right;
-		}
-		.chating .others{
-			color: #FFE400;
-			text-align: left;
-		}
-		input{
-			width: 330px;
-			height: 25px;
-		}
-		#yourMsg{
-			display: none;
-		}
-	</style>
+<html lang="en">
+  
+  <head>
+
+
+
 
 <script src="${path}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
+
+<style type="text/css">
+
+#chatDiv{
+	height: 600px;
+	overflow: scroll;
+}
+
+</style>
+
+  </head>     
+
+<body id="body" class="up-scroll">
+
+  <div class="main-wrapper single-package-fullwidth">
+
+
+<!-- ====================================
+———	PAGE TITLE
+===================================== -->
+<section class="page-title">
+  <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${path}/assets/img/pages/page-title-bg13.jpg);">
+    <div class="container">
+      <div class="row align-items-center justify-content-center" style="height: 200px;">
+        <div class="col-lg-6">
+          <div class="page-title-content">
+            <div class="">
+              <h2 class="text-uppercase text-white font-weight-bold">채팅방</h2>
+              
+		<input type="text" id="sessionId" value="">
+		<input type="text" id="roomNumber" value="${roomNumber}">
+		<input type="text" id="userId" value="${sessionScope.id}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================
+———	PACKAGES SECTION
+===================================== -->
+<section class="py-10">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+       
+
+        <div class="mt-8">
+          <h2 class="text-uppercase mb-5">${roomName}</h2>
+         
+        </div>
+        <div id="chatDiv" class="mb-8">
+		<!------------------------- 채팅창 시작 ---------------------------->
+			
+          
+          <c:choose>
+			<c:when test="${empty requestScope.chatList}">
+			</c:when>
+			 <c:otherwise>
+			 	<c:forEach items="${requestScope.chatList}" var="chatMsg">
+			 	
+			 	
+			 	<div class=" d-flex flex-row  border rounded px-3 py-3 bg-smoke mb-2 ">
+           
+		           <div class=" w-25 d-flex justify-content-center">
+		              <div class="badge badge-rounded-circle border w-75">
+		                <span class="d-block text-primary flex-fill">${chatMsg.customer.userNickname}</span>
+		              </div>
+		           </div>
+		           
+		            <div class=" px-3 w-75 d-flex align-items-center">
+		              ${chatMsg.chatMsgContent}
+		            </div>
+		
+		            
+		          </div>
+			 	
+			 	</c:forEach>
+			 </c:otherwise>
+		 </c:choose>
+
+         
+		<!------------------------- 채팅창 끝 ---------------------------->
+        </div>
+
+       
+
+        <form class="">
+          <h3 class="text-uppercase mb-6">메세지를 입력해주세요.</h3>
+        
+          <p class="rating-view d-flex align-items-center"><!-- 
+            <span class="content-view">Want to Rate it?</span>
+            <span class="star add-rating-default ms-2"></span> -->
+          </p>
+        	<input type="text" name="userName" id="userName" value="${nickname}">
+          <div class="form-group mb-6">
+            <input class="form-control border-0 bg-smoke" placeholder="Comment" rows="6" id="chatting"/>
+          </div>
+        
+          <div class="">
+            <button type="button"  onclick="send()" id="sendBtn" class="btn btn-hover btn-outline-secondary text-uppercase">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  </div><!-- element wrapper ends -->
+  
+ <script type="text/javascript">
 var ws;
+var userName = "${nickname}";
+wsOpen();
+scrollDown();
 
 function wsOpen(){
 	//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
-	ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+	
+	//console.log("wsOpen");
+	ws = new WebSocket("ws://" + location.host + "/chating/${roomNumber}");
 	wsEvt();
 }
 	
@@ -71,6 +155,8 @@ function wsEvt() {
 			}
 		*/
 		
+		//console.log(userName);
+		
 	}
 	
 	ws.onmessage = function(data) {
@@ -85,15 +171,17 @@ function wsEvt() {
 				}
 			}else if(d.type == "message"){
 				if(d.sessionId == $("#sessionId").val()){
-					$("#chating").append("<p class='me'>나 :" + d.msg + "</p>");	
+					$("#chatDiv").append("<div class=' d-flex flex-row  border rounded px-3 py-3 bg-light mb-2 '><div class=' w-25 d-flex justify-content-center'><div class='badge badge-rounded-circle border w-75'><span class='d-block text-primary flex-fill'>나</span></div></div><div class=' px-3 w-75 d-flex align-items-center'>" + d.msg + "</div></div>");	
 				}else{
-					$("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
+					$("#chatDiv").append("<div class=' d-flex flex-row  border rounded px-3 py-3 bg-smoke mb-2 '><div class=' w-25 d-flex justify-content-center'><div class='badge badge-rounded-circle border w-75'><span class='d-block text-primary flex-fill'>" + d.userName + "</span></div></div><div class=' px-3 w-75 d-flex align-items-center'>" + d.msg + "</div></div>");
 				}
-					
+				scrollDown();	
 			}else{
 				console.warn("unknown type!")
 			}
 		}
+		
+		//console.log("msg is null");
 	}
 
 	document.addEventListener("keypress", function(e){
@@ -115,56 +203,46 @@ function chatName(){
 	}
 }
 
+
+
 function send() {
 	var option ={
 		type: "message",
 		roomNumber: $("#roomNumber").val(),
 		sessionId : $("#sessionId").val(),
 		userName : $("#userName").val(),
+		userId : $("#userId").val(),
 		msg : $("#chatting").val()
 	}
+	
+	//console.log($("#roomNumber").val());
+	//console.log($("#sessionId").val());
+	//console.log($("#userName").val());
+	//console.log($("#userId").val());
+	
 	ws.send(JSON.stringify(option))
 	$('#chatting').val("");
 }
+
+function scrollDown() {
+	//alert(document.getElementById("chatDiv").scrollHeight);
+	document.getElementById("chatDiv").scrollTop = document.getElementById("chatDiv").scrollHeight;
+	
+	//alert(document.getElementById("chatDiv").scrollTop)
+	
+	//document.getElementById('chatDiv').scrollHeight;
+}
+
+
+
+
+	
+
 </script>
-</head>
-<body>
-	<div id="container" class="container">
-		<h1>${roomName}의 채팅방</h1>
-		<input type="hidden" id="sessionId" value="">
-		<input type="hidden" id="roomNumber" value="${roomNumber}">
-		
-		<div id="chating" class="chating">
-		<c:choose>
-			<c:when test="${empty requestScope.chatList}">
-			</c:when>
-			 <c:otherwise>
-			 	<c:forEach items="${requestScope.chatList}" var="chatMsg">
-			 	
-			 		<p class='others'> ${chatMsg.customer.userNickname} : ${chatMsg.chatMsgContent} </p>
-			 	</c:forEach>
-			 </c:otherwise>
-		 </c:choose>
-		</div>
-		
-		<div id="yourName">
-			<table class="inputTable">
-				<tr>
-					<th>사용자명</th>
-					<th><input type="text" name="userName" id="userName"></th>
-					<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
-				</tr>
-			</table>
-		</div>
-		<div id="yourMsg">
-			<table class="inputTable">
-				<tr>
-					<th>메시지</th>
-					<th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
-					<th><button onclick="send()" id="sendBtn">보내기</button></th>
-				</tr>
-			</table>
-		</div>
-	</div>
-</body>
+  
+
+   <jsp:include page="../common/footer.jsp" />
+
+  </body>
 </html>
+
