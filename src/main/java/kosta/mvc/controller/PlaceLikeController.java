@@ -2,88 +2,90 @@ package kosta.mvc.controller;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kosta.mvc.domain.Customer;
-import kosta.mvc.domain.PlaceLike;
+import kosta.mvc.service.PlaceBoardService;
 import kosta.mvc.service.PlaceLikeService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * 클라이언트의 찜하기 요청을 핸들링할 컨트롤러. 
+ * 사용자의 찜하기 요청을 핸들링할 컨트롤러. 
  * 로그인한 사용자 정보와 찜하기를 추가할 PlaceBoard의 id값을 받아서 서비스에 위임한다.
  */
-@RestController
-@RequestMapping("/mypage")
+@Slf4j
+@Controller
+@RequestMapping("/placeLike")
 @RequiredArgsConstructor
 public class PlaceLikeController {
 
 	private final PlaceLikeService placeLikeService;
+	private final PlaceBoardService placeBoardService;
 	
 	/**
-	 * 현재 로그인한 사용자에 해당하는 찜 목록 전체 검색하기
+	 * 찜하기 클릭시 찜하기 저장 
 	 */
-	@RequestMapping("/mylike")
-	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage, @RequestParam(defaultValue="jang")String userId) {
-		ModelAndView mv = new ModelAndView();
-		
-		Pageable pageable = PageRequest.of(nowPage-1, 10, Direction.DESC, "placeLikeNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
-		Page<PlaceLike> pageList = placeLikeService.selectByUserId(pageable, userId);
-		
-		mv.setViewName("mypage/mylike");//뷰쪽으로 전달될 데이터정보
-		
-		int blockCount = 5;
-		int temp = (nowPage - 1) % blockCount;
-		int startPage = nowPage - temp;
-		
-		mv.addObject("likeList", pageList);
-		
-		mv.addObject("blockCount", blockCount);
-		mv.addObject("nowPage", nowPage);
-		mv.addObject("startPage", startPage);
-		mv.addObject("userId", userId);
-		
-		return mv;
+	@RequestMapping("/insert/{placeNo}")
+	@ResponseBody
+	public String insertLike(HttpSession session, @PathVariable Long placeNo) {
+  
+		boolean result = false;
+
+		//세션 객체 안에 있는 ID정보 저장
+		Object objId =  session.getAttribute("id");
+
+		if(objId != null){
+			Customer customer =  Customer.builder().userId(objId.toString()).build();
+			result = placeLikeService.insertLike(customer , placeNo);
+		}
+
+		return result ? "SUCCESS" : "Fail";
 	}
-
-	
-	/**
-	 * 전달받은 장소게시판 번호로 찜하기 등록 
-	 */
-//	@RequestMapping("/like/{placeNo}")
-//	public ResponseEntity<String> addLike(Customer loginCustomer, @PathVariable Long placeNo) {
-//
-//		boolean result = false;
-//
-//		if(loginCustomer != null){
-//			result = placeLikeService.insertLike(loginCustomer, placeNo);
-//		}
-//		return result ?
-//				new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//	}
-
 
 	/**
 	 * 찜하기 취소
 	 */
-//	@DeleteMapping("/like/{placeNo}")
-//	public ResponseEntity<String> cancelLike(Customer loginCustomer, @PathVariable Long placeNo) {
-//		
-//		if (loginCustomer != null) {
-//			placeLikeService.deleteLike(loginCustomer, placeNo);
-//		}
-//
-//		return new ResponseEntity<>(HttpStatus.OK);
-//	}
+	@DeleteMapping("/delete/{placeNo}")
+	public String deleteLike(HttpSession session, @PathVariable Long placeNo) {
+
+		//세션 객체 안에 있는 ID정보 저장
+		Object objId =  session.getAttribute("id");
+
+		if(objId != null){
+			Customer customer =  Customer.builder().userId(objId.toString()).build();
+			placeLikeService.deleteLike(customer , placeNo);
+		}
+
+		return "SUCCESS";
+	}
+
+	/** 
+	 * 이미 찜하기 했는지 카운트 
+	 */
+	@RequestMapping("/count/{placeNo}")
+	public  ResponseEntity<List<String>> getLikeCount(HttpSession session, @PathVariable Long placeNo) {
+
+		//세션 객체 안에 있는 ID정보 저장
+		Object objId =  session.getAttribute("id");
+
+		log.info("placeNo : {} ", placeNo);
+		log.info("loginMember : {} ", objId);
+
+		Customer customer =  Customer.builder().userId(objId.toString()).build();
+		List<String> resultData = placeLikeService.count(customer, placeNo);
+
+		log.info("likeCount : {} ", resultData);
+
+		return new ResponseEntity<>(resultData, HttpStatus.OK);
+	}
+
 }
