@@ -43,8 +43,7 @@ package kosta.mvc.service;
 
 		
 		/**
-		 * 
+		 * 모임에 신청됐는지 확인
 		 * */
-		/*
-		public List<MatchBoard> selectMatchByCustomer(String userId);*/
+		public int ifMatchRequest(String id, long matchNo);
 }

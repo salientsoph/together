@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Single Blog Post Right Sidebar - Star Travel</title>
+<title>모임 게시판</title>
 
 <!-- Plugins css Style -->
 <link
@@ -89,8 +89,7 @@
 										.attr("action",
 												"${pageContext.request.contextPath}/match/matchRequest");
 										$("#requestForm").submit();
-									}		
-								)
+									})
 								
 				$(document).on("click", "#accept", function(){
 							$.ajax({
@@ -129,7 +128,7 @@
 
 </head>
 
-<body id="body" class="up-scroll">
+<body id="body" class="up-scroll">/
 
 	<jsp:include page="../common/header.jsp" />
 
