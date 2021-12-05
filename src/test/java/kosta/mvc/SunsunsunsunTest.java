@@ -52,7 +52,7 @@ public class SunsunsunsunTest {
 	@Test
 	public void reviewInsert() {
 		for(int i = 1; i <= 10; i++) {
-			reviewRep.save(Review.builder().placeBoard(placeBoardRep.getById(Long.valueOf(i)))
+			reviewRep.save(Review.builder().placeBoard(placeBoardRep.getById(2L))
 										   .reviewContent("아주좋아요"+i)
 					                       .star((i%4)+1)
 					                       .customer(customerRep.getById("jang"))

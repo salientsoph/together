@@ -38,15 +38,17 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void ReviewDelete(Long reviewNo) {
-		reviewRep.existsById(reviewNo);
+		Review review = reviewRep.findById(reviewNo).orElse(null);
+		reviewRep.delete(review);
 	}
 
 	@Override
-	public void ReviewUpdate(Long reviewNo, String reviewContent, int star) {
+	public void ReviewUpdate(Long reviewNo, String reviewContent, int star, Long placeNo) {
 		Review review = reviewRep.findById(reviewNo).orElse(null);
+		System.out.println(review.getReviewContent());
 		review.setReviewContent(reviewContent);
 		review.setStar(star);
-
+		System.out.println(review.getReviewContent());
 	}
 
 	@Override

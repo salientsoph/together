@@ -18,7 +18,7 @@ public interface ReviewService {
 	/**
 	 * 리뷰 수정
 	 * */
-	void ReviewUpdate(Long reviewNo, String reviewContent, int star);
+	void ReviewUpdate(Long reviewNo, String reviewContent, int star, Long placeNo);
 
 	/**
 	 * 리뷰 조회

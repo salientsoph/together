@@ -28,18 +28,18 @@ public class UserController {
 				if(admin==null) {
 					request.setAttribute("title", "LOGIN FAILED");
 					request.setAttribute("message", "로그인에 실패하였습니다");
-					return "user/login";
+					return "index";
 				}
 				session.setAttribute("id", id);
 				session.setAttribute("nickname", admin.getAdminNickname());
 				session.setAttribute("role", "admin");
-				return "user/login";
+				return "index";
 			}
 			Customer customer = loginService.customerLogin(id, pwd);
 			if(customer==null) {
 				request.setAttribute("title", "LOGIN FAILED");
 				request.setAttribute("message", "로그인에 실패하였습니다");
-				return "user/login";
+				return "index";
 			}
 			session.setAttribute("id", id);
 			session.setAttribute("nickname", customer.getUserNickname());
@@ -49,14 +49,14 @@ public class UserController {
 			if(seller==null) {
 				request.setAttribute("title", "LOGIN FAILED");
 				request.setAttribute("message", "로그인에 실패하였습니다");
-				return "user/login";
+				return "index";
 			}
 			session.setAttribute("id", id);
 			session.setAttribute("nickname", seller.getSellerNickname());
 			session.setAttribute("role", "seller");
 		}
 		
-		return "user/login";
+		return "index";
 	}
 	
 	@RequestMapping("/logout")
@@ -64,7 +64,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		return "user/login";
+		return "index";
 	}
 	
 	@RequestMapping("/customerRegister")
@@ -72,11 +72,11 @@ public class UserController {
 		if(loginService.customerIdCheck(customer.getUserId())!=null) {
 			request.setAttribute("title", "SIGNUP FAILED");
 			request.setAttribute("message", "회원가입에 실패하였습니다");
-			return "user/login";
+			return "index";
 		}
 		loginService.customerRegister(customer);
 		
-		return "user/login";
+		return "index";
 	}
 	
 	@RequestMapping("/sellerRegister")
@@ -84,16 +84,16 @@ public class UserController {
 		if(seller.getRegion()==null) {
 			request.setAttribute("title", "SIGNUP FAILED");
 			request.setAttribute("message", "지역을 선택하세요");
-			return "user/login";
+			return "index";
 		}
 		if(loginService.sellerIdCheck(seller.getSellerId())!=null) {
 			request.setAttribute("title", "SIGNUP FAILED");
 			request.setAttribute("message", "회원가입에 실패하였습니다");
-			return "user/login";
+			return "index";
 		}
 		loginService.sellerRegister(seller);
 		
-		return "user/login";
+		return "index";
 	}
 	
 	@RequestMapping("/findId")
@@ -117,7 +117,7 @@ public class UserController {
 				request.setAttribute("message", "당신의 ID는 " + id + "입니다");
 			}
 		}
-		return "user/login";
+		return "index";
 	}
 	
 	@RequestMapping("/findPwd")
@@ -141,7 +141,7 @@ public class UserController {
 				request.setAttribute("message", "당신의 PASSWORD는 " + pwd + "입니다");
 			}
 		}
-		return "user/login";
+		return "index";
 	}
 	
 	@RequestMapping("customerIdCheck")
