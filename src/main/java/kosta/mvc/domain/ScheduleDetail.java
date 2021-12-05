@@ -35,9 +35,9 @@ import lombok.ToString;
 public class ScheduleDetail {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "schedule_detail_no_seq") //시퀀스로 따로 관리하자.
-	@SequenceGenerator(sequenceName = "schedule_detail_no_seq", allocationSize = 1, name = "schedule_detail_no_seq") //시퀀스 이름: schedule_no_seq
-	private Long scheduleDetailNo;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq") //시퀀스로 따로 관리하자.
+	@SequenceGenerator(sequenceName = "id_seq", allocationSize = 1, name = "id_seq") //시퀀스 이름: schedule_no_seq
+	private Long id;
 	
  	private LocalDateTime startTime;
 	
