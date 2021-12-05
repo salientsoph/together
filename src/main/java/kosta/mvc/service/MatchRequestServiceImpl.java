@@ -57,4 +57,13 @@ package kosta.mvc.service;
 			MatchRequest request = matchRequestRepository.selectMatchRequest(matchNo);
 			return request;
 		}
+
+		@Override
+		public int ifMatchRequest(String id, long matchNo) {
+			MatchRequest request = matchRequestRepository.selectMatchByCustomerAndMatchNo(id, matchNo);
+			if (request == null) {
+				return 0; //목록에 존재하지 않음 (신청 가능함) 
+			}
+			return 1; 
+		}
 }

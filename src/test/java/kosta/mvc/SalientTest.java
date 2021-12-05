@@ -29,6 +29,7 @@ import kosta.mvc.repository.NoticeBoardRepository;
 import kosta.mvc.repository.PlaceBoardRepository;
 import kosta.mvc.repository.RegionRepository;
 import kosta.mvc.repository.SellerRepository;
+import kosta.mvc.service.MatchRequestService;
 
 @SpringBootTest
 @Transactional
@@ -59,6 +60,11 @@ public class SalientTest {
 
 	@Autowired
 	private MatchRequestRepository requestRep;
+	
+	
+	@Autowired
+	private MatchRequestService matchRequestService;
+	
 	
 	/**공지사항 test*/
 	@Test
@@ -285,5 +291,14 @@ public class SalientTest {
 		for (MatchBoard board : list) {
 			System.out.println(board.getMatchTitle());
 		}
+	}
+	
+	
+	@Test
+	public void test222() {
+		MatchRequest request = requestRep.select("kim", 121L);
+		System.out.println(request);
+		System.out.println(request.getRequestedState());
+		request.setRequestedState(1);
 	}
 }
