@@ -137,28 +137,12 @@
           
 			<!-- 로그인 -->
             <li class="">
-              <a href="/place/list">Login</a>
-
-              <ul class="dropdown drop-up">
-                <li class=" || ">
-
-                  <a href="javascript:void(0)">회원</a>
-                  <a href="javascript:void(0)">사업자</a>
-                </li>
-              </ul>
+              <a href="/user/login">Login</a>
             </li>
             
    			<!--회원가입 -->
     		 <li class="">
-              <a href="/place/list">회원가입</a>
-
-              <ul class="dropdown drop-up">
-                <li class=" || ">
-
-                  <a href="javascript:void(0)">이용자 회원가입</a>
-                  <a href="javascript:void(0)">사업자 회원가입</a>
-                </li>
-              </ul>
+              <a href="/user/customerRegister">회원가입</a>
             </li>
             
              
@@ -168,11 +152,11 @@
 
               <ul class="dropdown drop-up">
                 <li class="">
-                  <a href="/notice/list">여행게시판</a>
+                  <a href="/place/list">여행게시판</a>
                 </li>
                 
                 <li class="">
-                  <a href="/report/list">매칭게시판</a>
+                  <a href="/match/matchRequestRe">매칭게시판</a>
                 </li>
               </ul>
             </li>
@@ -586,7 +570,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
 	
 	<div class="modal fade" id="findPwd" tabindex="-1" role="dialog"
 		aria-label="findPwdModalLabel" aria-hidden="true">
