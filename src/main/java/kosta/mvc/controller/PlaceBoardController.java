@@ -127,7 +127,7 @@ public class PlaceBoardController {
 	public ModelAndView updateForm(Long placeNo) {
 		System.out.println("----------------------수정폼 띄우기");
 		PlaceBoard pb = placeBoardService.selectBy(placeNo, false); //조회수 증가 안되게 
-		ModelAndView mv = new ModelAndView("place/update", "place", pb);
+		ModelAndView mv = new ModelAndView("place/place-update", "place", pb);
 		return mv;
 	}
 	
@@ -139,7 +139,7 @@ public class PlaceBoardController {
 	public ModelAndView update(PlaceBoard board) {
 		System.out.println("----------------------수정완료 ");
 		PlaceBoard placeBoard = placeBoardService.update(board);
-		return new ModelAndView("place/read", "place", placeBoard);
+		return new ModelAndView("place/place-read", "place", placeBoard);
 	}
 	
 	
