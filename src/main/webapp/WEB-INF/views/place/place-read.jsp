@@ -83,7 +83,12 @@
 <body id="body" class="up-scroll">
 
 	<jsp:include page="../common/header.jsp" />
-
+	<c:if test="${sessionScope.role eq 'seller' or sessionScope.id eq null}">
+	  <script type="text/javascript">
+	    alert("customer계정으로 로그인하고 이용해주세요");
+	    location.href="/";
+	  </script>
+	</c:if>
 	<!-- ====================================
 ——— TRAVEL LIST SECTION
 ===================================== -->
@@ -279,8 +284,20 @@
 						</script>
 					<div class="mb-7 mb-lg-0">
 						<h3 class="mb-6" name="LeaveAReview">Leave A Review</h3>
-						<form action="" method="POST" role="form" class="form"
+						<form action="/review/insert" method="POST" role="form" class="form"
 							name="reviewForm">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input type="hidden" value="${place.placeNo}" name="placeBoard">
+								</div>
+							</div>
+
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input type="hidden" value="${sessionScope.id }"
+										name="customer">
+								</div>
+							</div>
 							<div class="col-lg-6">
 								<div class="form-group">
 									<P id="star">

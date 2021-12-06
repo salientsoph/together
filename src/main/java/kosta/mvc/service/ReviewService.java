@@ -13,12 +13,12 @@ public interface ReviewService {
 	/**
 	 * 리뷰 삭제
 	 */
-	void ReviewDelete(Long reviewNo);
+	void reviewDelete(Long reviewNo);
 	
 	/**
 	 * 리뷰 수정
 	 * */
-	void ReviewUpdate(Long reviewNo, String reviewContent, int star, Long placeNo);
+	void reviewUpdate(Long reviewNo, String reviewContent, int star, Long placeNo);
 
 	/**
 	 * 리뷰 조회
