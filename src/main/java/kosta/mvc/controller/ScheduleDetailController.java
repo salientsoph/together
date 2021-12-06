@@ -1,9 +1,13 @@
 package kosta.mvc.controller;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.json.JSONArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +20,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 
 import kosta.mvc.domain.MatchBoard;
+import kosta.mvc.domain.PlaceBoard;
+import kosta.mvc.domain.PlaceLike;
 import kosta.mvc.domain.ScheduleDetail;
 import kosta.mvc.service.MatchBoardService;
+import kosta.mvc.service.PlaceBoardService;
+import kosta.mvc.service.PlaceLikeService;
 import kosta.mvc.service.ScheduleDetailService;
 import lombok.extern.log4j.Log4j;
+
+import org.json.simple.JSONObject;
 
 @Controller
 @RequestMapping("/schedule")
@@ -31,6 +41,12 @@ public class ScheduleDetailController {
 	@Autowired
 	private MatchBoardService matchBoardService;
 	
+	@Autowired
+	private PlaceLikeService placeLikeService;
+	
+	@Autowired
+	private PlaceBoardService placeBoardService;
+	
 
 	@RequestMapping("/read/{matchNo}")
 	public ModelAndView scheduleRead(@PathVariable Long matchNo ) {
@@ -38,73 +54,62 @@ public class ScheduleDetailController {
 		
 		mv.setViewName("schedule/schedule-read");
 		
-		//List<ScheduleDetail> scheduleDetailList = scheduleDetailService.selectByMatchNo(matchNo);
-		//mv.addObject("scheduleDetailList", scheduleDetailList);
-		mv.addObject("matchNo", matchNo);
+		List<ScheduleDetail> scheduleDetailList = scheduleDetailService.selectByMatchNo(matchNo);
+		
 		
 		MatchBoard match = matchBoardService.selectBy(matchNo, false);
 		
-		LocalDate tripDate = match.getTripDate();
+		List<PlaceLike> placeLikeList = placeLikeService.selectByCustomerNoAndRegionCode(match.getCustomer().getUserId(), match.getRegion().getRegionCode());
+		/*
+		System.out.println("***************");
 		System.out.println();
-		  System.out.println("*************************");
-		  System.out.println("tripDate : "+tripDate);
-		  System.out.println("*************************");
-		  System.out.println();
-		  mv.addObject("tripDate", tripDate);
+		System.out.println(placeLikeList);
+		System.out.println();
+		System.out.println("***************");
+		*/
+
+		mv.addObject("placeLikeList", placeLikeList);
+		mv.addObject("scheduleDetailList", scheduleDetailList);
+		mv.addObject("matchNo", matchNo);
+		
+		mv.addObject("localDateTimeFormat", new SimpleDateFormat("hh:mm"));
+		 
+	
 		
 		return mv;
 	}
 	
 	/*
-	  @RequestMapping("/getDb/{matchNo}")	  
-	  @ResponseBody 
-	  public Map<Long, ScheduleDetail> ajaxGetDB(@PathVariable String matchNo){
-		  
-		  System.out.println();
-		  System.out.println("*************************");
-		  System.out.println("matchNo : "+matchNo);
-		  System.out.println("*************************");
-		  System.out.println();
-		  
-		 Long no = Long.parseLong(matchNo);
-		  
-		 List<ScheduleDetail> scheduleDetailList = scheduleDetailService.selectByMatchNo(no);
-		  
-		  //Gson gson = new Gson();
-		 
-		 Map<Long, ScheduleDetail> javaMap = new HashMap<Long, ScheduleDetail>();
-		 
-		 for(ScheduleDetail sd : scheduleDetailList) {
-			 javaMap.put(sd.getScheduleDetailNo(), sd);
-		 }
-				  
-		  return javaMap;
-	  }
-	  */
+	@RequestMapping("/getPlaceData")
+	@ResponseBody
+	public JSONObject getPlaceData(HttpServletRequest request) {
+		
+		String placeNoStr = request.getParameter("placeNo");
+		Long placeNo = Long.parseLong(placeNoStr);
+				
+		PlaceBoard place = placeBoardService.selectBy(placeNo, false);
+		
+		
+		JSONObject jsonObj = new JSONObject();
+		
+		jsonObj.put("place", place);
+		
+		return jsonObj;
+	}
+	*/
 	
-	@RequestMapping("/getDb/{matchNo}")	  
-	@ResponseBody 
-	public JSONArray ajaxGetDB(@PathVariable String matchNo){
-		  
-		 
-		  
-		 Long no = Long.parseLong(matchNo);
-		  
-		 List<ScheduleDetail> scheduleDetailList = scheduleDetailService.selectByMatchNo(no);
-		 
-		 
-		 for(ScheduleDetail sd : scheduleDetailList) {
-			 System.out.println();
-			  System.out.println("*************************");
-			  System.out.println("sd : "+sd);
-			  System.out.println("*************************");
-			  System.out.println();
-		 }
-		 
-		 JSONArray mapResult = JSONArray.fromObject(scheduleDetailList);
-	        //model.addAttribute("mapResult", mapResult);
-		 
-		 return mapResult;
-	  }
-	 
+	@RequestMapping("/getPlaceData")
+	@ResponseBody
+	public PlaceBoard getPlaceData(HttpServletRequest request) {
+		
+		String placeNoStr = request.getParameter("placeNo");
+		Long placeNo = Long.parseLong(placeNoStr);
+				
+		PlaceBoard place = placeBoardService.selectBy(placeNo, false);
+		
+		return place;
+	}
+
+	
+	
 }

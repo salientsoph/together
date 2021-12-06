@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.PlaceLike;
+import kosta.mvc.domain.Region;
 
 public interface PlaceLikeService {
 	
@@ -30,6 +32,12 @@ public interface PlaceLikeService {
 	 */
 	Page<PlaceLike> selectByUserId(Pageable pageable, String userId);
 //	Page<PlaceBoard> findLikedPlaceBoard(Customer customer, Pageable pageable);
-
+	
+	/**
+     * 사용자의 관심장소들 중 특정 지역만 출력
+     * (스케줄 작성용)
+     * */
+    List<PlaceLike> selectByCustomerNoAndRegionCode(String id, int regionCode);
+    
 
 }

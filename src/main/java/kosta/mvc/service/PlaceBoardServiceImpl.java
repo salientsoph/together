@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class PlaceBoardServiceImpl implements PlaceBoardService {
 
-	
 	private final PlaceBoardRepository placeRepository;
 	
 	@Override

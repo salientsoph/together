@@ -8,10 +8,8 @@
 <%@ attribute name="pattern" required="false" type="java.lang.String" %>
 
 <c:if test="${empty pattern}">
-    <c:set var="pattern" value="yyyy-MM-dd"/>
+    <c:set var="pattern" value="hh-mm"/>
 </c:if>
 
-<fmt:parseDate value="${date}" pattern="yyyy-MM-dd" var="parsedDate" type="date"/>
+<fmt:parseDate value="${date}" pattern="hh-mm" var="parsedDate" type="date"/>
 <fmt:formatDate value="${parsedDate}" type="date" pattern="${pattern}"/>
-
-
