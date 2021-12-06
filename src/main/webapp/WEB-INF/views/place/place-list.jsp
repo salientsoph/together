@@ -80,6 +80,7 @@ $(document).ready(function() {
 });
         
 </script>
+
 </head>     
 
 <body id="body" class="up-scroll">
@@ -136,7 +137,7 @@ $(document).ready(function() {
       <div class="col-md-6 col-lg-4 mb-5">
         <div class="card card-hover">
           <a href="/place/read/${board.placeNo}" class="position-relative">
-            <img class="card-img-top lazyestload" data-src="${path}/assets/img/home/deal/deal-01.jpg" src="${path}/assets/img/home/deal/deal-01.jpg" alt="Card image cap">
+            <img data-src="${pageContext.request.contextPath}/images/${board.placeImage}" src="${pageContext.request.contextPath}/images/${board.placeImage}" height="380" width="350" alt="image" style="display:block; margin:auto;">
             	<div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
 	              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
 	                <li>
@@ -158,16 +159,14 @@ $(document).ready(function() {
             	</div>
         	  </a>
         	  
+        	    
           <div class="card-body px-4">
           <h5>
               <a href="/place/read/${board.placeNo}" class="card-title text-uppercase">${board.placeTitle}</a>
             </h5>
-            <p class="mb-5">${board.placeContent}</p>
+            <p class="mb-5">${board.placeAddress}</p>
             <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <p class="mb-0 text-capitalize">Start from</p>
-                <h3 class="text-primary">$299</h3>
-              </div>
+             
           
             <div>
             	<p class="mb-0 text-capitalize ">관심 받은 수</p>
@@ -226,6 +225,22 @@ $(document).ready(function() {
       
 
     </div>		
+    
+    
+    
+    <c:if test="${sessionScope.role == 'seller'}">
+    <p>
+      <div class="mb-6">
+    	<ul class="pagination justify-content-center align-items-center">
+    	<li class="page-item">
+    		<a href="/place/write">
+    			<button type="button" class="btn btn-secondary btn-lg mb-2">글 작성하기</button>
+    		</a>
+    	</li>
+    	</ul>
+      </div>
+    </c:if>
+    
   </div>
   
   

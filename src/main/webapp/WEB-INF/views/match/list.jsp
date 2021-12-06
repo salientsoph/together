@@ -42,6 +42,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+	<script src="${pageContext.request.contextPath}/assets/plugins/datepicker/js/daterangepicker.min.js"></script>
   </head>     
 
 <body id="body" class="up-scroll">
@@ -73,6 +75,13 @@
 <!-- ====================================
 ———	PACKAGES SECTION
 ===================================== -->
+<c:if test="${sessionScope.role eq 'seller' or sessionScope.id eq null}">
+	  <script type="text/javascript">
+	    alert("customer 계정으로 로그인하고 이용해주세요");
+	    location.href="/";
+	  </script>
+</c:if>
+
 <section class="bg-smoke py-10">
   <div class="container">
     <div class="row">
@@ -301,13 +310,13 @@
                   <p/><p/>
                   <!-- 날짜(달력) -->
                   <i class="far fa-calendar-alt" aria-hidden="true"></i> 
-                  <tags:localDate date="${board.matchRegdate}"/>
+                  <tags:localDate date="${board.matchRegdate}"/>  작성
                   
                   <span>&nbsp;&nbsp;</span>
                   
                   <!-- 시계 -->
                   <i class="far fa-clock" aria-hidden="true"></i> 
-                  ${board.tripDate}
+                  ${board.tripDate} 출발
                 </h4>
                 
                 <div class="rating-view">
@@ -328,9 +337,16 @@
                   
                   <span class="text-gray-color hover-text-primary">
                   <i class="fa fa fa-tags" aria-hidden="true"></i>
-                    	<span class="ms-1 text-capitalize"> 댓글 몇개</span>
+                    	<span class="ms-1 text-capitalize">${board.matchAgeGroup} 대</span>
                   </span>
 
+				  <span>&nbsp;&nbsp;&nbsp;</span>
+				  
+				  <span class="text-gray-color hover-text-primary">
+                  <i class="fa fa fa-tags" aria-hidden="true"></i>
+                    	<span class="ms-1 text-capitalize">${board.matchGender}</span>
+                  </span>
+				
                 </div>
 
               </div>
@@ -439,212 +455,7 @@
     <!-- ====================================
     ——— FOOTER SECTION
     ===================================== -->
-    <footer class="footer">
-      <div class="footer-bg-color py-9">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-lg-3 mb-7 mb-lg-0">
-              <a class="d-inline-block" href="index.html">
-                <img class="w-100 mb-6 lazyestload" data-src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png" src="${pageContext.request.contextPath}/assets/img/logo-color-sm.png" alt="img">
-              </a>
-              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
-            </div>
-    
-            <div class="col-md-6 col-lg-3 mt-md-4 mb-7 mb-lg-0">
-              <div class="title-tag">
-                <h6>Contact us</h6>
-              </div>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.</p>
-              <ul class="list-unstyled mb-0">
-                <li class="media mb-2">
-                  <div class="me-3">
-                    <i class="fa fa-home" aria-hidden="true"></i>
-                  </div>
-                  <div class="media-body">
-                     <a href="contact.html">61 Park Street, Fifth Avenue, NY</a>
-                  </div>
-                </li>
-
-                <li class="media mb-2">
-                  <div class="me-3">
-                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                  </div>
-                  <div class="media-body">
-                    <a href="tel:88657524332">[88] 657 524 332</a>
-                  </div>
-                </li>
-                
-                <li class="media">
-                  <div class="me-3">
-                    <i class="far fa-envelope" aria-hidden="true"></i>
-                  </div>
-                  <div class="media-body">
-                    <a href="mailTo:info@star-travel.com">info@star-travel.com</a>
-                  </div>
-                </li>
-              </ul>
-            </div>
-    
-            <div class="col-md-6 col-lg-3 mt-lg-4 mb-7 mb-md-0">
-              <div class="title-tag pb-1">
-                <h6>Gallery</h6>
-              </div>
-
-              <div class="row me-auto gallery mb-2 mb-md-0">
-                <div class="col-4 mb-3">
-                  <div class="media media-hover">
-                    <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-1.jpg"
-                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-1.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-1.jpg"></a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-4 mb-3">
-                  <div class="media media-hover">
-                    <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-2.jpg"
-                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-2.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-2.jpg"></a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-4 mb-3">
-                  <div class="media media-hover">
-                    <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-3.jpg"
-                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-3.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-3.jpg"></a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-4">
-                  <div class="media media-hover">
-                    <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-4.jpg"
-                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-4.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-4.jpg"></a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-4">
-                  <div class="media media-hover">
-                    <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-5.jpg"
-                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-5.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-5.jpg"></a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-4">
-                  <div class="media media-hover">
-                    <div class="content w-100">
-                      <img class="media-img lazyestload" data-src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-6.jpg"
-                        src="${pageContext.request.contextPath}/assets/img/home/gallery/thumb-gallery-6.jpg" alt="gallery-img">
-                      <a class="media-img-overlay" data-fancybox="footer-gallery" href="${pageContext.request.contextPath}/assets/img/home/gallery/gallery-6.jpg"></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-md-6 col-lg-3 mt-lg-4">
-              <div class="title-tag">
-                <h6>Newsletter</h6>
-              </div>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-
-              <form class="mb-6" action="index.html" method="post">
-                <div class="input-group input-group-sm">
-                  <input type="email" class="form-control form-control-sm form-transparent" required="" placeholder="Enter your email" aria-label="Enter your email">
-                  <button class="btn border-0 btn btn-append hover-bg-primary" type="submit">
-                    <i class="fas fa-long-arrow-alt-right text-white ltr" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </form>
-
-              <ul class="list-inline d-flex mb-0">
-                <li class="me-3 me-lg-2 me-xl-3">
-                  <a class="icon-default icon-border rounded-circle hover-bg-primary" href="javascript:void(0)">
-                    <i class="fab fa-facebook-f text-white" aria-hidden="true"></i>
-                  </a>
-                </li>
-
-                <li class="me-3 me-lg-2 me-xl-3">
-                  <a class="icon-default icon-border rounded-circle hover-bg-primary" href="javascript:void(0)">
-                    <i class="fab fa-twitter text-white" aria-hidden="true"></i>
-                  </a>
-                </li>
-
-                <li class="me-3 me-lg-2 me-xl-3">
-                  <a class="icon-default icon-border rounded-circle hover-bg-primary" href="javascript:void(0)">
-                    <i class="fab fa-google-plus-g text-white" aria-hidden="true"></i>
-                  </a>
-                </li>
-
-                <li class="me-3 me-lg-2 me-xl-3">
-                  <a class="icon-default icon-border rounded-circle hover-bg-primary" href="javascript:void(0)">
-                    <i class="fab fa-pinterest-p text-white" aria-hidden="true"></i>
-                  </a>
-                </li>
-
-                <li class="">
-                  <a class="icon-default icon-border rounded-circle hover-bg-primary" href="javascript:void(0)">
-                    <i class="fab fa-vimeo-v text-white" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-      <div class="copyright py-6">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-md-6 order-1 order-md-0">
-              <p class="mb-0 mb-md-0 text-md-start">Copyright &copy; <span id="copy-year"></span> All Rights Reserved by
-                <a href="http://www.iamabdus.com/" target="_blank">Abdus</a>
-              </p>
-            </div>
-            
-            <div class="col-md-6">
-              <ul class="list-inline text-capitalize d-flex align-items-center justify-content-md-end justify-content-center mb-md-0">
-                <li class="me-3">
-                  <a href="setting.html">Privacy policy</a>
-                </li>
-    
-                <li class="me-3">
-                  <a href="about-us.html">About us</a>
-                </li>
-    
-                <li class="me-3">
-                  <a href="contact.html">Support</a>
-                </li>
-    
-                <li class="">
-                  <a href="blog-single-right-sidebar.html">Blog</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <script>
-        var d = new Date();
-        var year = d.getFullYear();
-        document.getElementById("copy-year").innerHTML = year;
-      </script>
-    </footer>
-
+<jsp:include page="../common/footer.jsp" />
   
     <!-- ====================================
     ——— MODAL SECTION

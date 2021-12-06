@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,6 +53,9 @@ public class PlaceBoard {
 	//지역명
 	private String regionName;
 	
+	//주소 
+	private String placeAddress;
+	
 	//게시물 제목
 	private String placeTitle;
 	
@@ -71,12 +75,11 @@ public class PlaceBoard {
 	//카테고리 분류(0: 맛집 / 1: 관광지 / 2: 액티비티)
 	private int placeCategory;
 	
-	//게시물 사진(사진1) 
+	//이미지 이름 
 	private String placeImage;
 	
-	//게시물 상세 사진(사진2)
-	private String placeDetailImage;
-
+	//이미지 주소 
+	private String placeImageUrl;
 	
 	//일정 상세 (1:다)
 	@OneToMany(mappedBy = "placeBoard" , cascade = CascadeType.ALL )
@@ -92,5 +95,7 @@ public class PlaceBoard {
 	@OneToMany(mappedBy = "placeBoard", cascade = CascadeType.ALL)
 //	Set<PlaceLike> likes = new HashSet<>();
 	private List<PlaceLike> placeLikeList;
+
+	
 
 }
