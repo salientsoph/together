@@ -23,7 +23,7 @@
               <a class="d-inline-block" href="index.html">
                 <img class="w-100 mb-6 lazyestload" data-src="${path}/assets/img/logo-color-sm.png" src="${path}/assets/img/logo-color-sm.png" alt="img">
               </a>
-              <p class="mb-0" weight="212" height="186"><Strong>Witrago</Strong>는 여행 종합 플랫폼입니다. 지루하고 지쳤던 일상에서 벗어나 모험이 가득한 새로운 곳에서 Witrago 이용자 여러분들이 에너지를 재충전 할 수 있게 도와줍니다</p>
+              <p class="mb-0" weight="212" height="186"><Strong>Star travel</Strong>은 여행 종합 플랫폼입니다. 지루하고 지쳤던 일상에서 벗어나 모험이 가득한 새로운 곳에서 Star travel 이용자 여러분들이 에너지를 재충전 할 수 있게 도와줍니다</p>
             </div>
     
             <div class="col-md-6 col-lg-3 mt-md-4 mb-7 mb-lg-0">

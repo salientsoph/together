@@ -1,6 +1,5 @@
 package kosta.mvc.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -13,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.Region;
-import kosta.mvc.service.MatchBoardService;
+import kosta.mvc.domain.Review;
 import kosta.mvc.service.PlaceBoardService;
 import kosta.mvc.service.RegionService;
+import kosta.mvc.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -27,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class PlaceBoardController {
 	private final PlaceBoardService placeBoardService; 
 	private final RegionService regionService; 
+	private final ReviewService reviewService;	
 	
 	/**
 	 * 전체 검색하기 
@@ -91,10 +91,12 @@ public class PlaceBoardController {
 		boolean state = flag == null; 
 		
 		PlaceBoard pb = placeBoardService.selectBy(placeNo, true); 
+		List<Review> rb = reviewService.selectByPlaceBoard(placeNo);
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("place/place-read");
 		mv.addObject("place", pb);
+		mv.addObject("review", rb);
 		
 		return mv; 
 	}

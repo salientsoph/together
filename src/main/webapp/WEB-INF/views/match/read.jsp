@@ -335,8 +335,9 @@
 												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
 												class="ms-1 text-capitalize"><tags:localDate
 														date="${reply.replyDate }" /></span></li>
-											<c:if test="${sessionScope.id eq reply.customer.userId}">
-												<li class="meta-tag text-gray-color me-4 mb-1">
+											<c:choose>
+											  <c:when test="${sessionScope.id eq reply.customer.userId}">
+											    <li class="meta-tag text-gray-color me-4 mb-1">
 													<button type="button" class="btn text-primary p-0"
 														name="update"
 														onclick="updateReview(${reply.replyNo}, '${reply.replyContent }', ${match.matchNo})">수정</button>
@@ -346,7 +347,16 @@
 														name="delete"
 														onclick="deleteReview(${reply.replyNo}, ${match.matchNo})">삭제</button>
 												</li>
-											</c:if>
+											  </c:when>
+											  <c:when test="${sessionScope.id eq 'admin'}">
+											    <li class="meta-tag text-gray-color me-4 mb-1">
+													<button type="button" class="btn text-primary p-0"
+														name="delete"
+														onclick="deleteReview(${reply.replyNo}, ${match.matchNo})">삭제</button>
+												</li>
+											  </c:when>
+											</c:choose>
+											
 										</ul>
 										<c:choose>
 											<c:when test="${reply.secretReply eq 'true' }">
@@ -381,9 +391,9 @@
 														class="fas fa-calendar-alt" aria-hidden="true"></i> <span
 														class="ms-1 text-capitalize"><tags:localDate
 																date="${rereply.replyDate }" /></span></li>
-
-													<c:if test="${sessionScope.id eq rereply.customer.userId}">
-														<li class="meta-tag text-gray-color me-4 mb-1">
+													<c:choose>
+													  <c:when test="${sessionScope.id eq rereply.customer.userId}">
+													    <li class="meta-tag text-gray-color me-4 mb-1">
 															<button type="button" class="btn text-primary p-0"
 																name="update"
 																onclick="updateReview(${rereply.replyNo}, '${rereply.replyContent }', ${match.matchNo})">수정</button>
@@ -393,7 +403,16 @@
 																name="delete"
 																onclick="deleteReview(${rereply.replyNo}, ${match.matchNo })">삭제</button>
 														</li>
-													</c:if>
+													  </c:when>
+													  <c:when test="${sessionScope.id eq 'admin'}">
+													    <li class="meta-tag text-gray-color me-4 mb-1">
+															<button type="button" class="btn text-primary p-0"
+																name="delete"
+																onclick="deleteReview(${rereply.replyNo}, ${match.matchNo })">삭제</button>
+														</li>
+													  </c:when>
+													</c:choose>
+
 												</ul>
 												<c:choose>
 													<c:when test="${rereply.secretReply eq 'true' }">

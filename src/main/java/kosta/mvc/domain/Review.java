@@ -17,6 +17,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @NoArgsConstructor
@@ -24,6 +25,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Builder
+@ToString
 public class Review {
 	@Id
 	@SequenceGenerator(name="review_no_seq", sequenceName = "review_no_seq", allocationSize = 1)
