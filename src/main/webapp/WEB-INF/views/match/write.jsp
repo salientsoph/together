@@ -24,19 +24,7 @@
     
 
 
-	<script type="text/javascript">
-	  $(function(){
-		 
-		 if("${sessionScope.role}" == "" || "${sessionScope.role}" == "seller"){
-			 location.href="/";
-		 } 
-		 
-		 $('#datePicker').datepicker();//datepicker end
-	  });
 	
-	
-            
-	</script>
 
 
   </head>     
@@ -81,6 +69,8 @@
         <h3 class="text-capitalize mb-5">게시물을 작성해주세요</h3>
 
         <form action="${path}/match/insert" method="post" id="insertForm" >
+        <input type="text" name="customer" value="${sessionScope.id}">
+        
           <div class="row">
           
               <div class="form-group">
@@ -155,8 +145,7 @@
     
     		<div class="form-group form-group-icon form-group-icon-dark mb-5">
 	                  <i class="far fa-calendar-alt" aria-hidden="true"></i>
-	                  <input type="text"  id="datePicker" name="dateRange"
-	                     autocomplete="off" value="" placeholder="여행 날짜" />
+	                  <input type="date"   name="tripDate" autocomplete="off" value="" placeholder="여행 날짜" />
            	</div>
     <!-- 날짜 선택  끝 -->       	
     
@@ -406,6 +395,20 @@
       </div>
     </div>
 
+   
+   <script type="text/javascript">
+	  $(function(){
+		 
+		 if("${sessionScope.role}" == "" || "${sessionScope.role}" == "seller"){
+			 location.href="/";
+		 } 
+		 
+		 //$('#datePicker').datepicker();//datepicker end
+	  });
+	
+	
+            
+	</script>
    
   </body>
 </html>

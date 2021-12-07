@@ -44,20 +44,26 @@ public class ScheduleDetailServiceImpl implements ScheduleDetailService {
 		String title = ""; 	//제목
 		String content = "";//내용
 		
+		PlaceBoard place = null;
+		
 		MatchBoard match = matchBoardRep.findById(matchNo).orElse(null);
 		if(match==null) {
 			throw new RuntimeException("해당 매칭을 찾을 수 없습니다.");
 		}
 		
-		PlaceBoard place = placeBoardRep.findById(placdNo).orElse(null);
-		if(place==null) { 
-			throw new RuntimeException("해당 장소를 찾을 수 없습니다.");
-		}
 		
-		if(placdNo==null) { //장소 번호가 안들어왔다면...
+		
+		if(placdNo==-1) { //장소 번호가 안들어왔다면...
 			title = scheduleDetail.getTitle();		//스케줄 디테일 객체에서 제목이랑
 			content = scheduleDetail.getContent();	//내용 가져옴.
 		}else {				//장소 번호가 들어왔었다면...
+			
+			place = placeBoardRep.findById(placdNo).orElse(null);
+			
+			if(place==null) { 
+				throw new RuntimeException("해당 장소를 찾을 수 없습니다.");
+			}
+			
 			title = place.getPlaceTitle();			//장소 객체에서 제목이랑
 			content = place.getPlaceContent();		//내용 가져옴.
 		}
@@ -105,6 +111,12 @@ public class ScheduleDetailServiceImpl implements ScheduleDetailService {
 		oldSchedule.setStartTime(newSchedule.getStartTime());
 		oldSchedule.setEndTime(newSchedule.getEndTime());
 
+	}
+
+	@Override
+	public ScheduleDetail selectById(Long id) {
+		// TODO Auto-generated method stub
+		return scheduleDetailRep.findById(id).orElse(null);
 	}
 
 	@Override

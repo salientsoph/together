@@ -30,6 +30,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Setter
@@ -38,6 +39,7 @@ import lombok.Setter;
 @AllArgsConstructor
 //@Table(name="matchBoard")
 @Builder
+@ToString
 public class MatchBoard {
 	
 	//게시물 번호 : pk
