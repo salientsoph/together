@@ -112,7 +112,7 @@
     <nav class="nav-menuzord navbar-sticky">
       <div class="container clearfix">
         <div id="menuzord" class="menuzord">
-          <a href="" class="menuzord-brand">
+          <a href="/" class="menuzord-brand">
             <img class="lazyestload" data-src="${path}/assets/img/logo-color-big.png" src="${path}/assets/img/logo-color-big.png" alt="logo-img">
           </a>
 
