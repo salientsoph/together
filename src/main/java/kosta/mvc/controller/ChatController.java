@@ -18,10 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kosta.mvc.domain.ChatMsg;
 import kosta.mvc.domain.MatchBoard;
+import kosta.mvc.domain.MatchRequest;
 import kosta.mvc.domain.vo.Room;
 import kosta.mvc.repository.MatchBoardRepository;
 import kosta.mvc.service.ChatMsgService;
 import kosta.mvc.service.MatchBoardService;
+import kosta.mvc.service.MatchRequestService;
 
 @Controller
 @RequestMapping("/chat")
@@ -39,6 +41,9 @@ public class ChatController {
 	@Autowired
 	//private MatchBoardService matchBoardService;
 	private MatchBoardRepository matchRep;
+	
+	@Autowired
+	private MatchRequestService matchRequestService;
 
 	/**
 	 * 서버시작 -> 매칭 게시판 게시글 번호들마다 <방제,웹소켓세션> 들어있는 해쉬맵 생성
@@ -147,24 +152,50 @@ public class ChatController {
 		ModelAndView mv = new ModelAndView();
 		
 		String requestAccessUser = (String)session.getAttribute("id");
+		
+		/*
 		System.out.println("****************");
 		System.out.println();
 		System.out.println(requestAccessUser);
 		System.out.println();
 		System.out.println("****************");
+		*/
 		
 		MatchBoard match  = matchService.selectBy(matchNumber, false);
-			
-			
-		List<ChatMsg> chatList = chatMsgService.selectByMatchNo(matchNumber);
+		Long matchNo = match.getMatchNo();
+		String host = match.getCustomer().getUserId();
+		
+		List<MatchRequest> members = matchRequestService.selectConfirmedList(matchNo);
+		
+		boolean memberConfirm = false;
+		
+		if(requestAccessUser.equals(host)) {
+			//System.out.println("!!!!!!!!!!!!!");
+			memberConfirm = true;
+		}
+		
+		for(MatchRequest mr : members) {
+			if(mr.getCustomer().getUserId().equals(requestAccessUser)) {
+				//System.out.println("-----------------");
+				memberConfirm = true;
+			}
+		}
+		
+		if(memberConfirm) {
+			List<ChatMsg> chatList = chatMsgService.selectByMatchNo(matchNumber);
 
-		mv.addObject("chatList", chatList);
+			mv.addObject("chatList", chatList);
+			
+			
+			mv.addObject("roomName", match.getMatchTitle());
+			mv.addObject("roomNumber", matchNumber);
+			
+			mv.setViewName("chat/chat");
+		}else {
+			mv.setViewName("index");
+		}
 		
 		
-		mv.addObject("roomName", match.getMatchTitle());
-		mv.addObject("roomNumber", matchNumber);
-		
-		mv.setViewName("chat/chat");
 		
 		return mv;
 	}

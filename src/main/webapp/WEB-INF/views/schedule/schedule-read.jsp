@@ -4,6 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <c:set var = "path" value = "${pageContext.request.contextPath}" />
+<%
+String id = (String)session.getAttribute("id");
+%>
+
+<c:set var="idStr" value="<%=id%>"/>
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -77,7 +83,7 @@
         <div class="col-lg-6">
           <div class="page-title-content">
             <div class="title-border">
-              <h2 class="text-uppercase text-white font-weight-bold">Blog List</h2>
+              <h2 class="text-uppercase text-white font-weight-bold">스케줄</h2>
             </div>
             <p class="text-white mb-0"></p>
           </div>
@@ -189,9 +195,17 @@
           </div>
     
           <div class="card-footer px-5 px-lg-0">
-            <a href="${path}/place/read/${schedule.placeBoard.placeNo}" class="btn btn-sm btn-outline-secondary text-uppercase">View place</a>
-            <a href="${path}/schedule/delete/${schedule.id}" class="btn btn-sm btn-outline-secondary text-uppercase">Delete</a>
           
+          	<c:choose>
+          		<c:when test="${not empty schedule.placeBoard}">
+          		<a href="${path}/place/read/${schedule.placeBoard.placeNo}" class="btn btn-sm btn-outline-secondary text-uppercase">View place</a>
+  
+          		</c:when>
+          	</c:choose>
+          	
+            <c:if test="${idStr eq requestScope.writerId}">
+            <a href="${path}/schedule/delete/${schedule.id}/${schedule.matchBoard.matchNo}" class="btn btn-sm btn-outline-secondary text-uppercase">Delete</a>
+          	</c:if>
           </div>
         </div>
       </div>
@@ -207,6 +221,8 @@
 	
 	
 </section>
+
+<c:if test="${idStr eq requestScope.writerId}">
 
 <div class="container-sm w-25">
 	<div class="col-md-6 col-lg-12 ">
@@ -273,6 +289,11 @@
       </div>
     </div>
     </div>
+    
+    
+</c:if>
+
+
   
 
 

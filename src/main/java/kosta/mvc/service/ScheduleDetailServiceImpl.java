@@ -121,6 +121,12 @@ public class ScheduleDetailServiceImpl implements ScheduleDetailService {
 
 	@Override
 	public void deleteByScheduleDetailNo(Long scheduleDetailNo) {
+		/*
+		 * System.out.println("*******************"); System.out.println();
+		 * System.out.println(scheduleDetailNo); System.out.println();
+		 * System.out.println("*******************");
+		 */
+		
 		scheduleDetailRep.deleteById(scheduleDetailNo);
 
 	}

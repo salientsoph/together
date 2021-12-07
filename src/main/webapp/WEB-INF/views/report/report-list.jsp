@@ -48,8 +48,8 @@
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" >
     $(function() {
-    	console.log("${userId}");
-    	$("#writer").val("${userId}");
+    	console.log("${id}");
+    	$("#writer").val("${id}");
     	
 		//console.log("test");
 		$("#searchBtn").click(function() {
@@ -60,6 +60,10 @@
 			//$(location).attr("href", "${path}/report/report-insert")
 			$("#insertForm").submit();
 
+		})
+		
+		$("#listAll").click(function() {
+			$(location).attr("href", "${path}/report/list")
 		})
 	})
     </script>
@@ -210,7 +214,7 @@
 	  <div class="container">
 	  	<div class="row justify-content-end">
 	  	
-	  		
+	  		<c:if test="${role eq 'admin'}">
 	  		<form class="col input-group mb-3 w-25"action="${path}/report/list" method="post" id="searchForm">
 	  		 
 			   <input type="text" name="userId" class="form-control" placeholder="조회할 아이디를 입력하세요" aria-describedby="basic-addon2">
@@ -219,12 +223,18 @@
 			   	</button>
 			   
 			</form>
+			 </c:if>
 			 
 	  		<form class="col input-group mb-3 w-25"action="${path}/report/report-insert" method="post" id="insertForm">
-	  			<input type="text" id="writer" name="writer">
+	  			<input type="hidden" id="writer" name="writer">
+	  			<c:if test="${role ne 'admin'}">
 	  			<button type="button" class="btn btn-primary btn-sm" id="writeReportBtn">신고작성</button>
-	  		
+	  			</c:if>
+	  			<c:if test="${role eq 'admin'}">
+	  			<button type="button" class="mx-2 btn btn-primary btn-sm" id="listAll" >전체 목록</button>	
+	  			</c:if>  			
 	  		</form>
+	  			
 	  	</div>
 	  </div>
   

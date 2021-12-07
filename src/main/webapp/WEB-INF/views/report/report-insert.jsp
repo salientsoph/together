@@ -224,8 +224,8 @@
               <div class="form-group">
                 <label for="inputName">선택된 신고 사유</label>
                 <input type="text" class="form-control border-0 bg-smoke" id="selectedReason" readonly>
-                <input type="text" class="form-control border-0 bg-smoke" id="selectedReasonNo" name="reportReasonNo" readonly>
-                <input type="text" class="form-control border-0 bg-smoke" id="userId" name="userId" >
+                <input type="hidden" class="form-control border-0 bg-smoke" id="selectedReasonNo" name="reportReasonNo" readonly>
+                <input type="hidden" class="form-control border-0 bg-smoke" id="userId" name="userId"  value="${id}">
               </div>
             </div>
     

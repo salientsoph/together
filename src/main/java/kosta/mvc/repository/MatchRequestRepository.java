@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.MatchRequest;
 
 public interface MatchRequestRepository extends JpaRepository<MatchRequest, Long> {
@@ -22,4 +23,11 @@ public interface MatchRequestRepository extends JpaRepository<MatchRequest, Long
 	 * */
 	@Query("select mr from MatchRequest mr where mr.matchBoard = ?1")
 	MatchRequest selectMatchRequest(long matchNo);
+	
+	/**
+	 * 매칭 게시판 별 수락된 놈들 가져오기
+	 * -유홍걸 작성함
+	 * */
+	@Query("select mr from MatchRequest mr where mr.matchBoard = ?1 and mr.requestedState = '1'")
+	List<MatchRequest> selectConfirmedList(MatchBoard match);
 }

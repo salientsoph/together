@@ -46,4 +46,10 @@ package kosta.mvc.service;
 		 * 모임에 신청됐는지 확인
 		 * */
 		public int ifMatchRequest(String id, long matchNo);
+		
+		/**
+		 * 매칭 게시판 별 수락된 놈들 가져오기
+		 * -유홍걸 작성함
+		 * */
+		public List<MatchRequest> selectConfirmedList(long matchNo);
 }
