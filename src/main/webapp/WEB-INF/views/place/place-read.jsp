@@ -240,6 +240,9 @@
 									$("[name=reviewForm]").attr("action", "/review/update/"+placeNo);
 									$("[name=reviewForm]").append(`<input type="hidden" value=` + reviewNo + ` name="reviewNo">`)
 									$("[name=reviewContent]").text(reviewContent);
+									$("[value=" + star + "]").parent().children("span").removeClass("on");
+									$("[value=" + star + "]").addClass("on").prevAll("span").addClass("on");
+									$("[name=star]").attr("value", star);
 								});
 							}
 							

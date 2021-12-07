@@ -134,17 +134,6 @@
           </div>
           
           <ul class="menuzord-menu menuzord-right">
-          
-			<!-- 로그인 -->
-            <li class="">
-              <a href="/user/login">Login</a>
-            </li>
-            
-   			<!--회원가입 -->
-    		 <li class="">
-              <a href="/user/customerRegister">회원가입</a>
-            </li>
-            
              
            <!-- 커뮤니티 --> 
            <li class="">
@@ -156,7 +145,7 @@
                 </li>
                 
                 <li class="">
-                  <a href="/match/matchRequestRe">매칭게시판</a>
+                  <a href="/match/list">매칭게시판</a>
                 </li>
               </ul>
             </li>
@@ -238,47 +227,12 @@
                 <li><a href="404.html">내 여행 일정</a></li>
 
                 <li><a href="coming-soon.html">내 친구 관리</a></li>
-                
-                <c:choose>
-                  <c:when test="${sessionScope.id eq null}">
-                    <li class="">
-                      <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signup">Signup</a>
-                    </li>
-  
-                    <li class="">
-                      <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#login">Login</a>
-                    </li>
-                  </c:when>
-                  <c:otherwise>
-                    <li class="">
-                      <a href="/user/logout">Logout</a>
-                    </li>
-                  </c:otherwise>
-                </c:choose>
-                
               </ul>
             </li>
     <!-- ##### mypage Area End ##### -->
     
             <li class="">
-              <a href="javascript:void(0)">Admin</a>
-              <ul id="admin" class="dropdown drop-up">
-                <li class="">
-                  <a href="dashboard.html">Dashboard</a>
-                </li>
-
-                <li class="">
-                  <a href="booking.html">Booking</a>
-                </li>
-
-                <li class="">
-                  <a href="profile.html">Profile</a>
-                </li>
-
-                <li class="">
-                  <a href="setting.html">Settings</a>
-                </li>
-                <c:choose>
+              <c:choose>
                   <c:when test="${sessionScope.id eq null}">
                     <li class="">
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signup">Signup</a>
@@ -294,8 +248,6 @@
                     </li>
                   </c:otherwise>
                 </c:choose>
-                
-              </ul>
             </li>
 
             <li class="py-4">
