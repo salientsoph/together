@@ -57,5 +57,17 @@ public interface MatchBoardRepository extends JpaRepository<MatchBoard, Long>{
 			+ "where r.requested_state = 1 and b.match_no = ?1", nativeQuery = true)
 	List<String> selectAllApprovedCustomer(Long matchNo);
 	
+	/*
+	  페이징 처리하는 검색 쿼리 작성법
+	  
+	  	@Query(value = "SELECT * FROM USERS WHERE LASTNAME = ?1",   		<-- 일반 select문에 검색 쿼리 where 붙인거
+	    	countQuery = "SELECT count(*) FROM USERS WHERE LASTNAME = ?1",	<-- 위의 검색 쿼리에서 나온 결과의 총 개수가 몇개인지 count라는 컬럼으로 select해줌.
+	    	nativeQuery = true) 											<-- JPQL이 아니라 일반 sql문으로 사용하겠다.
+  		Page<User> findByLastname(String lastname, Pageable pageable);       
+	 											   페이저블 객체 넘겨줌.
+	 											   
+	 	이렇게 만들면 자동으로 페이징 처리 됨.
+	 	쿼리만 이렇게 짜두면 나머지 controller, service 단에서 페이징 처리된 sellectAll이나 findAll이랑 똑같이 사용 가능! 
+	 */
 	
 }
