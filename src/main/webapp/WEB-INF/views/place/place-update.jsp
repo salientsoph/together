@@ -120,16 +120,16 @@
 	  			<p> 
 	  			
 	  			  <div class="form-group">
-	                <input type="text" name="placeAddress" class="form-control border-0 bg-smoke" rows="7" placeholder="주소" required="">
+	                <input type="text" name="placeAddress" class="form-control border-0 bg-smoke" rows="7" placeholder="주소" required="" value="${requestScope.place.placeAddress}">
 	              </div>
 	  			
 	              <div class="form-group">
-	                <textarea name="placeContent" class="form-control border-0 bg-smoke" rows="7" placeholder="내용" required=""></textarea>
+	                <textarea name="placeContent" class="form-control border-0 bg-smoke" rows="7" placeholder="내용" required="">${requestScope.place.placeContent}</textarea>
 	              </div>
 	  			 
 	  			 <input type="hidden" name="seller" value="${sessionScope.id}">
-	              <button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">작성완료</button>
-	              
+	            <button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">수정완료</button>
+           	  	<button type="reset" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">초기화</button>
 	              
 	            </form>
 	          </div>

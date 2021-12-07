@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Single Blog Post Right Sidebar - Star Travel</title>
+<title>모임 게시판</title>
 
 <!-- Plugins css Style -->
 <link
@@ -89,8 +89,7 @@
 										.attr("action",
 												"${pageContext.request.contextPath}/match/matchRequest");
 										$("#requestForm").submit();
-									}		
-								)
+									})
 								
 				$(document).on("click", "#accept", function(){
 							$.ajax({
@@ -129,7 +128,7 @@
 
 </head>
 
-<body id="body" class="up-scroll">
+<body id="body" class="up-scroll">/
 
 	<jsp:include page="../common/header.jsp" />
 
@@ -336,8 +335,9 @@
 												class="fas fa-calendar-alt" aria-hidden="true"></i> <span
 												class="ms-1 text-capitalize"><tags:localDate
 														date="${reply.replyDate }" /></span></li>
-											<c:if test="${sessionScope.id eq reply.customer.userId}">
-												<li class="meta-tag text-gray-color me-4 mb-1">
+											<c:choose>
+											  <c:when test="${sessionScope.id eq reply.customer.userId}">
+											    <li class="meta-tag text-gray-color me-4 mb-1">
 													<button type="button" class="btn text-primary p-0"
 														name="update"
 														onclick="updateReview(${reply.replyNo}, '${reply.replyContent }', ${match.matchNo})">수정</button>
@@ -347,7 +347,16 @@
 														name="delete"
 														onclick="deleteReview(${reply.replyNo}, ${match.matchNo})">삭제</button>
 												</li>
-											</c:if>
+											  </c:when>
+											  <c:when test="${sessionScope.id eq 'admin'}">
+											    <li class="meta-tag text-gray-color me-4 mb-1">
+													<button type="button" class="btn text-primary p-0"
+														name="delete"
+														onclick="deleteReview(${reply.replyNo}, ${match.matchNo})">삭제</button>
+												</li>
+											  </c:when>
+											</c:choose>
+											
 										</ul>
 										<c:choose>
 											<c:when test="${reply.secretReply eq 'true' }">
@@ -382,9 +391,9 @@
 														class="fas fa-calendar-alt" aria-hidden="true"></i> <span
 														class="ms-1 text-capitalize"><tags:localDate
 																date="${rereply.replyDate }" /></span></li>
-
-													<c:if test="${sessionScope.id eq rereply.customer.userId}">
-														<li class="meta-tag text-gray-color me-4 mb-1">
+													<c:choose>
+													  <c:when test="${sessionScope.id eq rereply.customer.userId}">
+													    <li class="meta-tag text-gray-color me-4 mb-1">
 															<button type="button" class="btn text-primary p-0"
 																name="update"
 																onclick="updateReview(${rereply.replyNo}, '${rereply.replyContent }', ${match.matchNo})">수정</button>
@@ -394,7 +403,16 @@
 																name="delete"
 																onclick="deleteReview(${rereply.replyNo}, ${match.matchNo })">삭제</button>
 														</li>
-													</c:if>
+													  </c:when>
+													  <c:when test="${sessionScope.id eq 'admin'}">
+													    <li class="meta-tag text-gray-color me-4 mb-1">
+															<button type="button" class="btn text-primary p-0"
+																name="delete"
+																onclick="deleteReview(${rereply.replyNo}, ${match.matchNo })">삭제</button>
+														</li>
+													  </c:when>
+													</c:choose>
+
 												</ul>
 												<c:choose>
 													<c:when test="${rereply.secretReply eq 'true' }">

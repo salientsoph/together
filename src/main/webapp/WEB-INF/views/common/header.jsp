@@ -112,7 +112,7 @@
     <nav class="nav-menuzord navbar-sticky">
       <div class="container clearfix">
         <div id="menuzord" class="menuzord">
-          <a href="index.html" class="menuzord-brand">
+          <a href="" class="menuzord-brand">
             <img class="lazyestload" data-src="${path}/assets/img/logo-color-big.png" src="${path}/assets/img/logo-color-big.png" alt="logo-img">
           </a>
 
@@ -134,249 +134,57 @@
           </div>
           
           <ul class="menuzord-menu menuzord-right">
+          
+			<!-- 로그인 -->
             <li class="">
-              <a class="" href="">Home</a>
-            </li>
-
-            <li class="">
-              <a href="javascript:void(0)">여행일정</a>
-              <div class="megamenu drop-up">
-                <div class="megamenu-row">
-                  <div class="col4">
-                    <ul class="list-unstyled">
-                      <li>Tour Packages Grid View</li>
-                      <li class="">
-                        <a href="packages-grid-left-sidebar.html">Packages Sidebar Left</a>
-                      </li>
-
-                      <li class="">
-                        <a href="packages-grid-right-sidebar.html">Packages Sidebar Right</a>
-                      </li>
-
-                      <li class="">
-                        <a href="packages-grid.html">Packages 3 Columns</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="col4">
-                    <ul class="list-unstyled">
-                      <li>Tour Packages List View</li>
-                      <li class="">
-                        <a href="packages-list-left-sidebar.html">Packages Sidebar Left</a>
-                      </li>
-                      
-                      <li class="">
-                        <a href="packages-list-right-sidebar.html">Packages Sidebar Right</a>
-                      </li>
-
-                      <li class="">
-                        <a href="packages-list.html">Packages List</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="col4">
-                    <ul class="list-unstyled">
-                      <li>Single Package</li>
-                      <li class="">
-                        <a href="single-package-left-sidebar.html">Packages Sidebar Left</a>
-                      </li>
-
-                      <li class="">
-                        <a href="single-package-right-sidebar.html">Packages Sidebar Right</a>
-                      </li>
-
-                      <li class="">
-                        <a href="single-package-fullwidth.html">Packages Fullwidth</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="">
-              <a href="javascript:void(0)">매칭게시판</a>
-              <div class="megamenu drop-up">
-                <div class="megamenu-row">
-                  <div class="col3">
-                    <ul class="list-unstyled">
-                      <li>Hotels Grid View</li>
-
-                      <li class="">
-                        <a href="hotels-grid-left-sidebar.html">Hotels Sidebar Left</a>
-                      </li>
-
-                      <li class="">
-                        <a href="hotels-grid-right-sidebar.html">Hotels Sidebar Right</a>
-                      </li>
-
-                      <li class="">
-                        <a href="hotels-grid.html">Hotels 3 Columns</a>
-                      </li>
-                    </ul>
-                  </div>
-            
-                  <div class="col3">
-                    <ul class="list-unstyled">
-                      <li>Hotels List View</li>
-                      <li class="">
-                        <a href="hotels-list-left-sidebar.html">Hotels Sidebar Left</a>
-                      </li>
-
-                      <li class="">
-                        <a href="hotels-list-right-sidebar.html">Hotels Sidebar Right</a>
-                      </li>
-
-                      <li class="">
-                        <a href="hotels-list.html">Hotels List</a>
-                      </li>
-                    </ul>
-                  </div>
-            
-                  <div class="col3">
-                    <ul class="list-unstyled">
-                      <li>Single Hotel</li>
-                      <li class="">
-                        <a href="single-hotel-left-sidebar.html">Hotels Sidebar Left</a>
-                      </li>
-
-                      <li class="">
-                        <a href="single-hotel-right-sidebar.html">Hotels Sidebar Right</a>
-                      </li>
-
-                      <li class="">
-                        <a href="single-hotel-fullwidth.html">Hotels Fullwidth</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="col3">
-                    <ul class="list-unstyled">
-                      <li>Booking Steps</li>
-                      <li class="">
-                        <a href="booking-step-1.html">Step 1 - Personal Info</a>
-                      </li>
-
-                      <li class="">
-                        <a href="booking-step-2.html">Step 2 - Payment Info</a>
-                      </li>
-
-                      <li class="">
-                        <a href="booking-step-3.html">Step 3 - Confirmation</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="">
-              <a href="javascript:void(0)">장소 게시판</a>
-
-              <ul class="dropdown drop-up">
-                <li class=" ||
-                  ">
-
-                  <a href="javascript:void(0)">Cars</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="cars-list.html">Cars List View</a>
-                    </li>
-
-                    <li class="">
-                      <a href="cars-grid.html">Cars Grid View</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class=" ||
-                  ">
-
-                  <a href="javascript:void(0)">Cruises</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="cruises-list.html">Cruises List View</a>
-                    </li>
-
-                    <li class="">
-                      <a href="cruises-grid.html">Cruises Grid View</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+              <a href="/user/login">Login</a>
             </li>
             
-   
-    
-            <li class="">
+   			<!--회원가입 -->
+    		 <li class="">
+              <a href="/user/customerRegister">회원가입</a>
+            </li>
+            
+             
+           <!-- 커뮤니티 --> 
+           <li class="">
               <a href="javascript:void(0)">커뮤니티</a>
 
               <ul class="dropdown drop-up">
-                <li class=" ||
-                  ">
-
-                  <a href="javascript:void(0)">공지사항</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="/notice/list"">공지사항보기</a>
-                    </li>
-
-                    <li class="">
-                      <a href="blog-grid-two-col.html">Blog Grid 2 Col</a>
-                    </li>
-                  </ul>
+                <li class="">
+                  <a href="/place/list">여행게시판</a>
                 </li>
-
-                <li class=" ||
-                   ||
-                   active ">
-
-                  <a href="javascript:void(0)">신고 게시판</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a>
-                    </li>
-
-                    <li class="">
-                      <a href="blog-list-left-sidebar.html">Blog List Left Sidebar</a>
-                    </li>
-
-                    <li class=" active ">
-                      <a href="blog-list-fullwidth.html">Blog List Fullwidth</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class=" ||
-                    ">
-
-                  <a href="javascript:void(0)">Blog Single Post</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="blog-single-right-sidebar.html">Blog Right Sidebar</a>
-                    </li>
-
-                    <li class="">
-                      <a href="blog-single-left-sidebar.html">Blog Left Sidebar</a>
-                    </li>
-                  </ul>
+                
+                <li class="">
+                  <a href="/match/matchRequestRe">매칭게시판</a>
                 </li>
               </ul>
             </li>
+            
+            
+            <!-- 고객센터 -->
+           <li class="">
+              <a href="javascript:void(0)">고객센터</a>
+
+              <ul class="dropdown drop-up">
+                <li class="">
+                  <a href="/notice/list">공지사항</a>
+                </li>
+                
+                <li class="">
+                  <a href="/report/list">신고 게시판</a>
+                </li>
+              </ul>
+            </li>
+             
+            
  <!-- ##### Silver mypage Area End ##### -->
   		<li class="">
              <a href="javascript:void(0)">마이페이지</a>
               <ul class="dropdown drop-up">
                
                 <li class="">
-                  <a href="about-us.html">내 프로필</a>
+                  <a href="/mypage/myprofile">내 프로필</a>
                 </li>
 
                 <li class="">
@@ -384,7 +192,7 @@
                 </li>
 
                  <li class="">
-                  <a href="javascript:void(0)">내가 쓴 글</a>
+                  <a href="/mypage/mywrite">내가 쓴 글</a>
                   <ul class="dropdown drop-sub-menu-left drop-up">
                     <li class="">
                       <a href="gallery-grid.html">Gallery Grid</a>
@@ -762,7 +570,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
 	
 	<div class="modal fade" id="findPwd" tabindex="-1" role="dialog"
 		aria-label="findPwdModalLabel" aria-hidden="true">

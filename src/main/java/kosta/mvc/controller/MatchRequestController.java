@@ -27,7 +27,7 @@ public class MatchRequestController {
 	/**
 	 * 모임 신청하기 
 	 * */
-	@RequestMapping("/matchRequest")
+	@RequestMapping("/matchRequestRe")
 	public String insert(String matchNo, String customer) {
 		/*boolean result = false;
 		
@@ -57,7 +57,10 @@ public class MatchRequestController {
 		MatchRequest request = MatchRequest.builder().customer(cu).matchBoard(matchBoardService.selectMatchBoard(matchNoLong)).build();
 		System.out.println(request);
 		
-		matchRequestService.insertMatchRequest(request);
+		if (matchRequestService.ifMatchRequest(customer, matchNoLong) == 0) {
+			matchRequestService.insertMatchRequest(request);
+		}
+		
 		return "redirect:/match/list";
 	}
 	
@@ -75,18 +78,16 @@ public class MatchRequestController {
 	 * 모임 거절
 	 * */
 	@RequestMapping("/matchDeny")
-	public String deny(String customer, int matchNo) {
+	public void deny(String customer, int matchNo) {
 		matchRequestService.denyMatchRequest(customer, matchNo);
-		return "redirect:/match/list";
 	}
 	
 	/**
 	 * 모임 취소 
 	 * */
 	@RequestMapping("/matchCancel")
-	public String cancel(String customer, int matchNo) {
+	public void cancel(String customer, int matchNo) {
 		matchRequestService.cancelMatchRequest(customer, matchNo);
-		return "redirect:/match/list";
 	}
 	
 	

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import kosta.mvc.domain.PlaceBoard;
+
 import kosta.mvc.repository.PlaceBoardRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class PlaceBoardServiceImpl implements PlaceBoardService {
 
 	private final PlaceBoardRepository placeRepository;
+
 	
 	@Override
 	public List<PlaceBoard> selectAll() {
@@ -68,5 +70,6 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		placeRepository.delete(placeBoard);
 
 	}
+
 
 }

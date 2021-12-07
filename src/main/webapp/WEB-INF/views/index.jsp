@@ -86,7 +86,7 @@
           data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
           data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
           style="z-index: 7; white-space: wrap; font-size: 65px; line-height: 70px; font-weight: 700; color: #ffffff; letter-spacing: 0px;font-family:montserrat;text-transform:uppercase;">
-          Witrago</div>
+          '같이의 가치'를 경험해봐요</div>
 
         <!-- LAYER NR. 4 -->
         <div class="tp-caption   tp-resizeme" id="slide-33-layer-10" data-x="['left','left','left','center']"
@@ -315,7 +315,7 @@
     <div class="text-center section-title">
       <h2 class="text-uppercase font-weight-bold position-relative">
         <span class="bg-smoke">
-         Withrago 체험 둘러보기
+         Star travel 체험 둘러보기
         </span>
       </h2>
       <p class="text-capitalize text-center">여행 중 만나는 이색적인 즐길 거리</p>

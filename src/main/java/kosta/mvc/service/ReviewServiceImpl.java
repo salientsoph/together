@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.PlaceBoard;
@@ -13,6 +14,7 @@ import kosta.mvc.repository.PlaceBoardRepository;
 import kosta.mvc.repository.ReviewRepository;
 
 @Service
+@Transactional
 public class ReviewServiceImpl implements ReviewService {
 	
 	@Autowired
@@ -37,16 +39,18 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void ReviewDelete(Long reviewNo) {
-		reviewRep.existsById(reviewNo);
+	public void reviewDelete(Long reviewNo) {
+		Review review = reviewRep.findById(reviewNo).orElse(null);
+		reviewRep.delete(review);
 	}
 
 	@Override
-	public void ReviewUpdate(Long reviewNo, String reviewContent, int star) {
+	public void reviewUpdate(Long reviewNo, String reviewContent, int star, Long placeNo) {
 		Review review = reviewRep.findById(reviewNo).orElse(null);
+		System.out.println(review.getReviewContent());
 		review.setReviewContent(reviewContent);
 		review.setStar(star);
-
+		System.out.println(review.getReviewContent());
 	}
 
 	@Override
