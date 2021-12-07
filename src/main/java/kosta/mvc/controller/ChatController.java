@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -142,9 +143,15 @@ public class ChatController {
 	 * @return
 	 */
 	@RequestMapping("/Chating/{matchNumber}")
-	public ModelAndView chatting(@PathVariable Long matchNumber) {
+	public ModelAndView chatting(@PathVariable Long matchNumber, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
+		String requestAccessUser = (String)session.getAttribute("id");
+		System.out.println("****************");
+		System.out.println();
+		System.out.println(requestAccessUser);
+		System.out.println();
+		System.out.println("****************");
 		
 		MatchBoard match  = matchService.selectBy(matchNumber, false);
 			
