@@ -1,5 +1,6 @@
 package kosta.mvc.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
+import kosta.mvc.domain.Region;
 /**
  * 찜한 목록 불러오기
  * @author 박은솔
@@ -31,5 +33,14 @@ public interface PlaceLikeRepository extends JpaRepository<PlaceLike,Long> {
 	//@Query("select r from PlaceLike r where r.customer = ?1")
 	//select * from place_like, place_board where place_like.place_no = place_board.place_no;
     Page<PlaceLike> findByCustomer(Customer customer, Pageable pageable);
+
+    
+    /**
+     * 사용자의 관심장소들 중 특정 지역만 출력
+     * (스케줄 작성용)
+     * */
+    @Query("select r from PlaceLike r where r.customer = ?1 and r.placeBoard.region = ?2")
+    List<PlaceLike> selectByCustomerNoAndRegionCode(Customer customer, Region region);
+
 
 }

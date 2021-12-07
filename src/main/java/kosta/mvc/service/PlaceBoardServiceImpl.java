@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,6 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class PlaceBoardServiceImpl implements PlaceBoardService {
 
-	
 	private final PlaceBoardRepository placeRepository;
 
 	
@@ -43,13 +43,19 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 
 	@Override
 	public PlaceBoard selectBy(Long bno, boolean state) {
-		if(state) {
-			if(placeRepository.readnumUpdate(bno) == 0) {
-				throw new RuntimeException(bno + " 번호 오류로 조회수 증가 실패하여 검색할 수 없어요. ");
-			}
-		}
 		//검색해서 return 
 		PlaceBoard placeBoard = placeRepository.findById(bno).orElse(null);
+	     System.out.println("placeBoard = " + placeBoard);
+		
+		if(placeBoard==null) {
+			throw new RuntimeException(bno + " 번호 오류로 입니다. ");
+			
+		}
+				
+		if(state) {
+			placeBoard.setPlaceCount(placeBoard.getPlaceCount()+1);
+		}
+		
 		return placeBoard;
 	}
 

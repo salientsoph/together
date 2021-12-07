@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
+
+import kosta.mvc.domain.Region;
+import kosta.mvc.repository.PlaceLikeRepository;
+import kosta.mvc.repository.RegionRepository;
+
+
 import kosta.mvc.repository.CustomerRepository;
 import kosta.mvc.repository.PlaceBoardRepository;
 import kosta.mvc.repository.PlaceLikeRepository;
@@ -28,6 +34,7 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 	private final PlaceLikeRepository placeLikeRepository;
 	private final PlaceBoardRepository placeBoardRepository;
 	private final CustomerRepository customerRepository;
+	private final RegionRepository regionRep;
 	
 	/**
 	 * insertLike()가 찜하기 등록을 책임지는 메서드
@@ -139,7 +146,19 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 		return null;
 	}
 
-
-
+	
+	/**
+     * 사용자의 관심장소들 중 특정 지역만 출력
+     * (스케줄 작성용)
+     * */
+	@Override
+    public List<PlaceLike> selectByCustomerNoAndRegionCode(String id, int regionCode){
+		Customer customer = customerRepository.findById(id).orElse(null);
+		Region region = regionRep.findById(regionCode).orElse(null);
+		
+		List<PlaceLike> list = placeLikeRepository.selectByCustomerNoAndRegionCode(customer, region);
+	
+	    return list;
+	}
 	
 }

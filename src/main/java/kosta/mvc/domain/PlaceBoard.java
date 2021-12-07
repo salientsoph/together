@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +20,10 @@ import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,12 +46,14 @@ public class PlaceBoard {
 	private Long placeNo;
 	
 	//게시물 작성자(사업자) 아이디
-	@ManyToOne
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "seller_id")
 	private Seller seller;
 	
 	//지역명
-	@ManyToOne
+	@JsonIgnore	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "region_code")
 	private Region region;
   
@@ -82,16 +89,19 @@ public class PlaceBoard {
 	private String placeImageUrl;
 	
 	//일정 상세 (1:다)
+	@JsonIgnore
 	@OneToMany(mappedBy = "placeBoard" , cascade = CascadeType.ALL )
 	private List<ScheduleDetail> scheduleDetailList;
 
 
 	//리뷰 테이블 연관
+	@JsonIgnore
 	@OneToMany(mappedBy = "placeBoard", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Review> reviewList; 
 
 	
 	//관심장소(찜하기) 테이블 연관 - 은솔추가 
+	@JsonIgnore
 	@OneToMany(mappedBy = "placeBoard", cascade = CascadeType.ALL)
 //	Set<PlaceLike> likes = new HashSet<>();
 	private List<PlaceLike> placeLikeList;
