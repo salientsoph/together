@@ -1,5 +1,6 @@
 package kosta.mvc.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -33,11 +34,6 @@ public interface PlaceLikeRepository extends JpaRepository<PlaceLike,Long> {
 	//select * from place_like, place_board where place_like.place_no = place_board.place_no;
     Page<PlaceLike> findByCustomer(Customer customer, Pageable pageable);
 
-
-    Optional<PlaceLike> findByCustomerAndPlaceBoard(Customer customer, PlaceBoard placeBoard);
-
-    //특정 장소 게시글에 찜하기가 총 몇 개인지 셀 때 사용할 메소드 
-    Optional<Integer> countByPlaceBoard(PlaceBoard placeBoard);
     
     /**
      * 사용자의 관심장소들 중 특정 지역만 출력

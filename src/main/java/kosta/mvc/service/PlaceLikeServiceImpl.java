@@ -34,9 +34,7 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
 	private final PlaceLikeRepository placeLikeRepository;
 	private final PlaceBoardRepository placeBoardRepository;
 	private final CustomerRepository customerRepository;
-	
-	@Autowired
-	RegionRepository regionRep;
+	private final RegionRepository regionRep;
 	
 	/**
 	 * insertLike()가 찜하기 등록을 책임지는 메서드
@@ -155,7 +153,7 @@ public class PlaceLikeServiceImpl implements PlaceLikeService{
      * */
 	@Override
     public List<PlaceLike> selectByCustomerNoAndRegionCode(String id, int regionCode){
-		Customer customer = customerRep.findById(id).orElse(null);
+		Customer customer = customerRepository.findById(id).orElse(null);
 		Region region = regionRep.findById(regionCode).orElse(null);
 		
 		List<PlaceLike> list = placeLikeRepository.selectByCustomerNoAndRegionCode(customer, region);

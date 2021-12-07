@@ -65,7 +65,7 @@ public interface PlaceLikeService {
 	 * 3. 현재 로그인한 사용자가 
 	 *    이미 해당 장소 찜하기를 눌렀는지 검사하고 결과를 List에 담아 반환한다. 
 	 */
-	Page<PlaceLike> selectByUserId(Pageable pageable, String userId);
+	//Page<PlaceLike> selectByUserId(Pageable pageable, String userId);
 	
 	
 	
