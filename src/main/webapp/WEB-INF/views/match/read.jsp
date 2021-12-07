@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
+
+<c:set var = "path" value = "${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,8 +58,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/style.css">
+
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <SCRIPT language=javascript>
 	$(
@@ -543,8 +544,8 @@
 								<div
 									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-01.jpg"
-											src="assets/img/blog/tab-01.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-01.jpg"
+											src="${path}/assets/img/blog/tab-01.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -565,8 +566,8 @@
 								<div
 									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-02.jpg"
-											src="assets/img/blog/tab-02.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-02.jpg"
+											src="${path}/assets/img/blog/tab-02.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -587,8 +588,8 @@
 								<div
 									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-03.jpg"
-											src="assets/img/blog/tab-03.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-03.jpg"
+											src="${path}/assets/img/blog/tab-03.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -608,8 +609,8 @@
 
 								<div class="media meta-post-sm">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-04.jpg"
-											src="assets/img/blog/tab-04.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-04.jpg"
+											src="${path}/assets/img/blog/tab-04.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -633,8 +634,8 @@
 								<div
 									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-04.jpg"
-											src="assets/img/blog/tab-04.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-04.jpg"
+											src="${path}/assets/img/blog/tab-04.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -655,8 +656,8 @@
 								<div
 									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-03.jpg"
-											src="assets/img/blog/tab-03.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-03.jpg"
+											src="${path}/assets/img/blog/tab-03.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -677,8 +678,8 @@
 								<div
 									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-02.jpg"
-											src="assets/img/blog/tab-02.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-02.jpg"
+											src="${path}/assets/img/blog/tab-02.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -698,8 +699,8 @@
 
 								<div class="media meta-post-sm">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-01.jpg"
-											src="assets/img/blog/tab-01.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-01.jpg"
+											src="${path}/assets/img/blog/tab-01.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -723,8 +724,8 @@
 								<div
 									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-02.jpg"
-											src="assets/img/blog/tab-02.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-02.jpg"
+											src="${path}/assets/img/blog/tab-02.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -745,8 +746,8 @@
 								<div
 									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-04.jpg"
-											src="assets/img/blog/tab-04.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-04.jpg"
+											src="${path}/assets/img/blog/tab-04.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -767,8 +768,8 @@
 								<div
 									class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-01.jpg"
-											src="assets/img/blog/tab-01.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-01.jpg"
+											src="${path}/assets/img/blog/tab-01.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -788,8 +789,8 @@
 
 								<div class="media meta-post-sm">
 									<div class="img-overlay rounded me-2">
-										<img class="lazyestload" data-src="assets/img/blog/tab-03.jpg"
-											src="assets/img/blog/tab-03.jpg"
+										<img class="lazyestload" data-src="${path}/assets/img/blog/tab-03.jpg"
+											src="${path}/assets/img/blog/tab-03.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -861,8 +862,8 @@
 								<div class="col-4 px-1">
 									<div class="img-overlay rounded">
 										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-01.jpg"
-											src="assets/img/blog/instagram-new-01.jpg"
+											data-src="${path}/assets/img/blog/instagram-new-01.jpg"
+											src="${path}/assets/img/blog/instagram-new-01.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -871,8 +872,8 @@
 								<div class="col-4 px-1">
 									<div class="img-overlay rounded">
 										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-02.jpg"
-											src="assets/img/blog/instagram-new-02.jpg"
+											data-src="${path}/assets/img/blog/instagram-new-02.jpg"
+											src="${path}/assets/img/blog/instagram-new-02.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -881,8 +882,8 @@
 								<div class="col-4 px-1">
 									<div class="img-overlay rounded">
 										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-03.jpg"
-											src="assets/img/blog/instagram-new-03.jpg"
+											data-src="${path}/assets/img/blog/instagram-new-03.jpg"
+											src="${path}/assets/img/blog/instagram-new-03.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -895,8 +896,8 @@
 								<div class="col-4 px-1">
 									<div class="img-overlay rounded">
 										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-04.jpg"
-											src="assets/img/blog/instagram-new-04.jpg"
+											data-src="${path}/assets/img/blog/instagram-new-04.jpg"
+											src="${path}/assets/img/blog/instagram-new-04.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -905,8 +906,8 @@
 								<div class="col-4 px-1">
 									<div class="img-overlay rounded">
 										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-05.jpg"
-											src="assets/img/blog/instagram-new-05.jpg"
+											data-src="${path}/assets/img/blog/instagram-new-05.jpg"
+											src="${path}/assets/img/blog/instagram-new-05.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -915,8 +916,8 @@
 								<div class="col-4 px-1">
 									<div class="img-overlay rounded">
 										<img class="w-100 lazyestload"
-											data-src="assets/img/blog/instagram-new-06.jpg"
-											src="assets/img/blog/instagram-new-06.jpg"
+											data-src="${path}/assets/img/blog/instagram-new-06.jpg"
+											src="${path}/assets/img/blog/instagram-new-06.jpg"
 											alt="Generic placeholder image"> <a href=""
 											class="hover-img-overlay-dark"></a>
 									</div>
@@ -943,8 +944,8 @@
 					<div class="col-md-6 col-lg-3 mb-7 mb-lg-0">
 						<a class="d-inline-block" href="index.html"> <img
 							class="w-100 mb-6 lazyestload"
-							data-src="assets/img/logo-color-sm.png"
-							src="assets/img/logo-color-sm.png" alt="img">
+							data-src="${path}/assets/img/logo-color-sm.png"
+							src="${path}/assets/img/logo-color-sm.png" alt="img">
 						</a>
 						<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
 							adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -1000,11 +1001,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-1.jpg"
-											src="assets/img/home/gallery/thumb-gallery-1.jpg"
+											data-src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg"
+											src="${path}/assets/img/home/gallery/thumb-gallery-1.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-1.jpg"></a>
+											href="${path}/assets/img/home/gallery/gallery-1.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -1013,11 +1014,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-2.jpg"
-											src="assets/img/home/gallery/thumb-gallery-2.jpg"
+											data-src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg"
+											src="${path}/assets/img/home/gallery/thumb-gallery-2.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-2.jpg"></a>
+											href="${path}/assets/img/home/gallery/gallery-2.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -1026,11 +1027,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-3.jpg"
-											src="assets/img/home/gallery/thumb-gallery-3.jpg"
+											data-src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg"
+											src="${path}/assets/img/home/gallery/thumb-gallery-3.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-3.jpg"></a>
+											href="${path}/assets/img/home/gallery/gallery-3.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -1039,11 +1040,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-4.jpg"
-											src="assets/img/home/gallery/thumb-gallery-4.jpg"
+											data-src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg"
+											src="${path}/assets/img/home/gallery/thumb-gallery-4.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-4.jpg"></a>
+											href="${path}/assets/img/home/gallery/gallery-4.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -1052,11 +1053,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-5.jpg"
-											src="assets/img/home/gallery/thumb-gallery-5.jpg"
+											data-src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg"
+											src="${path}/assets/img/home/gallery/thumb-gallery-5.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-5.jpg"></a>
+											href="${path}/assets/img/home/gallery/gallery-5.jpg"></a>
 									</div>
 								</div>
 							</div>
@@ -1065,11 +1066,11 @@
 								<div class="media media-hover">
 									<div class="content w-100">
 										<img class="media-img lazyestload"
-											data-src="assets/img/home/gallery/thumb-gallery-6.jpg"
-											src="assets/img/home/gallery/thumb-gallery-6.jpg"
+											data-src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg"
+											src="${path}/assets/img/home/gallery/thumb-gallery-6.jpg"
 											alt="gallery-img"> <a class="media-img-overlay"
 											data-fancybox="footer-gallery"
-											href="assets/img/home/gallery/gallery-6.jpg"></a>
+											href="${path}/assets/img/home/gallery/gallery-6.jpg"></a>
 									</div>
 								</div>
 							</div>

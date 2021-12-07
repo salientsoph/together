@@ -2,6 +2,7 @@ package kosta.mvc.controller;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -14,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.MatchReply;
 import kosta.mvc.domain.NoticeBoard;
 import kosta.mvc.domain.Region;
+import kosta.mvc.domain.dto.MatchBoardDTO;
+import kosta.mvc.service.LoginService;
 import kosta.mvc.service.MatchBoardService;
 import kosta.mvc.service.MatchReplyService;
 import kosta.mvc.service.RegionService;
@@ -30,6 +34,7 @@ public class MatchBoardController {
 	private final MatchBoardService matchBoardService; 
 	private final RegionService regionService; 
 	private final MatchReplyService matchReplyService;
+	private final LoginService loginService;
 	
 	/**
 	 * 전체 검색하기 
@@ -106,7 +111,31 @@ public class MatchBoardController {
 	 * 등록하기 
 	 * */
 	@RequestMapping("/insert")
-	public String insert(MatchBoard board) {
+	public String insert(MatchBoardDTO boardDTO) {
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		// 문자열 -> Date
+		LocalDate tripDate = LocalDate.parse(boardDTO.getTripDate(), formatter);
+		
+		Customer customer = loginService.customerIdCheck(boardDTO.getCustomer());
+		
+		Region region = regionService.selectByRegionNo(boardDTO.getRegion());
+		
+		
+		MatchBoard board = boardDTO.dtoToDomain(boardDTO);
+		
+		board.setCustomer(customer);
+		board.setRegion(region);
+		board.setTripDate(tripDate);
+		
+		/*
+		System.out.println("*****************");
+		System.out.println();
+		System.out.println(board);
+		System.out.println();
+		System.out.println("*****************");
+		*/
+		
 		//등록 전에 입력한 데이터에 유효하지 않는 특수문자/스크립트태그 등이 있으면 태그가 아닌 문자열로 변경해준다. 
 		//실무에선 filter로 적용 
 		board.getMatchContent().replace("<", "&lt;"); //그냥 텍스트로 나오게 한다. 
