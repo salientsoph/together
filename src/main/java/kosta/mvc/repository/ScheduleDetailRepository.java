@@ -10,6 +10,6 @@ import kosta.mvc.domain.ScheduleDetail;
 
 public interface ScheduleDetailRepository extends JpaRepository<ScheduleDetail, Long> {
 
-	@Query("select sd from ScheduleDetail sd where sd.matchBoard = ?1")
+	@Query("select sd from ScheduleDetail sd where sd.matchBoard = ?1 order by sd.startTime asc")
 	List<ScheduleDetail> selectByMatchNo(MatchBoard board);
 }

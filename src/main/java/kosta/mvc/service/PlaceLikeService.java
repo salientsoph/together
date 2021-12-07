@@ -6,10 +6,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
+import kosta.mvc.domain.Region;
 
 public interface PlaceLikeService {
 
@@ -31,6 +33,17 @@ public interface PlaceLikeService {
 	/**
 	 * 로그인한 사용자에 해당하는 찜한 목록 전체검색 - Page처리 
 	 */
+
+	Page<PlaceLike> selectByUserId(Pageable pageable, String userId);
+//	Page<PlaceBoard> findLikedPlaceBoard(Customer customer, Pageable pageable);
+	
+	/**
+     * 사용자의 관심장소들 중 특정 지역만 출력
+     * (스케줄 작성용)
+     * */
+    List<PlaceLike> selectByCustomerNoAndRegionCode(String id, int regionCode);
+    
+
 	Page<PlaceLike> selectAll(Customer loginCustomer, Pageable pageable);
 	
 	/**
@@ -44,6 +57,7 @@ public interface PlaceLikeService {
 	Page<PlaceLike> selectAll(Pageable pageable);
 
 	Page<PlaceBoard> findLikedPlace(Customer loginCustomer, Pageable pageable);
+
 
 	/**
 	 * 1. 찜하기를 count할 대상 place를 가져온다. 

@@ -160,9 +160,9 @@ public class Rhg20Test {
 		PlaceBoard place = placeBoardRep.findById(1L).orElse(null);
 		
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		String start = "14:30:00";
-		String end = "16:45:00";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		String start = "06:30";
+		String end = "06:45";
 		LocalDateTime startTime = LocalDateTime.parse(match.getTripDate().toString() + " " + start, formatter);
 		LocalDateTime endTime = LocalDateTime.parse(match.getTripDate().toString() + " " + end, formatter);
 		

@@ -13,3 +13,5 @@
 
 <fmt:parseDate value="${date}" pattern="yyyy-MM-dd" var="parsedDate" type="date"/>
 <fmt:formatDate value="${parsedDate}" type="date" pattern="${pattern}"/>
+
+
