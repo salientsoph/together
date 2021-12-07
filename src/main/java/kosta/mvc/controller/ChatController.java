@@ -149,15 +149,15 @@ public class ChatController {
 		MatchBoard match  = matchService.selectBy(matchNumber, false);
 			
 			
-			List<ChatMsg> chatList = chatMsgService.selectByMatchNo(matchNumber);
+		List<ChatMsg> chatList = chatMsgService.selectByMatchNo(matchNumber);
 
-			mv.addObject("chatList", chatList);
-			
-			
-			mv.addObject("roomName", match.getMatchTitle());
-			mv.addObject("roomNumber", matchNumber);
-			
-			mv.setViewName("chat/chat");
+		mv.addObject("chatList", chatList);
+		
+		
+		mv.addObject("roomName", match.getMatchTitle());
+		mv.addObject("roomNumber", matchNumber);
+		
+		mv.setViewName("chat/chat");
 		
 		return mv;
 	}
