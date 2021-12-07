@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
+import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
@@ -70,11 +71,15 @@ public class ScheduleDetailController {
 		System.out.println();
 		System.out.println("***************");
 		*/
+		
+		Customer writer = match.getCustomer();
+		String writerId = writer.getUserId();
 
 		mv.addObject("placeLikeList", placeLikeList);
 		mv.addObject("scheduleDetailList", scheduleDetailList);
 		mv.addObject("matchNo", matchNo);
 		mv.addObject("match", match);
+		mv.addObject("writerId", writerId);
 		
 		mv.addObject("localDateTimeFormat", new SimpleDateFormat("hh:mm"));
 		 
