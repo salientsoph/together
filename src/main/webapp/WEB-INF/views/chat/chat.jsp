@@ -102,7 +102,7 @@
 
        
 
-        <form class="">
+        
           <h3 class="text-uppercase mb-6">${nickname}</h3>
         
           <p class="rating-view d-flex align-items-center"><!-- 
@@ -111,10 +111,9 @@
           </p>
         	<input type="hidden" name="userName" id="userName" value="${nickname}">
           <div class="form-group mb-6">
-            <input class="form-control border-0 bg-smoke" placeholder="채팅을 시작해주세요" rows="6" id="chatting"/>
+            <input class="form-control border-0 bg-smoke" placeholder="채팅을 시작해주세요" id="chatting"/>
           </div>
         
-        </form>
       </div>
     </div>
   </div>
