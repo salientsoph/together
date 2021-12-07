@@ -2,6 +2,8 @@ package kosta.mvc.controller;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
+import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
@@ -68,10 +71,15 @@ public class ScheduleDetailController {
 		System.out.println();
 		System.out.println("***************");
 		*/
+		
+		Customer writer = match.getCustomer();
+		String writerId = writer.getUserId();
 
 		mv.addObject("placeLikeList", placeLikeList);
 		mv.addObject("scheduleDetailList", scheduleDetailList);
 		mv.addObject("matchNo", matchNo);
+		mv.addObject("match", match);
+		mv.addObject("writerId", writerId);
 		
 		mv.addObject("localDateTimeFormat", new SimpleDateFormat("hh:mm"));
 		 
@@ -80,56 +88,76 @@ public class ScheduleDetailController {
 		return mv;
 	}
 	
-	/*
-	@RequestMapping("/getPlaceData")
-	@ResponseBody
-	public JSONObject getPlaceData(HttpServletRequest request) {
-		
-		String placeNoStr = request.getParameter("placeNo");
-		Long placeNo = Long.parseLong(placeNoStr);
-				
-		PlaceBoard place = placeBoardService.selectBy(placeNo, false);
-		
-		
-		JSONObject jsonObj = new JSONObject();
-		
-		jsonObj.put("place", place);
-		
-		return jsonObj;
-	}
-	*/
-	/*
-	@RequestMapping("/getPlaceData")
-	@ResponseBody
-	public String getPlaceData(HttpServletRequest request) {
-		
-		String placeNoStr = request.getParameter("placeNo");
-		Long placeNo = Long.parseLong(placeNoStr);
-				
-		PlaceBoard place = placeBoardService.selectBy(placeNo, false);
-		
-		String content = place.getPlaceContent();
-		
-		return content;
-	}
-	*/
 	@RequestMapping("/getPlaceData")
 	@ResponseBody
 	public PlaceBoard getPlaceData(HttpServletRequest request) {
 		
 		String placeNoStr = request.getParameter("placeNo");
 		Long placeNo = Long.parseLong(placeNoStr);
-				
+			
+		/*
 		System.out.println("***************");
 		System.out.println();
 		System.out.println(placeNo);
 		System.out.println();
 		System.out.println("***************");
+		*/
 		
 		PlaceBoard place = placeBoardService.selectBy(placeNo, false);
 		
 		return place;
 	}
 	
+	@RequestMapping("/insert")
+	public ModelAndView insert(String matchBoardNo, String startTime, String endTime, String title, String content, String placeLikeNo) {
+		ModelAndView mv = new ModelAndView();
+				
+		Long matchNoLong = Long.parseLong(matchBoardNo);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		// 문자열 -> Date
+		LocalDateTime start = LocalDateTime.parse(startTime, formatter);
+		LocalDateTime end = LocalDateTime.parse(endTime, formatter);
+		Long placeLikeNoLong = Long.parseLong(placeLikeNo);
+
+		/*
+		System.out.println("***************");
+		System.out.println();
+		System.out.println(matchNoLong);
+		System.out.println(start);
+		System.out.println(end);
+		System.out.println(title);
+		System.out.println(content);
+		System.out.println(placeLikeNoLong);
+		System.out.println();
+		System.out.println("***************");
+		*/
+		
+		
+		ScheduleDetail sd = ScheduleDetail.builder()
+										  .startTime(start)
+										  .endTime(end)
+										  .title(title)
+										  .content(content)
+										  .build();
+		
+		scheduleDetailService.insert(matchNoLong, placeLikeNoLong, sd);
+		
+		mv.setViewName("redirect:/schedule/read/"+matchNoLong);
+		
+		return mv;
+	}
 	
+	@RequestMapping("/delete/{id}")
+	public ModelAndView scheduleDelete(@PathVariable Long id ) {
+		ModelAndView mv = new ModelAndView();
+		ScheduleDetail sd = scheduleDetailService.selectById(id);
+		MatchBoard match = sd.getMatchBoard();
+		
+		mv.setViewName("redirect:/schedule/read/"+match.getMatchNo());
+		
+		scheduleDetailService.deleteByScheduleDetailNo(id);
+		
+		
+		return mv;
+	}
 }

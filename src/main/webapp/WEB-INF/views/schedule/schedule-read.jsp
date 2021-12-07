@@ -189,7 +189,9 @@
           </div>
     
           <div class="card-footer px-5 px-lg-0">
-            <a href="${path}/place/read/${schedule.placeBoard.placeNo}" class="btn btn-sm btn-outline-secondary text-uppercase">View post</a>
+            <a href="${path}/place/read/${schedule.placeBoard.placeNo}" class="btn btn-sm btn-outline-secondary text-uppercase">View place</a>
+            <a href="${path}/schedule/delete/${schedule.id}" class="btn btn-sm btn-outline-secondary text-uppercase">Delete</a>
+          
           </div>
         </div>
       </div>
@@ -209,7 +211,10 @@
 <div class="container-sm w-25">
 	<div class="col-md-6 col-lg-12 ">
       <div class="mb-6 bg-white p-3 border-top border-top-5 border-primary rounded">
-        <form class="" action="index.html" method="GET">
+        <form  action="${path}/schedule/insert" method="post" id="insertForm">
+        <input type="hidden" value="${requestScope.matchNo}" name="matchBoardNo" >
+        <input type="hidden" name="startTime"  id="startTimeActual"  >
+        <input type="hidden" name="endTime" id="endTimeActual"  >
           <h4 class="text-uppercase font-weight-bold">스케줄 추가</h4>
           
           <div class="mb-5">
@@ -218,7 +223,7 @@
                <label for="exampleInputText">찜한 장소 목록</label>
                <div class="select-default">
                  <select class="" name="placeLikeNo" id="placeLikeNo">
-                 <option value="-1">선택해주세요</option>
+                 <option value="-1">Custom Event</option>
                  
                  <c:choose>
 				    <c:when test="${not empty requestScope.placeLikeList}">
@@ -248,17 +253,17 @@
             <i class="far fa-clock" aria-hidden="true">
             <label for="exampleInputText" class="me-5 mt-2">끝나는 시간</label>
             </i>
-            <input type="text" class="form-control  form-transparent" id="endTime" readonly="readonly">
+            <input type="text" class="form-control  form-transparent" id="endTime"  readonly="readonly">
           </div>
           
           <div class="form-group">
             <label>제목</label>
-            <input type="text" class="form-control" id="title"/>
+            <input type="text" class="form-control" id="title" name="title" />
           </div>
           
           <div class="form-group">
             <label>내용</label>
-            <textarea class="form-control" rows="3" id="content"></textarea>
+            <textarea class="form-control" rows="3" id="content" name="content" ></textarea>
           </div>
 
           <div class="d-grid">
@@ -333,9 +338,15 @@ $(document).ready(function(){
 	    	
 	    	var element = $(this), text;
 	    	var timepicker = element.timepicker();
+	    	let matchDate = "${match.tripDate}"
 			 
+			 //console.log(matchDate);
 			 //console.log(timepicker.format(time));
 			 
+			 let startDateTime = matchDate + " " + timepicker.format(time);
+			 
+			 //console.log(dateTime);
+			 $("#startTimeActual").val(startDateTime);
 				
 			//태그 자체 삭제
 			$("#endTime").remove();
@@ -353,7 +364,21 @@ $(document).ready(function(){
 	    	    //startTime: '10:00',
 	    	    dynamic: false,
 	    	    dropdown: true,
-	    	    scrollbar: true
+	    	    scrollbar: true,
+	    	    change: function(time) {
+	    	    	
+	    	    	var element = $(this), text;
+	    	    	var timepicker = element.timepicker();
+	    	    	let matchDate = "${match.tripDate}"
+	    			 
+	    			 //console.log(matchDate);
+	    			// console.log(timepicker.format(time));
+	    			 
+	    			 let endDateTime = matchDate + " " + timepicker.format(time);
+	    			 
+	    			 //console.log(dateTime);
+	    	    	$("#endTimeActual").val(endDateTime);
+	    	    }
 	    	});
 		 }
 	});
@@ -375,7 +400,7 @@ $(document).ready(function(){
 		
 		 $(document).on('change',"select[name=placeLikeNo]" , function() {
 				
-			console.log($(this).text());
+			//console.log($(this).text());
 			var input=$(this).val();
 			
 			if(input!=-1){
@@ -385,12 +410,16 @@ $(document).ready(function(){
 		    		url:"${path}/schedule/getPlaceData",
 		    		dataType:"json",
 		    		success:function(place){
-		    			alert(place)
-		    			console.log(place.placeTitle);
-		    			console.log(place.placeContent); 			 
+		    			//alert(place)
+		    			//console.log(place.placeTitle);
+		    			//console.log(place.placeContent); 			 
+		    			$("#title").val("");
+		    			$("#title").val(place.placeTitle);	
+		    			$("#content").val("");
+		    			$("#content").val(place.placeContent);
 		    			
-		    			$("#title").html(place.placeTitle);	
-		    			$("#content").html(place.placeContent);	
+		    			$("#title").attr("readonly", "readonly");
+		    			$("#content").attr("readonly", "readonly");
 		    			
 		    							
 		    		},
@@ -401,10 +430,21 @@ $(document).ready(function(){
 		    	});//ajax
 				
 			}
+			
+			if(input==-1){
+				$("#title").removeAttr("readonly");
+    			$("#content").removeAttr("readonly");
+    			
+    			$("#title").val("");
+    			$("#content").val("");
+			}
 				
 		})
 		
-		
+		$("#insertSchedule").click(function() {
+    		//console.log("clicked");
+			$("#insertForm").submit();
+		});
 	})
 	
 	

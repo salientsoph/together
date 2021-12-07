@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -49,13 +50,13 @@ public class ScheduleDetail {
 	private String content; //내용
 	
 	//매칭 게시물 번호
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "match_no")
 	private MatchBoard matchBoard;
 	
 	//장소 게시물 번호
 	//@JsonIgnore
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "place_no")
 	private PlaceBoard placeBoard;
 }

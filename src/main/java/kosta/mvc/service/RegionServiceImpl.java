@@ -18,4 +18,10 @@ public class RegionServiceImpl implements RegionService {
 		return regionRepository.findAll();
 	}
 
+	@Override
+	public Region selectByRegionNo(int no) {
+		// TODO Auto-generated method stub
+		return regionRepository.findById(no).orElse(null);
+	}
+
 }

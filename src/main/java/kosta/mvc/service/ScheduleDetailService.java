@@ -38,4 +38,9 @@ public interface ScheduleDetailService {
 	 *  필요함.
 	 * */
 	void deleteByScheduleDetailNo(Long scheduleDetailNo);
+	
+	/**
+	 * 스케줄 하나 가져오기
+	 * */
+	ScheduleDetail selectById(Long id);
 }
