@@ -301,4 +301,10 @@ public class SalientTest {
 		System.out.println(request.getRequestedState());
 		request.setRequestedState(1);
 	}
+	
+	
+	@Test
+	public void testtt() {
+		placeBoardRep.deleteById(2L);
+	}
 }
