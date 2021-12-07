@@ -97,7 +97,21 @@ public class ScheduleDetailController {
 		return jsonObj;
 	}
 	*/
-	
+	/*
+	@RequestMapping("/getPlaceData")
+	@ResponseBody
+	public String getPlaceData(HttpServletRequest request) {
+		
+		String placeNoStr = request.getParameter("placeNo");
+		Long placeNo = Long.parseLong(placeNoStr);
+				
+		PlaceBoard place = placeBoardService.selectBy(placeNo, false);
+		
+		String content = place.getPlaceContent();
+		
+		return content;
+	}
+	*/
 	@RequestMapping("/getPlaceData")
 	@ResponseBody
 	public PlaceBoard getPlaceData(HttpServletRequest request) {
@@ -105,11 +119,16 @@ public class ScheduleDetailController {
 		String placeNoStr = request.getParameter("placeNo");
 		Long placeNo = Long.parseLong(placeNoStr);
 				
+		System.out.println("***************");
+		System.out.println();
+		System.out.println(placeNo);
+		System.out.println();
+		System.out.println("***************");
+		
 		PlaceBoard place = placeBoardService.selectBy(placeNo, false);
 		
 		return place;
 	}
-
 	
 	
 }

@@ -375,7 +375,7 @@ $(document).ready(function(){
 		
 		 $(document).on('change',"select[name=placeLikeNo]" , function() {
 				
-			//console.log($(this).val());
+			console.log($(this).text());
 			var input=$(this).val();
 			
 			if(input!=-1){

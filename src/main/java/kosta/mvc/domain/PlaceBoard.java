@@ -20,6 +20,7 @@ import javax.persistence.SequenceGenerator;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import lombok.AllArgsConstructor;
@@ -82,7 +83,7 @@ public class PlaceBoard {
 
 	
 	//일정 상세 (1:다)
-	//@JsonIgnore
+	///@JsonIgnore
 	@OneToMany(mappedBy = "placeBoard" , cascade = CascadeType.ALL )
 	private List<ScheduleDetail> scheduleDetailList;
 

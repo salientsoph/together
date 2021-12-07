@@ -18,6 +18,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalTimeConverter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -52,6 +54,7 @@ public class ScheduleDetail {
 	private MatchBoard matchBoard;
 	
 	//장소 게시물 번호
+	//@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "place_no")
 	private PlaceBoard placeBoard;

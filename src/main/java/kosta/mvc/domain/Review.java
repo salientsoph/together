@@ -12,6 +12,8 @@ import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,6 +38,7 @@ public class Review {
 	@CreationTimestamp
 	private LocalDateTime reviewRegDate;//리뷰 작성일
 	
+	//@JsonIgnore
 	@ManyToOne 
 	@JoinColumn(name = "place_no")
 	private PlaceBoard placeBoard;//게시물 번호
