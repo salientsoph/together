@@ -380,22 +380,23 @@ $(document).ready(function(){
 			
 			if(input!=-1){
 				$.ajax({
-		    		type:"POST",
+		    		type:"post",
 		    		data: "${_csrf.parameterName}=${_csrf.token}&&placeNo="+input,
 		    		url:"${path}/schedule/getPlaceData",
 		    		dataType:"json",
 		    		success:function(place){
-		    			
+		    			alert(place)
 		    			console.log(place.placeTitle);
 		    			console.log(place.placeContent); 			 
 		    			
-		    			//$("#title").html(place.placeTitle);	
-		    			//$("#content").html(place.placeContent);	
+		    			$("#title").html(place.placeTitle);	
+		    			$("#content").html(place.placeContent);	
 		    			
 		    							
 		    		},
 		    		error: function(result) {
-						console.log(result);
+		    			alert("오류 :" + result )
+		    			console.log(result);
 					}//function
 		    	});//ajax
 				
