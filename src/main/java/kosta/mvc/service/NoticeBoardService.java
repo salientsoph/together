@@ -38,4 +38,8 @@ public interface NoticeBoardService {
 	 * 삭제하기
 	 * */
 	void delete(Long noticeNo);
+	
+	/**
+	 * 카테고리 검색 
+	 * */
 }

@@ -65,6 +65,7 @@
 			<div class="container">
 				<div class="row">
 
+				<input type="hidden" /> 
 					<div class="card card-lg card-transparent mb-8">
 						<div class="position-relative">
 							<img data-src="${pageContext.request.contextPath}/images/${requestScope.place.placeImage}" src="${pageContext.request.contextPath}/images/${requestScope.place.placeImage}" alt="Card image cap"style="display:block; margin:auto;">

@@ -42,5 +42,8 @@ public interface PlaceBoardService {
 	void delete(Long placeNo);
 	
 	
-	
+	/**
+	 * 카테고리 검색 
+	 * */
+	Page<PlaceBoard> selectByPlaceCategory(int placeCategory, Pageable pageable);
 }

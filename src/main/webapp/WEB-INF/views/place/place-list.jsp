@@ -73,7 +73,36 @@ function likebtn(placeNo){
   <div class="container">
     <div class="row">
     
+    	<form action="${path}/place/list" method="post" id="searchForm" >
+    		
+    		
+    		 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="placeCategory" value="0"id="flexRadioDefault1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        맛집
+	                      </label>
+	                    </div>
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="placeCategory" value="1 "id="flexRadioDefault1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        관광지
+	                      </label>
+	                    </div>
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="placeCategory" value="2" id="flexRadioDefault1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        액티비티
+	                      </label>
+	                    </div>
+    		<button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium"> Search</button>
+    		</form>
+    	
+    
+    
     	<input type="hidden" value="${sessionScope.id}" name="customer">
+          
           
     
     <c:choose>
@@ -121,7 +150,7 @@ function likebtn(placeNo){
           <h5>
               <a href="/place/read/${board.placeNo}" class="card-title text-uppercase">${board.placeTitle}</a>
             </h5>
-            <p class="mb-5">${board.placeAddress}</p>
+            
             <div class="d-flex justify-content-between align-items-center">
              
           

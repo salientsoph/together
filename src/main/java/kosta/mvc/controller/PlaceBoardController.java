@@ -34,16 +34,24 @@ public class PlaceBoardController {
 	private final ReviewService reviewService;	
 	
 	/**
-	 * 전체 검색하기 
+	 * 전체 검색하기 , 카테고리별 검색하기 
 	 * */
 	@RequestMapping("/list")
-	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage) {
+	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage, 
+							@RequestParam(defaultValue = "") Integer placeCategory
+							) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("place/place-list");
 
 		Pageable pageable = PageRequest.of(nowPage-1, 9, Direction.DESC, "placeNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
-		Page<PlaceBoard> pageList = placeBoardService.selectAll(pageable);
+		Page<PlaceBoard> pageList = null;
 		List<Region> regionList = regionService.selectAll();
+		
+		if (placeCategory == null) {
+			pageList = placeBoardService.selectAll(pageable);
+		} else {
+			pageList = placeBoardService.selectByPlaceCategory(Integer.valueOf(placeCategory), pageable);
+		}
 		
 		int blockCount = 5;
 		int temp = (nowPage - 1) % blockCount;
