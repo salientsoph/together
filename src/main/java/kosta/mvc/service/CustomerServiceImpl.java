@@ -2,6 +2,8 @@ package kosta.mvc.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,7 +11,6 @@ import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceLike;
 import kosta.mvc.domain.Review;
-import kosta.mvc.domain.ScheduleDetail;
 import kosta.mvc.repository.CustomerRepository;
 import kosta.mvc.repository.MatchBoardRepository;
 import kosta.mvc.repository.PlaceLikeRepository;
@@ -33,11 +34,12 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Override
 	public int updateCustomer(Customer customer) {
-		String userNickname = customer.getUserNickname();
-		String userPwd = customer.getUserPwd();
-		String userPhone = customer.getUserPhone();
-		String userId = customer.getUserId();
-		return customerRep.updateCustomer(userNickname, userPwd, userPhone, userId);
+		System.out.println(customer.getUserId() + ", " + customer.getUserNickname() + ", " + customer.getUserPwd() + ", " + customer.getUserPhone());
+		Customer updateCustomer = customerRep.findById(customer.getUserId()).orElse(null);
+		updateCustomer.setUserPwd(customer.getUserPwd());
+		updateCustomer.setUserNickname(customer.getUserNickname());
+		updateCustomer.setUserPhone(customer.getUserPhone());
+		return 0;
 	}
 	
 	/**
@@ -56,6 +58,12 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<PlaceLike> selectLikeList(String userId) {
 		List<PlaceLike> list = placeLikeRep.findByCustomerUserId(userId);
 		//if(list.size()==0)throw new RuntimeException("오류로인해 찜목록을 가져오지 못했습니다.");
+		return list;
+	}
+	
+	@Override
+	public Page<PlaceLike> selectAll(String userId, Pageable pageable) {
+		Page<PlaceLike> list =  placeLikeRep.findAll(pageable);
 		return list;
 	}
 

@@ -2,12 +2,18 @@ package kosta.mvc.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.mvc.domain.Customer;
@@ -65,7 +71,9 @@ public class CustomerController {
 	 *  마이페이지-개인정보확인/수정 - 개인정보수정폼
 	 */
 	@RequestMapping("/profileUpdateForm")
-	public String updateCustomerForm() {
+	public String updateCustomerForm(HttpServletRequest request, String userNickname, String userPhone) {
+		request.setAttribute("userPhone", userPhone);
+		request.setAttribute("userNickname", userNickname);
 		return "mypage/profileUpdate";
 	}
 
@@ -73,27 +81,39 @@ public class CustomerController {
 	 *  마이페이지-개인정보확인/수정 - 개인정보수정
 	 */
 	@RequestMapping("/profileUpdate")
-	public ModelAndView updateCustomer(Customer customer ,HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("mypage/myprofile");//뷰쪽으로 전달될 데이터정보
-
-		Object objId =  session.getAttribute("id");
-		Customer logincustomer = Customer.builder().userId(objId.toString()).build();
-		mv.addObject("user", logincustomer);
-		customerService.updateCustomer(logincustomer);
-		return mv;
+	public String updateCustomer(Customer customer ,HttpSession session) {
+		customer.setUserId((String)session.getAttribute("id"));
+		customerService.updateCustomer(customer);
+		return "redirect:/mypage/myprofile";
 	}
 
 	/**
 	 *  마이페이지 찜 목록 - 조회
 	 */
 	@RequestMapping("/mylike")
-	public ModelAndView userLikeList(HttpSession session) {
+	public ModelAndView userLikeList(HttpSession session, @RequestParam(defaultValue = "1") int nowPage) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
 		Object objId =  session.getAttribute("id");
 		Customer loginCustomer =  Customer.builder().userId(objId.toString()).build();
 		String userId = loginCustomer.getUserId();
-		List<PlaceLike> placeLike = customerService.selectLikeList(userId);
-		return new ModelAndView("mypage/mylike", "placeLike", placeLike);
+		
+		Pageable pageable = PageRequest.of(nowPage-1, 9, Direction.DESC, "placeLikeNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
+		Page<PlaceLike> placeLike = customerService.selectAll(userId, pageable);
+		
+		int blockCount = 5;
+		int temp = (nowPage - 1) % blockCount;
+		int startPage = nowPage - temp;
+		
+		mv.addObject("placeLike", placeLike);
+		mv.addObject("blockCount", blockCount);
+		mv.addObject("nowPage", nowPage);
+		mv.addObject("startPage", startPage);
+		System.out.println(placeLike);
+		
+		mv.setViewName("mypage/mylike");
+		
+		return mv;
 	}
 
 	/**

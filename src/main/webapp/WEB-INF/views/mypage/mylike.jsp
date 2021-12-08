@@ -41,14 +41,13 @@ $(function(){
 
 <body id="body" class="up-scroll">
 
-  <div class="main-wrapper blog-list-fullwidth">
+	<div class="main-wrapper packages-grid">
 
 <!-- ====================================
 ———	PAGE TITLE
 ===================================== -->
 <section class="page-title">
   <div class="page-title-img bg-img bg-overlay-darken" style="background-image: url(${path}/assets/img/pages/page-title-bg9.jpg);">
-    <input type="hidden" value="${requestScope.placeLikeNo}" name="placeLikeNo" >
     <div class="container">
       <div class="row align-items-center justify-content-center" style="height: 200px;">
         <div class="col-lg-6">
@@ -64,6 +63,7 @@ $(function(){
   </div>
 </section>
 
+
 <!-- ====================================
 ———	TOUR PACKAGES SECTION
 ===================================== -->
@@ -73,25 +73,25 @@ $(function(){
     
     	<input type="hidden" value="${sessionScope.id}" name="customer">
     	
-		<c:if test="${not empty placeLike}">
+	<!-- <c:if test="${not empty placeLike}">
 			<div class="col-xl" style="text-align: right;">
 				<a href="" class="btn btn-outline-warning" onclick="return confirmDelete();">전체삭제</a>
 			</div>
-   		</c:if>
-	</div>
+   		</c:if>   -->	
 		 
-	 <div class="LikeListInfo">  		
-	   	<c:if test="${empty placeLike}">
+    <c:choose>		
+	   	<c:when test="${empty requestScope.placeLike}">
 	   		<tr>
 	   			<td colspan="5">
-	            <p align="center"><b><span style="font-size:20pt; font-style: ;">찜한 장소가 없습니다.</span></b></p>
-		        <p align="center"><b><span class="no-listing__cont__txt">마음에 드는 장소를 찾아 찜해 보세요.</span></b></p>
-				<p align="center"><b><a href="/place/list" >여행게시판 바로가기</a></b>
+		            <p align="center"><b><span style="font-size:20pt; font-style: ;">찜한 장소가 없습니다.</span></b></p>
+			        <p align="center"><b><span class="no-listing__cont__txt">마음에 드는 장소를 찾아 찜해 보세요.</span></b></p>
+					<p align="center"><b><a href="/place/list" >여행게시판 바로가기</a></b>
 	        	</td>
 	        </tr>
-	   	</c:if>
+	  	</c:when>
+    <c:otherwise>
 	   	
-	 	<c:forEach items="${placeLike}" var="list">
+	<c:forEach items="${requestScope.placeLike.content}" var="list">
 
 	  	<!-- 한개 시작 -->
 	      <div class="col-md-6 col-lg-4 mb-5">
@@ -157,9 +157,79 @@ $(function(){
 	        </div><!-- card card-hover" -->
 	      </div><!-- col-md-6 col-lg-4 mb-5 -->
 	   	<!-- 한개 끝 -->
+      	
       	</c:forEach>
-		</div><!-- LikeListInfo -->
-	</div><!-- container -->
+      </c:otherwise>
+      </c:choose>
+   </div>		
+</div><!-- container -->
+	
+	 <!-- ====================================
+———	PAGINATION
+===================================== -->
+<c:set var="doneLoop" value="false"/>
+
+<section class="pt-5 pt-md-7">
+  <div class="container">
+    <nav aria-label="Page navigation">
+    
+     <ul class="pagination justify-content-center align-items-center">
+    <!-- previous -->
+    <c:choose>
+    <c:when test="${(startPage-blockCount) > 0}"> <!-- (-2) > 0  -->		      
+		 <li class="page-item">
+          <a class="page-link" href="/mypage/mylike?nowPage=${startPage-1}" >
+            <i class="fas fa-long-arrow-alt-left d-none d-md-inline-block me-md-1" aria-hidden="true" "></i> Previous
+          </a>
+        </li>
+	</c:when>
+	<c:otherwise>
+		<li class="page-item">
+          <a class="page-link disabled" >
+            <i class="fas fa-long-arrow-alt-left d-none d-md-inline-block me-md-1" aria-hidden="true" "></i> Previous
+          </a>
+        </li>
+	</c:otherwise>
+	</c:choose>
+	<!-- previous -->
+    
+     
+        <c:forEach var='i' begin='${startPage}' end='${(startPage-1)+blockCount}'> 
+		
+			<c:if test="${(i-1)>=placeLike.getTotalPages()}">
+				<c:set var="doneLoop" value="true"/>
+			</c:if> 
+				    
+			<c:if test="${not doneLoop}" >
+				 <li class="page-item">
+		          	<a class="page-link active" href="/mypage/mylike?nowPage=${i}">${i}</a>
+		       	 </li> 
+			</c:if>
+		</c:forEach>
+    
+    <!-- Next -->
+    <c:choose>
+    <c:when test="${(startPage+blockCount)<=placeLike.getTotalPages()}">     
+		<li class="page-item">
+          <a class="page-link" href="/mypage/mylike?nowPage=${startPage+blockCount}&userId=${userId}">Next
+            <i class="fas fa-long-arrow-alt-right d-none d-md-inline-block ms-md-1" aria-hidden="true"></i>
+          </a>
+        </li>
+	 </c:when>
+	 <c:otherwise>
+	 	<li class="page-item">
+          <a class="page-link disabled">Next
+            <i class="fas fa-long-arrow-alt-right d-none d-md-inline-block ms-md-1" aria-hidden="true"></i>
+          </a>
+        </li>
+	 </c:otherwise>
+	 </c:choose>
+	 <!-- Next -->
+      </ul>
+    </nav>
+  </div>
+</section>
+	
 </section>
 
 </div><!-- element wrapper ends -->

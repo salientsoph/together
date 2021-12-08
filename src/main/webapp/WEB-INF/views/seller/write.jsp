@@ -100,16 +100,11 @@ $(function(){
               
                     <li class="meta-tag text-gray-color me-4 mb-1">
                       <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                      <span class="ms-1 text-capitalize">${place.placeAddress}</span>
-                    </li>
-              
-                    <li class="meta-tag text-gray-color me-4 mb-1">
-                      <i class="fa fa fa-tags" aria-hidden="true"></i>
                       <span class="ms-1 text-capitalize">${place.region.regionName}</span>
                     </li>
               
                     <li class="meta-tag text-gray-color me-4 mb-1">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
+                      <i class="fa fa fa-tags" aria-hidden="true"></i>
                       <span class="ms-1 text-capitalize" title="${place.placeCategory}"></span>
                     </li>
                     

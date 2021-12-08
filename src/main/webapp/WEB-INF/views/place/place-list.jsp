@@ -11,15 +11,29 @@
 <script type="text/javascript">
 
 function likebtn(placeNo){
-
-	if(confirm("찜 목록에 추가 하시겠습니까?")){
-		location.href="${path}/mypage/insertlike?placeNo="+placeNo;
-		return true;
-	}else{
-		return false;
-	}
+	
+  $(function(){
+	// 비로그인 상태시 찜하기 버튼을 누르면
+	  if ("${sessionScope.id}" == "") {
+			if (confirm("로그인 한 회원만 이용가능합니다. 로그인 하시겠습니까?")){
+				//승낙하면 로그인 모달로 이동
+				$("#login").modal("show");
+			}else{
+				//거부하면 해당 페이지 새로고침
+				location.reload();
+			}
+      	
+      //로그인 상태시 찜하기 버튼을 누르면
+	  }else{
+		  if(confirm("찜 목록에 추가 하시겠습니까?")){
+				location.href="${path}/mypage/insertlike?placeNo="+placeNo;
+				return true;
+		  }else{
+				return false;
+		  }
+      }	
+  });     
 }//likebtn	
-        
 </script>
 
 </head>     
@@ -53,6 +67,8 @@ function likebtn(placeNo){
 <!-- ====================================
 ———	TOUR PACKAGES SECTION
 ===================================== -->
+
+
 <section class="bg-smoke py-10">
   <div class="container">
     <div class="row">

@@ -11,17 +11,17 @@
 $(document).ready(function(){
 	var checkResultId="";		
 	$("#registerSubmit_btn").click(function(){			
-		if($("#regForm :input[name=nickName]").val().trim()==""){
+		if($("#regForm :input[name=userNickname]").val().trim()==""){
 			alert("닉네임을 입력하세요");				
 			return false;
 		}
 		
-		if($("#regForm :input[name=passWord]").val().trim()==""){
+		if($("#regForm :input[name=userPwd]").val().trim()==""){
 			alert("비밀번호를 입력하세요");				
 			return false;
 		}
 		
-		if($("#regForm :input[name=phone]").val().trim()==""){
+		if($("#regForm :input[name=userPhone]").val().trim()==""){
 			alert("전화번호를 입력하세요");				
 			return false;
 		}	
@@ -37,7 +37,7 @@ $(document).ready(function(){
 		if($(this).val()==""){
 			$("#pwdCheckSpan").html("");
 		}
-		if($("#regForm :input[name=passWord]").val() == $(this).val()){
+		if($("#regForm :input[name=userPwd]").val() == $(this).val()){
 				$("#pwdCheckSpan").html("비밀번호가 일치합니다.");
 			}else{
 				$("#pwdCheckSpan").html("비밀번호를 확인해주세요.");
@@ -241,7 +241,7 @@ $(document).ready(function(){
 			</div>
 	
 				
-			<form action="${path}/mypage/profile"  id="regForm" method="post">
+			<form action="${path}/mypage/profileUpdate"  id="regForm" method="post">
 				
 				<div class="tab-content px-6 py-7" id="myTabContent">
 					<div class="tab-pane fade show active" id="Customer" role="tabpanel" aria-labelledby="Customer-tab">
@@ -249,7 +249,7 @@ $(document).ready(function(){
 
 						<div class="mb-3">
 							<strong>비밀번호 : </strong> 
-							<input type="password" class="form-control bg-smoke" required="required" placeholder="Password" name="passWord">
+							<input type="password" class="form-control bg-smoke" required="required" placeholder="Password" name="userPwd">
 						</div>
 						
 						<div class="mb-3">
@@ -260,12 +260,12 @@ $(document).ready(function(){
 
 						<div class="mb-3">
 							<strong>닉네임 :</strong> 
-							<input type="text" class="form-control bg-smoke" required="required" placeholder="${requestScope.user.userNickname}" name="nickName">
+							<input type="text" class="form-control bg-smoke" required="required"  value="${requestScope.userNickname}" name="userNickname">
 						</div>
 
 						<div class="mb-3">
 							<strong>전화번호 :</strong> 
-							<input type="text" class="form-control bg-smoke" required="required" placeholder="${requestScope.user.userPhone}" name="phone">
+							<input type="text" class="form-control bg-smoke" required="required" value="${requestScope.userPhone}" name="userPhone">
 						</div>
 
 						<div class="form-group">

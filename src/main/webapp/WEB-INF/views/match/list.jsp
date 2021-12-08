@@ -77,10 +77,17 @@
 ===================================== -->
 <c:if test="${sessionScope.role eq 'seller' or sessionScope.id eq null}">
 	  <script type="text/javascript">
-	    alert("customer 계정으로 로그인하고 이용해주세요");
-	    location.href="/";
+	    $(function(){
+	    	$("#messageTitle").text("Login please");
+	    	$("#messageContent").text("Customer 계정으로 로그인하고 이용해주세요");
+	    	$("#message").modal("show");
+	    	$("#message").on("hidden.bs.modal", function(){
+	    		location.href = "/";
+	    	});
+	    });
 	  </script>
 </c:if>
+
 
 <section class="bg-smoke py-10">
   <div class="container">
