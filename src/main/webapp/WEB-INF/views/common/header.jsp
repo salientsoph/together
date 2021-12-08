@@ -168,7 +168,10 @@
              
             
  <!-- ##### Silver mypage Area End ##### -->
-  		<li class="">
+        <c:if test="${sessionScope.id ne null }">
+        <c:choose>
+          <c:when test="${sessionScope.role eq 'customer' }">
+            <li class="">
              <a href="javascript:void(0)">마이페이지</a>
               <ul class="dropdown drop-up">
                 <li class="">
@@ -197,6 +200,23 @@
 
               </ul>
             </li>
+          </c:when>
+          <c:when test="${sessionScope.role eq 'seller'}">
+            <li class="">
+             <a href="javascript:void(0)">마이페이지</a>
+              <ul class="dropdown drop-up">
+                <li class="">
+                  <a href="/seller/info">내 프로필</a>
+                </li>
+
+                <li class="">
+                  <a href="/seller/write">내 장소</a>
+                </li>
+              </ul>
+            </li>
+          </c:when>
+        </c:choose>
+  		</c:if>
     <!-- ##### mypage Area End ##### -->
     
             <li class="">
