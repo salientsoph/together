@@ -2,6 +2,9 @@ package kosta.mvc.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceLike;
@@ -23,6 +26,11 @@ public interface CustomerService {
 	 * 찜리스트 조회하기
 	 */
 	public List<PlaceLike> selectLikeList(String userId);
+	
+	/**
+	 * 찜리스트 전체검색 - Page처리 
+	 */
+	Page<PlaceLike> selectAll(String userId, Pageable pageable);
 
 	/**
 	 * 찜리스트 삭제하기
