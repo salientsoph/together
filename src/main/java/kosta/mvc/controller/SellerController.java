@@ -2,6 +2,7 @@ package kosta.mvc.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -52,7 +53,9 @@ public class SellerController {
 	 * 판매자 마이페이지-개인정보확인/수정 - 개인정보수정폼
 	 */
 	@RequestMapping("/updateInfoForm")
-	public String updateInfoForm() {
+	public String updateInfoForm(HttpServletRequest request, String sellerNickname, String sellerPhone) {
+		request.setAttribute("sellerPhone", sellerPhone);
+		request.setAttribute("sellerNickname", sellerNickname);
 		return "seller/updateInfo";
 	}
 
