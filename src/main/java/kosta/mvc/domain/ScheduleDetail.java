@@ -50,13 +50,13 @@ public class ScheduleDetail {
 	private String content; //내용
 	
 	//매칭 게시물 번호
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne//(cascade = CascadeType.ALL)
 	@JoinColumn(name = "match_no")
 	private MatchBoard matchBoard;
 	
 	//장소 게시물 번호
 	//@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne//(cascade = CascadeType.ALL)
 	@JoinColumn(name = "place_no")
 	private PlaceBoard placeBoard;
 }

@@ -89,6 +89,10 @@
 			//alert("adsfwae");
 		});
 		
+		$("#listAll").click(function() {
+			$(location).attr("href", "${path}/report/list")
+		});
+		
 	})
     </script>
 
@@ -171,7 +175,9 @@
 	          <p class="mb-6 text-capitalize ">${requestScope.report.reportContent}</p>
 	          </div>
 	          
+	          
 	          <div class="row justify-content-center align-items-center">
+	          <c:if test="${role eq 'admin'}">
 		        <div class="col-2 my-7 px-8 ">
 		           <h5 class="m-2 text-primary font-weight-bold "> 상태 : </h5> 
 		        </div>
@@ -199,7 +205,15 @@
 		              상태변경 저장
 		            </button>
 	           </div>
+	           </c:if>
+	           <div class="col input-group mb-3 w-25 ">
+  					<button type="button" class="mx-2 btn btn-primary btn-sm" id="listAll" >목록으로 돌아가기</button>	  			
+	  		   </div>
           	</div>
+          	
+          	
+          	
+          	
           </div>
 
 		   
@@ -215,7 +229,7 @@
           		<p class="">${requestScope.report.matchBoard.matchContent}</p>
           	</div>
           	<div class="row justify-content-center">
-          	<button type="button" onclick="location.href='javascript:void(0)';"
+          	<button type="button" onclick="location.href='${path}/match/read/${requestScope.report.matchBoard.matchNo}';"
               class="btn btn-hover btn-outline-secondary text-uppercase col-4 m-5">
               글 확인하러 가기
             </button>
@@ -224,6 +238,9 @@
             </div>
           </div>
         </div>
+        
+        
+        
        </div>
       </div>
     </div>

@@ -57,7 +57,7 @@ public class ScheduleDetailController {
 				
 		Customer writer = match.getCustomer();
 		String writerId = writer.getUserId();
-
+		
 		mv.addObject("placeLikeList", placeLikeList);
 		mv.addObject("scheduleDetailList", scheduleDetailList);
 		mv.addObject("matchNo", matchNo);
@@ -109,13 +109,16 @@ public class ScheduleDetailController {
 		return mv;
 	}
 	
-	@RequestMapping("/delete/{id}")
-	public ModelAndView scheduleDelete(@PathVariable Long id ) {
+	@RequestMapping("/delete/{id}/{matchNo}")
+	public ModelAndView scheduleDelete(@PathVariable Long id, @PathVariable Long matchNo ) {
 		ModelAndView mv = new ModelAndView();
-		ScheduleDetail sd = scheduleDetailService.selectById(id);
-		MatchBoard match = sd.getMatchBoard();
+		//ScheduleDetail sd = scheduleDetailService.selectById(id);
 		
-		mv.setViewName("redirect:/schedule/read/"+match.getMatchNo());
+		
+		
+		//MatchBoard match = sd.getMatchBoard();
+		
+		mv.setViewName("redirect:/schedule/read/"+matchNo);
 		
 		scheduleDetailService.deleteByScheduleDetailNo(id);
 		

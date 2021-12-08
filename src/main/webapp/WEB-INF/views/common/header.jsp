@@ -171,7 +171,6 @@
   		<li class="">
              <a href="javascript:void(0)">마이페이지</a>
               <ul class="dropdown drop-up">
-               
                 <li class="">
                   <a href="/mypage/myprofile">내 프로필</a>
                 </li>
@@ -182,51 +181,20 @@
 
                  <li class="">
                   <a href="/mypage/mywrite">내가 쓴 글</a>
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="gallery-grid.html">Gallery Grid</a>
-                    </li>
-
-                    <li class="">
-                      <a href="gallery-masonry.html">Gallery Masonry</a>
-                    </li>
-
-                    <li class="">
-                      <a href="gallery-photo-slider.html">Photo Slider</a>
-                    </li>
-                  </ul>
                 </li>
 
                 <li class="">
-
-                  <a href="javascript:void(0)">내가 쓴 리뷰</a>
-                  <ul class="dropdown drop-sub-menu-left drop-up">
-                    <li class="">
-                      <a href="destination-cities.html">Destination Cities</a>
-                    </li>
-
-                    <li class="">
-                      <a href="destination-single-city.html">Single Destination</a>
-                    </li>
-                  </ul>
+                  <a href="/mypage/myreview">내가 쓴 리뷰</a>
                 </li>
 
                 <li class="">
-                    
-                  <a href="javascript:void(0)">내 매칭 모임</a>
-
-                  <ul class="dropdown drop-sub-menu-left drop-up navComponents">
-                    <li class="scrollNav">
-                      <a class="removeNav" href="components.html#accordion">Accordion</a>
-                    </li>
-
-                    
-                  </ul>
+                  <a href="/mypage/mymatch">내 매칭 모임</a>
                 </li>
 
-                <li><a href="404.html">내 여행 일정</a></li>
+                <li class="">
+                  <a href="/mypage/myschedule">내 여행 일정</a>
+                </li>
 
-                <li><a href="coming-soon.html">내 친구 관리</a></li>
               </ul>
             </li>
     <!-- ##### mypage Area End ##### -->

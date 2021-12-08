@@ -3,6 +3,7 @@ package kosta.mvc.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,8 +44,25 @@ public class ReportController {
 	 * 전체검색하기
 	 * */
 	@RequestMapping("/list")
-	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage, @RequestParam(defaultValue = "")String userId) {
+	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage, @RequestParam(defaultValue = "")String userId, HttpSession session) {
 							//파라메터로 nowPage가 안들어오면 기본값으로 0을 줘라.
+		
+		String role = (String) session.getAttribute("role");
+		String id = (String) session.getAttribute("id");
+		
+		/*
+		System.out.println("******************************************");
+		System.out.println();
+		
+		System.out.println("role: " + role);
+
+		System.out.println();
+		System.out.println("******************************************");
+		*/
+		
+		if(!role.equals("admin")) {
+			userId = id;
+		}
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("report/report-list");
@@ -68,17 +86,7 @@ public class ReportController {
 		mv.addObject("startPage", startPage);
 		mv.addObject("nowPage", nowPage);
 		mv.addObject("userId", userId);
-		/*
-		System.out.println("******************************************");
-		System.out.println();
 		
-		System.out.println("blockCount: " + blockCount);
-		System.out.println("startPage: " + startPage);
-		System.out.println("nowPage: " + nowPage);
-
-		System.out.println();
-		System.out.println("******************************************");
-		*/
 		
 		
 				

@@ -11,4 +11,6 @@ import kosta.mvc.domain.Review;
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 	@Query("select r from Review r where r.placeBoard = ?1 order by r.reviewRegDate desc")
 	List<Review> selectByPlaceBoard(PlaceBoard placeBoard);
+
+	List<Review> findByCustomerUserId(String userId);
 }

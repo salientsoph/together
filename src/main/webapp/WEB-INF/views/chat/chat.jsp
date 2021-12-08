@@ -41,9 +41,9 @@
             <div class="">
               <h2 class="text-uppercase text-white font-weight-bold">채팅방</h2>
               
-		<input type="text" id="sessionId" value="">
-		<input type="text" id="roomNumber" value="${roomNumber}">
-		<input type="text" id="userId" value="${sessionScope.id}">
+		<input type="hidden" id="sessionId" value="">
+		<input type="hidden" id="roomNumber" value="${roomNumber}">
+		<input type="hidden" id="userId" value="${sessionScope.id}">
             </div>
           </div>
         </div>
@@ -102,24 +102,18 @@
 
        
 
-        <form class="">
-          <h3 class="text-uppercase mb-6">메세지를 입력해주세요.</h3>
+        
+          <h3 class="text-uppercase mb-6">${nickname}</h3>
         
           <p class="rating-view d-flex align-items-center"><!-- 
             <span class="content-view">Want to Rate it?</span>
             <span class="star add-rating-default ms-2"></span> -->
           </p>
-        	<input type="text" name="userName" id="userName" value="${nickname}">
+        	<input type="hidden" name="userName" id="userName" value="${nickname}">
           <div class="form-group mb-6">
-            <input class="form-control border-0 bg-smoke" placeholder="Comment" rows="6" id="chatting"/>
+            <input class="form-control border-0 bg-smoke" placeholder="채팅을 시작해주세요" id="chatting"/>
           </div>
         
-          <div class="">
-            <button type="button"  onclick="send()" id="sendBtn" class="btn btn-hover btn-outline-secondary text-uppercase">
-              Submit
-            </button>
-          </div>
-        </form>
       </div>
     </div>
   </div>

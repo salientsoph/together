@@ -66,4 +66,18 @@ package kosta.mvc.service;
 			}
 			return 1; 
 		}
+
+		
+		/**
+		 * 매칭 게시판 별 수락된 놈들 가져오기
+		 * -유홍걸 작성함
+		 * */
+		@Override
+		public List<MatchRequest> selectConfirmedList(long matchNo) {
+			MatchBoard match = matchBoardRepository.findById(matchNo).orElse(null);
+			
+			List<MatchRequest> list = matchRequestRepository.selectConfirmedList(match);
+			
+			return list;
+		}
 }
