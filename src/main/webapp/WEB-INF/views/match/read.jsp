@@ -126,7 +126,6 @@
 					
 						<div class="card card-lg card-transparent mb-8">
 
-
 							<div class="card-body px-2 py-6">
 								<h3 class="mb-4">${requestScope.match.matchTitle}</h3>
 
@@ -162,36 +161,42 @@
 
 
 
-								<blockquote class="blockquote rounded p-7 mb-5"
-									style="background-image: url(${pageContext.request.contextPath}/assets/img/blog/blog-single-02.png); background-size: cover; background-position: center top; background-repeat: no-repeat">
+								<blockquote class="blockquote rounded p-7 mb-5" style="background-image: url(${pageContext.request.contextPath}/assets/img/blog/blog-single-02.png); background-size: cover; background-position: center top; background-repeat: no-repeat">
 									<p class="line-height-24 h4 text-white mb-5">
-									<c:if test="${sessionScope.id != requestScope.match.customer}">
-									<c:choose>
-										<c:when test="${empty requestScope.approvedCustomerList}">
-											<tr>
-									        	<td colspan="5">
-									            <p align="center"><b><span style="font-size:12pt;">참석하는 사람이 아직 없어요.</span></b></p>
-									       		</td>
-									    	</tr>
-									    	<form name="signUpForm" method="post" id="requestForm">
-												<input type=hidden name="matchNo" value="${requestScope.match.matchNo}">
-												<input type="hidden" value="${sessionScope.id}" name="customer">
-											<button id="insertButton" type="button" name="signup"
-												class="btn btn-secondary btn-lg mb-2">신청하기</button>
-											</form>
-										</c:when>
-										
-									<c:otherwise>
-											<span style="font-size:12pt;"> 모임 확정 목록 아이디 </span>
-									    <c:forEach items="${requestScope.approvedCustomerList}" var="customer">
-    										<p align="left"><span style="font-size:12pt;">${customer}</span><br/></p>
-    									</c:forEach>
-    								</c:otherwise>
-    								</c:choose>
+									
+									<!--  현재 아이디가 글쓴이와 다를 때 -->
+									<c:if test="${sessionScope.id != requestScope.match.customer.userId}">
+										<c:choose>
+											<c:when test="${empty requestScope.approvedCustomerList}">
+												<tr>
+										        	<td colspan="5">
+										            <p align="center"><b><span style="font-size:12pt;">참석하는 사람이 아직 없어요.</span></b></p>
+										       		</td>
+										    	</tr>
+										    	
+										    	<c:forEach items="${requestScope.requestedCustomerList}" var="person">
+										    		<c:if test="${person != sessionScope.id}">
+												    	<form name="signUpForm" method="post" id="requestForm">
+															<input type=hidden name="matchNo" value="${requestScope.match.matchNo}">
+															<input type="hidden" value="${sessionScope.id}" name="customer">
+														<button id="insertButton" type="button" name="signup"
+															class="btn btn-secondary btn-lg mb-2">신청하기</button>
+														</form>
+													</c:if>
+												</c:forEach>
+											</c:when>
+											
+										<c:otherwise>
+												<span style="font-size:12pt;"> 모임 확정 목록 아이디 </span>
+										    <c:forEach items="${requestScope.approvedCustomerList}" var="customer">
+	    										<p align="left"><span style="font-size:12pt;">${customer}</span><br/></p>
+	    									</c:forEach>
+	    								</c:otherwise>
+	    								</c:choose>
     								</c:if>
     								
-    								
-										 <c:if test="${sessionScope.id == requestScope.match.customer.userId}">
+    								<!--  현재 아이디가 글쓴이와 같을 때-->
+									<c:if test="${sessionScope.id == requestScope.match.customer.userId}">
 										 <c:choose>
 											<c:when test = "${empty requestScope.requestedCustomerList}">
 												<tr><th><h5>신청자가 없습니다.</h5></th></tr>
@@ -206,7 +211,23 @@
 												</c:forEach>
 											</c:otherwise>
 										</c:choose>
-									  	</c:if>
+									
+										<c:choose>
+											<c:when test="${empty requestScope.approvedCustomerList}">
+												<tr>
+										        	<td colspan="5">
+										            <p align="center"><b><span style="font-size:12pt;">참석 확정된 사람이 아직 없어요.</span></b></p>
+										       		</td>
+										    	</tr>
+										    </c:when>
+										    <c:otherwise>
+												<span style="font-size:12pt;"> 모임 확정 목록 아이디 </span>
+										    <c:forEach items="${requestScope.approvedCustomerList}" var="customer">
+	    										<p align="left"><span style="font-size:12pt;">${customer}</span><br/></p>
+	    									</c:forEach>
+	    								</c:otherwise>
+										</c:choose>
+									</c:if>
 									
 									</p>
 									<!--  <footer class="blockquote-footer text-white">
@@ -239,7 +260,7 @@
 						
 						
 						<!-- 채팅방 입장 및 일정 확인 버튼  -->
-						<button id="chatButton" type="button" name="chat" class="btn btn-secondary btn-lg mb-2">채팅방 입장하기</button>
+					    <button id="chatButton" type="button" name="chat" class="btn btn-secondary btn-lg mb-2">채팅방 입장하기</button>
 						<button id="scheduleButton" type="button" name="schedule" class="btn btn-secondary btn-lg mb-2">일정 확인하기</button>
 									
 						<!-- 채팅방 입장 및 일정 확인 버튼 끝  -->

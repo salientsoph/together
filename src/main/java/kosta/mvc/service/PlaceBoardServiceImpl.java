@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import kosta.mvc.domain.PlaceBoard;
-
+import kosta.mvc.domain.Report;
 import kosta.mvc.repository.PlaceBoardRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -75,6 +75,12 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 			throw new RuntimeException("글번호 오류로 삭제할 수 없어요.");
 		placeRepository.delete(placeBoard);
 
+	}
+
+	@Override
+	public Page<PlaceBoard> selectByPlaceCategory(int placeCategory, Pageable pageable) {
+		Page<PlaceBoard> list = placeRepository.findByPlaceCategory(placeCategory, pageable);
+		return list;
 	}
 
 
