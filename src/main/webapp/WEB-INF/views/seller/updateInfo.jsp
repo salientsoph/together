@@ -26,9 +26,13 @@ $(document).ready(function(){
 			return false;
 		}	
 		
-		alert("판매자정보가 수정되었습니다");
+		$("#messageTitle").text("update info");
+    	$("#messageContent").text("판매자 정보가 수정되었습니다");
+    	$("#message").modal("show");
+    	$("#message").on("hidden.bs.modal", function(){
+    		$("#regForm").submit();	
+    	});
 		
-		$("#regForm").submit();	
 	});//submit
 	
 	
