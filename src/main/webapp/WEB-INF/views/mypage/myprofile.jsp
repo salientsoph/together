@@ -299,25 +299,31 @@ $(function(){
           <ul class="list-inline d-flex mb-0">
             <li class="me-3 me-lg-2 me-xl-3">
               <a class="icon-default icon-light-border rounded-circle hover-bg-primary" href="javascript:void(0)">
-                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                <i class="fab fa-facebook-f icon-medium" aria-hidden="true"></i>
               </a>
             </li>
           
             <li class="me-3 me-lg-2 me-xl-3">
               <a class="icon-default icon-light-border rounded-circle hover-bg-primary" href="javascript:void(0)">
-                <i class="fab fa-twitter" aria-hidden="true"></i>
+                <i class="fab fa-twitter icon-medium" aria-hidden="true"></i>
               </a>
             </li>
           
             <li class="me-3 me-lg-2 me-xl-3">
               <a class="icon-default icon-light-border rounded-circle hover-bg-primary" href="javascript:void(0)">
-                <i class="fas fa-rss" aria-hidden="true"></i>
+                <i class="fab fa-instagram icon-medium" aria-hidden="true"></i>
               </a>
             </li>
    
-            <li class="">
+            <li class="me-3 me-lg-2 me-xl-3">
               <a class="icon-default icon-light-border rounded-circle hover-bg-primary" href="javascript:void(0)">
-                <i class="fab fa-vimeo-v" aria-hidden="true"></i>
+                <i class="fab fa-linkedin-in icon-medium" aria-hidden="true"></i>
+              </a>
+            </li>
+
+            <li class="me-3 me-lg-2 me-xl-3">
+              <a class="icon-default icon-light-border rounded-circle hover-bg-primary" href="javascript:void(0)">
+                <i class="fab fa-google-plus-g icon-medium" aria-hidden="true"></i>
               </a>
             </li>
           </ul>
@@ -336,8 +342,6 @@ $(function(){
       </div>
     </div>
 
-   
-
     <!-- Contact Section -->
     <div class="bg-smoke p-2 p-md-5 p-lg-6 rounded">
       <div class="row justify-content-center">
@@ -348,21 +352,19 @@ $(function(){
             <ul class="list-unstyled mb-0 bg-white rounded p-5">
               <li class="media mb-2">
                 <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
+                  <i class="fa fa-check-square text-info" aria-hidden="true"></i>
                 </div>
-
                 <div class="media-body">
                   <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    영화
+                    영화 / 전시회
                   </a>
                 </div>
               </li>
 
               <li class="media mb-2">
                 <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
+                  <i class="fa fa-check-square text-info" aria-hidden="true"></i>
                 </div>
-
                 <div class="media-body">
                   <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
                     음악 
@@ -374,46 +376,42 @@ $(function(){
                 <div class="me-2">
                   <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
                 </div>
-
                 <div class="media-body">
                   <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    농구
+                    스포츠 
                   </a>
                 </div>
               </li>
 
               <li class="media mb-2">
                 <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
+                  <i class="fa fa-check-square text-info" aria-hidden="true"></i>
                 </div>
-
                 <div class="media-body">
                   <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    Morbi up sum eismod
+                    여행
                   </a>
                 </div>
               </li>
 
               <li class="media mb-2">
                 <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
+                  <i class="fa fa-check-square text-info" aria-hidden="true"></i>
                 </div>
-
                 <div class="media-body">
                   <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    Praesent nisi ante
+                    ENFP
                   </a>
                 </div>
               </li>
 
               <li class="media">
                 <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
+                  <i class="fa fa-check-square text-info" aria-hidden="true"></i>
                 </div>
-
                 <div class="media-body">
                   <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    Vesti bulum int daum
+                    20대
                   </a>
                 </div>
               </li>
@@ -427,40 +425,30 @@ $(function(){
 
             <div class="bg-white rounded p-5">
               <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-                <div class="img-overlay rounded me-3">
-                  <img class="lazyestload" data-src="${path}/assets/img/blog/tab-02.jpg" src="${path}/assets/img/blog/tab-02.jpg" alt="Generic placeholder image">
-                  <a href="" class="hover-img-overlay-dark"></a>
-                </div>
-
                 <div class="media-body">
                   <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
-                    Totam rem apria.
+                    가을 단풍 경주 여행
                   </a>
 
                   <ul class="list-unstyled d-flex flex-wrap mb-0">
                     <li class="meta-tag text-gray-color me-4 mb-1">
-                      <span class="d-block text-capitalize">Family package</span>
-                      <span class="text-primary font-size-base">$25</span>
+                      <span class="d-block text-capitalize">핑크뮬리 첨성대에서 인생사진</span>
+                      <span class="text-primary font-size-base">free</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
               <div class="media meta-post-sm ">
-                <div class="img-overlay rounded me-3">
-                  <img class="lazyestload" data-src="${path}/assets/img/blog/tab-04.jpg" src="${path}/assets/img/blog/tab-04.jpg" alt="Generic placeholder image">
-                  <a href="" class="hover-img-overlay-dark"></a>
-                </div>
-
                 <div class="media-body">
                   <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
-                    Rodney samp deo.
+                    부산 해운대 요트체험
                   </a>
 
                   <ul class="list-unstyled d-flex flex-wrap mb-0">
                     <li class="meta-tag text-gray-color me-4 mb-1">
-                      <span class="d-block text-capitalize">Tours package</span>
-                      <span class="text-primary font-size-base">$30</span>
+                      <span class="d-block text-capitalize">해운대 바다에서 특별한 요트체험</span>
+                      <span class="text-primary font-size-base">￦35,000</span>
                     </li>
                   </ul>
                 </div>

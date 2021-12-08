@@ -26,9 +26,13 @@ $(document).ready(function(){
 			return false;
 		}	
 		
-		alert("개인정보가 수정되었습니다");
+		$("#messageTitle").text("profile update");
+    	$("#messageContent").text("개인정보가 수정되었습니다");
+    	$("#message").modal("show");
+    	$("#message").on("hidden.bs.modal", function(){
+    		$("#regForm").submit();	
+    	});
 		
-		$("#regForm").submit();	
 	});//submit
 	
 	
@@ -39,10 +43,10 @@ $(document).ready(function(){
 		}
 		if($("#regForm :input[name=userPwd]").val() == $(this).val()){
 				$("#pwdCheckSpan").html("비밀번호가 일치합니다.");
-			}else{
-				$("#pwdCheckSpan").html("비밀번호를 확인해주세요.");
-			}
-			
+		}else{
+			$("#pwdCheckSpan").html("비밀번호를 확인해주세요.");
+		}
+		
 	});//user_pwdcheck_keyup
 })
 </script>
@@ -128,22 +132,19 @@ $(document).ready(function(){
 
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 					<ul class="navbar-nav me-auto">
+						<li class="nav-item dropdown">
+							<a class="nav-link  active" href="/mypage/profile"> 
+							<i class="fa fa-user" aria-hidden="true"></i> 
+							<span>프로필</span>
+							</a>
+						</li>
 
 						<li class="nav-item dropdown">
-						<a class="nav-link  active" href="/user/mypage/profile"> 
-						<i class="fa fa-user" aria-hidden="true"></i> 
-						<span>프로필</span>
-						</a></li>
-
-						<li class="nav-item dropdown"><a class="nav-link "
-							href="booking.html"> <i class="fa fa-cube" aria-hidden="true"></i>
-								<span>모임신청</span>
-						</a></li>
-
-						<li class="nav-item dropdown"><a class="nav-link "
-							href="setting.html"> <i class="fa fa-cogs" aria-hidden="true"></i>
-								<span>Settings</span>
-						</a></li>
+							<a class="nav-link" href="booking.html"> 
+							<i class="fa fa-cube" aria-hidden="true"></i>
+							<span>모임신청</span>
+							</a>
+						</li>
 					</ul>
 
 					<div class="navbar-nav-right d-none d-md-block">
@@ -227,10 +228,9 @@ $(document).ready(function(){
 	<input type="hidden" value="${sessionScope.id}" name="user">
   
 <div class="container-fluid">
-		<div class="row">
-			<div class="col-xl-2"></div>
-			<div class="col-xl">
-      
+<div class="row">
+	<div class="col-xl-2"></div>
+	<div class="col-xl">
         <div class="col-md-6 col-lg-5 col-xl-4">
           <div class="mb-6 mb-md-0">
           
@@ -249,12 +249,12 @@ $(document).ready(function(){
 
 						<div class="mb-3">
 							<strong>비밀번호 : </strong> 
-							<input type="password" class="form-control bg-smoke" required="required" placeholder="Password" name="userPwd">
+							<input type="password" class="form-control bg-smoke" id="pwd" name="userPwd" style="color: black;" placeholder="Password">
 						</div>
 						
 						<div class="mb-3">
 							<strong>비밀번호확인 : </strong> 
-							<input type="password" class="form-control bg-smoke" placeholder="Password" id="pwdChk" name="passWordCheck" style="color: black;">
+							<input type="password" class="form-control bg-smoke" id="pwdChk" name = "passWordCheck" style="color: black;" placeholder="Password">
 							<span id="pwdCheckSpan"></span>
 						</div>
 
@@ -284,7 +284,6 @@ $(document).ready(function(){
     </div>
   </div>
 </section>
-
 
 
 <jsp:include page="../common/footer.jsp" />

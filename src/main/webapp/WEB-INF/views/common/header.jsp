@@ -193,11 +193,6 @@
                 <li class="">
                   <a href="/mypage/mymatch">내 매칭 모임</a>
                 </li>
-
-                <li class="">
-                  <a href="/mypage/myschedule">내 여행 일정</a>
-                </li>
-
               </ul>
             </li>
           </c:when>

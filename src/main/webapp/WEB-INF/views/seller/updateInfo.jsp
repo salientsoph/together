@@ -132,7 +132,6 @@ $(document).ready(function(){
 
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 					<ul class="navbar-nav me-auto">
-
 						<li class="nav-item dropdown">
 							<a class="nav-link  active" href="/seller/info"> 
 							<i class="fa fa-user" aria-hidden="true"></i> 
@@ -144,13 +143,6 @@ $(document).ready(function(){
 							<a class="nav-link" href="booking.html"> 
 							<i class="fa fa-cube" aria-hidden="true"></i>
 							<span>여행상품 조회</span>
-							</a>
-						</li>
-
-						<li class="nav-item dropdown">
-							<a class="nav-link" href="setting.html"> 
-							<i class="fa fa-cogs" aria-hidden="true"></i>
-							<span>Settings</span>
 							</a>
 						</li>
 					</ul>

@@ -13,19 +13,19 @@ import kosta.mvc.domain.Review;
 public interface CustomerService {
 
 	/**
-	 * 사용자 프로필 수정하기
+	 * Customer 프로필 수정하기
 	 */
 	int updateCustomer(Customer customer);
 	
 	/**
 	 * 찜리스트 등록하기
 	 */
-	public int insertLikeList(PlaceLike placeLike);
+	int insertLikeList(PlaceLike placeLike);
 
 	/**
 	 * 찜리스트 조회하기
 	 */
-	public List<PlaceLike> selectLikeList(String userId);
+	List<PlaceLike> selectLikeList(String userId);
 	
 	/**
 	 * 찜리스트 전체검색 - Page처리 
@@ -35,33 +35,26 @@ public interface CustomerService {
 	/**
 	 * 찜리스트 삭제하기
 	 */
-	public int deleteLikeList(Long placeLikeNo);
+	int deleteLikeList(Long placeLikeNo);
 
 	/**
 	 * 유저아이디에 해당하는 모든 찜리스트 삭제하기
 	 */
-	public int deleteLikeListByUserId(String userId);
+	int deleteLikeListByUserId(String userId);
 
 	/**
-	 * 사용자가 작성한 매칭게시판 글 조회
+	 * Customer가 작성한 매칭게시판 글 조회 - Page처리 
 	 */
-	List<MatchBoard> selectMatchByCustomer(String userId);
+	Page<MatchBoard> selectMatchByCustomer(String userId, Pageable pageable);
 
 	/**
-	 * 사용자가 신청한 매칭 모임 조회
+	 * Customer가 신청한 매칭 모임 조회
 	 */
-	public List<MatchBoard> selectMatchList(String userId);
+	List<MatchBoard> selectMatchList(String userId);
 
 	/**
-	 * 사용자가 작성한 리뷰 조회
+	 * Customer가 작성한 리뷰 조회 - Page처리
 	 */
-	public List<Review> selectReviewList(String userId);
-
-	/**
-	 * 사용자의 여행 일정 보기
-	 */
-	//public List<ScheduleDetail> selectScheduleList(String userId);
-
-	
+	Page<Review> selectReviewByCustomer(String userId, Pageable pageable);
 
 }

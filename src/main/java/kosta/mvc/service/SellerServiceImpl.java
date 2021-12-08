@@ -1,7 +1,7 @@
 package kosta.mvc.service;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +20,7 @@ public class SellerServiceImpl implements SellerService {
 	private final PlaceBoardRepository placeBoardRep;
 	
 	/**
-	 * 판매자 프로필 수정하기
+	 * Seller 프로필 수정하기
 	 */
 	@Override
 	public int updateSeller(Seller seller) {
@@ -33,11 +33,11 @@ public class SellerServiceImpl implements SellerService {
 	}
 
 	/**
-	 * 판매자가 작성한 여행게시판 글 보기
+	 * Seller가 작성한 여행게시판 글 보기
 	 */
 	@Override
-	public List<PlaceBoard> selectPlaceBySeller(String sellerId) {
-		List<PlaceBoard> list = placeBoardRep.findBySellerSellerId(sellerId);
+	public Page<PlaceBoard> selectPlaceBySeller(String sellerId, Pageable pageable) {
+		Page<PlaceBoard> list = placeBoardRep.findAll(pageable);
 		return list;
 	}
 
