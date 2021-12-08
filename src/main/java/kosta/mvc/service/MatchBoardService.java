@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import kosta.mvc.domain.MatchBoard;
+import kosta.mvc.domain.Region;
 
 public interface MatchBoardService {
 	 /**
@@ -19,16 +20,11 @@ public interface MatchBoardService {
 	* */
 	Page<MatchBoard> selectAll(Pageable pageable);
 		
-	
-	/**
-	  * 지역, 날짜로 검색
-	  * */
-	List<MatchBoard> selectByRegionAndDate(int region, LocalDate date);
 		
 	/**
-	* 지역, 날짜로 검색 - Page처리
+	* 지역, 날짜, 나이대, 성별로 검색 - Page처리
 	* */
-	Page<MatchBoard> selectByRegionAndDate(Pageable pageable);
+	Page<MatchBoard> pageByRegionAndDate(Region region, LocalDate date, int ageRange, int gender, Pageable pageable);
 	
 	
 	
@@ -55,11 +51,6 @@ public interface MatchBoardService {
 	 * */
 	void delete(Long matchNo);
 
-	/**
-	 * 성별로 받기
-	 * */
-	List<MatchBoard> selectByMatchGender(int matchGender);
-	
 	
 	/**
 	 * 모임 수락된 모든 사용자

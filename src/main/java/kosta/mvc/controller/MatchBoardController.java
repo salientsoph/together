@@ -40,14 +40,30 @@ public class MatchBoardController {
 	 * 전체 검색하기 
 	 * */
 	@RequestMapping("/list")
-	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage) {
+	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage,
+							@RequestParam(defaultValue = "") Integer region, 
+							@RequestParam(defaultValue = "") String tripDate,
+							@RequestParam(defaultValue = "") Integer matchAgeGroup,
+							@RequestParam(defaultValue = "") Integer matchGender
+			) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("match/list");
 
-		Pageable pageable = PageRequest.of(nowPage-1, 10, Direction.DESC, "matchNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
-		Page<MatchBoard> pageList = matchBoardService.selectAll(pageable);
+		Page<MatchBoard> pageList = null;
 		List<Region> regionList = regionService.selectAll();
+		Pageable pageable = PageRequest.of(nowPage-1, 10, Direction.DESC, "matchNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
 		
+		if(region == null | tripDate == null | matchAgeGroup == null | matchGender == null) {
+			pageList = matchBoardService.selectAll(pageable);
+		} else {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			// 문자열 -> Date
+			LocalDate date = LocalDate.parse(tripDate, formatter);
+			Region regionObj = regionService.selectByRegionNo(region);
+			pageList = matchBoardService.pageByRegionAndDate(regionObj, date, Integer.valueOf(matchAgeGroup), Integer.valueOf(matchGender), pageable);
+		}
+
+		//Page<MatchBoard> pageByRegionAndDate(int region, String date, int ageRange, int gender, Pageable pageable);
 		int blockCount = 5;
 		int temp = (nowPage - 1) % blockCount;
 		int startPage = nowPage - temp;
@@ -64,16 +80,22 @@ public class MatchBoardController {
 	/**
 	 * 지역과 날짜로 검색하기
 	 * */
+	/*
 	@RequestMapping("/list/search")
 	public ModelAndView findByRegionAndDate(@RequestParam(defaultValue = "1") int nowPage,
 											@RequestParam(value = "" ) int region, 
-											@RequestParam(value = "" ) LocalDate date
+											@RequestParam(value = "" ) String date
 											) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		// 문자열 -> Date
+		LocalDate tripDate = LocalDate.parse(date, formatter);
+	
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("match/list");
 
 		Pageable pageable = PageRequest.of(nowPage-1, 10, Direction.DESC, "matchNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
-		Page<MatchBoard> pageList = matchBoardService.selectByRegionAndDate(pageable);
+		Page<MatchBoard> pageList = matchBoardService.pageByRegionAndDate(region, date, nowPage, region, pageable);
 		List<Region> regionList = regionService.selectAll();
 		
 		int blockCount = 5;
@@ -88,7 +110,7 @@ public class MatchBoardController {
 		
 		
 		return mv;
-	}
+	}*/
 	
 	
 	

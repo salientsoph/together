@@ -5,12 +5,16 @@ import java.util.List;
 
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.Region;
+import kosta.mvc.domain.Report;
 
 public interface MatchBoardRepository extends JpaRepository<MatchBoard, Long>{
 	
@@ -23,11 +27,12 @@ public interface MatchBoardRepository extends JpaRepository<MatchBoard, Long>{
 	
 	
 	/**
-	 * 지역, 날짜로 검색하기
+	 * 지역, 날짜, 나이대, 성별로 검색하기
 	 * */
-	//select m from Member m inner join m.team t
-	@Query("select b from MatchBoard b inner join b.region r where r.regionCode = ?1 and b.tripDate=?2")
-	List<MatchBoard> findByRegionAndDate(int region, LocalDate date);
+	@Query("select b from MatchBoard b inner join b.region r where r.regionCode = ?1 and b.tripDate=?2 and b.matchAgeGroup =?3 and b.matchGender =?4")
+	List<MatchBoard> findByRegionAndDate(int region, LocalDate date, int ageRange, int gender);
+	
+	Page<MatchBoard> findByRegionAndTripDateAndMatchAgeGroupAndMatchGender(Region region, LocalDate date, int ageRange, int gender, Pageable pageable);
 	
 		/**
 	 * 사용자가 신청한 모든 모임 보기 (수락된거, 안된거, 이미 여행 끝난거 등등 모두 다) 
