@@ -24,11 +24,12 @@ public class SellerServiceImpl implements SellerService {
 	 */
 	@Override
 	public int updateSeller(Seller seller) {
-		String sellerNickname = seller.getSellerNickname();
-		String sellerPwd = seller.getSellerPwd();
-		String sellerPhone = seller.getSellerPhone();
-		String sellerId = seller.getSellerId();
-		return sellerRep.updateSeller(sellerNickname, sellerPwd, sellerPhone, sellerId);
+		System.out.println(seller.getSellerId() + ", " + seller.getSellerNickname() + ", " + seller.getSellerPwd() + ", " + seller.getSellerPhone());
+		Seller updateSeller = sellerRep.findById(seller.getSellerId()).orElse(null);
+		updateSeller.setSellerPwd(seller.getSellerPwd());
+		updateSeller.setSellerNickname(seller.getSellerNickname());
+		updateSeller.setSellerPhone(seller.getSellerPhone());
+		return 0;//sellerRep.updateSeller(sellerNickname, sellerPwd, sellerPhone, sellerId);
 	}
 
 	/**

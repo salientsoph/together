@@ -63,15 +63,10 @@ public class SellerController {
 	 *  판매자 마이페이지-개인정보확인/수정 - 개인정보수정
 	 */
 	@RequestMapping("/updateInfo")
-	public ModelAndView updateSeller(Seller seller ,HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("seller/info");
-
-		Object objId =  session.getAttribute("id");
-		Seller logiseller = Seller.builder().sellerId(objId.toString()).build();
-		mv.addObject("user", logiseller);
-		sellerService.updateSeller(logiseller);
-		return mv;
+	public String updateSeller(Seller seller ,HttpSession session) {
+		seller.setSellerId((String)session.getAttribute("id"));
+		sellerService.updateSeller(seller);
+		return "redirect:/seller/info";
 	}
 	
 	/**

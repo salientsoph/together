@@ -11,17 +11,17 @@
 $(document).ready(function(){
 	var checkResultId="";		
 	$("#registerSubmit_btn").click(function(){			
-		if($("#regForm :input[name=nickName]").val().trim()==""){
+		if($("#regForm :input[name=sellerNickname]").val().trim()==""){
 			alert("닉네임을 입력하세요");				
 			return false;
 		}
 		
-		if($("#regForm :input[name=passWord]").val().trim()==""){
+		if($("#regForm :input[name=sellerPwd]").val().trim()==""){
 			alert("비밀번호를 입력하세요");				
 			return false;
 		}
 		
-		if($("#regForm :input[name=phone]").val().trim()==""){
+		if($("#regForm :input[name=sellerPhone]").val().trim()==""){
 			alert("전화번호를 입력하세요");				
 			return false;
 		}	
@@ -37,7 +37,7 @@ $(document).ready(function(){
 		if($(this).val()==""){
 			$("#pwdCheckSpan").html("");
 		}
-		if($("#regForm :input[name=passWord]").val() == $(this).val()){
+		if($("#regForm :input[name=sellerPwd]").val() == $(this).val()){
 				$("#pwdCheckSpan").html("비밀번호가 일치합니다.");
 		}else{
 			$("#pwdCheckSpan").html("비밀번호를 확인해주세요.");
@@ -246,7 +246,7 @@ $(document).ready(function(){
 			</div>
 	
 				
-			<form action="${path}/seller/info"  id="regForm" method="post">
+			<form action="${path}/seller/updateInfo"  id="regForm" method="post">
 				
 				<div class="tab-content px-6 py-7" id="myTabContent">
 					<div class="tab-pane fade show active" id="Seller" role="tabpanel" aria-labelledby="Seller-tab">
@@ -254,7 +254,7 @@ $(document).ready(function(){
 
 						<div class="mb-3">
 							<strong>비밀번호 : </strong> 
-							<input type="password" class="form-control bg-smoke" id="pwd" name = "passWord" style="color: black;" placeholder="Password">
+							<input type="password" class="form-control bg-smoke" id="pwd" name = "sellerPwd" style="color: black;" placeholder="Password">
 						</div>
 						
 						<div class="mb-3">
@@ -264,12 +264,12 @@ $(document).ready(function(){
 
 						<div class="mb-3">
 							<strong>닉네임 :</strong> 
-							<input type="text" class="form-control bg-smoke" required="required" value="${requestScope.sellerNickname}" name="nickName">
+							<input type="text" class="form-control bg-smoke" required="required" value="${requestScope.sellerNickname}" name="sellerNickname">
 						</div>
 
 						<div class="mb-3">
 							<strong>전화번호 :</strong> 
-							<input type="text" class="form-control bg-smoke" required="required" value="${requestScope.sellerPhone}" name="phone">
+							<input type="text" class="form-control bg-smoke" required="required" value="${requestScope.sellerPhone}" name="sellerPhone">
 						</div>
 
 						<div class="form-group">
