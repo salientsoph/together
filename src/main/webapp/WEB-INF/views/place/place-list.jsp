@@ -9,75 +9,16 @@
 
 <!-- 찜하기 버튼을 누를경우 이벤트 발생 -->
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("button[name=place_like]").click(function(){
-			//alert("찜하기");
-			event.preventDefault();
-			// 비로그인 상태시 찜하기 버튼을 누르면
-	        if ("${sessionScope.id}" == "") {
-	        	if (confirm("로그인 한 회원만 이용가능합니다. 로그인 하시겠습니까?")){
-	        		//승낙하면 로그인 모달로 이동
-	        		$("#login").modal("show");
-	        	}else{
-	        		//거부하면 해당 페이지 새로고침
-	        		location.reload();
-	        	}
-	        	
-	        //로그인 상태시 찜하기 버튼을 누르면
-	        }else{
-	        	//alert( "no "+$(this).next().val())
-                $.ajax({
-	    			url: "${path}/place/"+$(this).next().val() , //서버요청주소 
-	    			type: "post", //post요청방식 
-	    			success: function(result){
-	    				console.log(result);
-	    			    if (result == "SUCCESS") {
-	    			    	 //console.log("result : " + result);
-	    					if(confirm("해당 장소를 찜하셨습니다. 찜한 목록 페이지로 이동하시겠습니까?")){
-	    						//승낙하면 마이페이지의 [내가 찜한 장소]로 이동
-	    						location.href = '${path}/mypage/mylike';
-	    					}else{
-	    						//거부하면 해당 페이지 새로고침하여 찜하기 반영하기
-	    						location.reload();
-	    					}
-	    				}	
-	    			}, //성공
-	    			error : function(err){
-	    				console.log(err);
-	    				alert('찜할 수 없습니다.');
-	    				location.reload();// 실패시 새로고침하기
-	    			}//실패
-	    			
-	    		});//ajax끝
-	         }
-		}); 
-		
-	});
 
+function likebtn(placeNo){
 
-<!-- 찜취소 버튼을 누를경우 이벤트 발생 -->
-$(document).ready(function() {
-    $('button[name=place_unlike]').click(function(event) {
-        //alert( "no "+$(this).prev().val())
-        event.preventDefault();
-        $.ajax({
-            url : "${path}/place/"+$(this).prev().val(), 
-            type : 'DELETE', 
-            success: function(result) {
-                if (result == "SUCCESS") {
-                    console.log("찜 취소 성공!")
-                    alert('해당 장소를 찜 취소 하셨습니다.');
-                    location.reload();
-                }
-            },
-            error : function(e) {
-                console.log(e);
-                alert('찜 취소 할 수 없습니다.');
-                location.reload(); // 실패시 새로고침하기
-            }
-        })
-    });
-});
+	if(confirm("찜 목록에 추가 하시겠습니까?")){
+		location.href="${path}/mypage/insertlike?placeNo="+placeNo;
+		return true;
+	}else{
+		return false;
+	}
+}//likebtn	
         
 </script>
 
@@ -178,10 +119,9 @@ $(document).ready(function() {
 				<!-- 찜하기 했을 경우 해당 정보 가져오기 -->
 			    <span id="placeLikeNo" style="display: none;">${prdLikeVal.placeLikeNo}</span>
 				<%-- 찜하기 기능은 고객(MEMBER 권한)만 이용할 수 있게 설정 --%>     
-	       			<button type="button"  name="place_like" 
-	         				class="btn btn-xs btn-outline-secondary text-uppercase fa fa-heart" id="${board.placeNo }"> 찜하기 </button>
-	                   	<input type="hidden" value="${board.placeNo}" name="like_placeNo"/>
-                		
+				
+				<a href="#" class="btn btn-xs btn-outline-secondary text-uppercase fa fa-heart" onclick="likebtn(${board.placeNo});"> 찜하기</a>
+	       			
             <%-- place_like 테이블을 가져와 비교후 예전에 찜하기를 안했다면(혹은 찜취소를 했었다면) 찜하기로 활성화가 된다 --%>
 	       		  <c:if test="${board.placeLikeList ne null}">
 	       		    <c:forEach items="${board.placeLikeList }" var="placeLike">
@@ -195,20 +135,6 @@ $(document).ready(function() {
 	       		      </c:if>
 	       		    </c:forEach>
 	       		  </c:if>
-	       		  
-	       		  
-	       		<div class="row">
-	    			<div class="col-12">
-	         			
-            
-            <%-- place_like 테이블을 가져와 비교후 예전에 찜하기를 했었다면 찜취소로 활성화가 된다 --%>
-						<!-- <button type="button"  name="place_unlike" 
-	         				class="btn btn-xs btn-outline-secondary text-uppercase fa bi bi-suit-heart"> 찜취소 </button>  
-	         			-->
-
-              		
-              		</div>
- 				</div>
 			 </div>
  
  

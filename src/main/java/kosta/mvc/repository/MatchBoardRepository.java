@@ -56,6 +56,7 @@ public interface MatchBoardRepository extends JpaRepository<MatchBoard, Long>{
 			+ "join customer c on r.user_id = c.user_id \n"
 			+ "where r.requested_state = 1 and b.match_no = ?1", nativeQuery = true)
 	List<String> selectAllApprovedCustomer(Long matchNo);
+
 	
 	/*
 	  페이징 처리하는 검색 쿼리 작성법
@@ -70,4 +71,8 @@ public interface MatchBoardRepository extends JpaRepository<MatchBoard, Long>{
 	 	쿼리만 이렇게 짜두면 나머지 controller, service 단에서 페이징 처리된 sellectAll이나 findAll이랑 똑같이 사용 가능! 
 	 */
 	
+	/**
+	 * 사용자가 작성한 모든 모임 보기
+	 */
+	List<MatchBoard> findByCustomerUserId(String userId);
 }

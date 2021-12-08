@@ -26,4 +26,5 @@ public interface LoginService {
 	Customer customerIdCheck(String id);
 	
 	Seller sellerIdCheck(String id);
+
 }

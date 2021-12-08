@@ -1,16 +1,13 @@
 package kosta.mvc.repository;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import kosta.mvc.domain.Customer;
-import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
 import kosta.mvc.domain.Region;
 /**
@@ -23,24 +20,21 @@ import kosta.mvc.domain.Region;
 @Transactional(readOnly = true)
 public interface PlaceLikeRepository extends JpaRepository<PlaceLike,Long> {
 	
-    //사용자가 이미 찜하기 한 게시물인지 체크
-	Optional<PlaceLike> findByCustomerAndPlaceBoard(Customer customer, PlaceBoard placeBoard);
+	List<PlaceLike> findByCustomerUserId(String userId);
 	
-	//특정 장소 게시글에 찜하기가 총 몇 개인지 셀 때 사용할 메소드 
-	Optional<Integer> countByPlaceBoard(PlaceBoard placeBoard);
+	PlaceLike findByPlaceBoardPlaceNo(Long placeNo);
 	
-	//해당 사용자에 해당하는 찜한 목록을 보여줄 때 사용할 메소드
-	//@Query("select r from PlaceLike r where r.customer = ?1")
-	//select * from place_like, place_board where place_like.place_no = place_board.place_no;
-    Page<PlaceLike> findByCustomer(Customer customer, Pageable pageable);
-
-    
+	@Query("delete from PlaceLike placeLike where placeLike.customer.userId = ?1")
+	@Modifying
+	void deleteLikeListByUserId(String userId);
+	
     /**
      * 사용자의 관심장소들 중 특정 지역만 출력
      * (스케줄 작성용)
      * */
     @Query("select r from PlaceLike r where r.customer = ?1 and r.placeBoard.region = ?2")
     List<PlaceLike> selectByCustomerNoAndRegionCode(Customer customer, Region region);
+
 
 
 }

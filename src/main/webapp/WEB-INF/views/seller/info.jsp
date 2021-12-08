@@ -235,7 +235,7 @@ $(function(){
         <div class="col-md-6 col-lg-7 col-xl-8">
           <div class="d-flex justify-content-between align-items-baseline">
             <div class="mb-6 mb-md-4 mb-lg-6">
-              <h2 class="text-uppercase font-weight-bold">${requestScope.user.userNickname} 님 환영합니다</h2>
+              <h2 class="text-uppercase font-weight-bold">${requestScope.user.sellerNickname} 님 환영합니다</h2>
             </div>
 
             <div class="icon-setting">
@@ -247,50 +247,50 @@ $(function(){
          
           <ul class="list-unstyled">
             <li class="media media-profile-list">
-              <strong>Id :</strong>
+              <strong>아이디 :</strong>
 
               <div class="media-body ms-2">
-                <span class="text-gray-color">${requestScope.user.userId}</span>
+                <span class="text-gray-color">${requestScope.user.sellerId}</span>
               </div>
             </li>
 
             <li class="media media-profile-list">
-              <strong>Name :</strong>
+              <strong>이름 :</strong>
 
               <div class="media-body ms-2">
-                <span class="text-gray-color">${requestScope.user.userName}</span>
+                <span class="text-gray-color">${requestScope.user.sellerName}</span>
               </div>
             </li>
 
             <li class="media media-profile-list">
-              <strong>Email :</strong>
+              <strong>이메일 :</strong>
 
               <div class="media-body ms-2">
-                <a href="mail:to" class="text-gray-color hover-text-primary">${requestScope.user.userEmail}</a>
+                <a href="mail:to" class="text-gray-color hover-text-primary">${requestScope.user.sellerEmail}</a>
               </div>
             </li>
 
             <li class="media media-profile-list">
-              <strong>Phone :</strong>
+              <strong>전화번호 :</strong>
 
               <div class="media-body ms-2">
-                <a href="tel:+12512353256" class="text-gray-color hover-text-primary">${requestScope.user.userPhone}</a>
+                <a href="tel:+12512353256" class="text-gray-color hover-text-primary">${requestScope.user.sellerPhone}</a>
+              </div>
+            </li>
+            
+            <li class="media media-profile-list">
+              <strong>사업자 등록번호 :</strong>
+
+              <div class="media-body ms-2">
+                <a href="tel:+12512353256" class="text-gray-color hover-text-primary">${requestScope.user.sellerRegisterNumber}</a>
               </div>
             </li>
 
             <li class="media media-profile-list">
-              <strong>Gender : </strong>
+              <strong>지역 : </strong>
 
               <div class="media-body ms-2">
-                <span class="text-gray-color">${requestScope.user.userGender}</span>
-              </div>
-            </li>
-
-            <li class="media media-profile-list">
-              <strong>Age : </strong>
-
-              <div class="media-body ms-2">
-                <span class="text-gray-color">${requestScope.user.userAge}</span>
+                <span class="text-gray-color">${requestScope.user.region.regionName}</span>
               </div>
             </li>
 
@@ -325,7 +325,7 @@ $(function(){
           <div class="row">
 	    	<div class="col-12">
           		<div class="icon" style="float: right; padding-left: 20px; padding-top: 10px;">
-          		<a href="/mypage/passWordCheck">
+          		<a href="/seller/updateInfo">
           		<button type="button" name="" class="btn btn-ls btn-outline-success text-uppercase"> 수정하기 </button>
 	         	</a>
 	         	</div>
@@ -338,145 +338,15 @@ $(function(){
 
    
 
-    <!-- Contact Section -->
-    <div class="bg-smoke p-2 p-md-5 p-lg-6 rounded">
-      <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-4">
-          <div class="mb-7 mb-lg-0">
-            <h6 class="font-size-15 text-uppercase mb-5">Keywords</h6>
-
-            <ul class="list-unstyled mb-0 bg-white rounded p-5">
-              <li class="media mb-2">
-                <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
-                </div>
-
-                <div class="media-body">
-                  <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    영화
-                  </a>
-                </div>
-              </li>
-
-              <li class="media mb-2">
-                <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
-                </div>
-
-                <div class="media-body">
-                  <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    음악 
-                  </a>
-                </div>
-              </li>
-
-              <li class="media mb-2">
-                <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
-                </div>
-
-                <div class="media-body">
-                  <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    농구
-                  </a>
-                </div>
-              </li>
-
-              <li class="media mb-2">
-                <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
-                </div>
-
-                <div class="media-body">
-                  <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    Morbi up sum eismod
-                  </a>
-                </div>
-              </li>
-
-              <li class="media mb-2">
-                <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
-                </div>
-
-                <div class="media-body">
-                  <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    Praesent nisi ante
-                  </a>
-                </div>
-              </li>
-
-              <li class="media">
-                <div class="me-2">
-                  <i class="fa fa-check-square text-primary" aria-hidden="true"></i>
-                </div>
-
-                <div class="media-body">
-                  <a href="" class="text-gray-color hover-text-primary text-capitalize mb-0">
-                    Vesti bulum int daum
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="mb-7 mb-lg-0">
-            <h6 class="font-size-15 text-uppercase mb-5">Recent matchs</h6>
-
-            <div class="bg-white rounded p-5">
-              <div class="media meta-post-sm border-bottom border-off-white pb-3 mb-3">
-                <div class="img-overlay rounded me-3">
-                  <img class="lazyestload" data-src="${path}/assets/img/blog/tab-02.jpg" src="${path}/assets/img/blog/tab-02.jpg" alt="Generic placeholder image">
-                  <a href="" class="hover-img-overlay-dark"></a>
-                </div>
-
-                <div class="media-body">
-                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
-                    Totam rem apria.
-                  </a>
-
-                  <ul class="list-unstyled d-flex flex-wrap mb-0">
-                    <li class="meta-tag text-gray-color me-4 mb-1">
-                      <span class="d-block text-capitalize">Family package</span>
-                      <span class="text-primary font-size-base">$25</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="media meta-post-sm ">
-                <div class="img-overlay rounded me-3">
-                  <img class="lazyestload" data-src="${path}/assets/img/blog/tab-04.jpg" src="${path}/assets/img/blog/tab-04.jpg" alt="Generic placeholder image">
-                  <a href="" class="hover-img-overlay-dark"></a>
-                </div>
-
-                <div class="media-body">
-                  <a href="" class="text-dark hover-text-primary text-capitalize mb-1">
-                    Rodney samp deo.
-                  </a>
-
-                  <ul class="list-unstyled d-flex flex-wrap mb-0">
-                    <li class="meta-tag text-gray-color me-4 mb-1">
-                      <span class="d-block text-capitalize">Tours package</span>
-                      <span class="text-primary font-size-base">$30</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
 
-      </div>
-    </div>
+
   </div>
+ 
 </section>
 
 </form>
 
-	<jsp:include page="../common/footer.jsp"/>
-  </body>
+<jsp:include page="../common/footer.jsp"/>
+</body>
 </html>
