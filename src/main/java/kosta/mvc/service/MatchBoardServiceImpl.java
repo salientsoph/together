@@ -9,7 +9,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
+import kosta.mvc.domain.Region;
+import kosta.mvc.domain.Report;
 import kosta.mvc.repository.MatchBoardRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -82,24 +85,17 @@ public class MatchBoardServiceImpl implements MatchBoardService {
 	}
 	
 	
-	//게시물 검색 
-	@Override
-	public List<MatchBoard> selectByMatchGender(int matchGender){
-		MatchBoard matchBoard = matchRepository.findById(null).orElse(null);
-		List<MatchBoard> list;
-		return null;
-	}
+/**Customer customer = customerRep.findById(userId).orElse(null);
+		
+		Page<Report> list = reportRep.findByCustomer(customer, pageable);
+		
+		return list;*/
 
 	@Override
-	public List<MatchBoard> selectByRegionAndDate(int region, LocalDate date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Page<MatchBoard> selectByRegionAndDate(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+	public Page<MatchBoard> pageByRegionAndDate(Region region, LocalDate date, int ageRange, int gender, Pageable pageable){
+		
+		Page<MatchBoard> list = matchRepository.findByRegionAndTripDateAndMatchAgeGroupAndMatchGender(region, date, ageRange, gender, pageable);
+		return list;
 	}
 
 	
