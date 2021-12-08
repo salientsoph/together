@@ -146,9 +146,10 @@ public class ChatController {
 	/**
 	 * 채팅방
 	 * @return
+	 * @throws Exception 
 	 */
 	@RequestMapping("/Chating/{matchNumber}")
-	public ModelAndView chatting(@PathVariable Long matchNumber, HttpSession session) {
+	public ModelAndView chatting(@PathVariable Long matchNumber, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		String requestAccessUser = (String)session.getAttribute("id");
@@ -192,7 +193,7 @@ public class ChatController {
 			
 			mv.setViewName("chat/chat");
 		}else {
-			mv.setViewName("index");
+			throw new Exception("접근이 허용되지 않았습니다.");
 		}
 		
 		

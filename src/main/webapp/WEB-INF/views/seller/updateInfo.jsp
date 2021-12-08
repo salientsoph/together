@@ -39,11 +39,11 @@ $(document).ready(function(){
 		}
 		if($("#regForm :input[name=passWord]").val() == $(this).val()){
 				$("#pwdCheckSpan").html("비밀번호가 일치합니다.");
-			}else{
-				$("#pwdCheckSpan").html("비밀번호를 확인해주세요.");
-			}
-			
-	});//user_pwdcheck_keyup
+		}else{
+			$("#pwdCheckSpan").html("비밀번호를 확인해주세요.");
+		}
+	});//pwdcheck_keyup
+
 })
 </script>
 </head>
@@ -249,28 +249,27 @@ $(document).ready(function(){
 			<form action="${path}/seller/info"  id="regForm" method="post">
 				
 				<div class="tab-content px-6 py-7" id="myTabContent">
-					<div class="tab-pane fade show active" id="Customer" role="tabpanel" aria-labelledby="Customer-tab">
+					<div class="tab-pane fade show active" id="Seller" role="tabpanel" aria-labelledby="Seller-tab">
 					 <div class="modal-body">
 
 						<div class="mb-3">
 							<strong>비밀번호 : </strong> 
-							<input type="password" class="form-control bg-smoke" required="required" placeholder="Password" name="passWord">
+							<input type="password" class="form-control bg-smoke" id="pwd" name = "passWord" style="color: black;" placeholder="Password">
 						</div>
 						
 						<div class="mb-3">
 							<strong>비밀번호확인 : </strong> 
-							<input type="password" class="form-control bg-smoke" placeholder="Password" id="pwdChk" name="passWordCheck" style="color: black;">
-							<span id="pwdCheckSpan"></span>
-						</div>S
+							<input type="password" class="form-control bg-smoke" id="pwdChk" name = "passWordCheck" style="color: black;" placeholder="Password"><span id="pwdCheckSpan"></span>
+						</div>
 
 						<div class="mb-3">
 							<strong>닉네임 :</strong> 
-							<input type="text" class="form-control bg-smoke" required="required" placeholder="${requestScope.user.sellerNickname}" name="nickName">
+							<input type="text" class="form-control bg-smoke" required="required" value="${requestScope.sellerNickname}" name="nickName">
 						</div>
 
 						<div class="mb-3">
 							<strong>전화번호 :</strong> 
-							<input type="text" class="form-control bg-smoke" required="required" placeholder="${requestScope.user.sellerPhone}" name="phone">
+							<input type="text" class="form-control bg-smoke" required="required" value="${requestScope.sellerPhone}" name="phone">
 						</div>
 
 						<div class="form-group">
