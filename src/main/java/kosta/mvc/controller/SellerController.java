@@ -1,12 +1,15 @@
 package kosta.mvc.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kosta.mvc.domain.Customer;
@@ -28,7 +31,7 @@ public class SellerController {
 	private final SellerService sellerService;
 	
 	/**
-	 * 판매자 마이페이지 - 프로필 보기
+	 * Seller 마이페이지 - 프로필 보기
 	 */
 	@RequestMapping("/info")
 	public ModelAndView profile(HttpSession session) {
@@ -50,7 +53,7 @@ public class SellerController {
 	}
 	
 	/**
-	 * 판매자 마이페이지-개인정보확인/수정 - 개인정보수정폼
+	 * Seller 마이페이지-개인정보확인/수정 - 개인정보수정폼
 	 */
 	@RequestMapping("/updateInfoForm")
 	public String updateInfoForm(HttpServletRequest request, String sellerNickname, String sellerPhone) {
@@ -60,7 +63,7 @@ public class SellerController {
 	}
 
 	/**
-	 *  판매자 마이페이지-개인정보확인/수정 - 개인정보수정
+	 *  Seller 마이페이지-개인정보확인/수정 - 개인정보수정
 	 */
 	@RequestMapping("/updateInfo")
 	public String updateSeller(Seller seller ,HttpSession session) {
@@ -70,14 +73,29 @@ public class SellerController {
 	}
 	
 	/**
-	 * 판매자가 작성한 여행게시판 글 보기
+	 * Seller가 작성한 여행게시판 글 보기
 	 */
 	@RequestMapping("/write")
-	public ModelAndView write(HttpSession session) {
+	public ModelAndView write(HttpSession session, @RequestParam(defaultValue = "1") int nowPage) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
 		Object objId =  session.getAttribute("id");
 		Seller loginSeller =  Seller.builder().sellerId(objId.toString()).build();
 		String sellerId = loginSeller.getSellerId();
-		List<PlaceBoard> placeBoard = sellerService.selectPlaceBySeller(sellerId);
-		return new ModelAndView("seller/write", "placeBoard", placeBoard);
+		
+		Pageable pageable = PageRequest.of(nowPage-1, 5, Direction.DESC, "placeNo"); 
+		Page<PlaceBoard> placeBoard = sellerService.selectPlaceBySeller(sellerId, pageable);
+		
+		int blockCount = 5;
+		int temp = (nowPage - 1) % blockCount;
+		int startPage = nowPage - temp;
+		
+		mv.addObject("placeBoard", placeBoard);
+		mv.addObject("blockCount", blockCount);
+		mv.addObject("nowPage", nowPage);
+		mv.addObject("startPage", startPage);
+		mv.setViewName("seller/write");
+		
+		return mv;
 	}
 }

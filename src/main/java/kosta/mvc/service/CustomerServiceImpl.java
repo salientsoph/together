@@ -15,7 +15,6 @@ import kosta.mvc.repository.CustomerRepository;
 import kosta.mvc.repository.MatchBoardRepository;
 import kosta.mvc.repository.PlaceLikeRepository;
 import kosta.mvc.repository.ReviewRepository;
-import kosta.mvc.repository.ScheduleDetailRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,10 +26,9 @@ public class CustomerServiceImpl implements CustomerService {
 	private final PlaceLikeRepository placeLikeRep;
 	private final MatchBoardRepository matchBoardRep;
 	private final ReviewRepository reviewRep;
-	private final ScheduleDetailRepository scheduleDetailRep;
 	
 	/**
-	 * 사용자 프로필 수정하기
+	 * Customer 프로필 수정하기
 	 */
 	@Override
 	public int updateCustomer(Customer customer) {
@@ -61,6 +59,9 @@ public class CustomerServiceImpl implements CustomerService {
 		return list;
 	}
 	
+	/**
+	 * 찜리스트 전체검색 - Page처리 
+	 */
 	@Override
 	public Page<PlaceLike> selectAll(String userId, Pageable pageable) {
 		Page<PlaceLike> list =  placeLikeRep.findAll(pageable);
@@ -86,16 +87,16 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	/**
-	 * 사용자가 작성한 매칭게시판 글 보기
+	 * Customer가 작성한 매칭게시판 글 보기
 	 */
 	@Override
-	public List<MatchBoard> selectMatchByCustomer(String userId) {
-		List<MatchBoard> list = matchBoardRep.findByCustomerUserId(userId);
+	public Page<MatchBoard> selectMatchByCustomer(String userId, Pageable pageable) {
+		Page<MatchBoard> list = matchBoardRep.findAll(pageable);
 		return list;
 	}
 
 	/**
-	 * 사용자가 신청한 매칭 모임 보기
+	 * Customer가 신청한 매칭 모임 보기
 	 */
 	@Override
 	public List<MatchBoard> selectMatchList(String userId) {
@@ -104,21 +105,13 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	/**
-	 * 사용자가 작성한 리뷰 조회
+	 * Customer가 작성한 리뷰 조회
 	 */
 	@Override
-	public List<Review> selectReviewList(String userId) {
-		List<Review> list = reviewRep.findByCustomerUserId(userId);
+	public Page<Review> selectReviewByCustomer(String userId, Pageable pageable) {
+		Page<Review> list = reviewRep.findAll(pageable);
 		return list;
 	}
 
-	/**
-	 * 사용자의 여행 일정 보기
-	 */
-//	@Override
-//	public List<ScheduleDetail> selectScheduleList(String userId) {
-//		List<ScheduleDetail> list = scheduleDetailRep.findByCustomerUserId(userId); 
-//		return list;
-//	}
 	
 }

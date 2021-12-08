@@ -159,12 +159,27 @@ public class CustomerController {
 	 * 내가 쓴 매칭게시판 글 보기
 	 */
 	@RequestMapping("/mywrite")
-	public ModelAndView mywrite(HttpSession session) {
+	public ModelAndView mywrite(HttpSession session, @RequestParam(defaultValue = "1") int nowPage) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
 		Object objId =  session.getAttribute("id");
 		Customer loginCustomer =  Customer.builder().userId(objId.toString()).build();
 		String userId = loginCustomer.getUserId();
-		List<MatchBoard> matchBoard = customerService.selectMatchByCustomer(userId);
-		return new ModelAndView("mypage/mywrite", "matchBoard", matchBoard);
+		
+		Pageable pageable = PageRequest.of(nowPage-1, 5, Direction.DESC, "matchNo"); 
+		Page<MatchBoard> matchBoard = customerService.selectMatchByCustomer(userId, pageable);
+		
+		int blockCount = 5;
+		int temp = (nowPage - 1) % blockCount;
+		int startPage = nowPage - temp;
+		
+		mv.addObject("matchBoard", matchBoard);
+		mv.addObject("blockCount", blockCount);
+		mv.addObject("nowPage", nowPage);
+		mv.addObject("startPage", startPage);
+		mv.setViewName("mypage/mywrite");
+		
+		return mv;
 	}
 
 	/**
@@ -178,34 +193,34 @@ public class CustomerController {
 		List<MatchBoard> matchList = customerService.selectMatchList(userId);
 		return new ModelAndView("mypage/mymatch", "matchList", matchList);
 	}
-	
-	
 	/**
 	 * 내가 쓴 리뷰 보기
 	 */
 	@RequestMapping("/myreview")
-	public ModelAndView myreview(HttpSession session) {
+	public ModelAndView myreview(HttpSession session, @RequestParam(defaultValue = "1") int nowPage) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
 		Object objId =  session.getAttribute("id");
 		Customer loginCustomer =  Customer.builder().userId(objId.toString()).build();
 		String userId = loginCustomer.getUserId();
-		List<Review> reviewList = customerService.selectReviewList(userId);
-		return new ModelAndView("mypage/myreview", "reviewList", reviewList);
+		
+		Pageable pageable = PageRequest.of(nowPage-1, 5, Direction.DESC, "reviewNo"); 
+		Page<Review> reviewList = customerService.selectReviewByCustomer(userId, pageable);
+		
+		int blockCount = 5;
+		int temp = (nowPage - 1) % blockCount;
+		int startPage = nowPage - temp;
+		
+		mv.addObject("reviewList", reviewList);
+		mv.addObject("blockCount", blockCount);
+		mv.addObject("nowPage", nowPage);
+		mv.addObject("startPage", startPage);
+		mv.setViewName("mypage/myreview");
+		
+		return mv;
 	}
 
-	/**
-	 * 내 여행 일정 보기
-	 */
-//	@RequestMapping("/myschedule")
-//	public ModelAndView myschedule(HttpSession session) {
-//		Object objId =  session.getAttribute("id");
-//		Customer loginCustomer =  Customer.builder().userId(objId.toString()).build();
-//		String userId = loginCustomer.getUserId();
-//		List<ScheduleDetail> scheduleList = customerService.selectScheduleList(userId);
-//		return new ModelAndView("mypage/myschedule", "scheduleList", scheduleList);
-//	}
-	
-
-	//현재 Controller에서 발생하는 모든 에외처리
+	//현재 Controller에서 발생하는 모든 예외처리
 	@ExceptionHandler(Exception.class)
 	public ModelAndView error(Exception e) {
 		return new ModelAndView("error/error","errMsg",e.getMessage());
