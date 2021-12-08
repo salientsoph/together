@@ -61,7 +61,7 @@ public class MatchRequestController {
 			matchRequestService.insertMatchRequest(request);
 		}
 		
-		return "redirect:/match/list";
+		return "redirect:/match/{matchNo}";
 	}
 	
 	/**

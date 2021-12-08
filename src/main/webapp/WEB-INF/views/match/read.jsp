@@ -208,7 +208,6 @@
 										</c:choose>
 									  	</c:if>
 									
-									
 									</p>
 									<!--  <footer class="blockquote-footer text-white">
 										by <cite title="Source Title">Adam Smith</cite>
@@ -237,7 +236,13 @@
 								</tr>
 							</table>
 							</c:if>
-
+						
+						
+						<!-- 채팅방 입장 및 일정 확인 버튼  -->
+						<button id="chatButton" type="button" name="chat" class="btn btn-secondary btn-lg mb-2">채팅방 입장하기</button>
+						<button id="scheduleButton" type="button" name="schedule" class="btn btn-secondary btn-lg mb-2">일정 확인하기</button>
+									
+						<!-- 채팅방 입장 및 일정 확인 버튼 끝  -->
 
 							<div
 								class="card-footer d-flex align-items-center bg-smoke rounded p-3 p-md-4">
