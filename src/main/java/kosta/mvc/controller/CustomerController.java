@@ -2,6 +2,7 @@ package kosta.mvc.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -65,7 +66,9 @@ public class CustomerController {
 	 *  마이페이지-개인정보확인/수정 - 개인정보수정폼
 	 */
 	@RequestMapping("/profileUpdateForm")
-	public String updateCustomerForm() {
+	public String updateCustomerForm(HttpServletRequest request, String userNickname, String userPhone) {
+		request.setAttribute("userPhone", userPhone);
+		request.setAttribute("userNickname", userNickname);
 		return "mypage/profileUpdate";
 	}
 
@@ -73,15 +76,10 @@ public class CustomerController {
 	 *  마이페이지-개인정보확인/수정 - 개인정보수정
 	 */
 	@RequestMapping("/profileUpdate")
-	public ModelAndView updateCustomer(Customer customer ,HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("mypage/myprofile");//뷰쪽으로 전달될 데이터정보
-
-		Object objId =  session.getAttribute("id");
-		Customer logincustomer = Customer.builder().userId(objId.toString()).build();
-		mv.addObject("user", logincustomer);
-		customerService.updateCustomer(logincustomer);
-		return mv;
+	public String updateCustomer(Customer customer ,HttpSession session) {
+		customer.setUserId((String)session.getAttribute("id"));
+		customerService.updateCustomer(customer);
+		return "redirect:/mypage/myprofile";
 	}
 
 	/**

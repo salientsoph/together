@@ -33,11 +33,12 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Override
 	public int updateCustomer(Customer customer) {
-		String userNickname = customer.getUserNickname();
-		String userPwd = customer.getUserPwd();
-		String userPhone = customer.getUserPhone();
-		String userId = customer.getUserId();
-		return customerRep.updateCustomer(userNickname, userPwd, userPhone, userId);
+		System.out.println(customer.getUserId() + ", " + customer.getUserNickname() + ", " + customer.getUserPwd() + ", " + customer.getUserPhone());
+		Customer updateCustomer = customerRep.findById(customer.getUserId()).orElse(null);
+		updateCustomer.setUserPwd(customer.getUserPwd());
+		updateCustomer.setUserNickname(customer.getUserNickname());
+		updateCustomer.setUserPhone(customer.getUserPhone());
+		return 0;
 	}
 	
 	/**
