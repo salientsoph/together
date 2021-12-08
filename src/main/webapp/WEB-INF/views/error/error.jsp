@@ -45,27 +45,30 @@
         <div class="row text-center align-items-center justify-content-center vh-100">
           <div class="col-md-10 col-lg-8 col-xl-6">
             <div class="mb-7 mb-lg-9">
-              <img class="img-fluid lazyestload" data-src="${path}/assets/img/not-found/not-found.png" src="${path}/assets/img/not-found/not-found.png" alt="image">
+              <%-- <img class="img-fluid lazyestload" data-src="${path}/assets/img/not-found/not-found.png" src="${path}/assets/img/not-found/not-found.png" alt="image"> --%>
             </div>
             
-            <p class="text-white h3 mb-7 mb-lg-9">Oops! The page you are looking for could not be found!</p>
-            <p class="text-white">Please try searching again</p>
+            <p class="text-white h3 mb-7 mb-lg-9"><b>에러가 발생했습니다!</b></p>
+            <p class="text-white">
+            <b>원인:</b><br>
+            ${errMessage}
+            </p>
 
             <div class="row justify-content-center">
               <div class="col-md-8">
-                <form class="mb-7" action="index.html" method="post">
+                <!-- <form class="mb-7" action="index.html" method="post">
                   <div class="input-group">
                     <input type="email" class="form-control form-search" required="">
                     <button class="input-group-text border-0 btn bg-primary px-6" type="submit">
                       <i class="fa fa-search text-white" aria-hidden="true"></i>
                     </button>
                   </div>
-                </form>
+                </form> -->
               </div>
             </div>
 
             <div class="">
-              <a href="" class="btn btn-primary text-uppercase">Go home</a>
+              <a href="${pageContext.request.contextPath}/index" class="btn btn-primary text-uppercase">Go home</a>
             </div>
           </div>
         </div>

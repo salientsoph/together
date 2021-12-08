@@ -27,7 +27,7 @@ public class MatchRequestController {
 	/**
 	 * 모임 신청하기 
 	 * */
-	@RequestMapping("/matchRequestRe")
+	@RequestMapping("/matchRequest")
 	public String insert(String matchNo, String customer) {
 		/*boolean result = false;
 		
