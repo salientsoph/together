@@ -17,46 +17,6 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>모임 게시판</title>
 
-<!-- Plugins css Style -->
-<link
-	href='${pageContext.request.contextPath}/assets/plugins/fontawesome-5.15.2/css/all.min.css'
-	rel='stylesheet'>
-<link
-	href='${pageContext.request.contextPath}/assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css'
-	rel='stylesheet'>
-<link
-	href="${pageContext.request.contextPath}/assets/plugins/animate/animate.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/assets/plugins/menuzord/css/menuzord-animations.css"
-	rel="stylesheet">
-<link
-	href='${pageContext.request.contextPath}/assets/plugins/fancybox/jquery.fancybox.min.css'
-	rel='stylesheet'>
-
-<!-- GOOGLE FONT -->
-<link
-	href='https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700'
-	rel='stylesheet'>
-
-<!-- CUSTOM CSS -->
-<link href="${pageContext.request.contextPath}/assets/css/star.css"
-	id="option_style" rel="stylesheet">
-
-
-<!-- FAVICON -->
-<link rel="shortcut icon" type="image/png"
-	href="${pageContext.request.contextPath}/assets/img/favicon.png" />
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -214,20 +174,22 @@
 									       		</td>
 									    	</tr>
 									    	<form name="signUpForm" method="post" id="requestForm">
-											<input type=hidden name="matchNo" value="${requestScope.match.matchNo}">
-											<input type="hidden" value="${sessionScope.id}" name="customer">
+												<input type=hidden name="matchNo" value="${requestScope.match.matchNo}">
+												<input type="hidden" value="${sessionScope.id}" name="customer">
 											<button id="insertButton" type="button" name="signup"
 												class="btn btn-secondary btn-lg mb-2">신청하기</button>
 											</form>
 										</c:when>
+										
 									<c:otherwise>
-											<span style="font-size:12pt;"> 신청 목록 아이디 </span>
+											<span style="font-size:12pt;"> 모임 확정 목록 아이디 </span>
 									    <c:forEach items="${requestScope.approvedCustomerList}" var="customer">
     										<p align="left"><span style="font-size:12pt;">${customer}</span><br/></p>
     									</c:forEach>
     								</c:otherwise>
     								</c:choose>
     								</c:if>
+    								
     								
 										 <c:if test="${sessionScope.id == requestScope.match.customer.userId}">
 										 <c:choose>
@@ -253,7 +215,8 @@
 									</footer> --> 
 								</blockquote>
 							</div>
-
+							
+							<c:if test="${sessionScope.id == requestScope.match.customer.userId}">
 							<table style="margin: auto">
 								<tr>
 									<td height="20" colspan="4" align="center" valign="middle">
@@ -273,6 +236,7 @@
 									</td>
 								</tr>
 							</table>
+							</c:if>
 
 
 							<div

@@ -91,95 +91,93 @@
             <div class="mb-6 bg-white px-3 py-6 border-top border-top-5 border-primary rounded">
               <h4 class="text-uppercase font-weight-bold">모임 검색</h4>
 
-              <form class="form" action="${pageContext.request.contextPath}/list/search" method="post">
+              <form class="form" action="${pageContext.request.contextPath}/match/list" method="post">
                 
                 <!-- <div class="mb-5">
                   <input type="text" class="form-control border-top-0 border-start-0 border-end-0 ps-0" required=""
                     aria-describedby="textHelp" placeholder="Hotel Name">
                 </div> -->
 
-				<div class="mb-5">
-                  <div class="select-default select-category-1">
-                    <select class="select-option" value = "region">
-                      <option> 모임 지역</option>
-                      	<c:forEach items="${requestScope.region}" var="region">
-                     		<option>${region.regionName}</option>
-                      	</c:forEach>
-                    </select>
+
+				<div class="form-group form-group-icon form-group-icon-dark mb-5">
+	                  <i class="far fa-calendar-alt" aria-hidden="true"></i>
+	                  <input type="date"   name="tripDate" autocomplete="off" value="" placeholder="여행 날짜" />
+           		</div>
+
+                
+           <div class="accordion" id="accordionOne">
+           	<div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h5 class="icon-bg collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true"
+                      aria-controls="collapseTwo">
+                      <span>모임 지역</span>
+                    </h5>
                   </div>
-                </div>
+            
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOne">
+                    <div class="card-body">
+                      <div class="mb-3">
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="1" id="flexRadioDefault2" checked>
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        서울
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="2" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        경기/인천
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="3" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        부산/경남
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="4" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        대전/충청
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="5" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        대구/경북
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="6" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        광주/전라
+	                      </label>
+	                 </div>
+	                 
+	                 <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="region" value="7" id="flexRadioDefault2">
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        강원/제주
+	                      </label>
+	                 </div>
 
-                <div class="form-group form-group-icon form-group-icon-dark mb-5">
-                  <i class="far fa-calendar-alt" aria-hidden="true"></i>
-                  <input type="text" class="form-control daterange-picker sidebar-daterange-picker text-uppercase"
-                    name="dateRange" autocomplete="off" value="" placeholder="여행 날짜" />
-                </div>
-
-<!-- 
-                <div class="form-group mb-5">
-                  <div class="row align-items-center">
-                    <label class="control-label count-control-label col-5 col-lg-12 col-xl-4 text-uppercase mb-0 mb-lg-4 mb-xl-0 text-lg-center">Rooms</label>
-
-                    <div class="col-7 col-lg-12 col-xl-7">
-                      <div class="count-input me-0 mx-lg-auto me-xl-0">
-                        <a class="incr-btn" data-action="decrease" href="javascript:void(0)">–</a>
-                        <input class="quantity" type="number" value="1">
-                        <a class="incr-btn" data-action="increase" href="javascript:void(0)">+</a>
-                      </div>
+					</div>
+                      
                     </div>
                   </div>
                 </div>
-
-                <div class="form-group mb-5">
-                  <div class="row align-items-center">
-                    <label
-                      class="control-label count-control-label col-5 col-lg-12 col-xl-4 text-uppercase mb-0 mb-lg-4 mb-xl-0 text-lg-center">Adults</label>
-                
-                    <div class="col-7 col-lg-12 col-xl-7">
-                      <div class="count-input me-0 mx-lg-auto me-xl-0">
-                        <a class="incr-btn" data-action="decrease" href="javascript:void(0)">–</a>
-                        <input class="quantity" type="number" value="1">
-                        <a class="incr-btn" data-action="increase" href="javascript:void(0)">+</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group mb-5">
-                  <div class="row align-items-center">
-                    <label
-                      class="control-label count-control-label col-5 col-lg-12 col-xl-4 text-uppercase mb-0 mb-lg-4 mb-xl-0 text-lg-center">Childs</label>
-                
-                    <div class="col-7 col-lg-12 col-xl-7">
-                      <div class="count-input me-0 mx-lg-auto me-xl-0">
-                        <a class="incr-btn" data-action="decrease" href="javascript:void(0)">–</a>
-                        <input class="quantity" type="number" value="0">
-                        <a class="incr-btn" data-action="increase" href="javascript:void(0)">+</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
- -->
-                
-                <div class="d-grid">
-                  <button type="submit" onclick="location.href='javascript:void(0)';"
-                  class="btn btn-block btn-xs btn-outline-secondary text-uppercase">Search</button>
-                </div>
-              </form>
-            </div>
-          </div>
-	<!-- 검색창 끝 -->
-
-
-          <div class="col-md-6 col-lg-12">
-            <div class="mb-6 bg-white p-3 pt-6 border-top border-top-5 border-primary rounded">
-              <h4 class="text-uppercase font-weight-bold"> 모임 필터</h4>
-
-	<!-- 전체적인 필터링(왼쪽 사이드바) 시작 -->
-              <div class="accordion" id="accordionOne">
+           
+           
+           
+           
                 <div class="card">
                   <div class="card-header" id="headingOne">
-                    <h5 class="icon-bg" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                    <h5 class="icon-bg" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
                       aria-controls="collapseOne">
                       <span>연령대</span>
                     </h5>
@@ -187,34 +185,38 @@
             
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionOne">
                     <div class="card-body">
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                        <label class="form-check-label" for="flexCheckDefault1">
-                          20대
-                        </label>
-                      </div>
+                    	<div class="mb-3">
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchAgeGroup" value="20" id="flexRadioDefault2" checked>
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        20대
+	                      </label>
+	                    </div>
+	                    
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchAgeGroup" value="30"id="flexRadioDefault1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        30대
+	                      </label>
+	                    </div>
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchAgeGroup" value="40 "id="flexRadioDefault1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        40대
+	                      </label>
+	                    </div>
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchAgeGroup" value="50" id="flexRadioDefault1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        50대 이상
+	                      </label>
+	                    </div>
+					</div>
+                    
 
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-                        <label class="form-check-label" for="flexCheckDefault2">
-                          30대
-                        </label>
-                      </div>
-
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                        <label class="form-check-label" for="flexCheckDefault3">
-                          40대
-                        </label>
-                      </div>
-
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
-                        <label class="form-check-label" for="flexCheckDefault4">
-                          50대 이상
-                        </label>
-                      </div>
-                      
                     </div>
                   </div>
                 </div>
@@ -229,36 +231,49 @@
             
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOne">
                     <div class="card-body">
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6">
-                        <label class="form-check-label" for="flexCheckDefault6">
-                          혼성
-                        </label>
-                      </div>
+                      <div class="mb-3">
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchGender" id="flexRadioDefault2" value="0" checked>
+	                      <label class="form-check-label" for="flexRadioDefault2">
+	                        혼성
+	                      </label>
+	                    </div>
+	                    
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchGender" id="flexRadioDefault1" value="1">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        여자만
+	                      </label>
+	                    </div>
+	                    
+	                    <div class="form-check">
+	                      <input class="form-check-input" type="radio" name="matchGender" id="flexRadioDefault1" value="2">
+	                      <label class="form-check-label" for="flexRadioDefault1">
+	                        남자만
+	                      </label>
+	                    </div>
 
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7">
-                        <label class="form-check-label" for="flexCheckDefault7">
-                          여자만
-                        </label>
-                      </div>
-
-                      <div class="form-check custom-form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault8">
-                        <label class="form-check-label" for="flexCheckDefault8">
-                          남자만
-                        </label>
-                      </div>
+					</div>
                       
                     </div>
                   </div>
                 </div>
               </div>
-      <!-- 전체적인 필터링(왼쪽 사이드바) 끝 -->
-              
-              
+                
+                
+                
+                <div class="d-grid">
+                  <button type="submit" onclick="location.href='javascript:void(0)';"
+                  class="btn btn-block btn-xs btn-outline-secondary text-uppercase">Search</button>
+                </div>
+              </form>
             </div>
           </div>
+	<!-- 검색창 끝 -->
+
+
+          
         </div>
       </div>
 
