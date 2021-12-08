@@ -100,7 +100,7 @@
           style="z-index: 8; white-space: wrap; font-size: 14px; line-height: 21px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:montserrat;"></div>
 
         <!-- LAYER NR. 5 -->
-        <a href="https://wrapbootstrap.com/theme/star-travel-tour-booking-theme-admin-WB05T4R0J" target="_blank" class="tp-caption rev-btn " id="slide-33-layer-11" data-x="['left','left','left','left']"
+        <a href="/match/list" class="tp-caption rev-btn " id="slide-33-layer-11" data-x="['left','left','left','left']"
           data-hoffset="['0','100','50','70']" data-y="['middle','middle','middle','middle']"
           data-voffset="['120','120','100','30']" data-width="132" data-height="none" data-whitespace="wrap"
           data-type="button" data-responsive_offset="on" data-responsive="on"
@@ -223,7 +223,7 @@
           언제, 어디서 단풍을 즐기면 좋을까? </div>
 
         <!-- LAYER NR. 15 -->
-        <a href="https://wrapbootstrap.com/theme/star-travel-tour-booking-theme-admin-WB05T4R0J" target="_blank" class="tp-caption rev-btn " id="slide-56-layer-11" data-x="['left','left','left','left']"
+        <a href="/place/list" class="tp-caption rev-btn " id="slide-56-layer-11" data-x="['left','left','left','left']"
           data-hoffset="['0','100','50','70']" data-y="['middle','middle','middle','middle']"
           data-voffset="['120','120','100','30']" data-width="132" data-height="none" data-whitespace="wrap"
           data-type="button" data-responsive_offset="on" data-responsive="on"
@@ -290,7 +290,7 @@
           12월에 가기 좋은 국내 인기 여행지 총 정리 </div>
 
         <!-- LAYER NR. 20 -->
-        <a href="https://wrapbootstrap.com/theme/star-travel-tour-booking-theme-admin-WB05T4R0J" target="_blank" class="tp-caption rev-btn" id="slide-57-layer-11" data-x="['center','center','center','center']"
+        <a href="/place/list" class="tp-caption rev-btn" id="slide-57-layer-11" data-x="['center','center','center','center']"
           data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
           data-voffset="['120','120','100','30']" data-width="132" data-height="none" data-whitespace="wrap"
           data-type="button" data-responsive_offset="on" data-responsive="on"
