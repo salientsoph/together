@@ -291,9 +291,9 @@
               <div class="form-group mb-5 mb-md-0 bg-white">
                 <div class="select-default select-category-2">
                   <select class="select-option">
+                  	<option>SORT BY POPULARITY</option>
                     <option>SORT BY PRICE</option>
                     <option>SORT BY RATING</option>
-                    <option>SORT BY POPULARITY</option>
                   </select>
                 </div>
               </div>
@@ -345,7 +345,7 @@
 
                   <span class="text-gray-color hover-text-primary">
                   <i class="fa fa-user text-gray-color" aria-hidden="true"></i>
-                    <span class="ms-1 text-capitalize">${board.customer.userNickname}</span>
+                    <span class="ms-1 text-capitalize">${board.customer.userId}</span>
                   </span>
                   
                   <span>&nbsp;&nbsp;&nbsp;</span>
