@@ -37,7 +37,9 @@ public class SellerServiceImpl implements SellerService {
 	 */
 	@Override
 	public Page<PlaceBoard> selectPlaceBySeller(String sellerId, Pageable pageable) {
-		Page<PlaceBoard> list = placeBoardRep.findAll(pageable);
+		Seller seller = sellerRep.findById(sellerId).orElse(null);
+		
+		Page<PlaceBoard> list = placeBoardRep.findBySeller(seller, pageable);
 		return list;
 	}
 

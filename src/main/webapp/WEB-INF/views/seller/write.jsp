@@ -75,7 +75,7 @@ $(function(){
           <div class="row align-items-xl-center">
             <div class="col-md-6">
               <a href="/place/read/${place.placeNo}" class="position-relative">
-                <img class="card-img-top rounded lazyestload" data-src="${path}/assets/img/blog/blog-01.jpg" src="${path}/assets/img/blog/blog-01.jpg" alt="Card image cap">
+       			<img data-src="${pageContext.request.contextPath}/images/${place.placeImage}" src="${pageContext.request.contextPath}/images/${place.placeImage}" height="380" width="350" alt="image" style="display:block; margin:auto;">
                 <div class="card-img-overlay card-hover-overlay rounded"></div>
               </a>
             </div>
@@ -121,7 +121,7 @@ $(function(){
               </div>
               
               <div class="card-footer px-5 px-lg-0">
-                <a href="/place/read/${place.placeNo}" class="btn btn-sm btn-outline-secondary text-uppercase">View post</a>
+                <a href="/place/read/${place.placeNo}" class="btn btn-sm btn-outline-secondary text-uppercase">상세보기</a>
               </div>
             </div><!-- col-md-6 -->
             

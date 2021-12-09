@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.Region;
+import kosta.mvc.domain.Seller;
 
 
 public interface PlaceBoardRepository extends JpaRepository<PlaceBoard, Long> {
@@ -33,4 +34,6 @@ public interface PlaceBoardRepository extends JpaRepository<PlaceBoard, Long> {
 	 * 카테고리 분류 
 	 * */
 	Page<PlaceBoard> findByPlaceCategoryAndRegion(int placeCategory, Region region, Pageable pageable);
+
+	Page<PlaceBoard> findBySeller(Seller seller, Pageable pageable);
 }
