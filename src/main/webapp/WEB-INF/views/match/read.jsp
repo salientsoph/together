@@ -135,6 +135,11 @@
 				</div>
 			</div>
 		</div>
+		<form name="signUpForm" method="post" id="requestForm">
+			<input type="text" name="matchNo" value="${requestScope.match.matchNo}">
+			<input type="text" value="${sessionScope.id}" name="customer">
+			
+		</form>
 	</section>
 
 
@@ -268,11 +273,7 @@
 	    								
 	    							<!-- ----------------------------------------- -->	
 	    								
-	    								<form name="signUpForm" method="post" id="requestForm">
-											<input type=hidden name="matchNo" value="${requestScope.match.matchNo}">
-											<input type="hidden" value="${sessionScope.id}" name="customer">
-											
-										</form>
+	    								
 	    								
 	    								
     								</c:if>

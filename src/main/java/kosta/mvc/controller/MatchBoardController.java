@@ -178,13 +178,13 @@ public class MatchBoardController {
 		List<MatchReply> mr = matchReplyService.selectByMatchBoard(matchNo);
 		List<String> requestedCustomerList = matchBoardService.selectAllRequestedCustomer(matchNo);
 		List<String> approvedCustomerList = matchBoardService.selectAllApprovedCustomer(matchNo);
-		
+		/*
 		System.out.println("*****************");
 		System.out.println();
 		System.out.println(approvedCustomerList);
 		System.out.println();
 		System.out.println("*****************");
-		
+		*/
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("match/read");
 		mv.addObject("approvedCustomerList", approvedCustomerList);
@@ -223,9 +223,9 @@ public class MatchBoardController {
 	 * 삭제하기 
 	 * */
 	@RequestMapping("/delete")
-	public String delete(Long noticeNo) {
-		System.out.println("------------------------삭제하기 완료");
-		matchBoardService.delete(noticeNo);
+	public String delete(Long matchNo) {
+		//System.out.println("------------------------삭제하기 완료");
+		matchBoardService.delete(matchNo);
 		return "redirect:/match/list";
 	}
 	
