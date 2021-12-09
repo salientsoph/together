@@ -69,7 +69,7 @@
         <h3 class="text-capitalize mb-5">게시물을 작성해주세요</h3>
 
         <form action="${path}/match/insert" method="post" id="insertForm" >
-        <input type="text" name="customer" value="${sessionScope.id}">
+        <input type="hidden" name="customer" value="${sessionScope.id}">
         
           <div class="row">
           
