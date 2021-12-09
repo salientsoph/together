@@ -13,7 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>공지사항</title>
-
+	<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+	
 	<SCRIPT language=javascript>
 	   $(function(){
 		   $("#updateButton").click(function(){
@@ -84,11 +85,11 @@
         <td height="20" colspan="4" align="center" valign="middle">
 			<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
 			<form name="requestForm" method="post" id="requestForm">
-			<c:if test="${sessionScope.id == 'admin'}">
-				<input type=hidden name="noticeNo" value="${requestScope.notice.noticeNo}">
-				<button id="updateButton" type="button" name="update" class="btn btn-secondary btn-lg mb-2">수정하기</button>
-				<button id="deleteButton" type="button" name="delete" class="btn btn-secondary btn-lg mb-2">삭제하기</button>
-			</c:if>
+				<c:if test="${sessionScope.id == 'admin'}">
+					<input type=hidden name="noticeNo" value="${requestScope.notice.noticeNo}">
+					<button id="updateButton" type="button" name="update" class="btn btn-secondary btn-lg mb-2">수정하기</button>
+					<button id="deleteButton" type="button" name="delete" class="btn btn-secondary btn-lg mb-2">삭제하기</button>
+				</c:if>
 				<a href="${pageContext.request.contextPath}/notice/list" >
 					<button  type="button" name="list" class="btn btn-hover btn-outline-secondary text-uppercase">목록으로</button>
 				</a>
