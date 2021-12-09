@@ -47,4 +47,6 @@ public interface PlaceBoardService {
 	 * 카테고리 검색 
 	 * */
 	Page<PlaceBoard> selectByPlaceCategory(int placeCategory, Region region, Pageable pageable);
+
+	
 }

@@ -16,10 +16,7 @@
 <script type="text/javascript">
 
 $(function(){
-	$("span[title='0']").text("맛집");
-	$("span[title='1']").text("관광지");
-	$("span[title='2']").text("액티비티");
-	
+
 	function delLikeList(){
 		if(confirm("정말로 삭제하시겠습니까?")){
 			return true;
@@ -71,6 +68,58 @@ $(function(){
   <div class="container">
     <div class="row">
     
+    <form action="${path}/mypage/mylike" method="post" id="searchForm" >
+    	<input type="hidden" value="${sessionScope.id}" name="customer">
+    	<div>
+    		 <div class="mb-3 col-md-6">
+	                      <input class="form-check-input" type="radio" name="placeCategory" value="0"id="flexRadioDefault1" checked>
+	                      <label class=".radio-control-label" for="flexRadioDefault1">
+	                        맛집
+	                      </label>
+	                      <input class="form-check-input" type="radio" name="placeCategory" value="1 "id="flexRadioDefault1">
+	                      <label class=".radio-control-label" for="flexRadioDefault1">
+	                        관광지
+	                      </label>
+	                      <input class="form-check-input" type="radio" name="placeCategory" value="2" id="flexRadioDefault1">
+	                      <label class="radio-control-label" for="flexRadioDefault1">
+	                        액티비티
+	                      </label></div>
+	        <div class="mb-3">
+	        			<input class="form-check-input" type="radio" name="region" value="1" id="flexRadioDefault2" checked>
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        서울
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="2" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        경기/인천
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="3" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        부산/경남
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="4" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        대전/충청
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="5" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        대구/경북
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="6" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        광주/전라
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="7" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        강원/제주
+	                    </label>
+	                    
+	       		</div>
+    		<button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium"> Search</button>
+    		    </div>
+    		</form>
+
+    
     	<input type="hidden" value="${sessionScope.id}" name="customer">
     	
 	<!-- <c:if test="${not empty placeLike}">
@@ -97,7 +146,7 @@ $(function(){
 	      <div class="col-md-6 col-lg-4 mb-5">
 	        <div class="card card-hover">
 	          <a href="/place/read/${list.placeBoard.placeNo}" class="position-relative">
-	            <img data-src="${path}/images/${list.placeBoard.placeImage}" src="${path}/images/${board.placeImage}" height="300" width="300" alt="image" style="display:block; margin:auto;">
+	            <img data-src="${pageContext.request.contextPath}/images/${list.placeBoard.placeImage}" src="${pageContext.request.contextPath}/images/${list.placeBoard.placeImage}" height="380" width="350" alt="image" style="display:block; margin:auto;">
 	             	<div class="card-img-overlay card-hover-overlay rounded-top d-flex flex-column">
 		              <ul class="list-unstyled d-flex mt-auto text-warning mb-0">
 		                <li>
@@ -139,8 +188,17 @@ $(function(){
 								<span class="ms-1 text-capitalize">${list.placeBoard.placeLikedCount}</span>
 							</li> 
 							<li class="meta-tag text-gray-color me-4 mb-1">
-								<i class="fa fa fa-tags" aria-hidden="true"></i> 
-								<span id="category" class="ms-1 text-capitalize" title="${list.placeBoard.placeCategory}"></span>
+								<c:choose>
+									<c:when test="${list.placeBoard.placeCategory eq 0}">
+										<i class="fas fa-utensils"></i> 맛집
+									</c:when>
+									<c:when test="${list.placeBoard.placeCategory eq 1}">
+										<i class="fab fa-fort-awesome"></i> 관광지
+									</c:when>
+									<c:otherwise>
+										<i class="fas fa-snowboarding"></i> 액티비티
+									</c:otherwise>
+								</c:choose>
 							</li>
 							<li class="meta-tag text-gray-color me-4 mb-1">
 								<i class="fas fa-map-marker-alt" aria-hidden="true"></i> 

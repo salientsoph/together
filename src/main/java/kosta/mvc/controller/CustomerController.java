@@ -20,10 +20,13 @@ import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
+import kosta.mvc.domain.Region;
 import kosta.mvc.domain.Review;
 import kosta.mvc.domain.Seller;
 import kosta.mvc.service.CustomerService;
 import kosta.mvc.service.LoginService;
+import kosta.mvc.service.PlaceBoardService;
+import kosta.mvc.service.RegionService;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -36,7 +39,8 @@ public class CustomerController {
 
 	private final LoginService loginService;
 	private final CustomerService customerService;
-	
+	private final RegionService regionService; 
+	private final PlaceBoardService placeBoardService; 
 	/**
 	 * 마이페이지-프로필 보기
 	 */
@@ -90,10 +94,12 @@ public class CustomerController {
 	}
 
 	/**
-	 *  마이페이지 찜 목록 - 조회
+	 *  마이페이지 찜 목록 - 전체 검색, 카테고리별 검색
 	 */
 	@RequestMapping("/mylike")
-	public ModelAndView userLikeList(HttpSession session, @RequestParam(defaultValue = "1") int nowPage) throws Exception{
+	public ModelAndView userLikeList(HttpSession session, @RequestParam(defaultValue = "1") int nowPage,
+														  @RequestParam(defaultValue = "") Integer region, 
+														  @RequestParam(defaultValue = "") Integer placeCategory) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		Object objId =  session.getAttribute("id");
@@ -101,17 +107,28 @@ public class CustomerController {
 		String userId = loginCustomer.getUserId();
 		
 		Pageable pageable = PageRequest.of(nowPage-1, 9, Direction.DESC, "placeLikeNo"); //첫페이지 처리, 한페이지당 10개, 내림차순(no) 
-		Page<PlaceLike> placeLike = customerService.selectAll(userId, pageable);
+		Page<PlaceLike> placeLike = null;
+		Page<PlaceBoard> placeList = null;
+		List<Region> regionList = regionService.selectAll();
+		
+		if (placeCategory == null | region == null) {
+			placeLike = customerService.selectAll(userId, pageable);
+		} else {
+			Region regionObj = regionService.selectByRegionNo(region);
+			placeLike = customerService.findByCustomer(userId, pageable);
+			placeList = placeBoardService.selectByPlaceCategory(Integer.valueOf(placeCategory), regionObj, pageable);
+		}
 		
 		int blockCount = 5;
 		int temp = (nowPage - 1) % blockCount;
 		int startPage = nowPage - temp;
 		
+		mv.addObject("region", regionList);
+		mv.addObject("placeLike", placeList);
 		mv.addObject("placeLike", placeLike);
 		mv.addObject("blockCount", blockCount);
 		mv.addObject("nowPage", nowPage);
 		mv.addObject("startPage", startPage);
-		System.out.println(placeLike);
 		
 		mv.setViewName("mypage/mylike");
 		

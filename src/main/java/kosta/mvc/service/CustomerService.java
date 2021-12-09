@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceLike;
+import kosta.mvc.domain.Region;
 import kosta.mvc.domain.Review;
 
 public interface CustomerService {
@@ -56,5 +57,11 @@ public interface CustomerService {
 	 * Customer가 작성한 리뷰 조회 - Page처리
 	 */
 	Page<Review> selectReviewByCustomer(String userId, Pageable pageable);
+
+
+	/**
+	 * Customer 찜리스트 카테고리 검색
+	 */
+	Page<PlaceLike> findByCustomer(String userId, Pageable pageable);
 
 }

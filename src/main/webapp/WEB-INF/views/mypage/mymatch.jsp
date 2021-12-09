@@ -227,11 +227,6 @@
           </a>
         </li>
 
-        <li class="px-md-3">
-          <a href="" class="text-uppercase text-dark hover-text-primary">
-            투어
-          </a>
-        </li>
       </ul>
     </div>
 
