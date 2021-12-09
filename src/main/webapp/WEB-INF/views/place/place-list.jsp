@@ -77,7 +77,7 @@ function likebtn(placeNo){
     		
     		
     		 <div class="mb-3">
-	                      <input class="form-check-input" type="radio" name="placeCategory" value="0"id="flexRadioDefault1">
+	                      <input class="form-check-input" type="radio" name="placeCategory" value="0"id="flexRadioDefault1" checked>
 	                      <label class=".radio-control-label" for="flexRadioDefault1">
 	                        맛집
 	                      </label>
@@ -89,6 +89,37 @@ function likebtn(placeNo){
 	                      <label class="radio-control-label" for="flexRadioDefault1">
 	                        액티비티
 	                      </label></div>
+	        <div class="mb-3">
+	        			<input class="form-check-input" type="radio" name="region" value="1" id="flexRadioDefault2" checked>
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        서울
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="2" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        경기/인천
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="3" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        부산/경남
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="4" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        대전/충청
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="5" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        대구/경북
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="6" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        광주/전라
+	                    </label>
+	                    <input class="form-check-input" type="radio" name="region" value="7" id="flexRadioDefault2">
+	                    <label class="form-check-label" for="flexRadioDefault2">
+	                        강원/제주
+	                    </label>
+	                    
+	       					 </div>
     		<button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium"> Search</button>
     		
     		</form>
