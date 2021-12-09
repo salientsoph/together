@@ -206,8 +206,8 @@
 		            </button>
 	           </div>
 	           </c:if>
-	           <div class="col input-group mb-3 w-25 ">
-  					<button type="button" class="mx-2 btn btn-primary btn-sm" id="listAll" >목록으로 돌아가기</button>	  			
+	           <div class="col-3  my-7 px-7">
+  					<button type="button" class="btn btn-secondary btn-lg mb-2" id="listAll" >목록으로</button>	  			
 	  		   </div>
           	</div>
           	
