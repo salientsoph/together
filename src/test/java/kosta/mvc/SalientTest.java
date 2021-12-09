@@ -287,10 +287,11 @@ public class SalientTest {
 	
 	@Test
 	public void test() {
-		List<MatchBoard> list = matchBoardRep.findByRegionAndDate(6, LocalDate.parse("2021-12-11", formatter));
-		for (MatchBoard board : list) {
-			System.out.println(board.getMatchTitle());
-		}
+		/*
+		 * List<MatchBoard> list = matchBoardRep.findByRegionAndDate(6,
+		 * LocalDate.parse("2021-12-11", formatter)); for (MatchBoard board : list) {
+		 * System.out.println(board.getMatchTitle()); }
+		 */
 	}
 	
 	

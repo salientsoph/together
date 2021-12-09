@@ -174,25 +174,75 @@
 										       		</td>
 										    	</tr>
 										    	
-										    	<c:forEach items="${requestScope.requestedCustomerList}" var="person">
-										    		<c:if test="${person != sessionScope.id}">
-												    	<form name="signUpForm" method="post" id="requestForm">
-															<input type=hidden name="matchNo" value="${requestScope.match.matchNo}">
-															<input type="hidden" value="${sessionScope.id}" name="customer">
-														<button id="insertButton" type="button" name="signup"
-															class="btn btn-secondary btn-lg mb-2">신청하기</button>
-														</form>
-													</c:if>
-												</c:forEach>
 											</c:when>
 											
-										<c:otherwise>
-												<span style="font-size:12pt;"> 모임 확정 목록 아이디 </span>
-										    <c:forEach items="${requestScope.approvedCustomerList}" var="customer">
-	    										<p align="left"><span style="font-size:12pt;">${customer}</span><br/></p>
-	    									</c:forEach>
-	    								</c:otherwise>
+											
+											
+											<c:otherwise>
+											
+													<span style="font-size:12pt;"> 모임 확정 목록 아이디 </span>
+											    <c:forEach items="${requestScope.approvedCustomerList}" var="customer">
+		    										<p align="left"><span style="font-size:12pt;">${customer}</span><br/></p>
+		    									</c:forEach>
+		    									
+		    									
+		    									
+		    								</c:otherwise>
 	    								</c:choose>
+	    								
+	    								
+	    								\${sessionScope.id} = ${sessionScope.id} <br>
+	    								\${requestScope.match.customer.userId} = ${requestScope.match.customer.userId }<br>
+	    								\${requestScope.requestedCustomerList} = ${requestScope.requestedCustomerList}
+	    								<br>
+	    								
+	    								<c:set var="state" value="true"/>
+	    								
+	    								<c:forEach items="${requestScope.requestedCustomerList}" var="person">
+	    								   <c:if test="${sessionScope.id == person}">
+	    								      <c:set var="state" value="false"/>
+	    								   </c:if>
+	    								
+	    								</c:forEach>
+	    								
+	    								
+	    								<c:if test="${requestScope.match.customer.userId!=sessionScope.id and  state==true}">
+	    								     <button id="insertButton" type="button" name="signup"
+													class="btn btn-secondary btn-lg mb-2">신청하기</button>
+	    								</c:if>
+	    								
+	    								
+	    								
+	    								<!-- 신청하기 버튼 : 로그인 사용자와현재 게시글에   -->
+	    								<%-- <c:choose>
+	    									<c:when test="${not empty requestScope.requestedCustomerList}">
+	    									
+	    									<c:forEach items="${requestScope.requestedCustomerList}" var="person">
+												
+									    		<c:if test="${person != sessionScope.id}">
+											    	<button id="insertButton" type="button" name="signup"
+													class="btn btn-secondary btn-lg mb-2">신청하기</button>
+												</c:if>
+												
+											</c:forEach>
+	    									
+	    									</c:when>
+	    									<c:otherwise>
+	    											<button id="insertButton" type="button" name="signup"
+													class="btn btn-secondary btn-lg mb-2">신청하기</button>
+	    									</c:otherwise>	    								
+	    								</c:choose>
+	    								 --%>
+	    								
+	    							<!-- ----------------------------------------- -->	
+	    								
+	    								<form name="signUpForm" method="post" id="requestForm">
+											<input type=hidden name="matchNo" value="${requestScope.match.matchNo}">
+											<input type="hidden" value="${sessionScope.id}" name="customer">
+											
+										</form>
+	    								
+	    								
     								</c:if>
     								
     								<!--  현재 아이디가 글쓴이와 같을 때-->

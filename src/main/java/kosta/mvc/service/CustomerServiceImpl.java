@@ -64,7 +64,8 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Override
 	public Page<PlaceLike> selectAll(String userId, Pageable pageable) {
-		Page<PlaceLike> list =  placeLikeRep.findAll(pageable);
+		Customer customer = customerRep.findById(userId).orElse(null);
+		Page<PlaceLike> list =  placeLikeRep.findByCustomer(customer, pageable);
 		return list;
 	}
 
@@ -91,7 +92,9 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Override
 	public Page<MatchBoard> selectMatchByCustomer(String userId, Pageable pageable) {
-		Page<MatchBoard> list = matchBoardRep.findAll(pageable);
+		Customer customer = customerRep.findById(userId).orElse(null);
+		
+		Page<MatchBoard> list = matchBoardRep.findByCustomer(customer, pageable);
 		return list;
 	}
 
