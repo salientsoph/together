@@ -259,7 +259,7 @@
                 <td class="second-child">
                    <i class="fab fa-fort-awesome" aria-hidden="true"></i>
                   <div>
-                    <a href="${path}/chat/Chating/${list.matchNo}" class="hover-text-primary">${list.matchTitle}</a>
+                    <a href="${path}/match/read/${list.matchNo}" class="hover-text-primary">${list.matchTitle}</a>
                     <p class="">${list.matchContent}</p>
                   </div>
                 </td>
