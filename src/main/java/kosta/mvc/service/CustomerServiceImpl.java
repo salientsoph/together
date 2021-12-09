@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchBoard;
+import kosta.mvc.domain.PlaceBoard;
 import kosta.mvc.domain.PlaceLike;
+import kosta.mvc.domain.Region;
 import kosta.mvc.domain.Review;
 import kosta.mvc.repository.CustomerRepository;
 import kosta.mvc.repository.MatchBoardRepository;
@@ -115,6 +117,16 @@ public class CustomerServiceImpl implements CustomerService {
 		Page<Review> list = reviewRep.findAll(pageable);
 		return list;
 	}
+
+	@Override
+	public Page<PlaceLike> findByCustomer(String userId, Pageable pageable) {
+		Customer customer = customerRep.findById(userId).orElse(null);
+		
+		Page<PlaceLike> list = placeLikeRep.findByCustomer(customer, pageable);
+		return list;
+	}
+
+
 
 	
 }

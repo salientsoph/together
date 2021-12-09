@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <jsp:include page="../common/header.jsp" />
 <!DOCTYPE html>
 <html lang="en">
@@ -119,7 +121,7 @@ function likebtn(placeNo){
 	                        강원/제주
 	                    </label>
 	                    
-	       					 </div>
+	       	</div>
     		<button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium"> Search</button>
     		
     		</form>
@@ -169,23 +171,49 @@ function likebtn(placeNo){
 	              </ul>
             	</div>
         	  </a>
-        	  
         	    
           <div class="card-body px-4">
-          <h5>
+          	<h5>
               <a href="/place/read/${board.placeNo}" class="card-title text-uppercase">${board.placeTitle}</a>
             </h5>
-            
-            <div class="d-flex justify-content-between align-items-center">
-             
-          
-            <div>
-            	<p class="mb-0 text-capitalize ">관심 받은 수</p>
-                <span id="placeLikedCount" style="margin-left:5px;">${board.placeLikedCount}</span>
-            </div>
+	            <p class="mb-5">${board.placeContent}</p>
+	           		<div class="d-flex justify-content-between align-items-center ${board.placeCategory}">
+						<ul class="list-unstyled d-flex flex-wrap mb-0">
+							<li class="meta-tag text-gray-color me-4 mb-1">
+								<i class="fas fa-calendar-alt" aria-hidden="true"></i>
+								<tags:localDate date="${board.placeRegdate}"/>
+							</li>
+							<li class="meta-tag text-gray-color me-4 mb-1">
+								<i class="fas fa-eye" aria-hidden="true"></i> 
+								<span class="ms-1 text-capitalize">${board.placeCount}</span>
+							</li>  	
+							<li class="meta-tag text-gray-color me-4 mb-1">
+								<i class="fas fa-heart" aria-hidden="true"></i> 
+								<span class="ms-1 text-capitalize">${board.placeLikedCount}</span>
+							</li> 
+							<li class="meta-tag text-gray-color me-4 mb-1">
+								<c:choose>
+									<c:when test="${board.placeCategory eq 0}">
+										<i class="fas fa-utensils"></i> 맛집
+									</c:when>
+									<c:when test="${board.placeCategory eq 1}">
+										<i class="fab fa-fort-awesome"></i> 관광지
+									</c:when>
+									<c:otherwise>
+										<i class="fas fa-snowboarding"></i> 액티비티
+									</c:otherwise>
+								</c:choose>
+							</li>
+							<li class="meta-tag text-gray-color me-4 mb-1">
+								<i class="fas fa-map-marker-alt" aria-hidden="true"></i> 
+								<span class="ms-1 text-capitalize">${board.region.regionName}</span>
+							</li>
+						</ul>
+					 </div>	
+
 
  			<!--  장소 찜 기능  -->
-			<div class="icon" style="float: left; padding-left: 20px; padding-top: 10px;">
+			<div class="icon" style="float: right; padding-left: 20px; padding-top: 10px;">
 				<!-- 찜하기 했을 경우 해당 정보 가져오기 -->
 			    <span id="placeLikeNo" style="display: none;">${prdLikeVal.placeLikeNo}</span>
 				<%-- 찜하기 기능은 고객(MEMBER 권한)만 이용할 수 있게 설정 --%>     
@@ -211,7 +239,6 @@ function likebtn(placeNo){
             </div>
           </div>
         </div>
-      </div>
       <!-- 한개 끝 -->
       
       
@@ -303,7 +330,7 @@ function likebtn(placeNo){
 	 <!-- Next -->
       </ul>
     </nav>
-  </div>
+  </div><!-- container -->
 </section>
 
 </section>
