@@ -295,6 +295,22 @@
                 <td>
                  <div class="col-xl" style="text-align: right;">
 					<a href="" class="btn btn-outline-success" onclick="">신청상태</a>
+					<c:forEach items="${list.matchRequestList}" var="request">
+					<%-- ${request.customer.userId} --%>
+						<c:if test="${request.customer.userId eq idStr}">
+							<c:choose>
+								<c:when test="${request.requestedState eq 1}">
+									수락됨
+								</c:when>
+								<c:otherwise>
+									수락 대기중
+								</c:otherwise>
+							</c:choose>
+							<%-- ${request.requestedState} --%>
+						</c:if>
+						
+					</c:forEach>
+					
 				</div>
                 </td>
 
