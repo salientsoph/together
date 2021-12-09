@@ -145,7 +145,7 @@
                 </li>
                 
                 <li class="">
-                  <a href="/match/list">매칭게시판</a>
+                  <a href="/match/list">모임게시판</a>
                 </li>
               </ul>
             </li>
