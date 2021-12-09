@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kosta.mvc.domain.Customer;
 import kosta.mvc.domain.MatchRequest;
@@ -61,13 +62,14 @@ public class MatchRequestController {
 			matchRequestService.insertMatchRequest(request);
 		}
 		
-		return "redirect:/match/list";
+		return "redirect:/match/read/"+matchNo;
 	}
 	
 	/**
 	 * 모임 승락
 	 * */
 	@RequestMapping("/matchApprove")
+	@ResponseBody
 	public void approve(String customer, int matchNo) {
 		//HttpSession session = null; 
 		//String userId = session.getAttribute("id").toString();
@@ -78,6 +80,7 @@ public class MatchRequestController {
 	 * 모임 거절
 	 * */
 	@RequestMapping("/matchDeny")
+	@ResponseBody
 	public void deny(String customer, int matchNo) {
 		matchRequestService.denyMatchRequest(customer, matchNo);
 	}
