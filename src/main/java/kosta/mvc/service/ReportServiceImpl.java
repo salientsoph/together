@@ -69,13 +69,16 @@ public class ReportServiceImpl implements ReportService {
 			throw new RuntimeException("누락된 값이 존재");
 		}
 		
+		
 		reportRep.save(Report.builder()
-							.reportTitle(report.getReportTitle())
-							.reportContent(report.getReportContent())
-							.customer(customer)
-							.matchBoard(match)
-							.reportReasons(reportReason)
-							.build());
+				.reportTitle(report.getReportTitle())
+				.reportContent(report.getReportContent())
+				.customer(customer)
+				.matchBoard(match)
+				.reportReasons(reportReason)
+				.build());
+		
+		
 	}
 
 	@Override
