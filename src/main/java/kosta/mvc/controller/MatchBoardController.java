@@ -179,6 +179,12 @@ public class MatchBoardController {
 		List<String> requestedCustomerList = matchBoardService.selectAllRequestedCustomer(matchNo);
 		List<String> approvedCustomerList = matchBoardService.selectAllApprovedCustomer(matchNo);
 		
+		System.out.println("*****************");
+		System.out.println();
+		System.out.println(approvedCustomerList);
+		System.out.println();
+		System.out.println("*****************");
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("match/read");
 		mv.addObject("approvedCustomerList", approvedCustomerList);
