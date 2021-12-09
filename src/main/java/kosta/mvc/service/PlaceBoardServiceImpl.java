@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import kosta.mvc.domain.PlaceBoard;
+import kosta.mvc.domain.Region;
 import kosta.mvc.domain.Report;
 import kosta.mvc.repository.PlaceBoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -78,8 +79,8 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	}
 
 	@Override
-	public Page<PlaceBoard> selectByPlaceCategory(int placeCategory, Pageable pageable) {
-		Page<PlaceBoard> list = placeRepository.findByPlaceCategory(placeCategory, pageable);
+	public Page<PlaceBoard> selectByPlaceCategory(int placeCategory, Region region, Pageable pageable) {
+		Page<PlaceBoard> list = placeRepository.findByPlaceCategoryAndRegion(placeCategory, region, pageable);
 		return list;
 	}
 

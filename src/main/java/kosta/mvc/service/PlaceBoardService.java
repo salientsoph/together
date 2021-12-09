@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 
 import kosta.mvc.domain.PlaceBoard;
+import kosta.mvc.domain.Region;
 
 public interface PlaceBoardService {
 	/**
@@ -45,5 +46,5 @@ public interface PlaceBoardService {
 	/**
 	 * 카테고리 검색 
 	 * */
-	Page<PlaceBoard> selectByPlaceCategory(int placeCategory, Pageable pageable);
+	Page<PlaceBoard> selectByPlaceCategory(int placeCategory, Region region, Pageable pageable);
 }

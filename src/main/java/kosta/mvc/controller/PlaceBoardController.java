@@ -38,6 +38,7 @@ public class PlaceBoardController {
 	 * */
 	@RequestMapping("/list")
 	public ModelAndView list(@RequestParam(defaultValue = "1") int nowPage, 
+							@RequestParam(defaultValue = "") Integer region, 
 							@RequestParam(defaultValue = "") Integer placeCategory
 							) {
 		ModelAndView mv = new ModelAndView();
@@ -47,10 +48,11 @@ public class PlaceBoardController {
 		Page<PlaceBoard> pageList = null;
 		List<Region> regionList = regionService.selectAll();
 		
-		if (placeCategory == null) {
+		if (placeCategory == null | region == null) {
 			pageList = placeBoardService.selectAll(pageable);
 		} else {
-			pageList = placeBoardService.selectByPlaceCategory(Integer.valueOf(placeCategory), pageable);
+			Region regionObj = regionService.selectByRegionNo(region);
+			pageList = placeBoardService.selectByPlaceCategory(Integer.valueOf(placeCategory), regionObj, pageable);
 		}
 		
 		int blockCount = 5;
