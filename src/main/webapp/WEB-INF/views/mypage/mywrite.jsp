@@ -15,11 +15,6 @@
 <head>
 <script type="text/javascript">
 
-$(function(){
-	$("span[title='0']").text("여행전");
-	$("span[title='1']").text("여행완료");
-});
-
 </script>
 </head>   
 
@@ -100,13 +95,21 @@ $(function(){
                     </li>
               
                     <li class="meta-tag text-gray-color me-4 mb-1">
-                      <i class="fa fa fa-tags" aria-hidden="true"></i>
-                      <span class="ms-1 text-capitalize">Travel</span>
+                      <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
+                      <span class="ms-1 text-capitalize">${match.region.regionName}</span>
                     </li>
               
                     <li class="meta-tag text-gray-color me-4 mb-1">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
-                      <span class="ms-1 text-capitalize" title="${match.tripState}"></span>
+                    <c:choose>
+	                    <c:when test="${match.tripState eq 0}">
+	                    <i class="fas fa-suitcase-rolling"></i>
+                      		여행전
+                      </c:when>
+						<c:otherwise>
+                      	<i class="fa fa-plane" aria-hidden="true"></i>
+                      		여행완료
+						</c:otherwise>
+					</c:choose>
                     </li>
                     
                     <li class="meta-tag text-gray-color me-4 mb-1">
@@ -120,9 +123,11 @@ $(function(){
               </div>
               
               <div class="card-footer px-5 px-lg-0">
-                <a href="/match/read/${match.matchNo}" class="btn btn-sm btn-outline-secondary text-uppercase">View post</a>
+               <!-- 게시글 더보기 및 일정 확인  -->
+                <a href="${path}/match/read/${match.matchNo}" class="btn btn-sm btn-outline-secondary text-uppercase">상세보기</a>
               
-                <a href="/match/read/${match.matchNo}" class="btn btn-sm btn-outline-secondary text-uppercase">내 여행 일정</a>
+                <a href="${path}/schedule/read/${match.matchNo}"class="btn btn-sm btn-outline-secondary text-uppercase">내 여행 일정 보기</a>
+                
               </div>
             </div><!-- col-md-6 -->
             
