@@ -53,7 +53,7 @@ function likebtn(placeNo){
         <div class="col-lg-6">
           <div class="page-title-content">
             <div class="title-border">
-              <h2 class="text-uppercase text-white font-weight-bold">장소 게시판</h2>
+              <h2 class="text-uppercase text-white font-weight-bold">여행 게시판</h2>
             </div>
             <p class="text-white mb-0"></p>
           </div>
