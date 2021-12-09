@@ -15,14 +15,6 @@
 <head>
 <script type="text/javascript">
 
-	function confirmChat(){
-		if(confirm("채팅창으로 이동하시겠습니까?")){
-			return true;
-		}else{
-			return false;
-		}		
-	}
-
 </script>
 </head>  
 
@@ -125,12 +117,6 @@
             </a>
           </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link " href="setting.html">
-              <i class="fa fa-cogs" aria-hidden="true"></i>
-              <span>Settings</span>
-            </a>
-          </li>
         </ul>
 
         <div class="navbar-nav-right d-none d-md-block">
@@ -256,7 +242,7 @@
           <h2 class="text-uppercase mb-3">내 매칭 모임</h2>
           
           	<input type="hidden" value="${sessionScope.id}" name="customer">
-		    
+
 		     <div class="MatchListInfo">  	
 			    <c:if test="${empty matchList}">
 					<tr>
@@ -274,34 +260,53 @@
           <table class="table table-hover">
             <tbody>
               <tr>
-                <th scope="row">
-                  <div class="badge badge-primary">
-                  </div>
-                </th>
 
                 <td class="second-child">
-                  <i class="fab fa-fort-awesome" aria-hidden="true"></i>
+                   <i class="fab fa-fort-awesome" aria-hidden="true"></i>
                   <div>
-                    <a href="" class="hover-text-primary">${list.matchTitle}</a>
+                    <a href="${path}/chat/Chating/${list.matchNo}" class="hover-text-primary">${list.matchTitle}</a>
+                    <p class="">${list.matchContent}</p>
                   </div>
                 </td>
 
                 <td>
-	              	<div class="meta-tag text-gray-color me-4 mb-1">
+	              	<div class="meta-tag me-4 mb-1">
 	            	<i class="fas fa-calendar-alt" aria-hidden="true"></i>
 	                <span class="ms-1 text-capitalize">${list.tripDate}</span></div>
                 </td>
-
+                
                 <td>
-                 <div class="col-xl" style="text-align: right;">
-					<a href="" class="btn btn-outline-success" onclick="">신청상태</a>
-				</div>
+	              	<div class="meta-tag me-4 mb-1">
+	           		<i class="fas fa-user-friends"></i>
+	                <span class="ms-1 text-capitalize">${list.matchPeopleNum}</span></div>
                 </td>
 
                 <td>
-                  <ul class="list-unstyled">
-					<a href="" class="btn btn-outline-info" onclick="return confirmChat();">채팅창</a>
-                  </ul>
+            		<div class="meta-tag me-4 mb-1">
+					<c:forEach items="${list.matchRequestList}" var="request">
+						<c:if test="${request.customer.userId eq idStr}">
+							<c:choose>
+								<c:when test="${request.requestedState eq 1}">
+								<i class="fas fa-user-check"></i>
+									모임 확정
+								</c:when>
+								<c:when test="${request.requestedState eq 2}">
+								<i class="fas fa-times"></i>
+									모임 거절
+								</c:when>
+								<c:otherwise>
+								<i class="far fa-envelope-open"></i>
+									신청 대기중
+								</c:otherwise>
+							</c:choose>
+						</c:if>
+					</c:forEach>
+					</div>
+                </td>
+
+                <td>
+         			<!-- 채팅방 입장 버튼  -->
+		   			 <a href="${path}/chat/Chating/${list.matchNo}" class="btn btn-outline-info mb-2">채팅방 바로가기</a>
                 </td>
               </tr>
               

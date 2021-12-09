@@ -62,10 +62,12 @@ public class CustomerController {
 	/**
 	 * 마이페이지-개인정보확인/수정 - 개인정보 수정전 비밀번호 확인폼
 	 */
-	@RequestMapping("/passWordCheck")
-	public ModelAndView userPassWordCheck() {
-		return new ModelAndView("mypage/passWordCheck");
-	}
+//	@RequestMapping("/passWordCheck")
+//	public ModelAndView userPassWordCheck(HttpServletRequest request, String userNickname, String userPhone) {
+//		request.setAttribute("userPhone", userPhone);
+//		request.setAttribute("userNickname", userNickname);
+//		return new ModelAndView("mypage/passWordCheck");
+//	}
 
 	/**
 	 *  마이페이지-개인정보확인/수정 - 개인정보수정폼

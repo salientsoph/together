@@ -16,7 +16,7 @@ $(function() {
 });
 
 $(function(){
-	 if(${sessionScope.role} == null || ${sessionScope.role} == "Seller"){
+	 if(${sessionScope.role} == null || ${sessionScope.role} == "Customer"){
 		 location.href="/";
 	 } 
  });
@@ -124,12 +124,6 @@ $(function(){
             </a>
           </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link " href="setting.html">
-              <i class="fa fa-cogs" aria-hidden="true"></i>
-              <span>Settings</span>
-            </a>
-          </li>
         </ul>
 
         <div class="navbar-nav-right d-none d-md-block">
@@ -210,9 +204,11 @@ $(function(){
 <!-- ====================================
 ——— PROFILE SECTION
 ===================================== -->
-<form name="mypage" method="post" action="${pageContext.request.contextPath}/myPage/profile">
+<form name="mypage" method="post" action="${path}/mypage/profileUpdateForm">
 
     <input type="hidden" value="${sessionScope.id}" name="user">
+	<input type="hidden" value="${requestScope.user.userNickname}" name="userNickname">
+	<input type="hidden" value="${requestScope.user.userPhone}" name="userPhone">
 
 <c:choose>
 	<c:when test="${sessionScope.roll eq customer}"></c:when>
@@ -328,15 +324,15 @@ $(function(){
             </li>
           </ul>
           
-          <div class="row">
-	    	<div class="col-12">
-          		<div class="icon" style="float: right; padding-left: 20px; padding-top: 10px;">
-          		<a href="/mypage/passWordCheck">
-          		<button type="button" name="" class="btn btn-ls btn-outline-success text-uppercase"> 수정하기 </button>
-	         	</a>
-	         	</div>
-	         </div>
-	      </div>
+			<div class="row">
+				<div class="col-12">
+					<div class="icon"
+						style="float: right; padding-left: 20px; padding-top: 10px;">
+						<input type="submit" name="" value="수정하기"
+							class="btn btn-ls btn-outline-success text-uppercase" />
+					</div>
+				</div>
+			</div>
 	        
         </div>
       </div>

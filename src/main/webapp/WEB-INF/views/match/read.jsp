@@ -51,6 +51,19 @@
 												"${pageContext.request.contextPath}/match/matchRequest");
 										$("#requestForm").submit();
 									})
+									
+				$("#chatButton")
+							.click(function() {
+								//alert("asafe");
+								$(location).attr("href", "${path}/chat/Chating/${match.matchNo}")
+							})
+				
+				$("#scheduleButton")
+							.click(function() {
+								//alert("asafe");
+								$(location).attr("href", "${path}/schedule/read/${match.matchNo}")
+							})
+								
 								
 				$(document).on("click", "#accept", function(){
 							$.ajax({
@@ -59,8 +72,13 @@
 								data: {"customer" : $(this).attr("name"), "matchNo" : "${match.matchNo}"}, //요청시 보낼 파라미터
 								dataType: "", //받아올 데이터 형식 
 								success: function(result){ //성공시 수행할 핸들러 
-									alert("수락하셨습니다");
-									location.reload();
+									$("#messageTitle").text("apply success");
+							    	$("#messageContent").text("수락하셨습니다");
+							    	$("#message").modal("show");
+							    	$("#message").on("hidden.bs.modal", function(){
+							    		location.reload();
+							    	});
+									
 								},
 								error:function() { //실패시 수행할 핸들러
 									console.log("실패");
@@ -75,8 +93,12 @@
 								data: {"customer" : $(this).attr("name"), "matchNo" : "${match.matchNo}"},
 								dataType: "",
 								success: function(result){
-									alert("거절하셨습니다");
-									location.reload();
+									$("#messageTitle").text("apply refused");
+							    	$("#messageContent").text("거절하셨습니다");
+							    	$("#message").modal("show");
+							    	$("#message").on("hidden.bs.modal", function(){
+							    		location.reload();
+							    	});
 								},
 								error:function() {
 									console.log("실패");
@@ -89,7 +111,7 @@
 
 </head>
 
-<body id="body" class="up-scroll">/
+<body id="body" class="up-scroll">
 
 	<jsp:include page="../common/header.jsp" />
 
@@ -170,7 +192,7 @@
 											<c:when test="${empty requestScope.approvedCustomerList}">
 												<tr>
 										        	<td colspan="5">
-										            <p align="center"><b><span style="font-size:12pt;">참석하는 사람이 아직 없어요.</span></b></p>
+										            <p align="center"><b><span style="font-size:12pt; color:#FDF5E6">참석하는 사람이 아직 없어요.</span></b></p>
 										       		</td>
 										    	</tr>
 										    	
@@ -179,10 +201,9 @@
 											
 											
 											<c:otherwise>
-											
-													<span style="font-size:12pt;"> 모임 확정 목록 아이디 </span>
+													<span style="font-size:12pt; color:#FDF5E6"> 모임 확정 목록 아이디 </span>
 											    <c:forEach items="${requestScope.approvedCustomerList}" var="customer">
-		    										<p align="left"><span style="font-size:12pt;">${customer}</span><br/></p>
+		    										<p align="left"><span style="font-size:12pt; color:#FDF5E6">${customer}</span><br/></p>
 		    									</c:forEach>
 		    									
 		    									
@@ -190,11 +211,11 @@
 		    								</c:otherwise>
 	    								</c:choose>
 	    								
-	    								
+	    								<%-- 
 	    								\${sessionScope.id} = ${sessionScope.id} <br>
 	    								\${requestScope.match.customer.userId} = ${requestScope.match.customer.userId }<br>
 	    								\${requestScope.requestedCustomerList} = ${requestScope.requestedCustomerList}
-	    								<br>
+	    								<br> --%>
 	    								
 	    								<c:set var="state" value="true"/>
 	    								
@@ -205,10 +226,17 @@
 	    								
 	    								</c:forEach>
 	    								
+	    								<c:set var="approvedListExist" value="true"/>
+	    								<c:forEach items="${requestScope.approvedCustomerList}" var="person">
+	    								   <c:if test="${sessionScope.id == person}">
+	    								      <c:set var="approvedListExist" value="false"/>
+	    								   </c:if>
+	    								</c:forEach>
 	    								
-	    								<c:if test="${requestScope.match.customer.userId!=sessionScope.id and  state==true}">
-	    								     <button id="insertButton" type="button" name="signup"
-													class="btn btn-secondary btn-lg mb-2">신청하기</button>
+	    								
+	    								<c:if test="${requestScope.match.customer.userId!=sessionScope.id and  state==true and  approvedListExist==true }">
+	    								     <button id="insertButton" type="button" name="signup"  style="color:#FDF5E6"
+													class="btn btn-hover btn-outline-secondary text-uppercase">신청하기</button>
 	    								</c:if>
 	    								
 	    								
@@ -247,33 +275,34 @@
     								
     								<!--  현재 아이디가 글쓴이와 같을 때-->
 									<c:if test="${sessionScope.id == requestScope.match.customer.userId}">
-										 <c:choose>
-											<c:when test = "${empty requestScope.requestedCustomerList}">
-												<tr><th><h5>신청자가 없습니다.</h5></th></tr>
+										 <table>
+										 <c:choose>											<c:when test = "${empty requestScope.requestedCustomerList}">
+												<tr><th><h5 style="color:#FDF5E6">수락을 기다리는 신청자가 없습니다.</h5></th></tr>
 											</c:when>
 											<c:otherwise>
 												<c:forEach items = "${requestedCustomerList}" var = "user">
 												<tr>
-													<th><h6>${user}</h6></th>
-													<th><button type="button"  name="${user}" id="accept">수락</button></th>
-													<th><button type="button"  name="${user}" id="reject">거절</button></th>
+													<th><h6 class="px-3" style="color:#FDF5E6">${user}</h6></th>
+													<th><button type="button"  name="${user}" id="accept" class="btn btn-hover btn-outline-secondary text-uppercase" style="color:#FDF5E6">수락</button></th>
+													<th><button type="button"  name="${user}" id="reject" class="btn btn-hover btn-outline-secondary text-uppercase" style="color:#FDF5E6">거절</button></th>
 												</tr>
 												</c:forEach>
 											</c:otherwise>
 										</c:choose>
+										</table>
 									
 										<c:choose>
 											<c:when test="${empty requestScope.approvedCustomerList}">
 												<tr>
 										        	<td colspan="5">
-										            <p align="center"><b><span style="font-size:12pt;">참석 확정된 사람이 아직 없어요.</span></b></p>
+										            <p align="center"><b><span style="font-size:12pt; color:#FDF5E6">참석 확정된 사람이 아직 없어요.</span></b></p>
 										       		</td>
 										    	</tr>
 										    </c:when>
 										    <c:otherwise>
-												<span style="font-size:12pt;"> 모임 확정 목록 아이디 </span>
+												<span style="font-size:12pt; color:#FDF5E6"> <br><b>모임 확정 목록 아이디 </b></span>
 										    <c:forEach items="${requestScope.approvedCustomerList}" var="customer">
-	    										<p align="left"><span style="font-size:12pt;">${customer}</span><br/></p>
+	    										<p align="left"><span style="font-size:12pt; color:#FDF5E6">${customer}</span><br/></p>
 	    									</c:forEach>
 	    								</c:otherwise>
 										</c:choose>
@@ -286,7 +315,7 @@
 								</blockquote>
 							</div>
 							
-							<c:if test="${sessionScope.id == requestScope.match.customer.userId}">
+							
 							<table style="margin: auto">
 								<tr>
 									<td height="20" colspan="4" align="center" valign="middle">
@@ -294,24 +323,25 @@
 										<form name="requestForm" method="post" id="requestForm">
 											<input type=hidden name="matchNo"
 												value="${requestScope.match.matchNo}">
+												<c:if test="${sessionScope.id == requestScope.match.customer.userId}">
 											<button id="updateButton" type="button" name="update"
-												class="btn btn-secondary btn-lg mb-2">수정하기</button>
+												class="btn btn-hover btn-outline-secondary text-uppercase">수정하기</button>
 											<button id="deleteButton" type="button" name="delete"
-												class="btn btn-secondary btn-lg mb-2">삭제하기</button>
+												class="btn btn-hover btn-outline-secondary text-uppercase">삭제하기</button>
+												</c:if>
 											<a href="${pageContext.request.contextPath}/match/list">
 												<button type="button" name="list"
-													class="btn btn-secondary btn-lg mb-2">목록으로</button>
+													class="btn btn-hover btn-outline-secondary text-uppercase">목록으로</button>
 											</a>
 										</form>
 									</td>
 								</tr>
 							</table>
-							</c:if>
 						
 						
 						<!-- 채팅방 입장 및 일정 확인 버튼  -->
-					    <button id="chatButton" type="button" name="chat" class="btn btn-secondary btn-lg mb-2">채팅방 입장하기</button>
-						<button id="scheduleButton" type="button" name="schedule" class="btn btn-secondary btn-lg mb-2">일정 확인하기</button>
+					    <button id="chatButton" type="button"  name="chat" class="btn btn-hover btn-outline-secondary text-uppercase">채팅방 입장하기</button>
+						<button id="scheduleButton" type="button" name="schedule" class="btn btn-hover btn-outline-secondary text-uppercase">일정 확인하기</button>
 									
 						<!-- 채팅방 입장 및 일정 확인 버튼 끝  -->
 
