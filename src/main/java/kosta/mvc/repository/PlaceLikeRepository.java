@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import kosta.mvc.domain.Customer;
+import kosta.mvc.domain.MatchBoard;
 import kosta.mvc.domain.PlaceLike;
 import kosta.mvc.domain.Region;
 import kosta.mvc.domain.Report;
@@ -39,5 +40,6 @@ public interface PlaceLikeRepository extends JpaRepository<PlaceLike,Long> {
     List<PlaceLike> selectByCustomerNoAndRegionCode(Customer customer, Region region);
     
     Page<PlaceLike> findByCustomer(Customer customer, Pageable pageable);
+    
 
 }

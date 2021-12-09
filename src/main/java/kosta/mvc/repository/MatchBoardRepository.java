@@ -80,4 +80,6 @@ public interface MatchBoardRepository extends JpaRepository<MatchBoard, Long>{
 	 * 사용자가 작성한 모든 모임 보기
 	 */
 	List<MatchBoard> findByCustomerUserId(String userId);
+	
+	Page<MatchBoard> findByCustomer(Customer customer, Pageable pageable);
 }
