@@ -327,7 +327,7 @@
             <div class="row">
               <div class="col-md-7 col-xl-8 position-relative">  
                 <h4>
-                  <a class="media-title" href="/match/read/${board.matchNo}">${board.matchTitle}</a>
+                  <a class="media-title" href="/match/read/${board.matchNo}">${board.matchNo}. ${board.matchTitle}</a>
                   
                   <p/><p/>
                   <!-- 날짜(달력) -->

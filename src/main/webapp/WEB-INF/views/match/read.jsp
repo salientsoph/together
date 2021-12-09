@@ -149,7 +149,7 @@
 						<div class="card card-lg card-transparent mb-8">
 
 							<div class="card-body px-2 py-6">
-								<h3 class="mb-4">${requestScope.match.matchTitle}</h3>
+								<h3 class="mb-4">${requestScope.match.matchNo}. ${requestScope.match.matchTitle}</h3>
 
 								<div class="meta-post-sm mb-4">
 									<ul class="list-unstyled d-flex flex-wrap mb-0">
@@ -168,6 +168,10 @@
 											class="fa fa fa-tags" aria-hidden="true"></i> <span
 											class="ms-1 text-capitalize">${requestScope.match.region.regionName}</span>
 										</li>
+										<li class="meta-tag text-gray-color me-4 mb-1">
+								<i class="fas fa-eye" aria-hidden="true"></i> 
+								<span class="ms-1 text-capitalize">${requestScope.match.matchCount}</span>
+							</li>  
 
 										<!--
                   <li class="meta-tag text-gray-color me-4 mb-1">
