@@ -102,7 +102,7 @@
 
 </head>
 
-<body id="body" class="up-scroll">/
+<body id="body" class="up-scroll">
 
 	<jsp:include page="../common/header.jsp" />
 

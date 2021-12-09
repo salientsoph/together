@@ -184,7 +184,7 @@
            
                 <div class="card">
                   <div class="card-header" id="headingOne">
-                    <h5 class="icon-bg" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                    <h5 class="icon-bg " data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
                       aria-controls="collapseOne">
                       <span>연령대</span>
                     </h5>
@@ -230,13 +230,13 @@
             
                 <div class="card">
                   <div class="card-header" id="headingTwo">
-                    <h5 class="icon-bg collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                      aria-controls="collapseTwo">
+                    <h5 class="icon-bg collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                      aria-controls="collapseThree">
                       <span>모임 성별</span>
                     </h5>
                   </div>
             
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOne">
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOne">
                     <div class="card-body">
                       <div class="mb-3">
 	                    <div class="form-check">
