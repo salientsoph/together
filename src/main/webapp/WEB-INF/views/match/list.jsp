@@ -366,7 +366,17 @@
 				  
 				  <span class="text-gray-color hover-text-primary">
                   <i class="fa fa fa-tags" aria-hidden="true"></i>
-                    	<span class="ms-1 text-capitalize">${board.matchGender}</span>
+                  <c:choose>
+                    <c:when test="${board.matchGender eq 0 }">
+                      <span class="ms-1 text-capitalize">혼성</span>
+                    </c:when>
+                    <c:when test="${board.matchGender eq 1 }">
+                      <span class="ms-1 text-capitalize">여자만</span>
+                    </c:when>
+                    <c:when test="${board.matchGender eq 2 }">
+                      <span class="ms-1 text-capitalize">남자만</span>
+                    </c:when>
+                  </c:choose>
                   </span>
 				
                 </div>

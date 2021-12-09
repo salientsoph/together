@@ -90,7 +90,7 @@
 				<button id="deleteButton" type="button" name="delete" class="btn btn-secondary btn-lg mb-2">삭제하기</button>
 			</c:if>
 				<a href="${pageContext.request.contextPath}/notice/list" >
-					<button  type="button" name="list" class="btn btn-secondary btn-lg mb-2">목록으로</button>
+					<button  type="button" name="list" class="btn btn-hover btn-outline-secondary text-uppercase">목록으로</button>
 				</a>
 			</form>
 		</td>

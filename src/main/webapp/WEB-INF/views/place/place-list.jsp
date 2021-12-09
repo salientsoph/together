@@ -76,27 +76,21 @@ function likebtn(placeNo){
     	<form action="${path}/place/list" method="post" id="searchForm" >
     		
     		
-    		 <div class="form-check">
+    		 <div class="mb-3">
 	                      <input class="form-check-input" type="radio" name="placeCategory" value="0"id="flexRadioDefault1">
-	                      <label class="form-check-label" for="flexRadioDefault1">
+	                      <label class=".radio-control-label" for="flexRadioDefault1">
 	                        맛집
 	                      </label>
-	                    </div>
-	                    
-	                    <div class="form-check">
 	                      <input class="form-check-input" type="radio" name="placeCategory" value="1 "id="flexRadioDefault1">
-	                      <label class="form-check-label" for="flexRadioDefault1">
+	                      <label class=".radio-control-label" for="flexRadioDefault1">
 	                        관광지
 	                      </label>
-	                    </div>
-	                    
-	                    <div class="form-check">
 	                      <input class="form-check-input" type="radio" name="placeCategory" value="2" id="flexRadioDefault1">
-	                      <label class="form-check-label" for="flexRadioDefault1">
+	                      <label class="radio-control-label" for="flexRadioDefault1">
 	                        액티비티
-	                      </label>
-	                    </div>
+	                      </label></div>
     		<button type="submit" class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium"> Search</button>
+    		
     		</form>
     	
     

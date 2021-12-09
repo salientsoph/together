@@ -119,7 +119,7 @@
 											</c:if>
 											<a href="${pageContext.request.contextPath}/place/list">
 												<button type="button" name="list"
-													class="btn btn-secondary btn-lg mb-2">목록으로</button>
+													class="btn btn-hover btn-outline-secondary text-uppercase">목록으로</button>
 											</a>
 										</form>
 									</td>
@@ -260,8 +260,10 @@
 						    });
 						</script>
 					<div class="mb-7 mb-lg-0">
+						
+						<c:if test="${sessionScope.role eq 'customer'}">
 						<h3 class="mb-6" name="LeaveAReview">Leave A Review</h3>
-						<form action="/review/insert" method="POST" role="form" class="form"
+						  <form action="/review/insert" method="POST" role="form" class="form"
 							name="reviewForm">
 							<div class="col-lg-6">
 								<div class="form-group">
@@ -293,6 +295,8 @@
 								class="btn btn-sm btn-outline-secondary text-uppercase py-2 font-weight-medium">send
 								now</button>
 						</form>
+						</c:if>
+						
 					</div>
 
 					<div class="d-md-none">
